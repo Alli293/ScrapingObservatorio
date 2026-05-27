@@ -1,0 +1,11 @@
+{
+  "execution_date": "2026-05-27 11:25:37",
+  "scrapers_run": 1,
+  "results": [
+    {
+      "source": "acontecercr",
+      "status": "ERROR",
+      "error": "Error de importación: No module named 'google'"
+    }
+  ]
+}
