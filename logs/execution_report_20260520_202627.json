@@ -1,0 +1,14 @@
+{
+  "execution_date": "2026-05-20 20:26:27",
+  "scrapers_run": 1,
+  "results": [
+    {
+      "source": "latejacr",
+      "status": "OK",
+      "total_raw": 612,
+      "total_valid": 612,
+      "total_discarded": 0,
+      "output_file": "output\\latejacr_20260520.csv"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "execution_date": "2026-05-23 14:07:35",
+  "scrapers_run": 1,
+  "results": [
+    {
+      "source": "lavozdegoicoechea",
+      "status": "OK",
+      "total_raw": 835,
+      "total_valid": 832,
+      "total_discarded": 3,
+      "output_file": "output\\lavozdegoicoechea_20260523.csv"
+    }
+  ]
+}

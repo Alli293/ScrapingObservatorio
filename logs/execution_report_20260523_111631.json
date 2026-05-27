@@ -1,0 +1,11 @@
+{
+  "execution_date": "2026-05-23 11:16:31",
+  "scrapers_run": 1,
+  "results": [
+    {
+      "source": "lavozdegoicoechea",
+      "status": "ERROR",
+      "error": "module 'scrapers.lavozdegoicoechea' has no attribute 'LaVozDeGoicoecheaScraper'"
+    }
+  ]
+}

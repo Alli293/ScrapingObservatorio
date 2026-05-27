@@ -1,0 +1,11 @@
+{
+  "execution_date": "2026-04-26 12:45:19",
+  "scrapers_run": 1,
+  "results": [
+    {
+      "source": "lareaccioncr",
+      "status": "ERROR",
+      "error": "module 'scrapers.lareaccioncr' has no attribute 'LaReaccionCRScraper'"
+    }
+  ]
+}

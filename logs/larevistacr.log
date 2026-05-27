@@ -1,0 +1,1245 @@
+[2026-05-16 10:57:47,500] INFO - larevistacr: === Iniciando scraper: larevistacr ===
+[2026-05-16 10:57:47,501] INFO - larevistacr: URL base: https://www.larevista.cr/
+[2026-05-16 10:57:58,498] INFO - larevistacr: Recolectando sección: Actualidad Nacional (https://www.larevista.cr/actualidad-nacional/)
+[2026-05-16 10:58:05,652] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 1: 10 artículos
+[2026-05-16 10:58:09,703] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 2: 10 artículos
+[2026-05-16 10:58:15,241] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 3: 10 artículos
+[2026-05-16 10:58:20,246] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 4: 10 artículos
+[2026-05-16 10:58:26,362] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 5: 10 artículos
+[2026-05-16 10:58:31,456] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 6: 10 artículos
+[2026-05-16 10:58:36,880] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 7: 10 artículos
+[2026-05-16 10:58:41,844] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 8: 10 artículos
+[2026-05-16 10:58:47,019] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 9: 10 artículos
+[2026-05-16 10:58:52,139] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 10: 10 artículos
+[2026-05-16 10:58:57,060] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 11: 10 artículos
+[2026-05-16 10:59:02,029] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 12: 10 artículos
+[2026-05-16 10:59:07,237] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 13: 10 artículos
+[2026-05-16 10:59:12,262] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 14: 10 artículos
+[2026-05-16 10:59:17,480] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 15: 10 artículos
+[2026-05-16 10:59:22,674] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 16: 10 artículos
+[2026-05-16 10:59:27,708] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 17: 10 artículos
+[2026-05-16 10:59:32,643] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 18: 10 artículos
+[2026-05-16 10:59:37,681] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 19: 10 artículos
+[2026-05-16 10:59:42,715] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 20: 10 artículos
+[2026-05-16 10:59:47,701] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 21: 10 artículos
+[2026-05-16 10:59:52,911] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 22: 10 artículos
+[2026-05-16 10:59:58,520] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 23: 10 artículos
+[2026-05-16 11:00:03,785] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 24: 10 artículos
+[2026-05-16 11:00:08,853] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 25: 10 artículos
+[2026-05-16 11:00:13,856] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 26: 10 artículos
+[2026-05-16 11:00:18,946] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 27: 10 artículos
+[2026-05-16 11:00:24,098] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 28: 10 artículos
+[2026-05-16 11:00:29,121] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 29: 10 artículos
+[2026-05-16 11:00:34,288] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 30: 10 artículos
+[2026-05-16 11:00:39,532] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 31: 10 artículos
+[2026-05-16 11:00:45,540] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 32: 10 artículos
+[2026-05-16 11:00:50,892] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 33: 10 artículos
+[2026-05-16 11:00:56,487] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 34: 10 artículos
+[2026-05-16 11:01:02,521] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 35: 10 artículos
+[2026-05-16 11:01:07,566] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 36: 10 artículos
+[2026-05-16 11:01:12,706] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 37: 10 artículos
+[2026-05-16 11:01:18,756] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 38: 10 artículos
+[2026-05-16 11:01:23,780] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 39: 10 artículos
+[2026-05-16 11:01:28,772] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 40: 10 artículos
+[2026-05-16 11:01:34,052] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 41: 10 artículos
+[2026-05-16 11:01:38,978] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 42: 10 artículos
+[2026-05-16 11:01:43,918] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 43: 10 artículos
+[2026-05-16 11:01:49,019] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 44: 10 artículos
+[2026-05-16 11:01:54,056] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 45: 10 artículos
+[2026-05-16 11:01:59,255] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 46: 10 artículos
+[2026-05-16 11:02:04,296] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 47: 10 artículos
+[2026-05-16 11:02:09,435] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 48: 10 artículos
+[2026-05-16 11:02:14,817] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 49: 10 artículos
+[2026-05-16 11:02:20,456] DEBUG - larevistacr:   Sección 'Actualidad Nacional' pág 50: 10 artículos
+[2026-05-16 11:02:21,975] INFO - larevistacr:   → 500 artículos en 'Actualidad Nacional' | Total acumulado: 500
+[2026-05-16 11:02:23,487] INFO - larevistacr: Recolectando sección: Actualidad Mundial (https://www.larevista.cr/actualidad-mundial/)
+[2026-05-16 11:02:26,006] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 1: 10 artículos
+[2026-05-16 11:02:29,960] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 2: 10 artículos
+[2026-05-16 11:02:35,039] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 3: 10 artículos
+[2026-05-16 11:02:40,105] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 4: 10 artículos
+[2026-05-16 11:02:45,152] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 5: 10 artículos
+[2026-05-16 11:02:50,155] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 6: 10 artículos
+[2026-05-16 11:02:55,193] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 7: 10 artículos
+[2026-05-16 11:02:59,234] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 8: 10 artículos
+[2026-05-16 11:03:04,256] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 9: 10 artículos
+[2026-05-16 11:03:09,244] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 10: 10 artículos
+[2026-05-16 11:03:14,292] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 11: 10 artículos
+[2026-05-16 11:03:19,235] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 12: 10 artículos
+[2026-05-16 11:03:24,188] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 13: 10 artículos
+[2026-05-16 11:03:29,223] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 14: 10 artículos
+[2026-05-16 11:03:34,217] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 15: 10 artículos
+[2026-05-16 11:03:39,247] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 16: 10 artículos
+[2026-05-16 11:03:44,368] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 17: 10 artículos
+[2026-05-16 11:03:49,431] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 18: 10 artículos
+[2026-05-16 11:03:54,394] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 19: 10 artículos
+[2026-05-16 11:03:59,388] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 20: 10 artículos
+[2026-05-16 11:04:04,422] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 21: 10 artículos
+[2026-05-16 11:04:09,381] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 22: 10 artículos
+[2026-05-16 11:04:14,400] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 23: 10 artículos
+[2026-05-16 11:04:19,380] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 24: 10 artículos
+[2026-05-16 11:04:24,485] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 25: 10 artículos
+[2026-05-16 11:04:29,900] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 26: 10 artículos
+[2026-05-16 11:04:35,324] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 27: 10 artículos
+[2026-05-16 11:04:40,520] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 28: 10 artículos
+[2026-05-16 11:04:45,500] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 29: 10 artículos
+[2026-05-16 11:04:50,600] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 30: 10 artículos
+[2026-05-16 11:04:55,571] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 31: 10 artículos
+[2026-05-16 11:05:00,615] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 32: 10 artículos
+[2026-05-16 11:05:05,709] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 33: 10 artículos
+[2026-05-16 11:05:10,828] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 34: 10 artículos
+[2026-05-16 11:05:15,841] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 35: 10 artículos
+[2026-05-16 11:05:20,760] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 36: 10 artículos
+[2026-05-16 11:05:25,809] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 37: 10 artículos
+[2026-05-16 11:05:30,743] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 38: 10 artículos
+[2026-05-16 11:05:35,700] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 39: 10 artículos
+[2026-05-16 11:05:40,745] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 40: 10 artículos
+[2026-05-16 11:05:45,797] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 41: 10 artículos
+[2026-05-16 11:05:50,781] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 42: 10 artículos
+[2026-05-16 11:05:55,838] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 43: 10 artículos
+[2026-05-16 11:06:00,799] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 44: 10 artículos
+[2026-05-16 11:06:05,812] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 45: 10 artículos
+[2026-05-16 11:06:10,825] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 46: 10 artículos
+[2026-05-16 11:06:15,793] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 47: 10 artículos
+[2026-05-16 11:06:20,796] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 48: 10 artículos
+[2026-05-16 11:06:25,843] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 49: 10 artículos
+[2026-05-16 11:06:30,821] DEBUG - larevistacr:   Sección 'Actualidad Mundial' pág 50: 10 artículos
+[2026-05-16 11:06:32,349] INFO - larevistacr:   → 500 artículos en 'Actualidad Mundial' | Total acumulado: 1000
+[2026-05-16 11:06:33,854] INFO - larevistacr: Recolectando sección: Entrevistas (https://www.larevista.cr/entrevista/)
+[2026-05-16 11:06:36,326] DEBUG - larevistacr:   Sección 'Entrevistas' pág 1: 10 artículos
+[2026-05-16 11:06:41,476] DEBUG - larevistacr:   Sección 'Entrevistas' pág 2: 10 artículos
+[2026-05-16 11:06:45,403] DEBUG - larevistacr:   Sección 'Entrevistas' pág 3: 9 artículos
+[2026-05-16 11:06:49,348] DEBUG - larevistacr:   Sección 'Entrevistas' pág 4: 10 artículos
+[2026-05-16 11:06:54,779] DEBUG - larevistacr:   Sección 'Entrevistas' pág 5: 10 artículos
+[2026-05-16 11:06:59,699] DEBUG - larevistacr:   Sección 'Entrevistas' pág 6: 10 artículos
+[2026-05-16 11:07:04,692] DEBUG - larevistacr:   Sección 'Entrevistas' pág 7: 10 artículos
+[2026-05-16 11:07:09,557] DEBUG - larevistacr:   Sección 'Entrevistas' pág 8: 10 artículos
+[2026-05-16 11:07:14,803] DEBUG - larevistacr:   Sección 'Entrevistas' pág 9: 10 artículos
+[2026-05-16 11:07:19,975] DEBUG - larevistacr:   Sección 'Entrevistas' pág 10: 10 artículos
+[2026-05-16 11:07:24,892] DEBUG - larevistacr:   Sección 'Entrevistas' pág 11: 10 artículos
+[2026-05-16 11:07:29,855] DEBUG - larevistacr:   Sección 'Entrevistas' pág 12: 10 artículos
+[2026-05-16 11:07:34,669] DEBUG - larevistacr:   Sección 'Entrevistas' pág 13: 10 artículos
+[2026-05-16 11:07:39,546] DEBUG - larevistacr:   Sección 'Entrevistas' pág 14: 10 artículos
+[2026-05-16 11:07:44,567] DEBUG - larevistacr:   Sección 'Entrevistas' pág 15: 10 artículos
+[2026-05-16 11:07:48,559] DEBUG - larevistacr:   Sección 'Entrevistas' pág 16: 10 artículos
+[2026-05-16 11:07:52,271] DEBUG - larevistacr:   Sección 'Entrevistas' pág 17: 3 artículos
+[2026-05-16 11:07:52,290] INFO - larevistacr:   → 162 artículos en 'Entrevistas' | Total acumulado: 1162
+[2026-05-16 11:07:53,799] INFO - larevistacr: Total URLs únicas: 1162
+[2026-05-16 11:07:53,799] DEBUG - larevistacr: [1/1162] https://www.larevista.cr/musica-y-solidaridad-se-unen-esta-semana-para-apoyar-a-ninos-con-cancer/
+[2026-05-16 11:07:57,994] DEBUG - larevistacr: [2/1162] https://www.larevista.cr/defender-la-libertad-de-prensa-es-defender-nuestra-voz-y-nuestra-democracia/
+[2026-05-16 11:08:01,099] DEBUG - larevistacr: [3/1162] https://www.larevista.cr/comunicado-de-la-junta-directiva-de-la-nacion-s-a-a-la-opinion-publica/
+[2026-05-16 11:08:04,181] DEBUG - larevistacr: [4/1162] https://www.larevista.cr/acuerdo-multipartidario-abre-una-nueva-etapa-en-la-asamblea-legislativa/
+[2026-05-16 11:08:07,309] DEBUG - larevistacr: [5/1162] https://www.larevista.cr/area-de-salud-el-guarco-registra-mas-de-5000-urgencias-atendidas-en-nuevas-instalaciones/
+[2026-05-16 11:08:10,751] DEBUG - larevistacr: [6/1162] https://www.larevista.cr/talento-costarricense-en-videojuegos-presente-en-festival-estadounidense-de-gaming/
+[2026-05-16 11:08:13,922] DEBUG - larevistacr: [7/1162] https://www.larevista.cr/podcasts-de-la-revista-cr-superan-los-2-millones-de-reproducciones/
+[2026-05-16 11:08:17,030] DEBUG - larevistacr: [8/1162] https://www.larevista.cr/encuesta-ucr-de-expectativas-empresariales-ii-trimestre-2026/
+[2026-05-16 11:08:20,204] DEBUG - larevistacr: [9/1162] https://www.larevista.cr/dos-decadas-de-vinculo-entre-lahr-y-alajuela-consolidan-alianzas/
+[2026-05-16 11:08:25,300] DEBUG - larevistacr: [10/1162] https://www.larevista.cr/la-revista-respalda-mensaje-del-colegio-de-periodistas-sobre-etica-y-verificacion-informativa/
+[2026-05-16 11:08:28,585] DEBUG - larevistacr: [11/1162] https://www.larevista.cr/mujer-que-creo-empresa-con-15-mil-colones-hoy-compite-en-ferias-internacionales/
+[2026-05-16 11:08:32,339] DEBUG - larevistacr: [12/1162] https://www.larevista.cr/tengo-mucho-que-agradecer-a-la-ucr-tengo-beca-socioeconomica-y-si-no-fuera-por-eso-no-podria-estudiar/
+[2026-05-16 11:08:36,917] DEBUG - larevistacr: [13/1162] https://www.larevista.cr/costa-rica-particio-en-sahic-un-espacio-estrategico-para-la-atraccion-de-inversion-hotelera-en-la-region/
+[2026-05-16 11:08:40,072] DEBUG - larevistacr: [14/1162] https://www.larevista.cr/ccss-mantiene-servicios-de-atencion-directa-a-usuarios-en-semana-santa/
+[2026-05-16 11:08:45,996] DEBUG - larevistacr: [15/1162] https://www.larevista.cr/ucr-las-personas-adultas-mayores-viven-la-experiencia-de-hacer-quimica-en-la-ucr/
+[2026-05-16 11:08:51,236] DEBUG - larevistacr: [16/1162] https://www.larevista.cr/ccss-ofrece-creditos-hipotecarios-con-tasas-altamente-competitivas/
+[2026-05-16 11:08:54,970] DEBUG - larevistacr: [17/1162] https://www.larevista.cr/costa-rica-consolida-un-sector-tic-exportador-con-adopcion-masiva-de-inteligencia-artificial-y-vocacion-global/
+[2026-05-16 11:08:58,313] DEBUG - larevistacr: [18/1162] https://www.larevista.cr/contralora-general-desmiente-afirmaciones-del-presidente-y-exige-rectificacion-inmediata/
+[2026-05-16 11:09:03,012] DEBUG - larevistacr: [19/1162] https://www.larevista.cr/premian-el-periodismo-que-se-ejerce-en-el-medio-publico/
+[2026-05-16 11:09:08,161] DEBUG - larevistacr: [20/1162] https://www.larevista.cr/costa-rica-llega-al-festival-de-malaga-con-estreno-mundial-y-una-delegacion-de-proyectos/
+[2026-05-16 11:09:11,286] DEBUG - larevistacr: [21/1162] https://www.larevista.cr/costa-rica-despide-a-lorena-clare/
+[2026-05-16 11:09:16,361] DEBUG - larevistacr: [22/1162] https://www.larevista.cr/costa-rica-despide-a-la-dra-rocio-saenz/
+[2026-05-16 11:09:19,555] DEBUG - larevistacr: [23/1162] https://www.larevista.cr/ccss-adopta-normas-internacionales-nicsp-para-fortalecer-transparencia-financiera-y-rendicion-de-cuentas/
+[2026-05-16 11:09:22,898] DEBUG - larevistacr: [24/1162] https://www.larevista.cr/adios-a-carlos-denton-academico-y-analista/
+[2026-05-16 11:09:27,523] DEBUG - larevistacr: [25/1162] https://www.larevista.cr/el-instituto-confucio-ensena-caligrafia-china-a-costarricenses-para-celebrar-el-ano-nuevo/
+[2026-05-16 11:09:32,080] DEBUG - larevistacr: [26/1162] https://www.larevista.cr/fernando-marin-un-visionario-de-la-salud/
+[2026-05-16 11:09:36,580] DEBUG - larevistacr: [27/1162] https://www.larevista.cr/informe-del-estudio-de-opinion-publica-del-ciep-marzo-2026/
+[2026-05-16 11:09:41,510] DEBUG - larevistacr: [28/1162] https://www.larevista.cr/tse-finalizo-el-escrutinio-definitivo/
+[2026-05-16 11:09:44,665] DEBUG - larevistacr: [29/1162] https://www.larevista.cr/apuntes-juliana-martinez-sobre-incendiar-la-casa-para-luego-salvarla/
+[2026-05-16 11:09:49,124] DEBUG - larevistacr: [30/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-27-02-2026/
+[2026-05-16 11:09:52,426] DEBUG - larevistacr: [31/1162] https://www.larevista.cr/anep-solicita-revision-integral-de-la-aplicacion-del-transitorio-ix-de-la-ley-marco-de-empleo-publico-en-el-imas/
+[2026-05-16 11:09:56,814] DEBUG - larevistacr: [32/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-20-02-2026/
+[2026-05-16 11:10:01,256] DEBUG - larevistacr: [33/1162] https://www.larevista.cr/camara-costarricense-de-la-construccion-pide-dar-prioridad-nacional-a-la-infraestructura-escolar/
+[2026-05-16 11:10:06,380] DEBUG - larevistacr: [34/1162] https://www.larevista.cr/tse-recibio-felicitaciones-del-colegio-de-profesionales-en-informatica-y-computacion-cpic/
+[2026-05-16 11:10:11,225] DEBUG - larevistacr: [35/1162] https://www.larevista.cr/defensoria-hay-un-clamor-por-un-giro-de-180-grados-en-el-sistema-educativo/
+[2026-05-16 11:10:15,641] DEBUG - larevistacr: [36/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-13-02-2026/
+[2026-05-16 11:10:18,790] DEBUG - larevistacr: [37/1162] https://www.larevista.cr/academia-nacional-de-medicina-11-de-febrero-dia-internacional-de-la-mujer-medica/
+[2026-05-16 11:10:23,415] DEBUG - larevistacr: [38/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-23-01-2026-2/
+[2026-05-16 11:10:26,527] DEBUG - larevistacr: [39/1162] https://www.larevista.cr/tse-mision-de-observacion-electoral-de-la-oea-felicito-a-costa-rica-por-una-jornada-electoral-pacifica-y-democratica/
+[2026-05-16 11:10:29,681] DEBUG - larevistacr: [40/1162] https://www.larevista.cr/amcham-felicita-a-laura-fernandez-presidenta-electa-de-costa-rica-y-reafirma-su-compromiso-de-cooperacion-por-el-desarrollo-del-pais/
+[2026-05-16 11:10:32,836] DEBUG - larevistacr: [41/1162] https://www.larevista.cr/centro-de-innovacion-politica-felicita-a-la-ciudadania-por-su-participacion-democratica-del-1-de-febrero/
+[2026-05-16 11:10:36,065] DEBUG - larevistacr: [42/1162] https://www.larevista.cr/las-elecciones-recientes-y-el-planteamiento-de-la-tercera-republica/
+[2026-05-16 11:10:40,697] DEBUG - larevistacr: [43/1162] https://www.larevista.cr/premios-magon-julieta-dobles-arabella-salaverry-y-marjorie-ross-llaman-hoy-a-votar/
+[2026-05-16 11:10:43,825] DEBUG - larevistacr: [44/1162] https://www.larevista.cr/tse-mas-de-100-observadores-internacionales-acompanaran-los-comicios-este-fin-de-semana/
+[2026-05-16 11:10:48,521] DEBUG - larevistacr: [45/1162] https://www.larevista.cr/ex-presidentes-arias-calderon-rodriguez-pacheco-y-solis-llaman-a-votar-por-la-democracia/
+[2026-05-16 11:10:51,610] DEBUG - larevistacr: [46/1162] https://www.larevista.cr/tse-advierte/
+[2026-05-16 11:10:54,699] DEBUG - larevistacr: [47/1162] https://www.larevista.cr/tse-nuevo-presidente-de-la-corte-interamericana-de-derechos-humanos-y-presidente-del-supremo-tribunal-de-brasil-visitaron-al-tse/
+[2026-05-16 11:10:57,803] DEBUG - larevistacr: [48/1162] https://www.larevista.cr/defensoria-desplegara-observacion-electoral-en-75-cantones/
+[2026-05-16 11:11:02,042] DEBUG - larevistacr: [49/1162] https://www.larevista.cr/academia-nacional-de-medicina-30-de-enero-dia-escolar-de-la-no-violencia-y-la-paz-2/
+[2026-05-16 11:11:06,429] DEBUG - larevistacr: [50/1162] https://www.larevista.cr/tse-recuerda-aspectos-relevantes-a-la-hora-de-votar-el-proximo-domingo-1-o-de-febrero/
+[2026-05-16 11:11:11,032] DEBUG - larevistacr: [51/1162] https://www.larevista.cr/tse-mision-de-observadores-de-la-oea-se-reune-con-el-tse/
+[2026-05-16 11:11:15,627] DEBUG - larevistacr: [52/1162] https://www.larevista.cr/defensoria-atiende-preocupaciones-sobre-vivienda-de-interes-social/
+[2026-05-16 11:11:20,136] DEBUG - larevistacr: [53/1162] https://www.larevista.cr/tse-llamara-a-los-electores-a-votar-y-a-cuidar-la-democracia/
+[2026-05-16 11:11:25,277] DEBUG - larevistacr: [54/1162] https://www.larevista.cr/manifiesto-publico-el-instituto-de-pensamiento-politico-y-formacion-democratica-agora-siglo-xxi-llama-a-votar-el-proximo-domingo/
+[2026-05-16 11:11:30,407] DEBUG - larevistacr: [55/1162] https://www.larevista.cr/centro-de-innovacion-politica-ciudadania-activa-ante-un-momento-decisivo/
+[2026-05-16 11:11:33,700] DEBUG - larevistacr: [56/1162] https://www.larevista.cr/del-rio-presenta-las-callecitas-una-coleccion-que-celebra-el-verano-urbano-el-color-y-la-elegancia-sin-esfuerzo/
+[2026-05-16 11:11:37,838] DEBUG - larevistacr: [57/1162] https://www.larevista.cr/apuntes-cuando-las-encuestas-no-necesariamente-predicen-al-ganador/
+[2026-05-16 11:11:40,997] DEBUG - larevistacr: [58/1162] https://www.larevista.cr/tse-garantiza-transmision-de-resultados-provisionales-de-forma-segura-y-transparente/
+[2026-05-16 11:11:45,887] DEBUG - larevistacr: [59/1162] https://www.larevista.cr/tse-recuerda-que-a-partir-de-esta-semana-iniciaran-las-vedas/
+[2026-05-16 11:11:50,601] DEBUG - larevistacr: [60/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-23-01-2026/
+[2026-05-16 11:11:55,022] DEBUG - larevistacr: [61/1162] https://www.larevista.cr/defensoria-interviene-por-tiempos-de-atencion-de-espera-irrazonables/
+[2026-05-16 11:11:59,438] DEBUG - larevistacr: [62/1162] https://www.larevista.cr/informe-del-estudio-de-opinion-publica-del-ciep-enero-2026/
+[2026-05-16 11:12:04,085] DEBUG - larevistacr: [63/1162] https://www.larevista.cr/municipalidad-de-san-jose-invita-gran-fin-de-semana-lleno-de-arte-cultura-gastronomia-y-entretenimiento-familiar/
+[2026-05-16 11:12:07,141] DEBUG - larevistacr: [64/1162] https://www.larevista.cr/la-defensa-de-la-ccss-marca-diferencias-solo-seis-candidaturas-asumen-un-compromiso-claro-con-la-salud-publica/
+[2026-05-16 11:12:11,921] DEBUG - larevistacr: [65/1162] https://www.larevista.cr/tse-conozca-donde-le-correspondera-votar-obtener-informacion-de-las-candidaturas-aclarar-dudas-o-interponer-denuncias/
+[2026-05-16 11:12:15,130] DEBUG - larevistacr: [66/1162] https://www.larevista.cr/asociacion-costarricense-de-diplomaticos-de-carrera-comunicado-llamado-a-las-candidaturas-presidenciales/
+[2026-05-16 11:12:19,819] DEBUG - larevistacr: [67/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-16-01-2026/
+[2026-05-16 11:12:24,275] DEBUG - larevistacr: [68/1162] https://www.larevista.cr/defensoria-proteccion-oportuna-y-diligente-para-las-personas-defensoras-de-derechos-humanos/
+[2026-05-16 11:12:28,589] DEBUG - larevistacr: [69/1162] https://www.larevista.cr/radiografia-de-la-comunicacion-digital-del-proceso-politico-electoral-de-costa-rica-2026-1-de-diciembre-de-2025-al-12-de-enero-de-2026/
+[2026-05-16 11:12:31,842] DEBUG - larevistacr: [70/1162] https://www.larevista.cr/organizaciones-ciudadanas-promueven-compromiso-por-una-costa-rica-de-paz/
+[2026-05-16 11:12:36,276] DEBUG - larevistacr: [71/1162] https://www.larevista.cr/tse-entrevisto-a-las-20-candidaturas-presidenciales/
+[2026-05-16 11:12:40,991] DEBUG - larevistacr: [72/1162] https://www.larevista.cr/tse-realizara-presentacion-oficial-de-las-20-candidaturas-presidenciales-a-partir-de-este-viernes-9-de-enero/
+[2026-05-16 11:12:45,711] DEBUG - larevistacr: [73/1162] https://www.larevista.cr/apuntes-miguel-gutierrez-saxe-sobre-nostalgia-y-cordura-de-la-crispacion/
+[2026-05-16 11:12:48,835] DEBUG - larevistacr: [74/1162] https://www.larevista.cr/presidencia-de-la-republica-comunicado/
+[2026-05-16 11:12:53,300] DEBUG - larevistacr: [75/1162] https://www.larevista.cr/museos-costa-rica-conjunto-de-fotografias-capturan-perspectivas-de-san-jose-bonito/
+[2026-05-16 11:12:57,808] DEBUG - larevistacr: [76/1162] https://www.larevista.cr/apuntes-entre-el-hartazgo-social-y-la-tentacion-autoritaria/
+[2026-05-16 11:13:02,310] DEBUG - larevistacr: [77/1162] https://www.larevista.cr/tse-recuerda-alcances-de-la-veda-electoral/
+[2026-05-16 11:13:07,315] DEBUG - larevistacr: [78/1162] https://www.larevista.cr/tse-realiza-atento-recordatorio-a-los-partidos-politicos-para-que-acrediten-fiscales/
+[2026-05-16 11:13:12,212] DEBUG - larevistacr: [79/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-12-12-2025/
+[2026-05-16 11:13:15,455] DEBUG - larevistacr: [80/1162] https://www.larevista.cr/museo-nacional-permanencia-en-la-memoria-una-inmersion-en-la-vida-cotidiana-de-los-pueblos-antiguos-del-caribe-central/
+[2026-05-16 11:13:20,167] DEBUG - larevistacr: [81/1162] https://www.larevista.cr/apuntes-el-ano-negro-de-la-persecucion-a-los-nobel/
+[2026-05-16 11:13:25,297] DEBUG - larevistacr: [82/1162] https://www.larevista.cr/amcham-celebra-acceso-de-costa-rica-a-global-entry/
+[2026-05-16 11:13:29,853] DEBUG - larevistacr: [83/1162] https://www.larevista.cr/museo-nacional-costa-rica-recupera-13-piezas-arqueologicas-precolombinas-restituidas-desde-estados-unidos/
+[2026-05-16 11:13:33,004] DEBUG - larevistacr: [84/1162] https://www.larevista.cr/amcham-cica-y-cca-culminan-programa-especializado-para-fortalecer-la-practica-arbitral-en-costa-rica/
+[2026-05-16 11:13:37,511] DEBUG - larevistacr: [85/1162] https://www.larevista.cr/asotranstur-advertencia-urgente-sobre-el-deterioro-del-transporte-turistico-y-la-perdida-de-competitividad-del-pais/
+[2026-05-16 11:13:42,197] DEBUG - larevistacr: [86/1162] https://www.larevista.cr/apuntes-las-malditas-encuestas/
+[2026-05-16 11:13:47,187] DEBUG - larevistacr: [87/1162] https://www.larevista.cr/defensoria-defensoria-presentara-avances-del-observatorio-nacional-de-ddhh/
+[2026-05-16 11:13:52,170] DEBUG - larevistacr: [88/1162] https://www.larevista.cr/defensoria-premian-fotografos-que-retrataron-la-migracion-e-interculturalidad/
+[2026-05-16 11:13:57,193] DEBUG - larevistacr: [89/1162] https://www.larevista.cr/guanacaste-aeropuerto-inaugura-dos-nuevas-rutas-desde-estados-unidos-y-canada-en-inicio-de-temporada-alta/
+[2026-05-16 11:14:01,584] DEBUG - larevistacr: [90/1162] https://www.larevista.cr/idespo-una-50-anos-de-conocimiento-para-el-pais/
+[2026-05-16 11:14:05,366] DEBUG - larevistacr: [91/1162] https://www.larevista.cr/ccss-y-universidad-de-sao-paulo-formalizan-convenio-academico-para-programas-de-formacion-medica/
+[2026-05-16 11:14:09,411] DEBUG - larevistacr: [92/1162] https://www.larevista.cr/kolbi-se-consolida-como-operador-con-mejor-desempeno-en-internet-fijo-de-costa-rica/
+[2026-05-16 11:14:13,498] DEBUG - larevistacr: [93/1162] https://www.larevista.cr/una-vision-propositiva-para-generar-cambios-hacia-la-eliminacion-de-la-violencia-obstetrica/
+[2026-05-16 11:14:17,736] DEBUG - larevistacr: [94/1162] https://www.larevista.cr/ccss-puso-en-mesa-de-analisis-estilos-de-vida-y-enfermedades-cronicas-bajo-un-enfoque-desde-el-primer-nivel-de-atencion-en-salud-2/
+[2026-05-16 11:14:21,073] DEBUG - larevistacr: [95/1162] https://www.larevista.cr/apuntes-jaime-ordonez-sobre-hacer-un-esfuerzo-para-salir-del-insulto-y-la-violencia-verbal/
+[2026-05-16 11:14:26,376] DEBUG - larevistacr: [96/1162] https://www.larevista.cr/docentes-de-primaria-y-secundaria-se-capacitan-en-ensenanza-de-la-matematica-con-nuevas-tecnologias/
+[2026-05-16 11:14:30,959] DEBUG - larevistacr: [97/1162] https://www.larevista.cr/tec-se-hizo-presente-en-congreso-de-nanomateriales-mediante-deformacion-plastica-severa-en-china/
+[2026-05-16 11:14:35,259] DEBUG - larevistacr: [98/1162] https://www.larevista.cr/produccion-industrial-impulsa-micro-certificacion-para-fortalecer-industria-en-dispositivos-medicos/
+[2026-05-16 11:14:40,588] DEBUG - larevistacr: [99/1162] https://www.larevista.cr/ice-y-kolbi-habilitan-cobertura-movil-y-amplian-despliegue-de-fibra-optica-en-ruta-32/
+[2026-05-16 11:14:45,381] DEBUG - larevistacr: [100/1162] https://www.larevista.cr/ccss-puso-en-mesa-de-analisis-estilos-de-vida-y-enfermedades-cronicas-bajo-un-enfoque-desde-el-primer-nivel-de-atencion-en-salud/
+[2026-05-16 11:14:49,737] DEBUG - larevistacr: [101/1162] https://www.larevista.cr/las-juventudes-caribenas-toman-el-timon-de-sus-futuros/
+[2026-05-16 11:14:53,984] DEBUG - larevistacr: [102/1162] https://www.larevista.cr/academia-nacional-de-medicina-1-de-diciembre-dia-mundial-del-sida/
+[2026-05-16 11:14:58,396] DEBUG - larevistacr: [103/1162] https://www.larevista.cr/apuntes-el-pais-que-aprendio-a-vivir-sin-fusiles/
+[2026-05-16 11:15:01,504] DEBUG - larevistacr: [104/1162] https://www.larevista.cr/la-paz-escrita-en-la-constitucion-del-alma/
+[2026-05-16 11:15:09,821] DEBUG - larevistacr: [105/1162] https://www.larevista.cr/administracion-de-empresas-expone-innovaciones-recientes-al-sector-empresarial/
+[2026-05-16 11:15:19,221] DEBUG - larevistacr: [106/1162] https://www.larevista.cr/una-vestir-la-critica-invita-a-reflexionar-sobre-el-patriarcado-desde-la-educacion-afectiva-y-sexual/
+[2026-05-16 11:15:23,830] DEBUG - larevistacr: [107/1162] https://www.larevista.cr/tse-union-europea-observara-por-primera-vez-un-proceso-electoral-en-costa-rica/
+[2026-05-16 11:15:28,634] DEBUG - larevistacr: [108/1162] https://www.larevista.cr/tse-pobladores-de-los-chiles-tendran-nueva-oficina-regional-del-tse/
+[2026-05-16 11:15:31,981] DEBUG - larevistacr: [109/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-28-11-2025/
+[2026-05-16 11:15:36,763] DEBUG - larevistacr: [110/1162] https://www.larevista.cr/ccss-evaluo-a-581-estudiantes-como-requisito-para-acceder-al-internado-rotatorio-universitario-2026/
+[2026-05-16 11:15:41,323] DEBUG - larevistacr: [111/1162] https://www.larevista.cr/sala-constitucional-resolucion-licitaciones-sutel/
+[2026-05-16 11:15:45,921] DEBUG - larevistacr: [112/1162] https://www.larevista.cr/una-calidad-y-equidad-fueron-clave-en-congreso-sobre-educacion-superior/
+[2026-05-16 11:15:50,352] DEBUG - larevistacr: [113/1162] https://www.larevista.cr/defensoria-advierte-posible-conflicto-de-interes-en-estudio-actuarial-sobre-fondos-generacionales/
+[2026-05-16 11:15:53,423] DEBUG - larevistacr: [114/1162] https://www.larevista.cr/tse-organismos-electorales-de-toda-america-latina-respaldan-al-tse-ante-campana-de-desinformacion/
+[2026-05-16 11:15:58,081] DEBUG - larevistacr: [115/1162] https://www.larevista.cr/museos-costa-rica-exhibicion-nos-acerca-a-como-se-hicieron-los-primeros-billetes-del-pais/
+[2026-05-16 11:16:02,957] DEBUG - larevistacr: [116/1162] https://www.larevista.cr/cinco-jovenes-atletas-costarricenses-viajaron-a-tokio-para-competir-en-el-primer-campeonato-mundial-de-kyokushinkan/
+[2026-05-16 11:16:08,097] DEBUG - larevistacr: [117/1162] https://www.larevista.cr/ccss-inicio-jornada-de-atencion-medica-y-odontologica-esparza-2025/
+[2026-05-16 11:16:12,939] DEBUG - larevistacr: [118/1162] https://www.larevista.cr/una-bolson-una-ruta-turistica-que-teje-pasado-presente-y-futuro/
+[2026-05-16 11:16:17,681] DEBUG - larevistacr: [119/1162] https://www.larevista.cr/ex-presidentes-de-la-republica-en-defensa-de-la-democracia-costarricense/
+[2026-05-16 11:16:22,552] DEBUG - larevistacr: [120/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-21-11-2025/
+[2026-05-16 11:16:27,172] DEBUG - larevistacr: [121/1162] https://www.larevista.cr/tse-3-731-788-costarricenses-podran-votar-en-las-proximas-elecciones-nacionales/
+[2026-05-16 11:16:31,916] DEBUG - larevistacr: [122/1162] https://www.larevista.cr/costa-rica-ante-el-espejo-electoral-dos-estudios-una-misma-incertidumbre/
+[2026-05-16 11:16:35,012] DEBUG - larevistacr: [123/1162] https://www.larevista.cr/nic-costa-rica-mujeres-emprendedoras-impulsan-su-presencia-global-con-propiedad-intelectual-y-comercio-digital/
+[2026-05-16 11:16:39,475] DEBUG - larevistacr: [124/1162] https://www.larevista.cr/amcham-era-digital-impulsa-transformacion-hacia-una-costa-rica-mas-competitiva/
+[2026-05-16 11:16:42,570] DEBUG - larevistacr: [125/1162] https://www.larevista.cr/ccss-tramita-segundo-presupuesto-extraordinario-de-2025/
+[2026-05-16 11:16:46,920] DEBUG - larevistacr: [126/1162] https://www.larevista.cr/una-experto-en-psicologia-hay-que-erradicar-la-practica-de-no-involucrarse-con-el-dolor-del-otro/
+[2026-05-16 11:16:51,377] DEBUG - larevistacr: [127/1162] https://www.larevista.cr/apuntes-gustavo-roman-sobre-la-pusilanimidad-y-democracia/
+[2026-05-16 11:16:55,923] DEBUG - larevistacr: [128/1162] https://www.larevista.cr/nic-costa-rica-deepfakes-la-nueva-modalidad-de-fraude-cibernetico/
+[2026-05-16 11:16:58,994] DEBUG - larevistacr: [129/1162] https://www.larevista.cr/ccss-hospital-nacional-de-ninos-desmiente-informacion-publicada-sobre-supuesta-falta-de-camas-en-uci/
+[2026-05-16 11:17:03,444] DEBUG - larevistacr: [130/1162] https://www.larevista.cr/tse-declara-integradas-las-84-juntas-cantonales-del-pais/
+[2026-05-16 11:17:08,497] DEBUG - larevistacr: [131/1162] https://www.larevista.cr/pnud-nuevo-atlas-de-desarrollo-humano-cantonal-2025-amplia-la-mirada-sobre-el-desarrollo-humano-con-enfoque-territorial-y-de-seguridad-ciudadana/
+[2026-05-16 11:17:13,180] DEBUG - larevistacr: [132/1162] https://www.larevista.cr/una-conversatorio-en-la-una-fortalece-la-preparacion-de-la-iv-cumbre-celac-ue-en-colombia/
+[2026-05-16 11:17:16,515] DEBUG - larevistacr: [133/1162] https://www.larevista.cr/minae-recuerda-la-importancia-de-practicar-turismo-responsable-en-areas-protegidas/
+[2026-05-16 11:17:21,816] DEBUG - larevistacr: [134/1162] https://www.larevista.cr/nic-costa-rica-pymes-conectadas-una-alianza-entre-nic-costa-rica-y-fodemipyme-para-impulsar-la-digitalizacion-empresarial/
+[2026-05-16 11:17:26,205] DEBUG - larevistacr: [135/1162] https://www.larevista.cr/cgr-explica-situacion-del-pago-de-licencias-de-cuido-a-diputado-acuna/
+[2026-05-16 11:17:30,599] DEBUG - larevistacr: [136/1162] https://www.larevista.cr/ageco-violencia-contra-personas-mayores-constituye-una-de-las-principales-causas-de-llamadas-telefonicas-en-ageco/
+[2026-05-16 11:17:35,101] DEBUG - larevistacr: [137/1162] https://www.larevista.cr/defensoria-pais-inmerso-en-graves-retrocesos-en-materia-de-derechos-humanos/
+[2026-05-16 11:17:39,441] DEBUG - larevistacr: [138/1162] https://www.larevista.cr/municipalidad-de-san-jose-invita-a-las-personas-adultas-mayores-al-programa-crepusculos-dorados/
+[2026-05-16 11:17:43,926] DEBUG - larevistacr: [139/1162] https://www.larevista.cr/popeyes-sigue-creciendo-y-llega-a-san-jose-con-su-tercer-restaurante-en-el-pais/
+[2026-05-16 11:17:48,076] DEBUG - larevistacr: [140/1162] https://www.larevista.cr/cgr-advierte-crisis-institucional-en-la-ccss-ante-puesta-en-marcha-del-sistema-erp/
+[2026-05-16 11:17:52,591] DEBUG - larevistacr: [141/1162] https://www.larevista.cr/tse-120-asesores-electorales-del-tse-se-desplazaran-a-los-84-cantones-del-pais/
+[2026-05-16 11:17:57,346] DEBUG - larevistacr: [142/1162] https://www.larevista.cr/tse-recibio-reconocimiento-por-contratar-personas-mayores-de-45-anos-en-su-planilla-laboral-y-crear-ambientes-inclusivos/
+[2026-05-16 11:18:02,018] DEBUG - larevistacr: [143/1162] https://www.larevista.cr/ccss-realiza-modificacion-presupuestaria-para-atender-requerimientos-institucionales/
+[2026-05-16 11:18:06,556] DEBUG - larevistacr: [144/1162] https://www.larevista.cr/autoridades-del-pani-confirman-a-la-anep-que-no-existe-intencion-de-eliminar-nombramientos-tras-informe-de-auditoria/
+[2026-05-16 11:18:10,976] DEBUG - larevistacr: [145/1162] https://www.larevista.cr/tse-fue-sede-de-la-firma-del-pacto-etico-interpartidario/
+[2026-05-16 11:18:15,562] DEBUG - larevistacr: [146/1162] https://www.larevista.cr/una-los-amantes-vuelven-restaurados/
+[2026-05-16 11:18:20,024] DEBUG - larevistacr: [147/1162] https://www.larevista.cr/ucr-diez-partidos-politicos-dijeron-presente-en-el-lanzamiento-del-acuerdo-nacional-contra-la-desinformacion-y-el-odio/
+[2026-05-16 11:18:24,938] DEBUG - larevistacr: [148/1162] https://www.larevista.cr/tse-comunidades-indigenas-de-turrialba-matina-pococi-y-puerto-jimenez-recibiran-servicios-a-domicilio-del-tse/
+[2026-05-16 11:18:28,073] DEBUG - larevistacr: [149/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-07-11-2025/
+[2026-05-16 11:18:33,201] DEBUG - larevistacr: [150/1162] https://www.larevista.cr/ccss-reforma-al-reglamento-de-condonacion-de-cargas-sociales/
+[2026-05-16 11:18:38,012] DEBUG - larevistacr: [151/1162] https://www.larevista.cr/lunes-de-politica-con-ronny-monge-claudia-dobles-elecciones-cr-2026/
+[2026-05-16 11:18:42,538] DEBUG - larevistacr: [152/1162] https://www.larevista.cr/una-san-juan-de-canas-purifica-su-agua-con-innovador-sistema-de-filtracion/
+[2026-05-16 11:18:46,821] DEBUG - larevistacr: [153/1162] https://www.larevista.cr/cgr-urge-mayor-priorizacion-en-asignacion-de-bonos-banhvi/
+[2026-05-16 11:18:51,630] DEBUG - larevistacr: [154/1162] https://www.larevista.cr/cgr-gestion-deficiente-limita-impacto-del-programa-avancemos/
+[2026-05-16 11:18:56,108] DEBUG - larevistacr: [155/1162] https://www.larevista.cr/268632-2/
+[2026-05-16 11:19:00,162] DEBUG - larevistacr: [156/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-31-10-2025/
+[2026-05-16 11:19:04,689] DEBUG - larevistacr: [157/1162] https://www.larevista.cr/apuntes-oscar-arias-advierte-sobre-la-hipocresia-democratica/
+[2026-05-16 11:19:09,163] DEBUG - larevistacr: [158/1162] https://www.larevista.cr/tse-realizo-sorteo-para-definir-las-posiciones-de-partidos-politicos-en-las-papeletas/
+[2026-05-16 11:19:13,822] DEBUG - larevistacr: [159/1162] https://www.larevista.cr/canatrans-advierte-sobre-riesgos-del-proyecto-que-busca-regular-el-uso-de-tuk-tuks-en-el-transporte-publico/
+[2026-05-16 11:19:16,906] DEBUG - larevistacr: [160/1162] https://www.larevista.cr/cgr-luz-verde-en-licitacion-de-frecuencias-de-radio-y-tv/
+[2026-05-16 11:19:21,360] DEBUG - larevistacr: [161/1162] https://www.larevista.cr/una-del-desarrollo-sostenible-al-regenerativo-el-aporte-del-turismo-rural-y-rural-comunitario/
+[2026-05-16 11:19:24,478] DEBUG - larevistacr: [162/1162] https://www.larevista.cr/ccss-programa-preventivo-evita-complicaciones-de-salud-en-puntarenenses/
+[2026-05-16 11:19:29,349] DEBUG - larevistacr: [163/1162] https://www.larevista.cr/ucr-especialista-advierte-que-cualquier-modificacion-a-la-norma-tecnica-debe-cumplir-el-codigo-penal/
+[2026-05-16 11:19:33,872] DEBUG - larevistacr: [164/1162] https://www.larevista.cr/una-mapa-de-riesgo-revelo-cantones-mas-vulnerables-ante-una-pandemia/
+[2026-05-16 11:19:38,290] DEBUG - larevistacr: [165/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-24-10-2025/
+[2026-05-16 11:19:42,811] DEBUG - larevistacr: [166/1162] https://www.larevista.cr/ccss-padres-de-neonatologia-del-hospital-calderon-guardia-reciben-apoyo-educativo-del-centro-infanto-juvenil/
+[2026-05-16 11:19:47,432] DEBUG - larevistacr: [167/1162] https://www.larevista.cr/informe-del-estudio-de-opinion-publica-del-ciep-octubre-2025/
+[2026-05-16 11:19:50,540] DEBUG - larevistacr: [168/1162] https://www.larevista.cr/ict-costa-rica-se-promocionara-como-destino-idoneo-para-conectarse-con-los-valores-esenciales-de-la-vida/
+[2026-05-16 11:19:53,734] DEBUG - larevistacr: [169/1162] https://www.larevista.cr/tse-pone-en-evidencia-dos-graves-desinformaciones-difundidas-hoy/
+[2026-05-16 11:19:58,373] DEBUG - larevistacr: [170/1162] https://www.larevista.cr/ucr-voz-experta-el-papel-del-humanismo-en-la-interpretacion-de-los-conflictos-internacionales/
+[2026-05-16 11:20:03,285] DEBUG - larevistacr: [171/1162] https://www.larevista.cr/una-facultad-de-ciencias-sociales-inaugura-sala-de-lactancia/
+[2026-05-16 11:20:08,516] DEBUG - larevistacr: [172/1162] https://www.larevista.cr/ccss-diferencias-en-inventario-de-fentanilo-del-hospital-mexico-obedecen-a-registros-contables/
+[2026-05-16 11:20:13,705] DEBUG - larevistacr: [173/1162] https://www.larevista.cr/academia-nacional-de-medicina-19-de-octubre-dia-internacional-contra-el-cancer-de-mama/
+[2026-05-16 11:20:18,298] DEBUG - larevistacr: [174/1162] https://www.larevista.cr/ict-santa-teresa-de-cobano-estrena-delegacion-de-la-policia-turistica/
+[2026-05-16 11:20:21,485] DEBUG - larevistacr: [175/1162] https://www.larevista.cr/una-identifican-atractivos-y-productos-turisticos-en-corredores/
+[2026-05-16 11:20:26,007] DEBUG - larevistacr: [176/1162] https://www.larevista.cr/anep-respalda-intervencion-a-la-cgr-planteada-por-diputado/
+[2026-05-16 11:20:30,460] DEBUG - larevistacr: [177/1162] https://www.larevista.cr/tse-reitera-criterio-sobre-procedimiento-para-levantamiento-de-la-inmunidad-por-denuncias-de-beligerancia/
+[2026-05-16 11:20:35,153] DEBUG - larevistacr: [178/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-17-10-2025/
+[2026-05-16 11:20:39,661] DEBUG - larevistacr: [179/1162] https://www.larevista.cr/academia-nacional-de-medicina-7-de-octubre-dia-mundial-contra-el-dolor/
+[2026-05-16 11:20:44,098] DEBUG - larevistacr: [180/1162] https://www.larevista.cr/ucr-conquistar-el-espacio-es-un-sueno-que-cada-vez-esta-mas-cerca-para-las-personas-que-estudian-en-la-ucr/
+[2026-05-16 11:20:48,923] DEBUG - larevistacr: [181/1162] https://www.larevista.cr/una-acredita-tres-nuevas-carreras-con-aval-del-sinaes/
+[2026-05-16 11:20:53,665] DEBUG - larevistacr: [182/1162] https://www.larevista.cr/ccss-actividades-de-ciudadano-de-oro-fortalecen-integracion-social-de-personas-adultas-mayores/
+[2026-05-16 11:20:58,594] DEBUG - larevistacr: [183/1162] https://www.larevista.cr/ict-costa-rica-lanza-estrategia-integral-de-mercadeo-en-colombia-para-atraer-mas-turistas-2/
+[2026-05-16 11:21:03,613] DEBUG - larevistacr: [184/1162] https://www.larevista.cr/ict-costa-rica-refuerza-su-posicionamiento-como-destino-mice-en-la-feria-imex-america-2025/
+[2026-05-16 11:21:08,342] DEBUG - larevistacr: [185/1162] https://www.larevista.cr/academia-nacional-de-medicina-13-de-octubre-dia-mundial-de-la-trombosis/
+[2026-05-16 11:21:12,811] DEBUG - larevistacr: [186/1162] https://www.larevista.cr/ucr-descubren-una-salamandra-con-manchas-doradas-exclusiva-del-parque-nacional-chirripo/
+[2026-05-16 11:21:17,297] DEBUG - larevistacr: [187/1162] https://www.larevista.cr/una-se-requiere-una-transicion-justa-para-proteger-a-trabajadores-vulnerables-por-la-ia/
+[2026-05-16 11:21:21,702] DEBUG - larevistacr: [188/1162] https://www.larevista.cr/ccss-habilita-opciones-para-dejar-de-fumar-o-vapear-en-region-huetar-norte/
+[2026-05-16 11:21:26,223] DEBUG - larevistacr: [189/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-10-10-2025/
+[2026-05-16 11:21:32,797] DEBUG - larevistacr: [190/1162] https://www.larevista.cr/centro-cultural-de-espana-voz-y-vertigo-mujeres-que-piensan-en-libertad/
+[2026-05-16 11:21:37,636] DEBUG - larevistacr: [191/1162] https://www.larevista.cr/ict-costa-rica-lanza-estrategia-integral-de-mercadeo-en-colombia-para-atraer-mas-turistas/
+[2026-05-16 11:21:42,050] DEBUG - larevistacr: [192/1162] https://www.larevista.cr/oscar-arias-sanchez-se-necesita-un-liberacion-nacional-con-liderazgo-y-con-rumbo/
+[2026-05-16 11:21:48,183] DEBUG - larevistacr: [193/1162] https://www.larevista.cr/ucr-el-proceso-de-admision-de-la-ucr-y-la-una-se-agiliza-en-beneficio-del-estudiantado/
+[2026-05-16 11:21:53,285] DEBUG - larevistacr: [194/1162] https://www.larevista.cr/observatorio-del-mercado-y-derechos-del-consumidor-omercon-posicion-sobre-el-proyecto-de-ley-24-374/
+[2026-05-16 11:21:57,963] DEBUG - larevistacr: [195/1162] https://www.larevista.cr/academia-nacional-de-medicina-8-de-octubre-dia-internacional-de-la-dislexia/
+[2026-05-16 11:22:04,198] DEBUG - larevistacr: [196/1162] https://www.larevista.cr/pnud-bajo-presion-informe-regional-de-desarrollo-humano-del-pnud-destaca-la-urgencia-de-fortalecer-la-resiliencia-en-costa-rica-y-centroamerica/
+[2026-05-16 11:22:09,795] DEBUG - larevistacr: [197/1162] https://www.larevista.cr/micitt-estudio-revela-que-costarricenses-valoran-la-ciencia-y-recomiendan-mayor-inversion-para-el-desarrollo-del-pais/
+[2026-05-16 11:22:14,229] DEBUG - larevistacr: [198/1162] https://www.larevista.cr/minae-minae-y-comcure-obtienen-reconocimiento-de-alianza-nacional-de-rios-y-cuencas/
+[2026-05-16 11:22:18,718] DEBUG - larevistacr: [199/1162] https://www.larevista.cr/coopenae-radiografia-de-habitos-financieros-de-los-jovenes-de-18-a-35-anos-en-costa-rica/
+[2026-05-16 11:22:23,456] DEBUG - larevistacr: [200/1162] https://www.larevista.cr/asociacion-costarricense-de-diplomaticos-de-carrera-comunicado/
+[2026-05-16 11:22:29,289] DEBUG - larevistacr: [201/1162] https://www.larevista.cr/tse-decreto-de-convocatoria-a-elecciones/
+[2026-05-16 11:22:34,087] DEBUG - larevistacr: [202/1162] https://www.larevista.cr/anep-costa-rica-merece-un-nuevo-salario-minimo-para-2026/
+[2026-05-16 11:22:38,557] DEBUG - larevistacr: [203/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-26-09-2025/
+[2026-05-16 11:22:45,382] DEBUG - larevistacr: [204/1162] https://www.larevista.cr/cgr-la-verdad-sobre-el-proyecto-de-modernizacion-de-puerto-caldera/
+[2026-05-16 11:22:49,855] DEBUG - larevistacr: [205/1162] https://www.larevista.cr/radio-zurqui-comunicado-urgente/
+[2026-05-16 11:22:54,193] DEBUG - larevistacr: [206/1162] https://www.larevista.cr/defensoria-pide-cuentas-a-salud-y-municipalidades-sobre-gestion-de-residuos-solidos/
+[2026-05-16 11:22:58,782] DEBUG - larevistacr: [207/1162] https://www.larevista.cr/amcham-camaras-empresariales-instan-a-la-contraloria-general-de-la-republica-a-agilizar-proceso-licitatorio-de-puerto-caldera/
+[2026-05-16 11:23:02,312] DEBUG - larevistacr: [208/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-19-09-2025/
+[2026-05-16 11:23:07,092] DEBUG - larevistacr: [209/1162] https://www.larevista.cr/nic-costa-rica-ipv6-mostly-la-estrategia-esencial-frente-al-agotamiento-de-ipv4/
+[2026-05-16 11:23:14,523] DEBUG - larevistacr: [210/1162] https://www.larevista.cr/nic-costa-rica-aula-nic-un-rincon-digital-para-que-ninos-docentes-y-familias-descubran-el-internet-con-diversion-y-seguridad/
+[2026-05-16 11:23:20,766] DEBUG - larevistacr: [211/1162] https://www.larevista.cr/nic-costa-rica-se-aproxima-el-ix-dialogo-de-gobernanza-de-internet-en-costa-rica/
+[2026-05-16 11:23:24,208] DEBUG - larevistacr: [212/1162] https://www.larevista.cr/academia-nacional-de-medicina-12-de-septiembre-dia-internacional-de-accion-contra-la-migrana/
+[2026-05-16 11:23:29,181] DEBUG - larevistacr: [213/1162] https://www.larevista.cr/encuestas-bajo-la-lupa-enero-sera-de-terror-en-la-carrera-presidencial/
+[2026-05-16 11:23:33,956] DEBUG - larevistacr: [214/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-12-09-2025/
+[2026-05-16 11:23:38,554] DEBUG - larevistacr: [215/1162] https://www.larevista.cr/cgr-contraloria-da-luz-verde-al-hospital-de-cartago/
+[2026-05-16 11:23:43,027] DEBUG - larevistacr: [216/1162] https://www.larevista.cr/banco-central-de-costa-rica-esta-entre-las-entidades-publicas-mejor-calificadas-por-la-ciudadania/
+[2026-05-16 11:23:47,459] DEBUG - larevistacr: [217/1162] https://www.larevista.cr/nic-costa-rica-episodio-4-de-voz-cr-explora-como-se-construye-un-ciberataque-lo-que-debes-saber-para-protegerte/
+[2026-05-16 11:23:51,973] DEBUG - larevistacr: [218/1162] https://www.larevista.cr/canatur-costa-rica-celebra-el-regreso-de-expo-quepos-2025-de-la-mano-de-la-camara-de-comercio-industria-y-turismo-de-quepos/
+[2026-05-16 11:23:56,392] DEBUG - larevistacr: [219/1162] https://www.larevista.cr/informe-del-estudio-de-opinion-publica-del-ciep-septiembre-2025/
+[2026-05-16 11:23:59,502] DEBUG - larevistacr: [220/1162] https://www.larevista.cr/ninez-y-derechos-humanos-se-encuentran-en-el-museo-de-los-ninos/
+[2026-05-16 11:24:03,663] DEBUG - larevistacr: [221/1162] https://www.larevista.cr/diputada-andrea-alvarez-defiende-democracia-con-firmeza-institucional/
+[2026-05-16 11:24:08,174] DEBUG - larevistacr: [222/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-05-09-2025/
+[2026-05-16 11:24:12,590] DEBUG - larevistacr: [223/1162] https://www.larevista.cr/cgr-infraestructura-del-pani-una-deuda-con-la-ninez/
+[2026-05-16 11:24:16,883] DEBUG - larevistacr: [224/1162] https://www.larevista.cr/micro-creditos-ofrecen-rapidez-y-seguridad-como-alternativa-al-credito-informal/
+[2026-05-16 11:24:20,897] DEBUG - larevistacr: [225/1162] https://www.larevista.cr/anep-aya-ya-pago-mas-de-16-millones-de-dolares-a-la-empresa-consorcio-aguas-de-escazu-encargada-de-reestructuracion-fallida/
+[2026-05-16 11:24:25,251] DEBUG - larevistacr: [226/1162] https://www.larevista.cr/cgr-ineficaz-cobertura-de-servicios-basicos-en-ciudades-fuera-del-gam/
+[2026-05-16 11:24:29,690] DEBUG - larevistacr: [227/1162] https://www.larevista.cr/defensoria-informe-de-comision-de-las-defensorias-del-pueblo-de-costa-rica-panama-y-colombia-revela-aumento-sin-precedentes-en-la-migracion-inversa-desde-el-norte-del-continente/
+[2026-05-16 11:24:34,305] DEBUG - larevistacr: [228/1162] https://www.larevista.cr/amcham-cica-presenta-reforma-integral-a-su-reglamento-de-arbitraje-en-armonia-con-la-nueva-ley-nacional/
+[2026-05-16 11:24:38,711] DEBUG - larevistacr: [229/1162] https://www.larevista.cr/posicion-respecto-al-tlc-costa-rica-israel/
+[2026-05-16 11:24:41,853] DEBUG - larevistacr: [230/1162] https://www.larevista.cr/cgr-resuelve-objeciones-en-licitacion-5g-promovida-por-el-ice/
+[2026-05-16 11:24:46,281] DEBUG - larevistacr: [231/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-29-08-2025/
+[2026-05-16 11:24:50,817] DEBUG - larevistacr: [232/1162] https://www.larevista.cr/cgr-estados-financieros-del-gobierno-no-reflejan-situacion-real/
+[2026-05-16 11:24:55,110] DEBUG - larevistacr: [233/1162] https://www.larevista.cr/apuntes-celebrando-a-enrique-castillo-en-sus-80-anos/
+[2026-05-16 11:24:59,564] DEBUG - larevistacr: [234/1162] https://www.larevista.cr/apuntes-rodriguez-echeverria-y-la-espera-interminable-24-anos-sin-resolucion/
+[2026-05-16 11:25:04,172] DEBUG - larevistacr: [235/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-22-08-2025/
+[2026-05-16 11:25:08,515] DEBUG - larevistacr: [236/1162] https://www.larevista.cr/contraloria-general-de-la-republica-nota-al-presidente-de-la-republica/
+[2026-05-16 11:25:13,169] DEBUG - larevistacr: [237/1162] https://www.larevista.cr/tse-mas-de-43-mil-nuevos-votantes-aun-no-solicitan-su-cedula/
+[2026-05-16 11:25:16,240] DEBUG - larevistacr: [238/1162] https://www.larevista.cr/anep-proyecto-de-ley-busca-eliminar-creditos-regulares-para-asi-cobrar-intereses-del-54/
+[2026-05-16 11:25:20,676] DEBUG - larevistacr: [239/1162] https://www.larevista.cr/pnud-costa-rica-confirma-nuevo-proyecto-para-ampliar-los-resultados-de-redd/
+[2026-05-16 11:25:25,114] DEBUG - larevistacr: [240/1162] https://www.larevista.cr/nic-costa-rica-voz-cr-el-podcast-de-nic-costa-rica-que-conecta-tecnologia-sociedad-y-desarrollo/
+[2026-05-16 11:25:29,492] DEBUG - larevistacr: [241/1162] https://www.larevista.cr/nic-costa-rica-dig-una-herramienta-esencial-para-consultas-dns/
+[2026-05-16 11:25:32,608] DEBUG - larevistacr: [242/1162] https://www.larevista.cr/nic-costa-rica-nic-costa-rica-participo-como-ponente-en-el-i-foro-empresarial-desamparados-2025/
+[2026-05-16 11:25:37,419] DEBUG - larevistacr: [243/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-15-08-2025/
+[2026-05-16 11:25:42,511] DEBUG - larevistacr: [244/1162] https://www.larevista.cr/amcham-propuesta-legislativa-en-ee-uu-no-altera-el-posicionamiento-estrategico-de-costa-rica-en-servicios-globales/
+[2026-05-16 11:25:47,455] DEBUG - larevistacr: [245/1162] https://www.larevista.cr/nic-costa-rica-nic-costa-rica-represento-a-la-comunidad-tecnica-en-la-consulta-global-wsis20/
+[2026-05-16 11:25:50,585] DEBUG - larevistacr: [246/1162] https://www.larevista.cr/defensoria-defensoria-convoco-a-aya-y-municipalidades-por-situacion-del-agua/
+[2026-05-16 11:25:55,033] DEBUG - larevistacr: [247/1162] https://www.larevista.cr/amcham-convenio-impulsa-formacion-cientifica-y-acceso-a-experiencias-academicas-para-jovenes-con-alto-potencial/
+[2026-05-16 11:25:59,379] DEBUG - larevistacr: [248/1162] https://www.larevista.cr/tse-costarricenses-podran-obtener-su-documento-digital-de-identidad-2/
+[2026-05-16 11:26:02,552] DEBUG - larevistacr: [249/1162] https://www.larevista.cr/tse-seccion-especializada-del-tse-declara-con-lugar-tres-denuncias-por-beligerancia/
+[2026-05-16 11:26:06,936] DEBUG - larevistacr: [250/1162] https://www.larevista.cr/nic-costa-rica-rosalia-morales-represento-a-nic-costa-rica-en-importantes-espacios-de-discusion-sobre-el-futuro-de-internet/
+[2026-05-16 11:26:11,393] DEBUG - larevistacr: [251/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-08-08-2025/
+[2026-05-16 11:26:15,899] DEBUG - larevistacr: [252/1162] https://www.larevista.cr/elliot-coen-presenta-en-costa-rica-su-nuevo-libro-son-las-personas-estupido/
+[2026-05-16 11:26:20,421] DEBUG - larevistacr: [253/1162] https://www.larevista.cr/tse-costarricenses-podran-obtener-su-documento-digital-de-identidad/
+[2026-05-16 11:26:24,849] DEBUG - larevistacr: [254/1162] https://www.larevista.cr/ucr-una-nueva-iniciativa-costarricense-contra-el-cancer-capta-el-interes-internacional/
+[2026-05-16 11:26:29,566] DEBUG - larevistacr: [255/1162] https://www.larevista.cr/nic-costa-rica-hugo-salgado-comparte-su-experiencia-sobre-el-firmado-raiz-del-dns/
+[2026-05-16 11:26:34,113] DEBUG - larevistacr: [256/1162] https://www.larevista.cr/procomer-rganic-market-abre-oficialmente-sus-puertas-este-19-de-julio-un-nuevo-concepto-boutique-de-retail-organico-en-costa-rica/
+[2026-05-16 11:26:38,400] DEBUG - larevistacr: [257/1162] https://www.larevista.cr/colper-por-un-sinart-solido-e-independiente/
+[2026-05-16 11:26:43,000] DEBUG - larevistacr: [258/1162] https://www.larevista.cr/una-euna-presente-en-la-feria-internacional-del-libro/
+[2026-05-16 11:26:47,482] DEBUG - larevistacr: [259/1162] https://www.larevista.cr/tec-desde-chile-estudiante-de-doctorado-impulsa-modelo-innovador-para-mejorar-el-desempeno-de-la-energia-solar/
+[2026-05-16 11:26:51,840] DEBUG - larevistacr: [260/1162] https://www.larevista.cr/tse-costarricenses-podran-conocer-su-lugar-de-votacion-a-traves-de-codigo-qr/
+[2026-05-16 11:26:54,999] DEBUG - larevistacr: [261/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-01-08-2025/
+[2026-05-16 11:26:59,412] DEBUG - larevistacr: [262/1162] https://www.larevista.cr/sacudida-en-el-gabinete-de-rodrigo-chaves-renuncias-clave-anticipan-salto-a-la-campana-legislativa/
+[2026-05-16 11:27:03,476] DEBUG - larevistacr: [263/1162] https://www.larevista.cr/costa-rica-en-crisis-empresas-se-van-y-chaves-enfrenta-juicio/
+[2026-05-16 11:27:07,864] DEBUG - larevistacr: [264/1162] https://www.larevista.cr/gerardo-corrales-la-negligencia-economica-tiene-consecuencias/
+[2026-05-16 11:27:10,930] DEBUG - larevistacr: [265/1162] https://www.larevista.cr/tse-fija-la-cantidad-de-diputaciones-por-provincia-para-los-proximos-comicios/
+[2026-05-16 11:27:15,345] DEBUG - larevistacr: [266/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-11-07-2025-2/
+[2026-05-16 11:27:18,458] DEBUG - larevistacr: [267/1162] https://www.larevista.cr/tse-emite-reglamento-que-regula-los-proximos-comicios-nacionales/
+[2026-05-16 11:27:23,028] DEBUG - larevistacr: [268/1162] https://www.larevista.cr/tse-autoridades-de-gobierno-no-podran-utilizar-simbolo-del-jaguar/
+[2026-05-16 11:27:27,607] DEBUG - larevistacr: [269/1162] https://www.larevista.cr/puerto-de-caldera-un-cuello-de-botella-que-le-cuesta-millones-a-costa-rica/
+[2026-05-16 11:27:31,810] DEBUG - larevistacr: [270/1162] https://www.larevista.cr/contraloria-general-de-la-republica-aclara-informacion-falsa-sobre-contratacion-en-el-ins/
+[2026-05-16 11:27:34,951] DEBUG - larevistacr: [271/1162] https://www.larevista.cr/apuntes-alvaro-ramos-y-la-crisis-sin-precedentes-del-pln/
+[2026-05-16 11:27:38,015] DEBUG - larevistacr: [272/1162] https://www.larevista.cr/ccss-se-pone-al-dia-en-el-pago-de-incapacidades-y-licencias/
+[2026-05-16 11:27:42,430] DEBUG - larevistacr: [273/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-11-07-2025/
+[2026-05-16 11:27:45,518] DEBUG - larevistacr: [274/1162] https://www.larevista.cr/ucr-inicio-el-debate/
+[2026-05-16 11:27:50,224] DEBUG - larevistacr: [275/1162] https://www.larevista.cr/anep-denuncia-posible-trafico-de-influencias-en-el-aya-para-beneficiar-a-miembro-de-junta-directiva/
+[2026-05-16 11:27:53,299] DEBUG - larevistacr: [276/1162] https://www.larevista.cr/ict-volaris-aumenta-rutas-y-conectividad-con-dos-mercados-prioritarios-para-costa-rica-2/
+[2026-05-16 11:27:56,391] DEBUG - larevistacr: [277/1162] https://www.larevista.cr/minae-comunidad-de-cahuita-recibe-premio-blue-park-gold-dado-en-unoc-3/
+[2026-05-16 11:28:01,408] DEBUG - larevistacr: [278/1162] https://www.larevista.cr/defensoria-atencion-de-danos-en-infraestructura-educativa-con-lenta-respuesta/
+[2026-05-16 11:28:06,333] DEBUG - larevistacr: [279/1162] https://www.larevista.cr/ucr-autoridades-universitarias-y-estudiantes-logran-acuerdo-para-liberar-edificio-de-feucr/
+[2026-05-16 11:28:12,046] DEBUG - larevistacr: [280/1162] https://www.larevista.cr/defensoria-hay-un-faltante-de-2-722-policias-en-centros-penitenciarios/
+[2026-05-16 11:28:16,292] DEBUG - larevistacr: [281/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-04-07-2025/
+[2026-05-16 11:28:23,209] DEBUG - larevistacr: [282/1162] https://www.larevista.cr/colectivo-mujeres-por-costa-rica-por-el-dialogo-y-la-convivencia-pacifica-2/
+[2026-05-16 11:28:31,520] DEBUG - larevistacr: [283/1162] https://www.larevista.cr/apuntes-jaime-ordonez-el-4x3-es-una-barbaridad-juridica/
+[2026-05-16 11:28:36,474] DEBUG - larevistacr: [284/1162] https://www.larevista.cr/tse-mas-de-57-mil-jovenes-tienen-tiempo-hasta-el-30-de-setiembre-para-solicitar-su-documento-de-identidad/
+[2026-05-16 11:28:40,912] DEBUG - larevistacr: [285/1162] https://www.larevista.cr/defensoria-bancos-deben-agilizar-atencion-de-reclamos-por-fraudes-electronicos/
+[2026-05-16 11:28:44,018] DEBUG - larevistacr: [286/1162] https://www.larevista.cr/apuntes-el-pln-entre-el-colapso-institucional-y-un-futuro-incierto/
+[2026-05-16 11:28:48,951] DEBUG - larevistacr: [287/1162] https://www.larevista.cr/contraloria-general-de-la-republica-senala-incumplimiento-de-sutel-en-costeo-de-canon-de-telecomunicaciones/
+[2026-05-16 11:28:52,028] DEBUG - larevistacr: [288/1162] https://www.larevista.cr/manifiesto-publico-instituto-agora-llamado-para-llevar-como-candidatos-a-diputados-a-los-mejores-costarricenses-para-las-elecciones-del-2026/
+[2026-05-16 11:28:55,086] DEBUG - larevistacr: [289/1162] https://www.larevista.cr/anep-ante-el-caso-celso-gamboa-anep-insta-a-la-dea-y-autoridades-judiciales-investigar-a-actual-y-pasadas-jerarquias-de-seguridad-publica/
+[2026-05-16 11:28:58,164] DEBUG - larevistacr: [290/1162] https://www.larevista.cr/museos-costa-rica-los-museos-del-banco-central-de-costa-rica-y-concepcion-mirada-presentan-la-exhibicion-5-a-la-moda-un-homenaje-al-billete-de-5-colones/
+[2026-05-16 11:29:02,694] DEBUG - larevistacr: [291/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-27-06-2025/
+[2026-05-16 11:29:07,202] DEBUG - larevistacr: [292/1162] https://www.larevista.cr/apuntes-sala-constitucional-garante-de-la-autonomia-del-banco-nacional/
+[2026-05-16 11:29:10,303] DEBUG - larevistacr: [293/1162] https://www.larevista.cr/nueva-aerolinea-canadiense-inicia-operaciones-en-guanacaste-aeropuerto/
+[2026-05-16 11:29:14,650] DEBUG - larevistacr: [294/1162] https://www.larevista.cr/defensoria-nuevas-instalaciones-del-hospital-geriatrico-son-una-necesidad-imperiosa/
+[2026-05-16 11:29:19,180] DEBUG - larevistacr: [295/1162] https://www.larevista.cr/tse-en-las-proximas-elecciones-nacionales-habra-13-nuevos-distritos-electorales/
+[2026-05-16 11:29:22,359] DEBUG - larevistacr: [296/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-20-06-2025/
+[2026-05-16 11:29:26,845] DEBUG - larevistacr: [297/1162] https://www.larevista.cr/tse-ofrece-capacitaciones-para-un-uso-responsable-de-las-redes-sociales/
+[2026-05-16 11:29:29,936] DEBUG - larevistacr: [298/1162] https://www.larevista.cr/anep-aya-compromete-mas-de-218-millones-en-servicios-profesionales-que-podrian-asumirse-internamente/
+[2026-05-16 11:29:34,378] DEBUG - larevistacr: [299/1162] https://www.larevista.cr/ante-la-partida-de-dona-violeta-barrios-de-chamorro/
+[2026-05-16 11:29:39,007] DEBUG - larevistacr: [300/1162] https://www.larevista.cr/academia-nacional-de-medicina-13-de-junio-dia-mundial-del-cancer-de-piel/
+[2026-05-16 11:29:43,543] DEBUG - larevistacr: [301/1162] https://www.larevista.cr/defensoria-informa-sobre-dialogo-entre-aya-y-municipalidad-de-paraiso/
+[2026-05-16 11:29:48,025] DEBUG - larevistacr: [302/1162] https://www.larevista.cr/pasajero-15-millones-arribara-esta-tarde-a-guanacaste-aeropuerto/
+[2026-05-16 11:29:51,230] DEBUG - larevistacr: [303/1162] https://www.larevista.cr/ageco-derecho-a-la-autonomia-de-las-personas-mayores/
+[2026-05-16 11:29:54,334] DEBUG - larevistacr: [304/1162] https://www.larevista.cr/academia-nacional-de-medicina-8-de-junio-dia-internacional-de-los-tumores-cerebrales/
+[2026-05-16 11:29:58,821] DEBUG - larevistacr: [305/1162] https://www.larevista.cr/tse-hace-llamado-patriotico-a-ciudadania-a-participar-de-manera-voluntaria-en-las-proximas-elecciones-nacionales/
+[2026-05-16 11:30:01,994] DEBUG - larevistacr: [306/1162] https://www.larevista.cr/camara-nacional-de-productores-de-leche-posicion-ante-la-decision-del-gobierno-de-panama-de-apelar-el-fallo-favorable-a-costa-rica-2/
+[2026-05-16 11:30:05,186] DEBUG - larevistacr: [307/1162] https://www.larevista.cr/academia-nacional-de-medicina-31-de-mayo-dia-mundial-sin-tabaco/
+[2026-05-16 11:30:09,607] DEBUG - larevistacr: [308/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-23-05-2025-2/
+[2026-05-16 11:30:12,754] DEBUG - larevistacr: [309/1162] https://www.larevista.cr/nueva-opcion-de-financiamiento-educativo-busca-mejorar-el-nivel-profesional-y-de-oportunidad-laboral-de-la-poblacion/
+[2026-05-16 11:30:15,852] DEBUG - larevistacr: [310/1162] https://www.larevista.cr/programa-raices-para-impulsar-emprendimientos-turisticos-indigenas-amplia-su-cobertura-al-caribe-costarricense/
+[2026-05-16 11:30:20,751] DEBUG - larevistacr: [311/1162] https://www.larevista.cr/las-mujeres-emprendedoras-y-el-credito-impulsando-el-acceso-a-financiamiento-para-crecer/
+[2026-05-16 11:30:23,842] DEBUG - larevistacr: [312/1162] https://www.larevista.cr/1-rojo-por-ruta-ruta-la-paz-entra-en-su-recta-final-de-recaudacion-para-su-xv-edicion/
+[2026-05-16 11:30:28,731] DEBUG - larevistacr: [313/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-23-05-2025/
+[2026-05-16 11:30:33,645] DEBUG - larevistacr: [314/1162] https://www.larevista.cr/amcham-celebra-los-avances-en-las-negociaciones-comerciales-con-los-estados-unidos/
+[2026-05-16 11:30:37,978] DEBUG - larevistacr: [315/1162] https://www.larevista.cr/dialogo-y-respeto-para-defender-la-ucr/
+[2026-05-16 11:30:42,491] DEBUG - larevistacr: [316/1162] https://www.larevista.cr/ucr-manifiesto-a-quienes-aun-creemos-en-la-universidad-de-costa-rica/
+[2026-05-16 11:30:47,047] DEBUG - larevistacr: [317/1162] https://www.larevista.cr/colectivo-mujeres-por-costa-rica-por-el-dialogo-y-la-convivencia-pacifica/
+[2026-05-16 11:30:51,780] DEBUG - larevistacr: [318/1162] https://www.larevista.cr/ucr-mensaje-de-ex-rectora-y-ex-rectores-a-la-comunidad-universitaria/
+[2026-05-16 11:30:56,567] DEBUG - larevistacr: [319/1162] https://www.larevista.cr/manifiesto-publico-a-la-ciudadania-costarricense/
+[2026-05-16 11:31:01,054] DEBUG - larevistacr: [320/1162] https://www.larevista.cr/tse-recuerda-fecha-relevante-de-cara-a-las-elecciones-nacionales-2026/
+[2026-05-16 11:31:04,180] DEBUG - larevistacr: [321/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-09-05-2025/
+[2026-05-16 11:31:07,310] DEBUG - larevistacr: [322/1162] https://www.larevista.cr/anep-mensaje-oficial-con-motivo-de-la-eleccion-del-papa-leon-xiv/
+[2026-05-16 11:31:11,708] DEBUG - larevistacr: [323/1162] https://www.larevista.cr/academia-nacional-de-medicina-dia-mundial-de-la-salud-mental-materna-primer-miercoles-de-mayo/
+[2026-05-16 11:31:16,332] DEBUG - larevistacr: [324/1162] https://www.larevista.cr/defensoria-recomendo-al-mep-revertir-decision-de-eliminar-programa-de-afectividad-y-sexualidad-integral/
+[2026-05-16 11:31:19,433] DEBUG - larevistacr: [325/1162] https://www.larevista.cr/academia-nacional-de-medicina-primer-martes-de-mayo-dia-mundial-del-asma/
+[2026-05-16 11:31:22,591] DEBUG - larevistacr: [326/1162] https://www.larevista.cr/apuntes-rodrigo-madrigal-y-el-valor-del-dialogo/
+[2026-05-16 11:31:27,148] DEBUG - larevistacr: [327/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-02-05-2025/
+[2026-05-16 11:31:31,667] DEBUG - larevistacr: [328/1162] https://www.larevista.cr/apuntes-miguel-angel-rodriguez-y-el-espiritu-libre-de-vargas-llosa/
+[2026-05-16 11:31:34,753] DEBUG - larevistacr: [329/1162] https://www.larevista.cr/apuntes-oscar-arias-un-faro-de-paz-frente-a-un-mundo-que-se-rearma/
+[2026-05-16 11:31:39,378] DEBUG - larevistacr: [330/1162] https://www.larevista.cr/ucr-mamba-mambo-un-concierto-para-fagot-y-cuerdas-se-inspiro-en-la-mamba-negra-africana/
+[2026-05-16 11:31:42,544] DEBUG - larevistacr: [331/1162] https://www.larevista.cr/ccss-mamas-cabecares-deciden-posicion-para-parir-en-hospital-de-turrialba/
+[2026-05-16 11:31:46,925] DEBUG - larevistacr: [332/1162] https://www.larevista.cr/ucr-cincuenta-y-cinco-anos-de-antidotos-vida-y-esperanza-ante-el-envenenamiento-ofidico/
+[2026-05-16 11:31:51,331] DEBUG - larevistacr: [333/1162] https://www.larevista.cr/ccss-mitad-de-las-personas-con-glaucoma-no-sabe-que-lo-padece/
+[2026-05-16 11:31:55,784] DEBUG - larevistacr: [334/1162] https://www.larevista.cr/ucr-voz-experta-innovacion-para-las-personas/
+[2026-05-16 11:32:00,111] DEBUG - larevistacr: [335/1162] https://www.larevista.cr/ccss-hospital-san-vicente-de-paul-inicio-construccion-del-hospital-de-dia/
+[2026-05-16 11:32:04,323] DEBUG - larevistacr: [336/1162] https://www.larevista.cr/tse-aclaracion-ante-consultas-sobre-mecanismos-de-justicia-electoral/
+[2026-05-16 11:32:07,434] DEBUG - larevistacr: [337/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-25-04-2025/
+[2026-05-16 11:32:11,979] DEBUG - larevistacr: [338/1162] https://www.larevista.cr/academia-nacional-de-medicina-25-de-abril-dia-internacional-del-adn/
+[2026-05-16 11:32:16,804] DEBUG - larevistacr: [339/1162] https://www.larevista.cr/ucr-tres-universidades-publicas-aprovechan-la-memoria-cultural-cabecar-para-educar-a-sus-estudiantes/
+[2026-05-16 11:32:21,297] DEBUG - larevistacr: [340/1162] https://www.larevista.cr/museos-costa-rica-los-museos-del-bccr-van-mas-alla-de-sus-muros/
+[2026-05-16 11:32:24,447] DEBUG - larevistacr: [341/1162] https://www.larevista.cr/anep-presenta-querella-contra-el-presidente-rodrigo-chaves-robles/
+[2026-05-16 11:32:29,164] DEBUG - larevistacr: [342/1162] https://www.larevista.cr/academia-nacional-de-medicina-24-de-abril-dia-mundial-contra-la-meningitis/
+[2026-05-16 11:32:34,407] DEBUG - larevistacr: [343/1162] https://www.larevista.cr/ccss-mas-de-300-ninos-indigenas-reciben-atencion-especializada-cada-ano-en-el-hospital-nacional-de-ninos/
+[2026-05-16 11:32:37,477] DEBUG - larevistacr: [344/1162] https://www.larevista.cr/ucr-alertan-sobre-erosion-de-las-democracias-y-el-resurgimiento-de-autoritarismos-en-centroamerica/
+[2026-05-16 11:32:40,592] DEBUG - larevistacr: [345/1162] https://www.larevista.cr/mas-que-financiamiento-monifai-impulsa-el-crecimiento-de-las-pymes-en-costa-rica/
+[2026-05-16 11:32:45,247] DEBUG - larevistacr: [346/1162] https://www.larevista.cr/museos-costa-rica-la-catedral-metropolitana-y-las-monedas-seran-las-protagonistas-de-las-proximas-actividades-de-los-museos-del-banco-central/
+[2026-05-16 11:32:48,371] DEBUG - larevistacr: [347/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-11-04-2025/
+[2026-05-16 11:32:52,776] DEBUG - larevistacr: [348/1162] https://www.larevista.cr/minae-instituto-meteorologico-nacional-es-reconocido-como-institucion-benemerita-de-la-patria/
+[2026-05-16 11:32:57,345] DEBUG - larevistacr: [349/1162] https://www.larevista.cr/tse-da-curso-a-amparo-electoral-contra-presidente-chaves/
+[2026-05-16 11:33:01,668] DEBUG - larevistacr: [350/1162] https://www.larevista.cr/defensoria-inversion-en-el-mantenimiento-de-puentes-es-escasa-y-expone-a-usuarios-a-riesgos/
+[2026-05-16 11:33:06,269] DEBUG - larevistacr: [351/1162] https://www.larevista.cr/canatrans-alerta-que-aumento-de-transporte-ilegal-es-la-principal-causa-del-abandono-de-rutas/
+[2026-05-16 11:33:10,739] DEBUG - larevistacr: [352/1162] https://www.larevista.cr/banco-nacional-detecte-estafas-identifique-llamadas-o-mensajes-fraudulentos-sobre-concursos/
+[2026-05-16 11:33:13,926] DEBUG - larevistacr: [353/1162] https://www.larevista.cr/amcham-nueva-junta-directiva-de-amcham-impulsara-agenda-para-fortalecer-inversion-y-desarrollo-sostenible/
+[2026-05-16 11:33:18,411] DEBUG - larevistacr: [354/1162] https://www.larevista.cr/partido-unidad-social-cristiana-la-amistad-entre-costa-rica-y-estados-unidos/
+[2026-05-16 11:33:21,529] DEBUG - larevistacr: [355/1162] https://www.larevista.cr/enrique-castillo-manejar-o-sufrir-deporte-extremo-en-las-presas-ticas/
+[2026-05-16 11:33:24,678] DEBUG - larevistacr: [356/1162] https://www.larevista.cr/ageco-preparemonos-para-disfrutar-de-una-vejez-mas-saludable/
+[2026-05-16 11:33:29,323] DEBUG - larevistacr: [357/1162] https://www.larevista.cr/informe-del-estudio-de-opinion-publica-del-ciep-abril-2025/
+[2026-05-16 11:33:32,389] DEBUG - larevistacr: [358/1162] https://www.larevista.cr/defensoria-pide-cuentas-al-ctp-de-evaluaciones-a-empresa-de-buses-de-la-ruta-san-jose-cartago/
+[2026-05-16 11:33:36,779] DEBUG - larevistacr: [359/1162] https://www.larevista.cr/las-personas-con-autismo-no-viven-en-su-propio-mundo-viven-en-el-nuestro-solo-que-lo-perciben-de-manera-diferente/
+[2026-05-16 11:33:41,529] DEBUG - larevistacr: [360/1162] https://www.larevista.cr/tse-seccion-especializada-del-tse-ordena-investigaciones-preliminares-sobre-denuncias-de-beligerancia-referidas-a-la-exministra-laura-fernandez/
+[2026-05-16 11:33:46,101] DEBUG - larevistacr: [361/1162] https://www.larevista.cr/tse-zetty-maria-bou-luz-de-los-angeles-retana-y-wendy-gonzalez-fueron-reelectas-como-magistradas-del-tse/
+[2026-05-16 11:33:50,682] DEBUG - larevistacr: [362/1162] https://www.larevista.cr/academia-nacional-de-medicina-31-de-marzo-dia-mundial-contra-el-cancer-de-colon/
+[2026-05-16 11:33:55,572] DEBUG - larevistacr: [363/1162] https://www.larevista.cr/ageco-envejecer-en-comunidad-para-una-vejez-digna/
+[2026-05-16 11:33:59,885] DEBUG - larevistacr: [364/1162] https://www.larevista.cr/observatorio-del-mercado-y-derechos-del-consumidor-omercon-denuncia-a-conassif/
+[2026-05-16 11:34:04,304] DEBUG - larevistacr: [365/1162] https://www.larevista.cr/tse-seccion-especializada-del-tse-ordena-investigacion-preliminar-sobre-denuncias-de-beligerancia-referidas-al-presidente-de-la-republica-3/
+[2026-05-16 11:34:08,757] DEBUG - larevistacr: [366/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-28-03-2025/
+[2026-05-16 11:34:13,177] DEBUG - larevistacr: [367/1162] https://www.larevista.cr/ict-volaris-aumenta-rutas-y-conectividad-con-dos-mercados-prioritarios-para-costa-rica/
+[2026-05-16 11:34:17,371] DEBUG - larevistacr: [368/1162] https://www.larevista.cr/tec-consejo-institucional-del-tec-solicita-analisis-profundo-de-reforma-al-reglamento-para-la-calidad-del-agua-potable/
+[2026-05-16 11:34:21,671] DEBUG - larevistacr: [369/1162] https://www.larevista.cr/ccss-y-embajada-de-ee-uu-brindaran-atencion-en-pejibaye-de-cartago/
+[2026-05-16 11:34:24,808] DEBUG - larevistacr: [370/1162] https://www.larevista.cr/procomer-exportaciones-de-bienes-de-costa-rica-inician-el-ano-con-un-crecimiento-de-10/
+[2026-05-16 11:34:27,900] DEBUG - larevistacr: [371/1162] https://www.larevista.cr/ucr-el-lider-de-datos-tiene-un-rol-esencial-en-la-transformacion-digital-del-sector-publico/
+[2026-05-16 11:34:32,430] DEBUG - larevistacr: [372/1162] https://www.larevista.cr/tse-seccion-especializada-del-tse-ordena-investigacion-preliminar-sobre-denuncias-de-beligerancia-referidas-al-presidente-de-la-republica-2/
+[2026-05-16 11:34:35,573] DEBUG - larevistacr: [373/1162] https://www.larevista.cr/estudio-de-antropologia-social-destaca-polarizacion-y-retos-electorales-2/
+[2026-05-16 11:34:40,184] DEBUG - larevistacr: [374/1162] https://www.larevista.cr/camara-costarricense-de-la-construccion-la-transparencia-en-riesgo-preocupaciones-sobre-la-reforma-en-contratacion-publica/
+[2026-05-16 11:34:44,700] DEBUG - larevistacr: [375/1162] https://www.larevista.cr/presentacion-publica-de-la-agenda-viva/
+[2026-05-16 11:34:47,917] DEBUG - larevistacr: [376/1162] https://www.larevista.cr/tse-seccion-especializada-del-tse-ordena-investigacion-preliminar-sobre-denuncias-de-beligerancia-referidas-al-presidente-de-la-republica/
+[2026-05-16 11:34:52,361] DEBUG - larevistacr: [377/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-07-03-2025/
+[2026-05-16 11:34:57,152] DEBUG - larevistacr: [378/1162] https://www.larevista.cr/defensoria-convoco-a-directores-as-de-hospitales/
+[2026-05-16 11:35:00,270] DEBUG - larevistacr: [379/1162] https://www.larevista.cr/defensoria-controles-deben-ser-claros-en-concesion-de-puerto-caldera/
+[2026-05-16 11:35:03,700] DEBUG - larevistacr: [380/1162] https://www.larevista.cr/academia-nacional-de-medicina-3-de-marzo-dia-mundial-de-la-salud-auditiva/
+[2026-05-16 11:35:06,811] DEBUG - larevistacr: [381/1162] https://www.larevista.cr/defensoria-pide-al-pani-reporte-de-intervencion-a-favor-de-ninos-y-ninas-deportadas/
+[2026-05-16 11:35:11,513] DEBUG - larevistacr: [382/1162] https://www.larevista.cr/presentacion-de-la-guia-estrategias-para-reducir-la-desinformacion/
+[2026-05-16 11:35:16,092] DEBUG - larevistacr: [383/1162] https://www.larevista.cr/academia-nacional-de-medicina-25-de-febrero-dia-mundial-del-implante-coclear/
+[2026-05-16 11:35:20,854] DEBUG - larevistacr: [384/1162] https://www.larevista.cr/tec-miedo-a-las-matematicas/
+[2026-05-16 11:35:22,918] WARNING - larevistacr: Sin texto extraído: https://www.larevista.cr/tec-miedo-a-las-matematicas/
+[2026-05-16 11:35:23,953] DEBUG - larevistacr: [385/1162] https://www.larevista.cr/costa-rica-se-abstiene-en-condena-a-rusia-por-invasion-a-ucrania-y-rompe-con-su-historia-pacifista/
+[2026-05-16 11:35:28,525] DEBUG - larevistacr: [386/1162] https://www.larevista.cr/amcham-respalda-archivo-del-proyecto-de-etiquetado-y-refuerza-llamado-a-la-armonizacion-comercial/
+[2026-05-16 11:35:32,869] DEBUG - larevistacr: [387/1162] https://www.larevista.cr/defensoria-identifico-fallas-en-abordaje-para-atencion-de-personas-deportadas/
+[2026-05-16 11:35:35,989] DEBUG - larevistacr: [388/1162] https://www.larevista.cr/tse-presidenta-del-tse-participo-en-panel-de-la-uccaep/
+[2026-05-16 11:35:40,452] DEBUG - larevistacr: [389/1162] https://www.larevista.cr/academia-nacional-de-ciencias-pronunciamiento-de-la-comision-de-salud-global-de-la-academia-nacional-de-ciencias-sobre-la-modificacion-del-decreto-ejecutivo-no-38924-s-del-2-de-enero-del-2015/
+[2026-05-16 11:35:43,940] WARNING - larevistacr: Sin texto extraído: https://www.larevista.cr/academia-nacional-de-ciencias-pronunciamiento-de-la-comision-de-salud-global-de-la-academia-nacional-de-ciencias-sobre-la-modificacion-del-decreto-ejecutivo-no-38924-s-del-2-de-enero-del-2015/
+[2026-05-16 11:35:44,964] DEBUG - larevistacr: [390/1162] https://www.larevista.cr/poder-judicial-aclaracion-la-jubilacion-del-magistrado-jesus-ramirez-quiros/
+[2026-05-16 11:35:49,438] DEBUG - larevistacr: [391/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-21-02-2025/
+[2026-05-16 11:35:52,554] DEBUG - larevistacr: [392/1162] https://www.larevista.cr/defensoria-pais-queda-obligado-a-garantizar-derechos-de-personas-deportadas-por-estados-unidos/
+[2026-05-16 11:35:57,307] DEBUG - larevistacr: [393/1162] https://www.larevista.cr/canatrans-autobuseros-y-taxistas-se-manifiestan-en-defensa-de-la-regulacion-del-transporte-publico-y-sus-usuarios/
+[2026-05-16 11:36:01,748] DEBUG - larevistacr: [394/1162] https://www.larevista.cr/defensoria-pais-requiere-hoy-discutir-estructura-tributaria-que-garantice-financiamiento-de-la-inversion-social/
+[2026-05-16 11:36:04,806] DEBUG - larevistacr: [395/1162] https://www.larevista.cr/ccss-pide-precaucion-para-administrar-medicamentos-de-forma-segura-en-centros-de-estudio-y-de-cuido/
+[2026-05-16 11:36:09,110] DEBUG - larevistacr: [396/1162] https://www.larevista.cr/academia-nacional-de-medicina-18-de-febrero-dia-internacional-del-sindrome-de-asperger/
+[2026-05-16 11:36:12,236] DEBUG - larevistacr: [397/1162] https://www.larevista.cr/juan-carlos-hidalgo-se-suma-a-la-contienda-presidencial-con-el-pusc/
+[2026-05-16 11:36:16,613] DEBUG - larevistacr: [398/1162] https://www.larevista.cr/costa-rica-avanza-en-la-formacion-de-talento-para-industrias-de-alto-valor-agregado/
+[2026-05-16 11:36:19,762] DEBUG - larevistacr: [399/1162] https://www.larevista.cr/estudiantes-de-curso-de-semiconductores-con-intel-destacan-calidad-y-oportunidades-laborales/
+[2026-05-16 11:36:23,891] DEBUG - larevistacr: [400/1162] https://www.larevista.cr/academia-nacional-de-medicina-15-de-febrero-dia-internacional-de-la-lucha-contra-el-cancer-infantil/
+[2026-05-16 11:36:26,980] DEBUG - larevistacr: [401/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-14-02-2025/
+[2026-05-16 11:36:31,511] DEBUG - larevistacr: [402/1162] https://www.larevista.cr/cuatro-empresas-costarricenses-participaron-en-el-principal-mercado-de-cacao-y-chocolate-sostenible-y-de-alta-calidad/
+[2026-05-16 11:36:35,913] DEBUG - larevistacr: [403/1162] https://www.larevista.cr/academia-nacional-de-medicina-14-de-febrero-dia-mundial-de-las-cardiopatias-cardiacas/
+[2026-05-16 11:36:39,226] DEBUG - larevistacr: [404/1162] https://www.larevista.cr/ccss-lanza-centro-de-contacto-para-facilitar-interaccion-con-los-usuarios/
+[2026-05-16 11:36:42,424] DEBUG - larevistacr: [405/1162] https://www.larevista.cr/el-lanammeucr-audito-la-rehabilitacion-del-puente-sobre-el-rio-virilla-en-la-ruta-nacional-32/
+[2026-05-16 11:36:46,639] DEBUG - larevistacr: [406/1162] https://www.larevista.cr/el-mep-se-equivoca-nuevamente-eliminar-la-educacion-sexual-es-un-retroceso/
+[2026-05-16 11:36:49,733] DEBUG - larevistacr: [407/1162] https://www.larevista.cr/banco-nacional-nota-aclaratoria/
+[2026-05-16 11:36:52,796] DEBUG - larevistacr: [408/1162] https://www.larevista.cr/la-pobreza-apaga-la-sonrisa-de-las-personas-adultas-mayores-en-los-guido/
+[2026-05-16 11:36:57,351] DEBUG - larevistacr: [409/1162] https://www.larevista.cr/femicidios-en-costa-rica-un-grito-urgente-por-justicia-y-accion-inmediata/
+[2026-05-16 11:37:00,498] DEBUG - larevistacr: [410/1162] https://www.larevista.cr/elecciones-internas-del-pln-un-proceso-en-transformacion-y-una-encuesta-que-sorprende/
+[2026-05-16 11:37:03,636] DEBUG - larevistacr: [411/1162] https://www.larevista.cr/gobierno-traiciona-el-legado-ambiental-de-costa-rica-en-favor-de-negocios-ilegales/
+[2026-05-16 11:37:06,767] DEBUG - larevistacr: [412/1162] https://www.larevista.cr/amcham-felicita-a-melinda-hildebrand-por-su-nominacion-como-embajadora-de-los-estados-unidos-en-costa-rica/
+[2026-05-16 11:37:11,122] DEBUG - larevistacr: [413/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-24-01-2025-3/
+[2026-05-16 11:37:14,229] DEBUG - larevistacr: [414/1162] https://www.larevista.cr/colper-celebra-el-periodismo-que-se-asienta-en-la-rigurosidad-y-que-incomoda-al-poder/
+[2026-05-16 11:37:19,342] DEBUG - larevistacr: [415/1162] https://www.larevista.cr/anep-denuncia-a-presidencia-del-pani-y-otras-dependencias-por-irregularidades-ante-suspension-de-fideicomiso-del-banco-nacional/
+[2026-05-16 11:37:24,252] DEBUG - larevistacr: [416/1162] https://www.larevista.cr/tse-seccion-especializada-del-tse-resuelve-dos-denuncias-de-beligerancia-referidas-al-presidente-de-la-republica/
+[2026-05-16 11:37:29,129] DEBUG - larevistacr: [417/1162] https://www.larevista.cr/defensoria-revisa-sustitucion-de-programa-de-afectividad-y-sexualidad/
+[2026-05-16 11:37:32,262] DEBUG - larevistacr: [418/1162] https://www.larevista.cr/amcham-resalta-visita-de-marco-rubio-como-un-impulso-clave-para-la-cooperacion-bilateral/
+[2026-05-16 11:37:37,027] DEBUG - larevistacr: [419/1162] https://www.larevista.cr/defensoria-pais-debe-fortalecersignificativamente-la-inversion-en-seguridad-publica/
+[2026-05-16 11:37:41,527] DEBUG - larevistacr: [420/1162] https://www.larevista.cr/enrique-castillo-declina-su-precandidatura-y-llama-a-la-unidad-del-pln/
+[2026-05-16 11:37:45,954] DEBUG - larevistacr: [421/1162] https://www.larevista.cr/contraloria-general-de-la-republica-informacion-del-minae-en-riesgo-por-falta-de-control/
+[2026-05-16 11:37:50,611] DEBUG - larevistacr: [422/1162] https://www.larevista.cr/fragmentacion-y-vacio-ideologico-los-retos-de-las-elecciones-2026-en-costa-rica/
+[2026-05-16 11:37:53,647] DEBUG - larevistacr: [423/1162] https://www.larevista.cr/anep-pronunciamiento-politico-de-la-seccional-anep-diversidad-de-costa-rica/
+[2026-05-16 11:37:58,056] DEBUG - larevistacr: [424/1162] https://www.larevista.cr/colectivo-mujeres-por-costa-rica-ante-el-aumento-de-la-violencia-femicida-las-mujeres-declaramos-emergencia-nacional/
+[2026-05-16 11:38:02,414] DEBUG - larevistacr: [425/1162] https://www.larevista.cr/tse-fijo-montos-de-la-contribucion-estatal/
+[2026-05-16 11:38:06,908] DEBUG - larevistacr: [426/1162] https://www.larevista.cr/defensoria-solo-89-rutas-de-buses-tienen-refrendo-de-contratos-de-concesion/
+[2026-05-16 11:38:09,981] DEBUG - larevistacr: [427/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-24-01-2025-2/
+[2026-05-16 11:38:14,740] DEBUG - larevistacr: [428/1162] https://www.larevista.cr/academia-nacional-de-medicina-30-de-enero-dia-escolar-de-la-no-violencia-y-la-paz/
+[2026-05-16 11:38:17,917] DEBUG - larevistacr: [429/1162] https://www.larevista.cr/monifai-inaugura-nuevas-oficinas-en-san-jose-centro-y-ciudad-quesada-para-estar-mas-cerca-de-sus-clientes/
+[2026-05-16 11:38:21,087] DEBUG - larevistacr: [430/1162] https://www.larevista.cr/canatrans-llama-a-eliminar-el-efectivo-en-el-transporte-publico-tras-aprobacion-de-ley-de-pago-electronico/
+[2026-05-16 11:38:25,292] DEBUG - larevistacr: [431/1162] https://www.larevista.cr/defensoria-no-hay-justificacion-para-atrasar-implementacion-de-los-fondos-generacionales/
+[2026-05-16 11:38:29,766] DEBUG - larevistacr: [432/1162] https://www.larevista.cr/colvet-insta-a-la-ciudadania-a-tomar-precauciones-por-robo-de-mascotas/
+[2026-05-16 11:38:30,164] ERROR - larevistacr: Error en https://www.larevista.cr/colvet-insta-a-la-ciudadania-a-tomar-precauciones-por-robo-de-mascotas/: Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.larevista.cr/colvet-insta-a-la-ciudadania-a-tomar-precauciones-por-robo-de-mascotas/
+Call log:
+  - navigating to "https://www.larevista.cr/colvet-insta-a-la-ciudadania-a-tomar-precauciones-por-robo-de-mascotas/", waiting until "domcontentloaded"
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\scrapers\larevistacr.py", line 305, in _scrape_article
+    await page.goto(
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\async_api\_generated.py", line 9045, in goto
+    await self._impl_obj.goto(
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.larevista.cr/colvet-insta-a-la-ciudadania-a-tomar-precauciones-por-robo-de-mascotas/
+Call log:
+  - navigating to "https://www.larevista.cr/colvet-insta-a-la-ciudadania-a-tomar-precauciones-por-robo-de-mascotas/", waiting until "domcontentloaded"
+
+[2026-05-16 11:38:31,226] DEBUG - larevistacr: [433/1162] https://www.larevista.cr/el-narcotrafico-acecha-las-elecciones-en-costa-rica-senales-de-alerta-en-el-panorama-politico/
+[2026-05-16 11:38:31,311] ERROR - larevistacr: Error en https://www.larevista.cr/el-narcotrafico-acecha-las-elecciones-en-costa-rica-senales-de-alerta-en-el-panorama-politico/: Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.larevista.cr/el-narcotrafico-acecha-las-elecciones-en-costa-rica-senales-de-alerta-en-el-panorama-politico/
+Call log:
+  - navigating to "https://www.larevista.cr/el-narcotrafico-acecha-las-elecciones-en-costa-rica-senales-de-alerta-en-el-panorama-politico/", waiting until "domcontentloaded"
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\scrapers\larevistacr.py", line 305, in _scrape_article
+    await page.goto(
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\async_api\_generated.py", line 9045, in goto
+    await self._impl_obj.goto(
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.larevista.cr/el-narcotrafico-acecha-las-elecciones-en-costa-rica-senales-de-alerta-en-el-panorama-politico/
+Call log:
+  - navigating to "https://www.larevista.cr/el-narcotrafico-acecha-las-elecciones-en-costa-rica-senales-de-alerta-en-el-panorama-politico/", waiting until "domcontentloaded"
+
+[2026-05-16 11:38:32,332] DEBUG - larevistacr: [434/1162] https://www.larevista.cr/defensoria-ante-absolutoria-del-tribunal-de-apelacion-en-el-caso-del-lider-indigena-jerhy-rivera/
+[2026-05-16 11:38:32,620] ERROR - larevistacr: Error en https://www.larevista.cr/defensoria-ante-absolutoria-del-tribunal-de-apelacion-en-el-caso-del-lider-indigena-jerhy-rivera/: Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.larevista.cr/defensoria-ante-absolutoria-del-tribunal-de-apelacion-en-el-caso-del-lider-indigena-jerhy-rivera/
+Call log:
+  - navigating to "https://www.larevista.cr/defensoria-ante-absolutoria-del-tribunal-de-apelacion-en-el-caso-del-lider-indigena-jerhy-rivera/", waiting until "domcontentloaded"
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\scrapers\larevistacr.py", line 305, in _scrape_article
+    await page.goto(
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\async_api\_generated.py", line 9045, in goto
+    await self._impl_obj.goto(
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Allis\AppData\Roaming\Python\Python312\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.larevista.cr/defensoria-ante-absolutoria-del-tribunal-de-apelacion-en-el-caso-del-lider-indigena-jerhy-rivera/
+Call log:
+  - navigating to "https://www.larevista.cr/defensoria-ante-absolutoria-del-tribunal-de-apelacion-en-el-caso-del-lider-indigena-jerhy-rivera/", waiting until "domcontentloaded"
+
+[2026-05-16 11:54:56,952] DEBUG - larevistacr: [435/1162] https://www.larevista.cr/camara-nacional-de-productores-de-leche-posicion-ante-la-decision-del-gobierno-de-panama-de-apelar-el-fallo-favorable-a-costa-rica/
+[2026-05-16 11:55:27,388] DEBUG - larevistacr: [436/1162] https://www.larevista.cr/defensoria-los-femicidios-son-un-reflejo-de-un-pais-donde-no-cesa-la-violencia-machista-hacia-las-mujeres/
+[2026-05-16 11:55:35,913] DEBUG - larevistacr: [437/1162] https://www.larevista.cr/bookafest-tercera-edicion-de-bookafest-feria-de-autores-autoras-y-emprendimientos/
+[2026-05-16 11:55:44,213] DEBUG - larevistacr: [438/1162] https://www.larevista.cr/el-uso-de-redes-sociales-en-la-politica-pros-contras-y-desafios-actuales/
+[2026-05-16 11:55:53,113] DEBUG - larevistacr: [439/1162] https://www.larevista.cr/defensoria-poblacion-afrodescendiente-levanta-su-voz-por-mejores-servicios-publicos-y-respeto-a-sus-tierras/
+[2026-05-16 11:56:01,421] DEBUG - larevistacr: [440/1162] https://www.larevista.cr/ucr-lanammeucr-realizo-evaluaciones-geotecnicas-a-mas-de-54-rutas-nacionales-con-caracteristicas-de-carreteras-de-montana-2/
+[2026-05-16 11:56:09,721] DEBUG - larevistacr: [441/1162] https://www.larevista.cr/apuntes-modernidad-y-memoria-historica-rodrigo-madrigal-y-la-trascendencia-del-mundo-de-colon/
+[2026-05-16 11:56:15,560] DEBUG - larevistacr: [442/1162] https://www.larevista.cr/divisiones-internas-sacuden-al-pusc/
+[2026-05-16 11:56:21,861] DEBUG - larevistacr: [443/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-24-01-2025/
+[2026-05-16 11:56:29,802] DEBUG - larevistacr: [444/1162] https://www.larevista.cr/utn-la-universidad-tecnica-nacional-y-la-federacion-occidental-de-municipalidades-de-alajuela-unen-esfuerzos-que-contribuiran-con-el-desarrollo-integral-de-la-region-de-occidente/
+[2026-05-16 11:56:35,770] DEBUG - larevistacr: [445/1162] https://www.larevista.cr/camara-nacional-de-productores-de-leche-posicion-ante-la-posibilidad-de-que-panama-apele-el-fallo-favorable-a-costa-rica-del-panel-arbitral-de-la-omc/
+[2026-05-16 11:56:47,029] DEBUG - larevistacr: [446/1162] https://www.larevista.cr/icafe-jale-a-coger-cafe-campana-busca-evitar-que-nuestro-cafe-se-siga-cayendo-por-falta-de-mano-de-obra/
+[2026-05-16 11:56:51,485] DEBUG - larevistacr: [447/1162] https://www.larevista.cr/amcham-transformacion-del-sector-turistico-analisis-y-proyecciones/
+[2026-05-16 11:56:56,725] DEBUG - larevistacr: [448/1162] https://www.larevista.cr/defensoria-situacion-de-personas-en-condicion-de-calle-requiere-de-un-abordaje-integral/
+[2026-05-16 11:57:01,373] DEBUG - larevistacr: [449/1162] https://www.larevista.cr/azofras-celebra-dictamen-afirmativo-de-jornadas-excepcionales-y-urge-procedimiento-abreviado-para-su-pronta-aprobacion/
+[2026-05-16 11:57:06,755] DEBUG - larevistacr: [450/1162] https://www.larevista.cr/amcham-sector-empresarial-urge-a-legisladores-a-aprobar-proyecto-de-jornadas-excepcionales/
+[2026-05-16 11:57:11,390] DEBUG - larevistacr: [451/1162] https://www.larevista.cr/anep-retraso-en-implementacion-de-la-tecnologia-5g-es-culpa-del-gobierno-y-las-administraciones-del-ice/
+[2026-05-16 11:57:16,694] DEBUG - larevistacr: [452/1162] https://www.larevista.cr/alvaro-ramos-presenta-su-vision-para-una-costa-rica-mas-justa-y-solidaria-2/
+[2026-05-16 11:57:21,723] DEBUG - larevistacr: [453/1162] https://www.larevista.cr/una-ofrece-carreras-y-becas-para-convertirse-en-profesional-de-excelencia/
+[2026-05-16 11:57:26,415] DEBUG - larevistacr: [454/1162] https://www.larevista.cr/es-este-el-momento-para-un-avance-de-la-izquierda-en-costa-rica/
+[2026-05-16 11:57:31,180] DEBUG - larevistacr: [455/1162] https://www.larevista.cr/pac-el-legado-de-solis-y-alvarado-divide-a-sus-militantes/
+[2026-05-16 11:57:35,942] DEBUG - larevistacr: [456/1162] https://www.larevista.cr/castillo-aclara-postura-y-reafirma-respeto-hacia-todos-los-precandidatos-del-pln/
+[2026-05-16 11:57:40,527] DEBUG - larevistacr: [457/1162] https://www.larevista.cr/alvaro-ramos-soy-liberacionista/
+[2026-05-16 11:57:43,916] DEBUG - larevistacr: [458/1162] https://www.larevista.cr/que-le-espera-a-costa-rica-en-el-2025-en-temas-de-movilidad-y-sostenibilidad/
+[2026-05-16 11:57:47,130] DEBUG - larevistacr: [459/1162] https://www.larevista.cr/ucr-soltemos-la-lengua-emociones-lenguaje-y-contexto-en-inteligencia-artificial/
+[2026-05-16 11:57:50,356] DEBUG - larevistacr: [460/1162] https://www.larevista.cr/comunicado-de-prensa-asamblea-legislativa-de-costa-rica-200-anos-fortaleciendo-la-paz-y-la-democracia/
+[2026-05-16 11:57:53,804] DEBUG - larevistacr: [461/1162] https://www.larevista.cr/ccss-area-salud-turrialba-jimenez-impulsa-la-salud-mental-y-cultura-indigena-en-adolescentes/
+[2026-05-16 11:57:57,174] DEBUG - larevistacr: [462/1162] https://www.larevista.cr/carolina-delgado-exige-claridad-sobre-la-militancia-politica-en-el-pln/
+[2026-05-16 11:58:01,792] DEBUG - larevistacr: [463/1162] https://www.larevista.cr/alvaro-ramos-presenta-su-vision-para-una-costa-rica-mas-justa-y-solidaria/
+[2026-05-16 11:58:04,926] DEBUG - larevistacr: [464/1162] https://www.larevista.cr/una-atencion-estudiantes-de-nuevo-ingreso-de-la-una-conozca-el-proceso-para-solicitar-beca/
+[2026-05-16 11:58:09,254] DEBUG - larevistacr: [465/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-17-01-2025/
+[2026-05-16 11:58:12,526] DEBUG - larevistacr: [466/1162] https://www.larevista.cr/ice-2025-inicia-con-rebaja-en-tarifas-electricas/
+[2026-05-16 11:58:17,362] DEBUG - larevistacr: [467/1162] https://www.larevista.cr/renuncias-masivas-sacuden-al-partido-liberal-progresista/
+[2026-05-16 11:58:21,926] DEBUG - larevistacr: [468/1162] https://www.larevista.cr/modificaran-las-reglas-en-el-pln-para-facilitar-una-postulacion/
+[2026-05-16 11:58:27,720] DEBUG - larevistacr: [469/1162] https://www.larevista.cr/ccss-refuerza-la-red-de-servicios-brunca-y-central-norte-con-dos-nuevos-tomografos/
+[2026-05-16 11:58:32,535] DEBUG - larevistacr: [470/1162] https://www.larevista.cr/defensoria-investiga-impacto-del-salario-unico-global-en-finanzas-publicas/
+[2026-05-16 11:58:37,335] DEBUG - larevistacr: [471/1162] https://www.larevista.cr/ucr-un-estudio-pionero-en-la-ucr-recibio-el-premio-jose-luis-coto-conde-del-archivo-nacional-de-costa-rica-por-ser-la-mejor-investigacion-archivistica-del-2024/
+[2026-05-16 11:58:42,079] DEBUG - larevistacr: [472/1162] https://www.larevista.cr/defensoria-mas-de-200-de-entidades-deportivas-sin-protocolos-contra-el-acoso-sexual/
+[2026-05-16 11:58:47,166] DEBUG - larevistacr: [473/1162] https://www.larevista.cr/utn-delegacion-de-la-utn-participo-en-escuela-de-invierno-en-alemania-impulsando-el-ecoturismo-y-la-sostenibilidad-internacional/
+[2026-05-16 11:58:50,222] DEBUG - larevistacr: [474/1162] https://www.larevista.cr/ccss-laboratorio-optico-de-la-ccss-inicia-labores-en-instalaciones-ubicadas-en-barrio-don-bosco/
+[2026-05-16 11:58:53,283] DEBUG - larevistacr: [475/1162] https://www.larevista.cr/marvin-taylor-anuncia-acciones-legales-contra-los-responsables-de-vallas-que-incitan-la-renuncia-de-funcionarios-publicos/
+[2026-05-16 11:58:57,528] DEBUG - larevistacr: [476/1162] https://www.larevista.cr/apuntes-la-objetividad-de-las-encuestas-un-desafio-constante/
+[2026-05-16 11:59:00,630] DEBUG - larevistacr: [477/1162] https://www.larevista.cr/ucr-para-muchos-ticos-y-ticas-la-satisfaccion-con-la-vida-esta-condicionada-por-el-dinero/
+[2026-05-16 11:59:05,024] DEBUG - larevistacr: [478/1162] https://www.larevista.cr/camara-nacional-de-productores-de-leche-ante-la-finalizacion-del-proceso-de-desgravacion-de-los-productos-lacteos-sensibles-en-el-cafta/
+[2026-05-16 11:59:09,621] DEBUG - larevistacr: [479/1162] https://www.larevista.cr/ageco-hace-un-llamado-al-reconocimiento-de-la-dignidad-de-las-personas-mayores-y-la-necesaria-reflexion-sobre-la-discriminacion-por-edad/
+[2026-05-16 11:59:14,222] DEBUG - larevistacr: [480/1162] https://www.larevista.cr/academia-nacional-de-medicina-de-costa-rica-13-de-enero-dia-mundial-de-lucha-contra-la-depresion/
+[2026-05-16 11:59:17,350] DEBUG - larevistacr: [481/1162] https://www.larevista.cr/siete-precandidatos-tiene-el-pln/
+[2026-05-16 11:59:21,759] DEBUG - larevistacr: [482/1162] https://www.larevista.cr/resumen-del-acontecer-legislativo-10-01-2025/
+[2026-05-16 11:59:24,890] DEBUG - larevistacr: [483/1162] https://www.larevista.cr/partido-liberacion-nacional-convocatoria-a-convencion-nacional-interna/
+[2026-05-16 11:59:29,418] DEBUG - larevistacr: [484/1162] https://www.larevista.cr/arbys-y-juan-valdez-cafe-son-las-dos-nuevas-razones-para-visitar-liberia/
+[2026-05-16 11:59:33,479] DEBUG - larevistacr: [485/1162] https://www.larevista.cr/defensoria-acceso-al-transporte-publico-esta-vinculado-con-el-ejercicio-de-otros-derechos/
+[2026-05-16 11:59:37,851] DEBUG - larevistacr: [486/1162] https://www.larevista.cr/apuntes-el-2025-unidad-y-compromiso-para-un-futuro-mejor/
+[2026-05-16 11:59:42,344] DEBUG - larevistacr: [487/1162] https://www.larevista.cr/defensoria-mayoria-de-denuncias-contra-municipalidades-ante-defensoria-obedecen-a-problemas-de-infraestructura-y-servicios/
+[2026-05-16 11:59:46,699] DEBUG - larevistacr: [488/1162] https://www.larevista.cr/ucr-una-nueva-unidad-de-la-ucr-abre-sus-puertas-para-que-costa-rica-tenga-medicamentos-mas-baratos/
+[2026-05-16 11:59:50,946] DEBUG - larevistacr: [489/1162] https://www.larevista.cr/cinde-iman-global-para-dispositivos-medicos-que-ocurre-para-que-las-exportaciones-de-este-sector-crezcan-18-promedio-anual-desde-el-2017/
+[2026-05-16 11:59:54,054] DEBUG - larevistacr: [490/1162] https://www.larevista.cr/procomer-procomer-comex-y-la-dga-facilitan-los-procesos-en-empresas-de-servicios-de-logistica-sel/
+[2026-05-16 11:59:57,152] DEBUG - larevistacr: [491/1162] https://www.larevista.cr/ucr-lanammeucr-realizo-evaluaciones-geotecnicas-a-mas-de-54-rutas-nacionales-con-caracteristicas-de-carreteras-de-montana/
+[2026-05-16 12:00:01,410] DEBUG - larevistacr: [492/1162] https://www.larevista.cr/ccss-llama-a-moderar-alimentacion-durante-fiestas-decembrinas/
+[2026-05-16 12:00:05,733] DEBUG - larevistacr: [493/1162] https://www.larevista.cr/procomer-pelicula-costarricense-una-navidad-sin-nieve-tuvo-su-premier-internacional-en-dubai/
+[2026-05-16 12:00:09,992] DEBUG - larevistacr: [494/1162] https://www.larevista.cr/ccss-instituciones-del-sector-salud-establecen-convenio-para-reforzar-formacion-de-medicos-especialistas/
+[2026-05-16 12:00:13,115] DEBUG - larevistacr: [495/1162] https://www.larevista.cr/ucr-me-comprometo-a-trabajar-activamente-para-fortalecer-el-estado-social-de-derecho-y-por-una-universidad-de-costa-rica-humanista-renovada-y-propositiva/
+[2026-05-16 12:00:17,591] DEBUG - larevistacr: [496/1162] https://www.larevista.cr/ccss-hospital-san-juan-de-dios-llama-a-donar-sangre-en-estas-fechas-festivas/
+[2026-05-16 12:00:22,361] DEBUG - larevistacr: [497/1162] https://www.larevista.cr/apuntes-la-democracia-segun-madrigal-entre-la-etica-del-poder-y-la-vigilancia-ciudadana/
+[2026-05-16 12:00:26,844] DEBUG - larevistacr: [498/1162] https://www.larevista.cr/defensoria-mep-adeuda-a-unos-21-mil-personas-pago-por-costo-de-vida/
+[2026-05-16 12:00:31,427] DEBUG - larevistacr: [499/1162] https://www.larevista.cr/tse-publico-reforma-integral-a-reglamento-sobre-procesos-partidarios-2/
+[2026-05-16 12:00:36,306] DEBUG - larevistacr: [500/1162] https://www.larevista.cr/colper-se-pronuncia-ante-reestructuracion-del-sinart/
+[2026-05-16 12:00:42,391] DEBUG - larevistacr: [501/1162] https://www.larevista.cr/transiciones-sin-ruptura-lecciones-de-america-latina-para-la-hungria-post-orban/
+[2026-05-16 12:00:46,383] DEBUG - larevistacr: [502/1162] https://www.larevista.cr/ian-buruma-jeffrey-epstein-y-los-peligros-del-antielitismo/
+[2026-05-16 12:00:49,734] DEBUG - larevistacr: [503/1162] https://www.larevista.cr/la-deriva-autoritaria-de-ecuador/
+[2026-05-16 12:00:54,885] DEBUG - larevistacr: [504/1162] https://www.larevista.cr/prosperidad-en-america-latina-una-region-fragmentada/
+[2026-05-16 12:00:59,956] DEBUG - larevistacr: [505/1162] https://www.larevista.cr/michael-spence-los-numerosos-cuellos-de-botella-de-la-economia-global/
+[2026-05-16 12:01:05,248] DEBUG - larevistacr: [506/1162] https://www.larevista.cr/presidentes-semi-dioses-y-teologias-de-segunda/
+[2026-05-16 12:01:08,453] DEBUG - larevistacr: [507/1162] https://www.larevista.cr/el-eje-del-sur-como-america-latina-y-africa-podrian-redefinir-el-comercio-global/
+[2026-05-16 12:01:11,655] DEBUG - larevistacr: [508/1162] https://www.larevista.cr/el-pulso-de-la-democracia-latinoamericana/
+[2026-05-16 12:01:16,564] DEBUG - larevistacr: [509/1162] https://www.larevista.cr/robin-hu-por-que-no-se-produce-el-desacople-entre-estados-unidos-y-china/
+[2026-05-16 12:01:21,613] DEBUG - larevistacr: [510/1162] https://www.larevista.cr/el-panorama-politico-latinoamericano-a-la-derecha-seguridad-economia-y-el-dilema-del-centro/
+[2026-05-16 12:01:24,830] DEBUG - larevistacr: [511/1162] https://www.larevista.cr/colombia-la-pelea-por-el-centro/
+[2026-05-16 12:01:29,350] DEBUG - larevistacr: [512/1162] https://www.larevista.cr/feminismo-entre-avances-legales-y-retrocesos-politicos-en-latinoamerica/
+[2026-05-16 12:01:32,632] DEBUG - larevistacr: [513/1162] https://www.larevista.cr/piroska-nagy-mohacsi-el-gran-reajuste-hungaro/
+[2026-05-16 12:01:37,356] DEBUG - larevistacr: [514/1162] https://www.larevista.cr/la-negociacion-eeuu-cuba-transicion-o-resistencia-adaptativa/
+[2026-05-16 12:01:40,513] DEBUG - larevistacr: [515/1162] https://www.larevista.cr/crimen-sin-fronteras-el-modelo-brasileno-que-se-expande-por-la-region/
+[2026-05-16 12:01:45,181] DEBUG - larevistacr: [516/1162] https://www.larevista.cr/peru-busca-un-nuevo-presidente/
+[2026-05-16 12:01:50,000] DEBUG - larevistacr: [517/1162] https://www.larevista.cr/por-que-y-como-impacta-la-guerra-de-iran-en-america-latina/
+[2026-05-16 12:01:53,096] DEBUG - larevistacr: [518/1162] https://www.larevista.cr/el-regimen-cubano-busca-un-acuerdo-con-trump-para-no-terminar-como-maduro/
+[2026-05-16 12:01:56,205] DEBUG - larevistacr: [519/1162] https://www.larevista.cr/el-escudo-de-las-americas-no-ayuda-a-america-latina/
+[2026-05-16 12:01:59,324] DEBUG - larevistacr: [520/1162] https://www.larevista.cr/la-victoria-contra-el-narco-y-el-riesgo-de-un-ejecutivo-sin-limites-mexico/
+[2026-05-16 12:02:02,493] DEBUG - larevistacr: [521/1162] https://www.larevista.cr/el-nuevo-mercosur-una-herramienta-comun-al-servicio-de-intereses-individuales/
+[2026-05-16 12:02:07,157] DEBUG - larevistacr: [522/1162] https://www.larevista.cr/que-gana-y-que-cede-argentina-con-el-acuerdo-de-trump/
+[2026-05-16 12:02:11,589] DEBUG - larevistacr: [523/1162] https://www.larevista.cr/el-imperio-de-los-ricos-desigualdad-poder-y-democracia-en-jaque/
+[2026-05-16 12:02:16,068] DEBUG - larevistacr: [524/1162] https://www.larevista.cr/america-first-aranceles-poder-militar-y-la-defensa-de-intereses-corporativos/
+[2026-05-16 12:02:20,346] DEBUG - larevistacr: [525/1162] https://www.larevista.cr/el-mapa-de-los-alineados-donald-trump-y-la-nueva-derecha-latinoamericana/
+[2026-05-16 12:02:24,928] DEBUG - larevistacr: [526/1162] https://www.larevista.cr/mayorias-esquivas-en-colombia/
+[2026-05-16 12:02:29,409] DEBUG - larevistacr: [527/1162] https://www.larevista.cr/canada-entre-la-ambicion-y-la-inaccion-del-discurso-de-davos-al-silencio-sobre-cuba/
+[2026-05-16 12:02:33,933] DEBUG - larevistacr: [528/1162] https://www.larevista.cr/peru-llega-al-dia-internacional-de-la-mujer-con-retrocesos-en-derechos-de-ninas-y-mujeres/
+[2026-05-16 12:02:38,351] DEBUG - larevistacr: [529/1162] https://www.larevista.cr/cuando-los-estados-se-pelean-el-crimen-se-coordina-ecuador-versus-colombia-2/
+[2026-05-16 12:02:42,613] DEBUG - larevistacr: [530/1162] https://www.larevista.cr/redes-sociales-y-menores-el-consenso-por-la-regulacion-llego-a-america-latina-la-geopolitica-del-yo/
+[2026-05-16 12:02:46,998] DEBUG - larevistacr: [531/1162] https://www.larevista.cr/la-geopolitica-del-yo/
+[2026-05-16 12:02:51,448] DEBUG - larevistacr: [532/1162] https://www.larevista.cr/elecciones-en-bolivia-de-la-desaparicion-del-mas-a-la-fragmentacion-del-electorado/
+[2026-05-16 12:02:54,519] DEBUG - larevistacr: [533/1162] https://www.larevista.cr/duro-poco-peru-vuelve-a-quedarse-sin-presidente-2/
+[2026-05-16 12:02:58,886] DEBUG - larevistacr: [534/1162] https://www.larevista.cr/los-tres-mensajes-de-milei-con-la-reforma-laboral-en-argentina/
+[2026-05-16 12:03:03,490] DEBUG - larevistacr: [535/1162] https://www.larevista.cr/cobro-de-piso-en-mexico-una-extorsion-de-avance-imparable/
+[2026-05-16 12:03:06,618] DEBUG - larevistacr: [536/1162] https://www.larevista.cr/mexico-en-el-discurso-del-primer-ministro-de-canada/
+[2026-05-16 12:03:11,733] DEBUG - larevistacr: [537/1162] https://www.larevista.cr/peru-un-pais-polarizado/
+[2026-05-16 12:03:16,739] DEBUG - larevistacr: [538/1162] https://www.larevista.cr/duro-poco-peru-vuelve-a-quedarse-sin-presidente/
+[2026-05-16 12:03:19,911] DEBUG - larevistacr: [539/1162] https://www.larevista.cr/el-mapa-de-los-alineados-como-esta-la-relacion-entre-los-paises-de-latinoamerica-y-los-estados-unidos/
+[2026-05-16 12:03:23,033] DEBUG - larevistacr: [540/1162] https://www.larevista.cr/la-epidemia-de-soledad-llego-a-brasil/
+[2026-05-16 12:03:26,174] DEBUG - larevistacr: [541/1162] https://www.larevista.cr/corrupcion-estructural-y-democracias-fragiles-el-circulo-vicioso-latinoamericano/
+[2026-05-16 12:03:30,826] DEBUG - larevistacr: [542/1162] https://www.larevista.cr/hay-camino-de-vuelta-tras-la-diaspora-venezolana/
+[2026-05-16 12:03:33,935] DEBUG - larevistacr: [543/1162] https://www.larevista.cr/la-noche-en-que-el-reggaeton-desafio-al-imperio-bad-bunny-y-la-batalla-por-la-hegemonia-cultural/
+[2026-05-16 12:03:37,085] DEBUG - larevistacr: [544/1162] https://www.larevista.cr/la-noche-en-que-el-reggaeton-desafio-al-imperio-bad-bunny-y-la-batalla-por-la-hegemonia-cultural-2/
+[2026-05-16 12:03:40,163] DEBUG - larevistacr: [545/1162] https://www.larevista.cr/crisis-hidricas-en-montevideo-y-rio-de-janeiro-una-oportunidad-para-la-privatizacion/
+[2026-05-16 12:03:43,265] DEBUG - larevistacr: [546/1162] https://www.larevista.cr/viabilidad-y-efectividad-del-corredor-humanitario-de-jose-antonio-kast/
+[2026-05-16 12:03:46,322] DEBUG - larevistacr: [547/1162] https://www.larevista.cr/una-victoria-contundente-que-desnuda-a-la-politica-tradicional-costarricense/
+[2026-05-16 12:03:49,424] DEBUG - larevistacr: [548/1162] https://www.larevista.cr/mas-alla-del-crecimiento-el-papel-del-estado-en-la-reduccion-de-la-pobreza-en-mexico/
+[2026-05-16 12:03:52,552] DEBUG - larevistacr: [549/1162] https://www.larevista.cr/estados-unidos-en-venezuela-la-cuestionable-soberania-compartida/
+[2026-05-16 12:03:56,249] DEBUG - larevistacr: [550/1162] https://www.larevista.cr/67-anos-despues-cuba-sigue-siendo-una-metafora-para-washington/
+[2026-05-16 12:03:59,362] DEBUG - larevistacr: [551/1162] https://www.larevista.cr/ecuador-2026-un-ano-de-tensiones-a-la-vista/
+[2026-05-16 12:04:03,798] DEBUG - larevistacr: [552/1162] https://www.larevista.cr/amit-seru-como-la-fed-se-convirtio-en-un-prestamista-de-recurso-inmediato/
+[2026-05-16 12:04:08,663] DEBUG - larevistacr: [553/1162] https://www.larevista.cr/costa-rica-en-la-encrucijada-certidumbre-historica-frente-a-volatilidad-electoral/
+[2026-05-16 12:04:11,866] DEBUG - larevistacr: [554/1162] https://www.larevista.cr/despues-de-40-anos-de-frustraciones-y-resiliencia-el-mercosur-es-mas-relevante-que-nunca/
+[2026-05-16 12:04:16,565] DEBUG - larevistacr: [555/1162] https://www.larevista.cr/los-desafios-de-mexico-en-2026/
+[2026-05-16 12:04:19,851] DEBUG - larevistacr: [556/1162] https://www.larevista.cr/michael-spence-el-desafio-de-la-difusion-de-la-ia/
+[2026-05-16 12:04:22,949] DEBUG - larevistacr: [557/1162] https://www.larevista.cr/cilia-flores-la-primera-dama-combatiente/
+[2026-05-16 12:04:27,420] DEBUG - larevistacr: [558/1162] https://www.larevista.cr/por-que-a-china-taiwan-y-estados-unidos-les-importa-tanto-paraguay/
+[2026-05-16 12:04:32,015] DEBUG - larevistacr: [559/1162] https://www.larevista.cr/la-derecha-vuelve-al-poder-en-honduras/
+[2026-05-16 12:04:36,527] DEBUG - larevistacr: [560/1162] https://www.larevista.cr/el-acuerdo-entre-la-union-europea-y-el-mercosur-lo-que-paso-y-lo-que-se-viene/
+[2026-05-16 12:04:41,027] DEBUG - larevistacr: [561/1162] https://www.larevista.cr/anke-hassel-y-frieder-mitsch-la-soberania-tecnologica-europea-requiere-apalancamiento-digital-no-autosuficiencia/
+[2026-05-16 12:04:45,637] DEBUG - larevistacr: [562/1162] https://www.larevista.cr/venezuela-y-el-orden-mundial/
+[2026-05-16 12:04:50,158] DEBUG - larevistacr: [563/1162] https://www.larevista.cr/reducir-la-violencia-la-politica-economica-pendiente-de-america-latina-2/
+[2026-05-16 12:04:54,679] DEBUG - larevistacr: [564/1162] https://www.larevista.cr/ia-y-datos-satelitales-una-oportunidad-con-grandes-desafios-para-america-latina-2/
+[2026-05-16 12:04:59,168] DEBUG - larevistacr: [565/1162] https://www.larevista.cr/europa-ausente-y-america-latina-dividida-se-ha-agotado-el-dialogo-2/
+[2026-05-16 12:05:03,730] DEBUG - larevistacr: [566/1162] https://www.larevista.cr/ian-buruma-japon-habla-claro/
+[2026-05-16 12:05:08,592] DEBUG - larevistacr: [567/1162] https://www.larevista.cr/del-oro-al-escano-mineria-ilegal-y-las-elecciones-peruanas-del-2026-2/
+[2026-05-16 12:05:13,163] DEBUG - larevistacr: [568/1162] https://www.larevista.cr/america-latina-2025-el-voto-castigo-entre-la-fragmentacion-y-la-erosion-democratica/
+[2026-05-16 12:05:16,317] DEBUG - larevistacr: [569/1162] https://www.larevista.cr/quien-controla-al-poder-elecciones-judiciales-en-bolivia-y-mexico/
+[2026-05-16 12:05:19,471] DEBUG - larevistacr: [570/1162] https://www.larevista.cr/en-el-nombre-de-dios-el-caracter-mesianico-del-populismo/
+[2026-05-16 12:05:23,973] DEBUG - larevistacr: [571/1162] https://www.larevista.cr/daniel-gros-quien-les-teme-a-las-stablecoins/
+[2026-05-16 12:05:29,134] DEBUG - larevistacr: [572/1162] https://www.larevista.cr/mas-productividad-con-menos-empleo-el-reto-laboral-que-enfrenta-america-latina/
+[2026-05-16 12:05:32,250] DEBUG - larevistacr: [573/1162] https://www.larevista.cr/la-indefension-del-ciudadano-la-puerta-de-entrada-a-las-peores-violaciones-de-derechos-humanos-en-cuba/
+[2026-05-16 12:05:35,369] DEBUG - larevistacr: [574/1162] https://www.larevista.cr/una-oportunidad-estrategica-la-recta-final-del-acuerdo-del-mercosur-con-la-union-europea/
+[2026-05-16 12:05:41,184] DEBUG - larevistacr: [575/1162] https://www.larevista.cr/de-boric-a-kast-expectativas-realidades-y-limites-de-un-cambio-profundo/
+[2026-05-16 12:05:47,664] DEBUG - larevistacr: [576/1162] https://www.larevista.cr/howard-davies-el-consenso-de-basilea-comienza-a-mostrar-fisuras/
+[2026-05-16 12:05:52,316] DEBUG - larevistacr: [577/1162] https://www.larevista.cr/si-la-narrativa-no-alcanza-es-momento-de-revisar-la-gestion/
+[2026-05-16 12:05:56,870] DEBUG - larevistacr: [578/1162] https://www.larevista.cr/ian-buruma-los-ingredientes-que-faltan-para-la-paz-en-palestina/
+[2026-05-16 12:06:02,513] DEBUG - larevistacr: [579/1162] https://www.larevista.cr/los-peligros-de-un-cambio-de-regimen-impuesto-en-venezuela/
+[2026-05-16 12:06:07,123] DEBUG - larevistacr: [580/1162] https://www.larevista.cr/las-ollas-de-microtrafico-en-colombia-un-problema-de-seguridad-nacional-y-transnacional/
+[2026-05-16 12:06:11,555] DEBUG - larevistacr: [581/1162] https://www.larevista.cr/chile-el-fin-del-clivaje-dictadura-democracia/
+[2026-05-16 12:06:16,104] DEBUG - larevistacr: [582/1162] https://www.larevista.cr/maria-corina-machado-un-nobel-de-la-paz-controvertido/
+[2026-05-16 12:06:19,233] DEBUG - larevistacr: [583/1162] https://www.larevista.cr/como-se-entiende-el-triunfo-de-kast/
+[2026-05-16 12:06:23,681] DEBUG - larevistacr: [584/1162] https://www.larevista.cr/ia-y-datos-satelitales-una-oportunidad-con-grandes-desafios-para-america-latina/
+[2026-05-16 12:06:26,917] DEBUG - larevistacr: [585/1162] https://www.larevista.cr/reducir-la-violencia-la-politica-economica-pendiente-de-america-latina/
+[2026-05-16 12:06:31,306] DEBUG - larevistacr: [586/1162] https://www.larevista.cr/europa-ausente-y-america-latina-dividida-se-ha-agotado-el-dialogo/
+[2026-05-16 12:06:35,739] DEBUG - larevistacr: [587/1162] https://www.larevista.cr/ian-buruma-la-dama-de-hierro-de-japon/
+[2026-05-16 12:06:40,817] DEBUG - larevistacr: [588/1162] https://www.larevista.cr/segunda-vuelta-presidencial-chilena-la-historia-se-repite-o-se-reinventa/
+[2026-05-16 12:06:45,283] DEBUG - larevistacr: [589/1162] https://www.larevista.cr/el-pais-donde-nadie-acepta-perder-anatomia-del-colapso-electoral-hondureno/
+[2026-05-16 12:06:49,682] DEBUG - larevistacr: [590/1162] https://www.larevista.cr/del-oro-al-escano-mineria-ilegal-y-las-elecciones-peruanas-del-2026/
+[2026-05-16 12:06:54,209] DEBUG - larevistacr: [591/1162] https://www.larevista.cr/chile-entre-dos-vueltas-y-un-nuevo-mapa-electoral/
+[2026-05-16 12:06:57,287] DEBUG - larevistacr: [592/1162] https://www.larevista.cr/trump-y-la-nueva-doctrina-del-garrote-para-america-latina/
+[2026-05-16 12:07:00,493] DEBUG - larevistacr: [593/1162] https://www.larevista.cr/tras-30-anos-de-negociaciones-llego-la-hora-de-concretar-el-acuerdo-entre-la-ue-y-el-mercosur/
+[2026-05-16 12:07:05,034] DEBUG - larevistacr: [594/1162] https://www.larevista.cr/daniel-gros-el-gol-en-contra-de-china-con-las-tierras-raras/
+[2026-05-16 12:07:09,774] DEBUG - larevistacr: [595/1162] https://www.larevista.cr/la-diplomacia-en-la-relacion-mexico-espana/
+[2026-05-16 12:07:14,295] DEBUG - larevistacr: [596/1162] https://www.larevista.cr/fin-de-ciclo-el-mas-cede-el-poder-tras-veinte-anos-de-hegemonia-en-bolivia/
+[2026-05-16 12:07:19,035] DEBUG - larevistacr: [597/1162] https://www.larevista.cr/la-presencia-estrategica-de-rusia-en-centroamerica/
+[2026-05-16 12:07:23,660] DEBUG - larevistacr: [598/1162] https://www.larevista.cr/honduras-ante-las-urnas-democracia-en-la-cuerda-floja/
+[2026-05-16 12:07:28,090] DEBUG - larevistacr: [599/1162] https://www.larevista.cr/elecciones-2025-los-dos-ejes-de-la-politica-chilena/
+[2026-05-16 12:07:32,540] DEBUG - larevistacr: [600/1162] https://www.larevista.cr/michael-spence-por-que-las-economias-emergentes-adoptan-la-ia/
+[2026-05-16 12:07:37,279] DEBUG - larevistacr: [601/1162] https://www.larevista.cr/honduras-de-cara-a-la-eleccion-la-urgencia-de-restaurar-la-confianza-democratica/
+[2026-05-16 12:07:40,408] DEBUG - larevistacr: [602/1162] https://www.larevista.cr/las-claves-de-la-victoria-del-no-en-ecuador/
+[2026-05-16 12:07:45,081] DEBUG - larevistacr: [603/1162] https://www.larevista.cr/escenarios-de-violencia-en-mexico/
+[2026-05-16 12:07:49,891] DEBUG - larevistacr: [604/1162] https://www.larevista.cr/de-lo-ideologico-a-lo-pragmatico-se-mueve-el-pendulo-en-bolivia/
+[2026-05-16 12:07:54,952] DEBUG - larevistacr: [605/1162] https://www.larevista.cr/cop30-el-tiempo-de-la-amazonia/
+[2026-05-16 12:07:58,061] DEBUG - larevistacr: [606/1162] https://www.larevista.cr/son-obsoletas-las-cumbres-entre-la-ue-y-la-celac/
+[2026-05-16 12:08:02,667] DEBUG - larevistacr: [607/1162] https://www.larevista.cr/mexico-ante-la-polarizacion-afectiva-cuando-el-desacuerdo-se-vuelve-identidad-politica/
+[2026-05-16 12:08:05,892] DEBUG - larevistacr: [608/1162] https://www.larevista.cr/el-voto-tras-las-rejas-una-deuda-democratica-en-america-latina/
+[2026-05-16 12:08:10,406] DEBUG - larevistacr: [609/1162] https://www.larevista.cr/democracia-en-juicio/
+[2026-05-16 12:08:13,556] DEBUG - larevistacr: [610/1162] https://www.larevista.cr/el-efecto-sorpresa-como-motor-de-la-politica-argentina/
+[2026-05-16 12:08:18,101] DEBUG - larevistacr: [611/1162] https://www.larevista.cr/el-golpismo-no-muere-el-bolsonarismo-y-la-amenaza-continua-contra-el-estado-de-derecho-en-brasil/
+[2026-05-16 12:08:22,687] DEBUG - larevistacr: [612/1162] https://www.larevista.cr/cepal-america-latina-y-el-caribe-requiere-invertir-mas-y-mejor-en-educacion-para-superar-la-crisis-de-aprendizaje-y-financiera-urge-nuevo-informe-regional/
+[2026-05-16 12:08:25,799] DEBUG - larevistacr: [613/1162] https://www.larevista.cr/eutanasia-en-uruguay-mas-o-menos-derechos/
+[2026-05-16 12:08:30,422] DEBUG - larevistacr: [614/1162] https://www.larevista.cr/el-oro-sucio-de-la-politica-peruana/
+[2026-05-16 12:08:34,871] DEBUG - larevistacr: [615/1162] https://www.larevista.cr/las-elecciones-intermedias-consolidan-a-milei-y-redefine-el-mapa-politico-argentino/
+[2026-05-16 12:08:39,479] DEBUG - larevistacr: [616/1162] https://www.larevista.cr/como-discord-y-las-redes-se-convirtieron-en-la-plaza-publica-de-la-generacion-z/
+[2026-05-16 12:08:43,994] DEBUG - larevistacr: [617/1162] https://www.larevista.cr/incapacidad-moral-en-peru-democracia-fatigada-y-el-fin-del-ciclo-boluarte/
+[2026-05-16 12:08:48,574] DEBUG - larevistacr: [618/1162] https://www.larevista.cr/eutanasia-en-uruguay-una-conquista-civil-que-redefine-los-limites-de-la-libertad-individual/
+[2026-05-16 12:08:53,720] DEBUG - larevistacr: [619/1162] https://www.larevista.cr/daniel-gros-la-guerra-de-los-molinos-de-viento/
+[2026-05-16 12:08:58,321] DEBUG - larevistacr: [620/1162] https://www.larevista.cr/la-revolucion-fallida-de-milei-de-motosierras-libertarias-a-un-rescate-estadounidense/
+[2026-05-16 12:09:03,083] DEBUG - larevistacr: [621/1162] https://www.larevista.cr/bolivia-los-desafios-del-proximo-gobierno-de-rodrigo-paz/
+[2026-05-16 12:09:07,648] DEBUG - larevistacr: [622/1162] https://www.larevista.cr/el-fin-del-gobierno-de-dina-boluarte-y-el-patron-de-los-fracasos-presidenciales-en-la-region-2/
+[2026-05-16 12:09:10,854] DEBUG - larevistacr: [623/1162] https://www.larevista.cr/el-fin-del-gobierno-de-dina-boluarte-y-el-patron-de-los-fracasos-presidenciales-en-la-region/
+[2026-05-16 12:09:15,279] DEBUG - larevistacr: [624/1162] https://www.larevista.cr/ian-buruma-prohibido-hacer-chistes/
+[2026-05-16 12:09:19,919] DEBUG - larevistacr: [625/1162] https://www.larevista.cr/las-venas-abiertas-de-colombia/
+[2026-05-16 12:09:23,032] DEBUG - larevistacr: [626/1162] https://www.larevista.cr/la-voz-de-america-latina-en-la-asamblea-general-de-las-naciones-unidas/
+[2026-05-16 12:09:27,570] DEBUG - larevistacr: [627/1162] https://www.larevista.cr/crimen-organizado-y-desarrollo-humano-la-urgencia-de-una-respuesta-estructural-en-america-latina/
+[2026-05-16 12:09:32,789] DEBUG - larevistacr: [628/1162] https://www.larevista.cr/el-ejercito-del-pueblo-paraguayo-la-guerrilla-que-persiste-en-el-corazon-de-sudamerica/
+[2026-05-16 12:09:37,160] DEBUG - larevistacr: [629/1162] https://www.larevista.cr/del-beneficio-privado-al-costo-colectivo-la-explotacion-de-los-recursos-comunes-en-america-latina/
+[2026-05-16 12:09:41,657] DEBUG - larevistacr: [630/1162] https://www.larevista.cr/howard-davies-jason-furman-aislacionismo-estadounidense-tambien-en-las-normas-contables/
+[2026-05-16 12:09:46,359] DEBUG - larevistacr: [631/1162] https://www.larevista.cr/el-nobel-de-la-paz-a-maria-corina-machado-y-su-impacto-en-la-politica-latinoamericana/
+[2026-05-16 12:09:50,992] DEBUG - larevistacr: [632/1162] https://www.larevista.cr/la-desintoxicacion-politica-de-brasil/
+[2026-05-16 12:09:55,483] DEBUG - larevistacr: [633/1162] https://www.larevista.cr/las-sombras-de-la-soberania-en-mexico/
+[2026-05-16 12:09:58,533] DEBUG - larevistacr: [634/1162] https://www.larevista.cr/america-latina-atrapada-en-la-trampa-de-los-recursos/
+[2026-05-16 12:10:03,465] DEBUG - larevistacr: [635/1162] https://www.larevista.cr/javier-milei-y-los-limites-del-antagonismo-permanente-en-politica/
+[2026-05-16 12:10:08,372] DEBUG - larevistacr: [636/1162] https://www.larevista.cr/ecuador-frente-a-la-voracidad-del-hiperpresidencialismo/
+[2026-05-16 12:10:13,429] DEBUG - larevistacr: [637/1162] https://www.larevista.cr/como-afrontar-el-discurso-de-odio-en-la-escuela/
+[2026-05-16 12:10:19,268] DEBUG - larevistacr: [638/1162] https://www.larevista.cr/el-numero-de-dios-o-el-cuerpo-como-mapa-del-universo/
+[2026-05-16 12:10:24,084] DEBUG - larevistacr: [639/1162] https://www.larevista.cr/piense-en-como-piensa-antes-de-preguntarle-nada-a-la-ia/
+[2026-05-16 12:10:28,362] DEBUG - larevistacr: [640/1162] https://www.larevista.cr/solo-una-de-cada-diez-se-recicla-el-reto-de-introducir-las-baterias-de-litio-en-la-economia-circular/
+[2026-05-16 12:10:33,041] DEBUG - larevistacr: [641/1162] https://www.larevista.cr/el-uso-de-la-fuerza-en-aguas-internacionales-una-reflexion-juridica-desde-el-caribe/
+[2026-05-16 12:10:37,596] DEBUG - larevistacr: [642/1162] https://www.larevista.cr/cepal-america-latina-y-el-caribe-ante-la-segunda-cumbre-mundial-sobre-desarrollo-social-propuestas-para-un-desarrollo-social-inclusivo/
+[2026-05-16 12:10:43,214] DEBUG - larevistacr: [643/1162] https://www.larevista.cr/geopolitica-en-tu-bolsillo-como-brasil-se-desdolariza/
+[2026-05-16 12:10:48,680] DEBUG - larevistacr: [644/1162] https://www.larevista.cr/por-que-el-crimen-organizado-es-cada-vez-mas-grave-en-america-latina/
+[2026-05-16 12:10:53,221] DEBUG - larevistacr: [645/1162] https://www.larevista.cr/milei-cronica-de-una-derrota-autoinfligida/
+[2026-05-16 12:10:57,812] DEBUG - larevistacr: [646/1162] https://www.larevista.cr/de-inmoviles-nada-estas-son-las-plantas-mas-veloces/
+[2026-05-16 12:11:02,030] DEBUG - larevistacr: [647/1162] https://www.larevista.cr/dos-nuevos-cometas-ya-son-protagonistas-del-cielo-vespertino/
+[2026-05-16 12:11:06,462] DEBUG - larevistacr: [648/1162] https://www.larevista.cr/descubriendo-la-prehistoria-con-un-movil-digitalizacion-3d-de-la-cueva-de-la-pileta/
+[2026-05-16 12:11:11,019] DEBUG - larevistacr: [649/1162] https://www.larevista.cr/el-gran-dia-de-las-ondas-gravitacionales-una-decada-escuchando-senales-invisibles-del-universo/
+[2026-05-16 12:11:15,712] DEBUG - larevistacr: [650/1162] https://www.larevista.cr/la-geometria-oculta-en-el-cerebro-asi-construimos-mapas-mentales-para-orientarnos-en-el-mundo/
+[2026-05-16 12:11:20,073] DEBUG - larevistacr: [651/1162] https://www.larevista.cr/observar-y-comprender-el-comportamiento-de-las-personas-ayuda-a-transformar-los-negocios/
+[2026-05-16 12:11:24,577] DEBUG - larevistacr: [652/1162] https://www.larevista.cr/del-11-s-a-2025-como-se-han-reinventado-el-terrorismo-y-el-miedo/
+[2026-05-16 12:11:29,182] DEBUG - larevistacr: [653/1162] https://www.larevista.cr/ventajas-de-la-realidad-virtual-para-la-clase-de-educacion-fisica/
+[2026-05-16 12:11:34,208] DEBUG - larevistacr: [654/1162] https://www.larevista.cr/medir-y-entender-la-incertidumbre-para-tomar-mejores-decisiones/
+[2026-05-16 12:11:38,536] DEBUG - larevistacr: [655/1162] https://www.larevista.cr/cinco-claves-para-entender-las-tensiones-que-vive-colombia-rumbo-a-su-cita-con-las-urnas-de-2026/
+[2026-05-16 12:11:42,948] DEBUG - larevistacr: [656/1162] https://www.larevista.cr/esta-es-mi-vida-claves-psicologicas-y-riesgos-de-la-sobreexposicion-en-redes-sociales/
+[2026-05-16 12:11:47,284] DEBUG - larevistacr: [657/1162] https://www.larevista.cr/la-otra-victoria-de-carlos-alcaraz-el-abierto-del-equilibrio-mental/
+[2026-05-16 12:11:51,665] DEBUG - larevistacr: [658/1162] https://www.larevista.cr/destronando-al-rey-dolar-los-brics-y-el-sur-global-en-marcha/
+[2026-05-16 12:11:56,243] DEBUG - larevistacr: [659/1162] https://www.larevista.cr/cepal-panorama-social-de-america-latina-y-el-caribe-2024/
+[2026-05-16 12:12:00,885] DEBUG - larevistacr: [660/1162] https://www.larevista.cr/venezuela-el-ataque-que-sacude-el-hemisferio/
+[2026-05-16 12:12:05,484] DEBUG - larevistacr: [661/1162] https://www.larevista.cr/bolivia-mas-vale-nuevo-por-conocer-que-viejo-conocido/
+[2026-05-16 12:12:10,024] DEBUG - larevistacr: [662/1162] https://www.larevista.cr/lula-2026-entre-el-escenario-biden-y-el-efecto-moby-dick/
+[2026-05-16 12:12:14,575] DEBUG - larevistacr: [663/1162] https://www.larevista.cr/cuatro-maneras-de-hacer-mas-participativa-e-igualitaria-la-clase-de-musica/
+[2026-05-16 12:12:18,921] DEBUG - larevistacr: [664/1162] https://www.larevista.cr/asi-afectara-el-cambio-climatico-al-oleaje-de-los-oceanos-las-rutas-maritimas-y-la-geopolitica/
+[2026-05-16 12:12:23,226] DEBUG - larevistacr: [665/1162] https://www.larevista.cr/como-hacer-calculos-avanzados-de-fisica-nuclear-sin-ser-un-experto/
+[2026-05-16 12:12:27,936] DEBUG - larevistacr: [666/1162] https://www.larevista.cr/europa-avanza-en-ia-pero-no-todas-sus-regiones-van-al-mismo-ritmo/
+[2026-05-16 12:12:32,683] DEBUG - larevistacr: [667/1162] https://www.larevista.cr/herbivoros-y-fuego-controlado-una-alianza-necesaria-para-prevenir-grandes-incendios-forestales/
+[2026-05-16 12:12:37,391] DEBUG - larevistacr: [668/1162] https://www.larevista.cr/cuando-es-el-lobo-quien-narra-el-cuento-la-perspectiva-del-asesino-en-el-true-crime/
+[2026-05-16 12:12:42,105] DEBUG - larevistacr: [669/1162] https://www.larevista.cr/la-privacidad-nos-persigue-pero-nosotros-somos-mas-rapidos/
+[2026-05-16 12:12:46,480] DEBUG - larevistacr: [670/1162] https://www.larevista.cr/por-que-ha-sido-tan-mortifero-el-terremoto-de-afganistan/
+[2026-05-16 12:12:50,867] DEBUG - larevistacr: [671/1162] https://www.larevista.cr/macrofagos-el-decisivo-papel-de-las-celulas-tragonas-del-sistema-inmunitario-en-nuestra-salud/
+[2026-05-16 12:12:55,163] DEBUG - larevistacr: [672/1162] https://www.larevista.cr/el-desfile-militar-en-china-exhibe-un-nuevo-orden-mundial/
+[2026-05-16 12:12:59,743] DEBUG - larevistacr: [673/1162] https://www.larevista.cr/la-derrota-electoral-en-buenos-aires-expone-las-fisuras-de-la-libertad-avanza-de-milei/
+[2026-05-16 12:13:04,599] DEBUG - larevistacr: [674/1162] https://www.larevista.cr/cepal-estudio-economico-de-america-latina-y-el-caribe-2024/
+[2026-05-16 12:13:09,286] DEBUG - larevistacr: [675/1162] https://www.larevista.cr/mexico-extraditados-y-extraditables/
+[2026-05-16 12:13:13,878] DEBUG - larevistacr: [676/1162] https://www.larevista.cr/haiti-entre-la-farsa-de-la-estabilizacion-y-la-violencia-institucionalizada/
+[2026-05-16 12:13:18,670] DEBUG - larevistacr: [677/1162] https://www.larevista.cr/cisnes-negros-en-bolivia/
+[2026-05-16 12:13:23,402] DEBUG - larevistacr: [678/1162] https://www.larevista.cr/avispa-asiatica-por-que-la-captura-masiva-con-trampas-debe-parar/
+[2026-05-16 12:13:27,881] DEBUG - larevistacr: [679/1162] https://www.larevista.cr/mas-humedades-menos-luz-mas-ruido-y-mas-criminalidad-la-precariedad-habitacional-fomenta-la-delincuencia/
+[2026-05-16 12:13:32,275] DEBUG - larevistacr: [680/1162] https://www.larevista.cr/los-suplementos-de-vitamina-d-podrian-retrasar-el-envejecimiento/
+[2026-05-16 12:13:36,447] DEBUG - larevistacr: [681/1162] https://www.larevista.cr/materiales-para-aviones-inspirados-en-los-esqueletos-de-los-erizos-de-mar/
+[2026-05-16 12:13:40,866] DEBUG - larevistacr: [682/1162] https://www.larevista.cr/galicia-crece-40-000-km%c2%b2-bajo-el-mar-conquistando-terreno-usado-como-vertedero-nuclear/
+[2026-05-16 12:13:45,240] DEBUG - larevistacr: [683/1162] https://www.larevista.cr/las-brujas-en-el-imaginario-feminista-desde-cuando-y-por-que-ahora/
+[2026-05-16 12:13:49,552] DEBUG - larevistacr: [684/1162] https://www.larevista.cr/el-cautiverio-de-miguel-de-cervantes-en-argel-muchos-mitos-y-pocas-realidades/
+[2026-05-16 12:13:54,356] DEBUG - larevistacr: [685/1162] https://www.larevista.cr/voces-ucranianas-i-testimonios-desde-el-exilio/
+[2026-05-16 12:13:58,710] DEBUG - larevistacr: [686/1162] https://www.larevista.cr/que-nos-dicen-las-coquinas-del-guadiana-y-el-guadalquivir-sobre-los-microplasticos/
+[2026-05-16 12:14:03,234] DEBUG - larevistacr: [687/1162] https://www.larevista.cr/el-rey-lear-y-la-sucesion-en-los-negocios-familiares/
+[2026-05-16 12:14:07,556] DEBUG - larevistacr: [688/1162] https://www.larevista.cr/weapons-el-terror-que-surge-a-partir-de-la-desconexion-moral/
+[2026-05-16 12:14:11,914] DEBUG - larevistacr: [689/1162] https://www.larevista.cr/el-otro-incendio-como-la-desinformacion-en-redes-sociales-enciende-la-polarizacion-politica/
+[2026-05-16 12:14:16,183] DEBUG - larevistacr: [690/1162] https://www.larevista.cr/del-sargazo-a-la-economia-azul-una-oportunidad-para-el-gran-caribe/
+[2026-05-16 12:14:20,640] DEBUG - larevistacr: [691/1162] https://www.larevista.cr/el-negacionismo-que-permanece-como-el-legado-bolsonarista-moldea-la-politica-brasilena/
+[2026-05-16 12:14:25,198] DEBUG - larevistacr: [692/1162] https://www.larevista.cr/experiencia-democratica-y-tentaciones-autoritarias-en-america-latina/
+[2026-05-16 12:14:29,737] DEBUG - larevistacr: [693/1162] https://www.larevista.cr/mercenarios-colombianos-en-sudan-el-negocio-global-de-la-seguridad-privada/
+[2026-05-16 12:14:34,211] DEBUG - larevistacr: [694/1162] https://www.larevista.cr/vamos-al-museo-y-aprendemos-historia-como-aprovechar-el-patrimonio-en-educacion-infantil/
+[2026-05-16 12:14:38,456] DEBUG - larevistacr: [695/1162] https://www.larevista.cr/como-el-cumplimiento-de-un-mandato-divino-ha-llevado-a-israel-a-matar-a-decenas-de-miles-de-palestinos/
+[2026-05-16 12:14:42,701] DEBUG - larevistacr: [696/1162] https://www.larevista.cr/la-ansiedad-puede-diagnosticarse-de-diferentes-maneras-dependiendo-del-pais-y-la-cultura/
+[2026-05-16 12:14:47,467] DEBUG - larevistacr: [697/1162] https://www.larevista.cr/estrategias-de-gestion-forestal-para-adaptar-el-paisaje-a-un-mundo-mas-calido-y-proclive-a-los-incendios/
+[2026-05-16 12:14:52,145] DEBUG - larevistacr: [698/1162] https://www.larevista.cr/el-planeta-enano-ceres-fue-un-mundo-oceanico-que-pudo-estar-habitado-segun-desvela-la-sonda-dawn-de-la-nasa/
+[2026-05-16 12:14:56,979] DEBUG - larevistacr: [699/1162] https://www.larevista.cr/la-ia-reduce-drasticamente-los-riesgos-de-la-extubacion-en-pacientes-con-ventilacion-artificial/
+[2026-05-16 12:15:01,662] DEBUG - larevistacr: [700/1162] https://www.larevista.cr/un-pulmon-de-cerdo-trasplantado-a-un-humano-se-suma-a-corazones-rinones-e-higados-en-el-avance-de-los-xenotrasplantes/
+[2026-05-16 12:15:05,973] DEBUG - larevistacr: [701/1162] https://www.larevista.cr/cuando-la-democracia-ya-no-enamora-terreno-fertil-para-la-ultraderecha/
+[2026-05-16 12:15:10,257] DEBUG - larevistacr: [702/1162] https://www.larevista.cr/la-ia-se-hace-cada-vez-mas-presente-en-las-industrias-creativas/
+[2026-05-16 12:15:14,548] DEBUG - larevistacr: [703/1162] https://www.larevista.cr/por-que-el-ocio-es-importante-para-alcanzar-una-buena-vida-segun-aristoteles/
+[2026-05-16 12:15:19,007] DEBUG - larevistacr: [704/1162] https://www.larevista.cr/como-disenar-la-pau-para-que-los-resultados-de-todas-las-comunidades-sean-comparables/
+[2026-05-16 12:15:23,470] DEBUG - larevistacr: [705/1162] https://www.larevista.cr/literatura-gastronomica-somos-lo-que-comemos-y-leemos/
+[2026-05-16 12:15:27,793] DEBUG - larevistacr: [706/1162] https://www.larevista.cr/de-ballenas-a-algoritmos-por-que-america-latina-puede-liderar-una-ia-inspirada-en-la-naturalezalat/
+[2026-05-16 12:15:32,312] DEBUG - larevistacr: [707/1162] https://www.larevista.cr/la-teologia-del-dominio-y-las-guerras-culturales-en-la-politica-brasilena/
+[2026-05-16 12:15:36,857] DEBUG - larevistacr: [708/1162] https://www.larevista.cr/zongyuan-zoe-liu-china-esta-ganando-la-guerra-comercial-de-trump/
+[2026-05-16 12:15:42,024] DEBUG - larevistacr: [709/1162] https://www.larevista.cr/raices-de-la-resiliencia-salvaguardando-los-manglares-del-caribe/
+[2026-05-16 12:15:48,165] DEBUG - larevistacr: [710/1162] https://www.larevista.cr/jozef-sikela-reimaginar-el-desarrollo-sostenible-para-un-mundo-fracturado/
+[2026-05-16 12:15:53,440] DEBUG - larevistacr: [711/1162] https://www.larevista.cr/morena-sheinbaum-y-la-justicia-electa-reforma-democratica-o-concentracion-de-poder/
+[2026-05-16 12:15:58,092] DEBUG - larevistacr: [712/1162] https://www.larevista.cr/medicamentos-biologicos-y-biosimilares-los-nuevos-aliados-de-la-medicina-moderna/
+[2026-05-16 12:16:02,568] DEBUG - larevistacr: [713/1162] https://www.larevista.cr/las-mujeres-embarazadas-reciben-celulas-fetales-que-permanecen-en-su-cuerpo-y-su-cerebro/
+[2026-05-16 12:16:07,098] DEBUG - larevistacr: [714/1162] https://www.larevista.cr/por-que-la-programacion-deberia-ser-tan-importante-como-las-matematicas/
+[2026-05-16 12:16:11,715] DEBUG - larevistacr: [715/1162] https://www.larevista.cr/por-que-las-baldosas-miden-316-o-los-secretos-milimetricos-del-universo/
+[2026-05-16 12:16:16,341] DEBUG - larevistacr: [716/1162] https://www.larevista.cr/los-monasterios-nuevo-refugio-del-arte-contemporaneo/
+[2026-05-16 12:16:20,956] DEBUG - larevistacr: [717/1162] https://www.larevista.cr/el-fuego-no-es-el-unico-enemigo-el-burnout-en-los-bomberos/
+[2026-05-16 12:16:25,545] DEBUG - larevistacr: [718/1162] https://www.larevista.cr/terapia-a-traves-del-movil-para-mujeres-vulnerables-en-espana-y-peru/
+[2026-05-16 12:16:30,006] DEBUG - larevistacr: [719/1162] https://www.larevista.cr/como-aprender-a-cuidar-nuestros-cuerpos-desde-una-pedagogia-sensible/
+[2026-05-16 12:16:34,358] DEBUG - larevistacr: [720/1162] https://www.larevista.cr/es-cierto-que-ya-no-se-baila-en-los-conciertos/
+[2026-05-16 12:16:38,879] DEBUG - larevistacr: [721/1162] https://www.larevista.cr/quienes-son-los-capibaras-esos-curiosos-roedores-que-se-han-ganado-el-corazon-de-los-internautas/
+[2026-05-16 12:16:43,488] DEBUG - larevistacr: [722/1162] https://www.larevista.cr/cuatro-maneras-de-experimentar-con-la-inteligencia-artificial-en-el-aula-universitaria/
+[2026-05-16 12:16:47,808] DEBUG - larevistacr: [723/1162] https://www.larevista.cr/trump-extiende-la-alfombra-roja-a-los-pies-de-putin-en-que-situacion-deja-esto-a-ucrania/
+[2026-05-16 12:16:52,308] DEBUG - larevistacr: [724/1162] https://www.larevista.cr/liderazgo-en-el-exterior-caos-en-el-interior/
+[2026-05-16 12:16:56,939] DEBUG - larevistacr: [725/1162] https://www.larevista.cr/bolivia-cierre-del-ciclo-del-mas-y-giro-al-centro-politico/
+[2026-05-16 12:17:01,589] DEBUG - larevistacr: [726/1162] https://www.larevista.cr/orden-y-responsabilidad-en-tiempos-de-guerra/
+[2026-05-16 12:17:06,524] DEBUG - larevistacr: [727/1162] https://www.larevista.cr/ian-buruma-la-destruccion-irreparable-de-la-democracia-estadounidense-2/
+[2026-05-16 12:17:11,687] DEBUG - larevistacr: [728/1162] https://www.larevista.cr/democracias-pervertidas/
+[2026-05-16 12:17:16,666] DEBUG - larevistacr: [729/1162] https://www.larevista.cr/cada-vez-mas-personas-buscan-formarse-durante-toda-la-vida/
+[2026-05-16 12:17:21,224] DEBUG - larevistacr: [730/1162] https://www.larevista.cr/jozef-sikela-reimaginar-el-desarrollo-sostenible-para-un-mundo-fracturado-2/
+[2026-05-16 12:17:25,898] DEBUG - larevistacr: [731/1162] https://www.larevista.cr/seguimos-sin-invertir-lo-suficiente-en-prevencion-de-incendios/
+[2026-05-16 12:17:30,129] DEBUG - larevistacr: [732/1162] https://www.larevista.cr/precavidas-y-previsoras-cien-anos-atras-asi-eran-las-inversionistas-bancarias-espanolas/
+[2026-05-16 12:17:34,403] DEBUG - larevistacr: [733/1162] https://www.larevista.cr/el-sorprendente-ecosistema-que-late-en-una-gota-del-oceano/
+[2026-05-16 12:17:38,779] DEBUG - larevistacr: [734/1162] https://www.larevista.cr/la-adaptacion-de-las-ciudades-al-calor-esta-funcionando-pero-puede-mejorar-con-mas-vegetacion/
+[2026-05-16 12:17:43,054] DEBUG - larevistacr: [735/1162] https://www.larevista.cr/moda-liturgica-en-tiempos-liquidos-del-jubileo-al-desfile-de-dolce-gabbana/
+[2026-05-16 12:17:47,274] DEBUG - larevistacr: [736/1162] https://www.larevista.cr/el-reto-de-reducir-el-desperdicio-alimentario-en-los-hospitales/
+[2026-05-16 12:17:51,599] DEBUG - larevistacr: [737/1162] https://www.larevista.cr/tras-utilizar-la-ia-generativa-en-el-eternauta-netflix-corre-el-riesgo-de-dejar-atras-a-espectadores-y-creadores/
+[2026-05-16 12:17:55,853] DEBUG - larevistacr: [738/1162] https://www.larevista.cr/la-prueba-genetica-que-exige-world-athletics-a-las-atletas-femeninas-es-erronea/
+[2026-05-16 12:18:00,335] DEBUG - larevistacr: [739/1162] https://www.larevista.cr/y-si-la-ia-fuera-capaz-de-ayudarnos-a-la-desconexion-y-el-bienestar-digital/
+[2026-05-16 12:18:04,661] DEBUG - larevistacr: [740/1162] https://www.larevista.cr/chocolate-dubai-el-dulce-viral-que-cruzo-fronteras/
+[2026-05-16 12:18:09,095] DEBUG - larevistacr: [741/1162] https://www.larevista.cr/bulos-de-museo-momias-vengativas-asesinatos-rituales-y-memes-en-la-cultura-popular/
+[2026-05-16 12:18:13,385] DEBUG - larevistacr: [742/1162] https://www.larevista.cr/bolivia-un-pais-a-punto-de-estallar/
+[2026-05-16 12:18:18,039] DEBUG - larevistacr: [743/1162] https://www.larevista.cr/estado-fallido-la-etiqueta-que-oscurece-la-crisis-en-haiti-y-sustenta-la-logica-de-la-intervencion-internacional/
+[2026-05-16 12:18:22,556] DEBUG - larevistacr: [744/1162] https://www.larevista.cr/ian-buruma-la-relacion-entre-estados-unidos-e-india-esta-cambiando-de-nuevo/
+[2026-05-16 12:18:27,328] DEBUG - larevistacr: [745/1162] https://www.larevista.cr/bukele-y-la-reeleccion-indefinida-un-punto-de-no-retorno/
+[2026-05-16 12:18:31,792] DEBUG - larevistacr: [746/1162] https://www.larevista.cr/bernice-lee-y-emmanuel-guerin-europa-y-china-pueden-forjar-una-conexion-en-torno-al-clima/
+[2026-05-16 12:18:36,514] DEBUG - larevistacr: [747/1162] https://www.larevista.cr/sheinbaum-y-trump-en-busca-del-punto-intermedio/
+[2026-05-16 12:18:40,974] DEBUG - larevistacr: [748/1162] https://www.larevista.cr/como-entender-el-polemico-acuerdo-entre-el-barca-y-la-republica-democratica-del-congo/
+[2026-05-16 12:18:45,241] DEBUG - larevistacr: [749/1162] https://www.larevista.cr/toponium-el-cern-consigue-la-foto-imposible-de-la-particula-mas-efimera/
+[2026-05-16 12:18:49,590] DEBUG - larevistacr: [750/1162] https://www.larevista.cr/entre-el-sentido-del-deber-y-la-culpa-asi-afectan-los-conflictos-morales-en-el-personal-sanitario/
+[2026-05-16 12:18:54,185] DEBUG - larevistacr: [751/1162] https://www.larevista.cr/mas-profesores-por-alumno-es-sinonimo-de-mejor-aprendizaje-el-papel-de-la-ratio-en-educacion/
+[2026-05-16 12:18:58,451] DEBUG - larevistacr: [752/1162] https://www.larevista.cr/por-que-no-me-puedo-sacar-esa-cancion-de-la-cabeza-la-neurociencia-lo-explica/
+[2026-05-16 12:19:02,806] DEBUG - larevistacr: [753/1162] https://www.larevista.cr/los-peces-van-al-gimnasio-como-mejorar-el-bienestar-y-la-calidad-de-las-especies-de-acuicultura/
+[2026-05-16 12:19:07,263] DEBUG - larevistacr: [754/1162] https://www.larevista.cr/estados-unidos-aplicara-aranceles-del-15-y-ese-no-es-un-buen-acuerdo-para-europa/
+[2026-05-16 12:19:11,583] DEBUG - larevistacr: [755/1162] https://www.larevista.cr/todas-las-mujeres-medievales-que-muestra-la-cronica-de-castilla/
+[2026-05-16 12:19:15,835] DEBUG - larevistacr: [756/1162] https://www.larevista.cr/el-nacionalismo-vuelve-con-fuerza-del-siglo-xix-al-maga-de-trump/
+[2026-05-16 12:19:20,165] DEBUG - larevistacr: [757/1162] https://www.larevista.cr/funcionan-las-mantas-refrescantes-virales-en-tiktok/
+[2026-05-16 12:19:24,810] DEBUG - larevistacr: [758/1162] https://www.larevista.cr/peligros-de-la-exposicion-de-menores-en-redes-sociales-una-moda-que-debemos-y-podemos-evitar/
+[2026-05-16 12:19:29,687] DEBUG - larevistacr: [759/1162] https://www.larevista.cr/el-liderazgo-positivo-beneficia-la-salud-fisica-y-mental-de-las-personas-trabajadoras/
+[2026-05-16 12:19:34,502] DEBUG - larevistacr: [760/1162] https://www.larevista.cr/giro-hacia-la-derecha-en-bolivia/
+[2026-05-16 12:19:38,952] DEBUG - larevistacr: [761/1162] https://www.larevista.cr/hacia-una-relacion-estrategica-entre-america-latina-y-el-caribe-y-la-ocde/
+[2026-05-16 12:19:43,474] DEBUG - larevistacr: [762/1162] https://www.larevista.cr/ian-buruma-el-populismo-llega-a-japon/
+[2026-05-16 12:19:48,243] DEBUG - larevistacr: [763/1162] https://www.larevista.cr/el-imaginario-politico-argentino-y-la-gestion-del-futuro/
+[2026-05-16 12:19:52,774] DEBUG - larevistacr: [764/1162] https://www.larevista.cr/barrios-brujos-y-favelas-un-siglo-de-informalidad-urbana-en-america-latina/
+[2026-05-16 12:19:57,401] DEBUG - larevistacr: [765/1162] https://www.larevista.cr/suplemento-cultural-nuestra-vida-desde-jesse-y-celine/
+[2026-05-16 12:20:02,011] DEBUG - larevistacr: [766/1162] https://www.larevista.cr/el-arca-de-los-microbios-un-biobanco-mundial-para-proteger-la-salud-del-planeta/
+[2026-05-16 12:20:06,385] DEBUG - larevistacr: [767/1162] https://www.larevista.cr/jane-austen-en-2025-adaptada-celebrada-y-aun-desconocida/
+[2026-05-16 12:20:10,835] DEBUG - larevistacr: [768/1162] https://www.larevista.cr/como-sobreviven-los-perros-al-calor-extremo-del-verano/
+[2026-05-16 12:20:15,473] DEBUG - larevistacr: [769/1162] https://www.larevista.cr/por-que-el-derecho-al-voto-a-los-16-anos-puede-ser-un-paso-fundamental-para-la-democracia/
+[2026-05-16 12:20:19,775] DEBUG - larevistacr: [770/1162] https://www.larevista.cr/por-que-la-gente-sigue-escuchando-narcocorridos/
+[2026-05-16 12:20:24,388] DEBUG - larevistacr: [771/1162] https://www.larevista.cr/tsunamis-que-altura-pueden-alcanzar-las-olas-como-las-generadas-por-el-terremoto-en-rusia/
+[2026-05-16 12:20:28,769] DEBUG - larevistacr: [772/1162] https://www.larevista.cr/el-terremoto-de-kamchatka-figura-entre-los-diez-mas-fuertes-jamas-registrados-esto-es-lo-que-tienen-en-comun/
+[2026-05-16 12:20:33,492] DEBUG - larevistacr: [773/1162] https://www.larevista.cr/desafiando-los-limites-computacionales-en-la-ciencia-el-ejemplo-del-electromagnetismo/
+[2026-05-16 12:20:37,894] DEBUG - larevistacr: [774/1162] https://www.larevista.cr/como-equilibrar-el-uso-de-tecnologia-con-experiencias-de-aprendizaje/
+[2026-05-16 12:20:42,135] DEBUG - larevistacr: [775/1162] https://www.larevista.cr/que-es-la-dermatosis-nodular-contagiosa-que-ha-obligado-a-modificar-el-recorrido-del-tour-de-francia/
+[2026-05-16 12:20:46,738] DEBUG - larevistacr: [776/1162] https://www.larevista.cr/que-pistas-ofrece-la-literatura-sobre-la-infidelidad-y-el-revuelo-que-provoca/
+[2026-05-16 12:20:51,320] DEBUG - larevistacr: [777/1162] https://www.larevista.cr/mientras-las-democracias-se-erosionan-los-milmillonarios-de-america-latina-se-enriquecen/
+[2026-05-16 12:20:55,872] DEBUG - larevistacr: [778/1162] https://www.larevista.cr/del-aula-al-ministerio-como-chile-esta-integrando-la-voz-infantil-en-la-gobernanza-digital/
+[2026-05-16 12:21:00,529] DEBUG - larevistacr: [779/1162] https://www.larevista.cr/la-interferencia-corporativa-en-la-salud-publica-alimentaria-una-lucha-continental/
+[2026-05-16 12:21:05,035] DEBUG - larevistacr: [780/1162] https://www.larevista.cr/tarifazo-digital-el-nuevo-rostro-del-postotalitarismo-cubano/
+[2026-05-16 12:21:09,499] DEBUG - larevistacr: [781/1162] https://www.larevista.cr/como-disenar-robots-que-nos-den-confianza-como-companeros-de-trabajo/
+[2026-05-16 12:21:13,884] DEBUG - larevistacr: [782/1162] https://www.larevista.cr/que-significa-el-fracaso-de-las-conversaciones-de-paz-para-la-catastrofe-humanitaria-en-gaza/
+[2026-05-16 12:21:18,793] DEBUG - larevistacr: [783/1162] https://www.larevista.cr/ana-maria-matute-y-la-censura-franquista/
+[2026-05-16 12:21:23,260] DEBUG - larevistacr: [784/1162] https://www.larevista.cr/releyendo-olvidado-rey-gudu-la-fantasia-epica-en-ana-maria-matute/
+[2026-05-16 12:21:27,674] DEBUG - larevistacr: [785/1162] https://www.larevista.cr/de-videla-a-milei-el-legado-de-los-juicios-a-la-ultima-dictadura-argentina-40-anos-despues/
+[2026-05-16 12:21:31,881] DEBUG - larevistacr: [786/1162] https://www.larevista.cr/puede-la-inteligencia-artificial-corregir-errores-ortograficos-complejos/
+[2026-05-16 12:21:36,257] DEBUG - larevistacr: [787/1162] https://www.larevista.cr/el-fracaso-de-las-conversaciones-para-el-alto-el-fuego-en-gaza-agrava-la-catastrofe-humanitaria/
+[2026-05-16 12:21:41,023] DEBUG - larevistacr: [788/1162] https://www.larevista.cr/nuestro-cerebro-necesita-que-bajemos-el-ritmo-en-verano/
+[2026-05-16 12:21:45,695] DEBUG - larevistacr: [789/1162] https://www.larevista.cr/el-postureo-del-peregrino-medieval/
+[2026-05-16 12:21:50,243] DEBUG - larevistacr: [790/1162] https://www.larevista.cr/orientacion-aislamiento-altura-ventanas-esta-su-vivienda-adaptada-al-calor/
+[2026-05-16 12:21:54,585] DEBUG - larevistacr: [791/1162] https://www.larevista.cr/por-que-al-tomar-helados-o-bebidas-muy-frias-tenemos-la-sensacion-de-que-nos-duele-el-cerebro/
+[2026-05-16 12:21:58,938] DEBUG - larevistacr: [792/1162] https://www.larevista.cr/campeones-con-bienestar-sinner-alcaraz-y-la-generacion-que-esta-cambiando-las-reglas-del-deporte/
+[2026-05-16 12:22:03,349] DEBUG - larevistacr: [793/1162] https://www.larevista.cr/corrupcion-institucionalizada-en-ecuador-los-desafios-del-gobierno-de-noboa/
+[2026-05-16 12:22:07,842] DEBUG - larevistacr: [794/1162] https://www.larevista.cr/por-que-no-hay-que-desmantelar-los-ministerios-de-las-mujeres/
+[2026-05-16 12:22:12,123] DEBUG - larevistacr: [795/1162] https://www.larevista.cr/outsiders-una-ola-global-con-lecciones-latinoamericanas/
+[2026-05-16 12:22:16,574] DEBUG - larevistacr: [796/1162] https://www.larevista.cr/shashi-tharoor-lecciones-de-la-operacion-sindoor/
+[2026-05-16 12:22:21,171] DEBUG - larevistacr: [797/1162] https://www.larevista.cr/david-amiel-los-dos-frentes-de-la-guerra-comercial-europea/
+[2026-05-16 12:22:25,895] DEBUG - larevistacr: [798/1162] https://www.larevista.cr/cuatro-formas-de-habitar-chile-siendo-migrante/
+[2026-05-16 12:22:30,448] DEBUG - larevistacr: [799/1162] https://www.larevista.cr/es-espana-un-pais-racista/
+[2026-05-16 12:22:35,099] DEBUG - larevistacr: [800/1162] https://www.larevista.cr/tienen-derechos-las-futuras-generaciones-los-estados-comienzan-a-legislar-para-quienes-aun-no-existen/
+[2026-05-16 12:22:39,378] DEBUG - larevistacr: [801/1162] https://www.larevista.cr/la-batalla-entre-sexos-se-libra-en-el-ring-de-la-placenta/
+[2026-05-16 12:22:44,008] DEBUG - larevistacr: [802/1162] https://www.larevista.cr/cuando-la-juventud-duele-como-la-terapia-ocupacional-puede-revertir-la-soledad-no-deseada/
+[2026-05-16 12:22:48,277] DEBUG - larevistacr: [803/1162] https://www.larevista.cr/tres-alimentos-con-k-y-con-hongos-lo-que-el-kefir-la-kombucha-y-el-koji-tienen-en-comun/
+[2026-05-16 12:22:52,511] DEBUG - larevistacr: [804/1162] https://www.larevista.cr/con-la-imprenta-hemos-topado-censura-religiosa-a-lo-largo-de-los-tiempos/
+[2026-05-16 12:22:56,923] DEBUG - larevistacr: [805/1162] https://www.larevista.cr/los-lobbies-tecnologicos-quieren-frenar-la-aplicacion-de-la-ley-europea-de-inteligencia-artificial/
+[2026-05-16 12:23:01,163] DEBUG - larevistacr: [806/1162] https://www.larevista.cr/cuando-ellas-tiraban-de-los-barcos-la-historia-olvidada-de-las-sirgueras-de-bilbao/
+[2026-05-16 12:23:05,439] DEBUG - larevistacr: [807/1162] https://www.larevista.cr/sostenibilidad-en-las-universidades-como-formar-a-los-profesionales-que-el-planeta-necesita/
+[2026-05-16 12:23:09,789] DEBUG - larevistacr: [808/1162] https://www.larevista.cr/el-mito-del-talento-individual-frente-a-la-realidad-del-talento-colectivo/
+[2026-05-16 12:23:14,105] DEBUG - larevistacr: [809/1162] https://www.larevista.cr/en-que-se-diferencia-la-posverdad-de-la-propaganda-tradicional-el-filosofo-alexandre-kojeve-lo-explica/
+[2026-05-16 12:23:18,480] DEBUG - larevistacr: [810/1162] https://www.larevista.cr/cual-es-el-impacto-de-los-camiones-en-el-cambio-climatico-y-como-podemos-reducirlo/
+[2026-05-16 12:23:22,702] DEBUG - larevistacr: [811/1162] https://www.larevista.cr/los-influencers-peligrosos-el-crimen-organizado-en-las-redes-sociales/
+[2026-05-16 12:23:27,298] DEBUG - larevistacr: [812/1162] https://www.larevista.cr/daniel-gros-como-podria-beneficiarse-europa-de-un-segundo-mandato-de-trump/
+[2026-05-16 12:23:31,898] DEBUG - larevistacr: [813/1162] https://www.larevista.cr/la-geopolitica-del-desencanto-trump-como-simbolo-de-un-orden-en-disputa/
+[2026-05-16 12:23:36,393] DEBUG - larevistacr: [814/1162] https://www.larevista.cr/daniel-gros-estados-unidos-y-europa-frente-a-la-globalizacion/
+[2026-05-16 12:23:40,958] DEBUG - larevistacr: [815/1162] https://www.larevista.cr/eleccion-judicial-mexicana-donde-la-oposicion-no-tiene-nada-que-reclamar/
+[2026-05-16 12:23:45,439] DEBUG - larevistacr: [816/1162] https://www.larevista.cr/la-deriva-autoritaria-de-gustavo-petro/
+[2026-05-16 12:23:49,832] DEBUG - larevistacr: [817/1162] https://www.larevista.cr/alucinaciones-frente-al-tablero-asi-pierde-al-ajedrez-la-inteligencia-artificial-generativa/
+[2026-05-16 12:23:54,426] DEBUG - larevistacr: [818/1162] https://www.larevista.cr/proteccion-solar-nueve-dudas-frecuentes-resueltas-por-una-experta/
+[2026-05-16 12:23:59,150] DEBUG - larevistacr: [819/1162] https://www.larevista.cr/la-adolescencia-digital-en-la-consulta/
+[2026-05-16 12:24:03,955] DEBUG - larevistacr: [820/1162] https://www.larevista.cr/el-reto-de-mantener-nuestras-elecciones-eticas-de-consumo-alimentario-cuando-viajamos/
+[2026-05-16 12:24:08,625] DEBUG - larevistacr: [821/1162] https://www.larevista.cr/la-salud-va-por-barrios-como-afecta-la-escasez-de-recursos-a-los-territorios-desfavorecidos/
+[2026-05-16 12:24:13,558] DEBUG - larevistacr: [822/1162] https://www.larevista.cr/por-que-movernos-nos-ayuda-a-borrar-los-malos-recuerdos/
+[2026-05-16 12:24:18,148] DEBUG - larevistacr: [823/1162] https://www.larevista.cr/detenidas-en-el-tiempo-en-espana-las-mujeres-siguen-cobrando-peores-pensiones-que-los-hombres/
+[2026-05-16 12:24:22,439] DEBUG - larevistacr: [824/1162] https://www.larevista.cr/diez-razones-por-las-que-la-ia-no-sustituira-a-los-informaticos-en-un-futuro-proximo/
+[2026-05-16 12:24:26,534] DEBUG - larevistacr: [825/1162] https://www.larevista.cr/mirando-a-srebrenica-para-entender-gaza-como-se-prueba-la-intencion-de-destruir-a-un-grupo/
+[2026-05-16 12:24:30,782] DEBUG - larevistacr: [826/1162] https://www.larevista.cr/como-prevenir-lo-improbable-y-si-una-tormenta-solar-desencadenara-un-apagon-global/
+[2026-05-16 12:24:35,093] DEBUG - larevistacr: [827/1162] https://www.larevista.cr/la-circulacion-de-conocimiento-desarrollo-tecnologico-e-innovacion-en-america-latina-esta-bajo-amenaza/
+[2026-05-16 12:24:39,329] DEBUG - larevistacr: [828/1162] https://www.larevista.cr/bolivia-capacidad-estatal-y-democracia/
+[2026-05-16 12:24:43,687] DEBUG - larevistacr: [829/1162] https://www.larevista.cr/viabilizar-el-gran-caribe-geopolitica-de-un-area-en-transformacion/
+[2026-05-16 12:24:48,066] DEBUG - larevistacr: [830/1162] https://www.larevista.cr/daniel-gros-el-espejismo-de-la-geoeconomia/
+[2026-05-16 12:24:52,708] DEBUG - larevistacr: [831/1162] https://www.larevista.cr/venezuela-y-la-consolidacion-de-una-dictadura-con-elecciones/
+[2026-05-16 12:24:57,119] DEBUG - larevistacr: [832/1162] https://www.larevista.cr/bocas-que-son-sillones-cuando-el-diseno-se-vuelve-arte-pero-olvida-su-proposito/
+[2026-05-16 12:25:01,453] DEBUG - larevistacr: [833/1162] https://www.larevista.cr/las-microalgas-nuestras-grandes-aliadas-para-limpiar-el-aire-interior-y-exterior-de-los-edificios/
+[2026-05-16 12:25:06,048] DEBUG - larevistacr: [834/1162] https://www.larevista.cr/quien-decide-ahora-que-es-bello-en-las-redes-sociales/
+[2026-05-16 12:25:10,277] DEBUG - larevistacr: [835/1162] https://www.larevista.cr/que-aprendimos-del-caso-tylenol-el-analgesico-que-cambio-el-diseno-de-los-farmacos/
+[2026-05-16 12:25:14,555] DEBUG - larevistacr: [836/1162] https://www.larevista.cr/metaforas-que-convierten-la-inteligencia-artificial-en-persona-nos-ayudan-o-nos-confunden/
+[2026-05-16 12:25:18,933] DEBUG - larevistacr: [837/1162] https://www.larevista.cr/lectura-profunda-en-tiempos-de-scroll-como-volver-a-leer-con-intencion/
+[2026-05-16 12:25:23,279] DEBUG - larevistacr: [838/1162] https://www.larevista.cr/quien-ensena-el-uso-de-internet-a-los-adolescentes-tutelados/
+[2026-05-16 12:25:27,669] DEBUG - larevistacr: [839/1162] https://www.larevista.cr/carissa-veliz-filosofa-muchos-adolescentes-ni-siquiera-alcanzan-a-imaginar-como-es-vivir-con-privacidad/
+[2026-05-16 12:25:32,137] DEBUG - larevistacr: [840/1162] https://www.larevista.cr/es-peligroso-pillar-una-mojadura-o-acaso-jane-austen-era-demasiado-dramatica/
+[2026-05-16 12:25:36,613] DEBUG - larevistacr: [841/1162] https://www.larevista.cr/es-compatible-la-energia-eolica-marina-con-la-proteccion-del-oceano-el-caso-mediterraneo/
+[2026-05-16 12:25:40,942] DEBUG - larevistacr: [842/1162] https://www.larevista.cr/en-las-redes-sociales-los-bulos-sobre-salud-corren-mucho-mas-rapido-que-los-hechos/
+[2026-05-16 12:25:45,282] DEBUG - larevistacr: [843/1162] https://www.larevista.cr/puede-la-digitalizacion-acelerar-la-transicion-hacia-una-economia-circular/
+[2026-05-16 12:25:49,606] DEBUG - larevistacr: [844/1162] https://www.larevista.cr/de-la-retorica-a-la-accion-colombia-y-el-desafio-de-articular-a-america-latina-y-el-caribe/
+[2026-05-16 12:25:54,089] DEBUG - larevistacr: [845/1162] https://www.larevista.cr/derivas-politicas-de-la-condena-a-prision-de-cristina-fernandez-de-kirchner/
+[2026-05-16 12:25:58,661] DEBUG - larevistacr: [846/1162] https://www.larevista.cr/michael-spence-puede-la-ia-crear-prosperidad-general/
+[2026-05-16 12:26:03,371] DEBUG - larevistacr: [847/1162] https://www.larevista.cr/brasil-en-la-montana-rusa-del-deja-vu-regulatorio-de-la-ia/
+[2026-05-16 12:26:07,750] DEBUG - larevistacr: [848/1162] https://www.larevista.cr/que-hacer-frente-a-la-homofobia-en-las-escuelas-rurales/
+[2026-05-16 12:26:11,972] DEBUG - larevistacr: [849/1162] https://www.larevista.cr/las-politicas-del-gobierno-de-boric-hacia-el-pueblo-mapuche-son-mas-de-lo-mismo/
+[2026-05-16 12:26:16,387] DEBUG - larevistacr: [850/1162] https://www.larevista.cr/la-interpretacion-de-los-suenos-el-libro-que-cambio-como-nos-conocemos/
+[2026-05-16 12:26:19,427] DEBUG - larevistacr: [851/1162] https://www.larevista.cr/la-ciencia-de-las-algas-entra-en-masterchef/
+[2026-05-16 12:26:24,161] DEBUG - larevistacr: [852/1162] https://www.larevista.cr/los-animales-que-usan-plantas-para-curarse-nos-inspiran-para-descubrir-nuevos-farmacos/
+[2026-05-16 12:26:28,992] DEBUG - larevistacr: [853/1162] https://www.larevista.cr/blokecore-vestir-una-camiseta-de-futbol-como-manifiesto-cultural/
+[2026-05-16 12:26:33,779] DEBUG - larevistacr: [854/1162] https://www.larevista.cr/asi-podemos-aprovechar-los-huesos-de-aceituna-para-producir-biocombustibles/
+[2026-05-16 12:26:38,358] DEBUG - larevistacr: [855/1162] https://www.larevista.cr/cinco-maneras-distintas-de-evaluar-en-tiempos-de-la-inteligencia-artificial/
+[2026-05-16 12:26:42,741] DEBUG - larevistacr: [856/1162] https://www.larevista.cr/la-nueva-era-del-trafico-multas-progresivas-y-radares-inteligentes/
+[2026-05-16 12:26:47,051] DEBUG - larevistacr: [857/1162] https://www.larevista.cr/el-5g-no-esta-disenado-para-el-ciudadano-de-a-pie-sino-para-la-industria/
+[2026-05-16 12:26:51,254] DEBUG - larevistacr: [858/1162] https://www.larevista.cr/eficiencia-transparencia-y-seguridad-tres-ventajas-de-aplicar-la-tecnologia-blockchain-al-turismo/
+[2026-05-16 12:26:55,504] DEBUG - larevistacr: [859/1162] https://www.larevista.cr/por-que-un-titulo-universitario-no-garantiza-estar-preparado-para-el-mercado-laboral/
+[2026-05-16 12:26:59,782] DEBUG - larevistacr: [860/1162] https://www.larevista.cr/la-ensenanza-primaria-clave-en-la-eliminacion-de-la-brecha-de-genero-en-matematicas/
+[2026-05-16 12:27:04,086] DEBUG - larevistacr: [861/1162] https://www.larevista.cr/continua-retrocediendo-el-consenso-democratico-en-la-argentina/
+[2026-05-16 12:27:08,740] DEBUG - larevistacr: [862/1162] https://www.larevista.cr/sequia-cambio-climatico-y-diplomacia-cientifica-una-respuesta-colectiva-desde-america-latina/
+[2026-05-16 12:27:13,121] DEBUG - larevistacr: [863/1162] https://www.larevista.cr/venezuela-de-elecciones-fraudulentas-a-elecciones-clandestinas/
+[2026-05-16 12:27:17,571] DEBUG - larevistacr: [864/1162] https://www.larevista.cr/hacia-un-nuevo-modelo-economico-resiliente-e-inclusivo-del-gran-caribe/
+[2026-05-16 12:27:22,361] DEBUG - larevistacr: [865/1162] https://www.larevista.cr/usar-chatgpt-para-redactar-el-trabajo-de-fin-de-grado-es-copiar/
+[2026-05-16 12:27:26,653] DEBUG - larevistacr: [866/1162] https://www.larevista.cr/las-mujeres-del-teatro-ingles-del-siglo-xvii-que-se-negaron-a-ser-tradwives/
+[2026-05-16 12:27:30,915] DEBUG - larevistacr: [867/1162] https://www.larevista.cr/la-terapia-contra-el-vih-puede-acelerar-el-envejecimiento-como-se-afronta-este-nuevo-desafio/
+[2026-05-16 12:27:35,211] DEBUG - larevistacr: [868/1162] https://www.larevista.cr/combinados-listos-para-beber-una-tendencia-que-atrae-a-los-jovenes-pero-no-implica-mas-salud/
+[2026-05-16 12:27:39,559] DEBUG - larevistacr: [869/1162] https://www.larevista.cr/la-revolucion-cientifica-que-permitira-acabar-con-la-gran-escasez-de-europa-de-tierras-raras-y-la-dependencia-de-china/
+[2026-05-16 12:27:43,896] DEBUG - larevistacr: [870/1162] https://www.larevista.cr/la-revolucion-que-se-avecina-en-el-estudio-de-los-asteroides-potencialmente-peligrosos/
+[2026-05-16 12:27:48,213] DEBUG - larevistacr: [871/1162] https://www.larevista.cr/el-tic-tac-del-metabolismo-asi-influye-la-hora-de-comer-en-la-salud-de-los-ninos/
+[2026-05-16 12:27:52,460] DEBUG - larevistacr: [872/1162] https://www.larevista.cr/es-todo-nacionalista-un-fascista-en-potencia/
+[2026-05-16 12:27:56,713] DEBUG - larevistacr: [873/1162] https://www.larevista.cr/tres-fallos-comunes-en-la-gestion-empresarial-que-pueden-afectar-a-la-toma-de-decisiones/
+[2026-05-16 12:28:00,942] DEBUG - larevistacr: [874/1162] https://www.larevista.cr/por-que-los-pintores-modernos-pintaban-brioches/
+[2026-05-16 12:28:05,382] DEBUG - larevistacr: [875/1162] https://www.larevista.cr/los-robots-ya-bailan-pero-no-sobrevivirian-a-un-turno-en-la-fabrica/
+[2026-05-16 12:28:09,669] DEBUG - larevistacr: [876/1162] https://www.larevista.cr/podemos-juzgar-a-un-algoritmo/
+[2026-05-16 12:28:13,942] DEBUG - larevistacr: [877/1162] https://www.larevista.cr/la-solidaridad-no-basta-repensar-el-dia-mundial-de-los-refugiados/
+[2026-05-16 12:28:18,485] DEBUG - larevistacr: [878/1162] https://www.larevista.cr/que-es-el-ice-y-a-quien-aterroriza-en-ee-uu/
+[2026-05-16 12:28:23,174] DEBUG - larevistacr: [879/1162] https://www.larevista.cr/centros-de-datos-y-el-lugar-de-brasil-en-el-mundo/
+[2026-05-16 12:28:27,922] DEBUG - larevistacr: [880/1162] https://www.larevista.cr/reimaginar-el-caribe-del-turismo-extractivo-al-desarrollo-inclusivo/
+[2026-05-16 12:28:32,482] DEBUG - larevistacr: [881/1162] https://www.larevista.cr/la-justicia-internacional-pone-freno-a-los-intereses-extractivistas-y-petroleros-en-ecuador/
+[2026-05-16 12:28:36,860] DEBUG - larevistacr: [882/1162] https://www.larevista.cr/contra-la-violencia-obstetrica-humanizar-el-parto-no-es-un-lujo-es-un-derecho/
+[2026-05-16 12:28:41,136] DEBUG - larevistacr: [883/1162] https://www.larevista.cr/comer-setas-puede-salvar-el-planeta-por-que-la-micologia-es-clave-para-una-alimentacion-sostenible/
+[2026-05-16 12:28:45,667] DEBUG - larevistacr: [884/1162] https://www.larevista.cr/debe-saber-el-lector-si-una-noticia-ha-sido-escrita-con-ia-el-reto-etico-del-periodismo-moderno/
+[2026-05-16 12:28:50,378] DEBUG - larevistacr: [885/1162] https://www.larevista.cr/pequenos-movimientos-grandes-beneficios-como-combatir-el-sedentarismo-con-sentadillas/
+[2026-05-16 12:28:55,129] DEBUG - larevistacr: [886/1162] https://www.larevista.cr/riqueza-sin-fabricas-como-valorar-lo-intangible/
+[2026-05-16 12:28:59,530] DEBUG - larevistacr: [887/1162] https://www.larevista.cr/vamos-al-tajo-es-una-ganga-que-pasa-con-las-metaforas-mineras-al-desaparecer-la-mineria/
+[2026-05-16 12:29:03,850] DEBUG - larevistacr: [888/1162] https://www.larevista.cr/su-movil-es-un-parasito-segun-la-teoria-de-la-evolucion/
+[2026-05-16 12:29:08,051] DEBUG - larevistacr: [889/1162] https://www.larevista.cr/proteger-el-30-de-los-oceanos-no-es-suficiente/
+[2026-05-16 12:29:12,477] DEBUG - larevistacr: [890/1162] https://www.larevista.cr/atencion-emprendedores-las-emociones-hablan-y-convencen-a-los-inversores/
+[2026-05-16 12:29:16,891] DEBUG - larevistacr: [891/1162] https://www.larevista.cr/por-que-la-inclusion-de-los-estudiantes-con-trastornos-del-neurodesarrollo-no-esta-funcionando/
+[2026-05-16 12:29:21,250] DEBUG - larevistacr: [892/1162] https://www.larevista.cr/cuantica-la-base-cientifica-de-los-mundos-paralelos-con-diferentes-yoes/
+[2026-05-16 12:29:25,709] DEBUG - larevistacr: [893/1162] https://www.larevista.cr/ante-presion-resiliencia-america-latina-necesita-recalibrar-su-paradigma-de-desarrollo/
+[2026-05-16 12:29:30,307] DEBUG - larevistacr: [894/1162] https://www.larevista.cr/elecciones-y-guerra-contra-la-democracia-en-ecuador/
+[2026-05-16 12:29:34,745] DEBUG - larevistacr: [895/1162] https://www.larevista.cr/rosario-murillo-entre-madame-mao-y-grace-mugabe/
+[2026-05-16 12:29:37,797] DEBUG - larevistacr: [896/1162] https://www.larevista.cr/claudia-sheinbaum-bajo-presion-y-sin-mucho-margen-de-maniobra/
+[2026-05-16 12:29:42,299] DEBUG - larevistacr: [897/1162] https://www.larevista.cr/el-ataque-de-trump-a-harvard-amenaza-investigaciones-criticas-sera-la-ue-el-gran-refugio-academico/
+[2026-05-16 12:29:46,556] DEBUG - larevistacr: [898/1162] https://www.larevista.cr/descifrando-el-mensaje-de-los-asteroides-piedras-rosetta-del-sistema-solar/
+[2026-05-16 12:29:50,922] DEBUG - larevistacr: [899/1162] https://www.larevista.cr/son-mas-saludables-los-alimentos-enriquecidos-con-vitaminas-y-minerales/
+[2026-05-16 12:29:55,214] DEBUG - larevistacr: [900/1162] https://www.larevista.cr/compartir-ropa-una-solucion-real-contra-la-fast-fashion/
+[2026-05-16 12:30:00,242] DEBUG - larevistacr: [901/1162] https://www.larevista.cr/la-invisible-amenaza-de-los-microplasticos-presentes-en-el-aire-que-respiramos/
+[2026-05-16 12:30:04,794] DEBUG - larevistacr: [902/1162] https://www.larevista.cr/como-influyen-las-redes-sociales-en-lo-que-vemos-en-television/
+[2026-05-16 12:30:09,164] DEBUG - larevistacr: [903/1162] https://www.larevista.cr/la-gran-avalancha-que-sepulto-el-pueblo-suizo-de-blatten-nos-deja-lecciones-para-un-futuro-mas-calido/
+[2026-05-16 12:30:13,568] DEBUG - larevistacr: [904/1162] https://www.larevista.cr/madera-o-carton-para-transportar-los-alimentos-frescos-que-opcion-contamina-menos/
+[2026-05-16 12:30:17,898] DEBUG - larevistacr: [905/1162] https://www.larevista.cr/siete-metodos-para-alcanzar-un-rendimiento-academico-optimo/
+[2026-05-16 12:30:22,287] DEBUG - larevistacr: [906/1162] https://www.larevista.cr/como-convertir-a-chatgpt-en-el-asistente-perfecto/
+[2026-05-16 12:30:26,704] DEBUG - larevistacr: [907/1162] https://www.larevista.cr/los-mecanismos-cerebrales-que-quitan-el-placer-por-la-comida-a-las-personas-obesas/
+[2026-05-16 12:30:31,003] DEBUG - larevistacr: [908/1162] https://www.larevista.cr/el-derecho-internacional-en-el-choque-del-cuauhtemoc-contra-el-puente-de-brooklyn/
+[2026-05-16 12:30:35,660] DEBUG - larevistacr: [909/1162] https://www.larevista.cr/economia-azul-en-el-caribe-en-busca-de-la-resiliencia-y-la-regeneracion/
+[2026-05-16 12:30:40,166] DEBUG - larevistacr: [910/1162] https://www.larevista.cr/panama-que-hay-detras-de-las-protestas-y-que-esta-en-juego/
+[2026-05-16 12:30:44,707] DEBUG - larevistacr: [911/1162] https://www.larevista.cr/sheinbaum-un-sueno-feminista-olvidado/
+[2026-05-16 12:30:49,441] DEBUG - larevistacr: [912/1162] https://www.larevista.cr/la-regulacion-de-las-plataformas-digitales-en-brasil-a-punto-de-ceder-ante-los-intereses-de-las-grandes-tecnologicas/
+[2026-05-16 12:30:54,043] DEBUG - larevistacr: [913/1162] https://www.larevista.cr/cuantos-insectos-deberiamos-consumir-para-sustituir-nutritivamente-a-la-carne/
+[2026-05-16 12:30:58,498] DEBUG - larevistacr: [914/1162] https://www.larevista.cr/como-se-puede-capturar-el-co-del-aire-para-combatir-el-calentamiento-global/
+[2026-05-16 12:31:03,356] DEBUG - larevistacr: [915/1162] https://www.larevista.cr/ayuda-la-inteligencia-artificial-al-alumnado-con-dificultades-de-aprendizaje/
+[2026-05-16 12:31:08,212] DEBUG - larevistacr: [916/1162] https://www.larevista.cr/por-que-el-rap-esta-obsesionado-con-las-conspiraciones/
+[2026-05-16 12:31:12,993] DEBUG - larevistacr: [917/1162] https://www.larevista.cr/por-que-elegir-el-brazo-donde-se-pone-la-vacuna-importa/
+[2026-05-16 12:31:17,725] DEBUG - larevistacr: [918/1162] https://www.larevista.cr/universitarios-y-escolares-aprenden-matematicas-jugando-en-equipo/
+[2026-05-16 12:31:22,161] DEBUG - larevistacr: [919/1162] https://www.larevista.cr/criaturas-que-habitan-aguas-termales-de-la-mitologia-gallega-a-la-vida-extraterrestre/
+[2026-05-16 12:31:26,534] DEBUG - larevistacr: [920/1162] https://www.larevista.cr/el-efecto-guggenheim-en-urdaibai-puede-la-cultura-justificar-la-destruccion-de-la-naturaleza/
+[2026-05-16 12:31:30,941] DEBUG - larevistacr: [921/1162] https://www.larevista.cr/como-construir-un-aula-emocionalmente-segura/
+[2026-05-16 12:31:35,268] DEBUG - larevistacr: [922/1162] https://www.larevista.cr/1975-el-ano-en-que-espana-vivio-su-ultimo-estado-de-excepcion/
+[2026-05-16 12:31:39,593] DEBUG - larevistacr: [923/1162] https://www.larevista.cr/plataformas-de-colaboracion-ciudadana-contra-criminales-y-desastres-naturales/
+[2026-05-16 12:31:43,646] DEBUG - larevistacr: [924/1162] https://www.larevista.cr/que-hay-detras-de-la-decision-de-trump-de-acoger-sudafricanos-blancos/
+[2026-05-16 12:31:47,687] DEBUG - larevistacr: [925/1162] https://www.larevista.cr/el-voto-economico-predice-un-triunfo-electoral-para-milei-en-2025/
+[2026-05-16 12:31:52,127] DEBUG - larevistacr: [926/1162] https://www.larevista.cr/desaparecer-dos-veces-en-mexico/
+[2026-05-16 12:31:56,559] DEBUG - larevistacr: [927/1162] https://www.larevista.cr/bolivia-reinventar-el-populismo/
+[2026-05-16 12:32:01,057] DEBUG - larevistacr: [928/1162] https://www.larevista.cr/infiltracion-silenciosa-los-brokers-criminales-y-su-impacto-en-la-economia-formal/
+[2026-05-16 12:32:05,426] DEBUG - larevistacr: [929/1162] https://www.larevista.cr/elegir-a-un-nuevo-patriarca-un-conclave-bizantino/
+[2026-05-16 12:32:09,704] DEBUG - larevistacr: [930/1162] https://www.larevista.cr/por-que-palabras-como-almondiga-y-toballa-aparecen-en-el-diccionario-si-no-son-correctas/
+[2026-05-16 12:32:14,174] DEBUG - larevistacr: [931/1162] https://www.larevista.cr/socializar-nos-salva-en-tiempos-de-apagon-y-en-cualquier-crisis/
+[2026-05-16 12:32:18,574] DEBUG - larevistacr: [932/1162] https://www.larevista.cr/cuando-uno-se-sube-a-un-avion-y-hay-un-apagon-general/
+[2026-05-16 12:32:22,945] DEBUG - larevistacr: [933/1162] https://www.larevista.cr/como-se-restablece-un-gran-apagon/
+[2026-05-16 12:32:27,329] DEBUG - larevistacr: [934/1162] https://www.larevista.cr/educar-ciudadanos-digitales-supone-una-nueva-forma-de-ser-padres/
+[2026-05-16 12:32:31,885] DEBUG - larevistacr: [935/1162] https://www.larevista.cr/como-se-entenderian-cineastas-y-publico-sin-la-traduccion-y-la-interpretacion/
+[2026-05-16 12:32:36,347] DEBUG - larevistacr: [936/1162] https://www.larevista.cr/el-gran-caribe-en-busca-de-direccion-una-cumbre-marcada-por-la-urgencia-y-la-incertidumbre/
+[2026-05-16 12:32:40,693] DEBUG - larevistacr: [937/1162] https://www.larevista.cr/el-papel-de-las-industrias-culturales-y-creativas-en-la-creacion-de-empleo/
+[2026-05-16 12:32:45,091] DEBUG - larevistacr: [938/1162] https://www.larevista.cr/crecimiento-de-las-energias-renovables-un-desafio-tecnologico-para-los-sistemas-electricos/
+[2026-05-16 12:32:49,406] DEBUG - larevistacr: [939/1162] https://www.larevista.cr/entre-datos-y-dogmas-la-peligrosa-ideologizacion-de-la-ciencia/
+[2026-05-16 12:32:53,640] DEBUG - larevistacr: [940/1162] https://www.larevista.cr/invisibles-y-vulnerables-la-nueva-realidad-de-los-migrantes-bajo-el-gobierno-de-petro-2/
+[2026-05-16 12:32:58,238] DEBUG - larevistacr: [941/1162] https://www.larevista.cr/integracion-del-gran-caribe-una-respuesta-estrategica-ante-el-contexto-global/
+[2026-05-16 12:33:02,644] DEBUG - larevistacr: [942/1162] https://www.larevista.cr/el-inicio-de-una-nueva-fase-en-las-relaciones-entre-america-latina-y-china/
+[2026-05-16 12:33:07,081] DEBUG - larevistacr: [943/1162] https://www.larevista.cr/shashi-tharoor-se-abre-una-division-norte-sur-en-india/
+[2026-05-16 12:33:12,280] DEBUG - larevistacr: [944/1162] https://www.larevista.cr/invisibles-y-vulnerables-la-nueva-realidad-de-los-migrantes-bajo-el-gobierno-de-petro/
+[2026-05-16 12:33:16,668] DEBUG - larevistacr: [945/1162] https://www.larevista.cr/daniel-gros-puede-evitarse-una-guerra-comercial-global/
+[2026-05-16 12:33:21,768] DEBUG - larevistacr: [946/1162] https://www.larevista.cr/por-que-la-violencia-y-la-criminalidad-se-agudizan-en-ecuador/
+[2026-05-16 12:33:26,755] DEBUG - larevistacr: [947/1162] https://www.larevista.cr/una-europa-mas-fuerte-y-unida-se-enfrenta-a-los-nuevos-desafios-globales/
+[2026-05-16 12:33:31,179] DEBUG - larevistacr: [948/1162] https://www.larevista.cr/el-papa-leon-xiv-asume-el-legado-de-francisco-habra-reformas-reales/
+[2026-05-16 12:33:35,448] DEBUG - larevistacr: [949/1162] https://www.larevista.cr/de-einstein-a-lisa-la-revolucion-de-las-ondas-gravitacionales/
+[2026-05-16 12:33:39,763] DEBUG - larevistacr: [950/1162] https://www.larevista.cr/como-se-forman-los-pensamientos/
+[2026-05-16 12:33:44,156] DEBUG - larevistacr: [951/1162] https://www.larevista.cr/de-la-energia-oscura-a-los-mercados-la-geometria-oculta-de-los-sistemas-complejos/
+[2026-05-16 12:33:48,437] DEBUG - larevistacr: [952/1162] https://www.larevista.cr/son-los-ciberdelitos-tan-sofisticados-como-creemos/
+[2026-05-16 12:33:52,808] DEBUG - larevistacr: [953/1162] https://www.larevista.cr/la-otra-cara-del-acoso-escolar-los-que-observan-tambien-tienen-un-papel/
+[2026-05-16 12:33:57,240] DEBUG - larevistacr: [954/1162] https://www.larevista.cr/ciencia-abierta-para-combatir-la-desinformacion-climatica/
+[2026-05-16 12:34:01,472] DEBUG - larevistacr: [955/1162] https://www.larevista.cr/muy-pegado-o-demasiado-lejos-lo-que-dice-de-nosotros-el-espacio-que-nos-separa/
+[2026-05-16 12:34:05,854] DEBUG - larevistacr: [956/1162] https://www.larevista.cr/el-podcast-periodistico-una-nueva-narrativa-para-informarse-de-forma-distinta/
+[2026-05-16 12:34:10,236] DEBUG - larevistacr: [957/1162] https://www.larevista.cr/logopedia-online-de-verdad-funciona/
+[2026-05-16 12:34:14,572] DEBUG - larevistacr: [958/1162] https://www.larevista.cr/alternativa-a-las-cunas-hospitalarias-el-dispositivo-que-se-adapta-a-la-anatomia-femenina/
+[2026-05-16 12:34:18,837] DEBUG - larevistacr: [959/1162] https://www.larevista.cr/un-papa-de-las-americas-para-una-iglesia-afincada-en-el-sur-global/
+[2026-05-16 12:34:23,331] DEBUG - larevistacr: [960/1162] https://www.larevista.cr/como-destruir-la-confianza-en-las-elecciones/
+[2026-05-16 12:34:28,024] DEBUG - larevistacr: [961/1162] https://www.larevista.cr/marcel-fratzscher-es-de-nuevo-la-hora-de-europa/
+[2026-05-16 12:34:32,620] DEBUG - larevistacr: [962/1162] https://www.larevista.cr/desapariciones-y-humanidad-en-mexico/
+[2026-05-16 12:34:37,113] DEBUG - larevistacr: [963/1162] https://www.larevista.cr/michael-spence-navegar-la-tormenta-trump/
+[2026-05-16 12:34:41,886] DEBUG - larevistacr: [964/1162] https://www.larevista.cr/un-papa-de-las-americas-para-una-iglesia-afincada-en-el-sur-global-2/
+[2026-05-16 12:34:44,991] DEBUG - larevistacr: [965/1162] https://www.larevista.cr/ian-buruma-lo-que-no-se-ve-en-israel/
+[2026-05-16 12:34:49,787] DEBUG - larevistacr: [966/1162] https://www.larevista.cr/sin-regulacion-las-plataformas-digitales-amplifican-los-conflictos-y-socavan-la-libertad-y-la-democracia/
+[2026-05-16 12:34:54,283] DEBUG - larevistacr: [967/1162] https://www.larevista.cr/como-dirigir-un-centro-educativo-con-inteligencia-emocional/
+[2026-05-16 12:34:58,546] DEBUG - larevistacr: [968/1162] https://www.larevista.cr/la-radio-a-veces-puede-ser-la-conexion-esencial-con-el-mundo/
+[2026-05-16 12:35:02,883] DEBUG - larevistacr: [969/1162] https://www.larevista.cr/terapia-con-gatos-como-nos-ayuda-su-ronroneo-a-sobrellevar-el-estres-y-la-tristeza/
+[2026-05-16 12:35:07,151] DEBUG - larevistacr: [970/1162] https://www.larevista.cr/la-vigencia-de-la-declaracion-schuman-75-anos-despues/
+[2026-05-16 12:35:11,330] DEBUG - larevistacr: [971/1162] https://www.larevista.cr/los-antiguos-filosofos-ya-anticiparon-los-beneficios-cognitivos-del-ejercicio-fisico/
+[2026-05-16 12:35:15,387] DEBUG - larevistacr: [972/1162] https://www.larevista.cr/por-que-en-ucrania-bombardeada-continuamente-no-se-han-producido-apagones-totales-y-en-espana-si/
+[2026-05-16 12:35:19,462] DEBUG - larevistacr: [973/1162] https://www.larevista.cr/demasiado-jovenes-para-el-cancer-colorrectal-o-ya-no/
+[2026-05-16 12:35:24,013] DEBUG - larevistacr: [974/1162] https://www.larevista.cr/proyectos-para-plantar-la-semilla-de-la-sostenibilidad-en-el-alumnado-universitario/
+[2026-05-16 12:35:28,802] DEBUG - larevistacr: [975/1162] https://www.larevista.cr/el-reto-de-regenerar-las-aguas-residuales-para-usarlas-en-agricultura/
+[2026-05-16 12:35:33,565] DEBUG - larevistacr: [976/1162] https://www.larevista.cr/pingelap-el-atolon-donde-el-mundo-se-ve-en-blanco-y-negro/
+[2026-05-16 12:35:38,665] DEBUG - larevistacr: [977/1162] https://www.larevista.cr/ensenanza-explicita-la-comprension-lectora-paso-a-paso/
+[2026-05-16 12:35:43,421] DEBUG - larevistacr: [978/1162] https://www.larevista.cr/que-significa-para-europa-la-victoria-electoral-del-liberal-mark-carney-en-canada/
+[2026-05-16 12:35:48,431] DEBUG - larevistacr: [979/1162] https://www.larevista.cr/en-peru-debajo-de-cada-piedra-hay-un-partido-politico/
+[2026-05-16 12:35:52,860] DEBUG - larevistacr: [980/1162] https://www.larevista.cr/claves-para-resistir-y-desmontar-la-narrativa-antifeminista/
+[2026-05-16 12:35:57,421] DEBUG - larevistacr: [981/1162] https://www.larevista.cr/mexico-la-nueva-guerra-contra-el-narco/
+[2026-05-16 12:36:01,977] DEBUG - larevistacr: [982/1162] https://www.larevista.cr/daniel-gros-es-de-nuevo-la-hora-de-europa-3/
+[2026-05-16 12:36:06,499] DEBUG - larevistacr: [983/1162] https://www.larevista.cr/qiyuan-xuian-buruma-se-puede-mitigar-la-volatilidad-trumpiana/
+[2026-05-16 12:36:11,099] DEBUG - larevistacr: [984/1162] https://www.larevista.cr/el-deporte-como-motor-de-inclusion-una-cancha-todavia-desigual-en-america-latina/
+[2026-05-16 12:36:15,597] DEBUG - larevistacr: [985/1162] https://www.larevista.cr/es-necesario-pelar-la-fruta-o-estamos-tirando-lo-mejor/
+[2026-05-16 12:36:19,881] DEBUG - larevistacr: [986/1162] https://www.larevista.cr/apagones-prehistoricos-cuando-se-extinguia-la-fogata-y-no-habia-cerillas/
+[2026-05-16 12:36:24,408] DEBUG - larevistacr: [987/1162] https://www.larevista.cr/el-legado-juridico-de-francisco-reformas-audaces-con-futuro-incierto/
+[2026-05-16 12:36:28,755] DEBUG - larevistacr: [988/1162] https://www.larevista.cr/la-radio-un-arte-para-las-vanguardias-historicas/
+[2026-05-16 12:36:33,004] DEBUG - larevistacr: [989/1162] https://www.larevista.cr/como-garantizar-la-estabilidad-de-las-redes-electricas-con-una-participacion-dominante-de-renovables/
+[2026-05-16 12:36:37,228] DEBUG - larevistacr: [990/1162] https://www.larevista.cr/son-compatibles-las-transiciones-ecologica-y-digital-de-la-ue/
+[2026-05-16 12:36:41,499] DEBUG - larevistacr: [991/1162] https://www.larevista.cr/que-hacemos-con-nuestro-tiempo-cuando-no-podemos-hacer-lo-de-siempre-una-leccion-del-gran-apagon/
+[2026-05-16 12:36:45,964] DEBUG - larevistacr: [992/1162] https://www.larevista.cr/como-los-acentos-extranjeros-moldean-inconscientemente-la-forma-en-que-interactuamos/
+[2026-05-16 12:36:50,570] DEBUG - larevistacr: [993/1162] https://www.larevista.cr/la-sostenibilidad-se-ha-vuelto-insostenible-en-la-union-europea/
+[2026-05-16 12:36:54,827] DEBUG - larevistacr: [994/1162] https://www.larevista.cr/constituyente-expres-y-el-apetito-autoritario-de-daniel-noboa/
+[2026-05-16 12:36:59,449] DEBUG - larevistacr: [995/1162] https://www.larevista.cr/como-debe-lidiar-america-latina-frente-al-caos-de-trump/
+[2026-05-16 12:37:04,198] DEBUG - larevistacr: [996/1162] https://www.larevista.cr/america-latina-a-la-cola-del-desarrollo-financiero-a-nivel-global-2/
+[2026-05-16 12:37:08,820] DEBUG - larevistacr: [997/1162] https://www.larevista.cr/america-latina-a-la-cola-del-desarrollo-financiero-a-nivel-global/
+[2026-05-16 12:37:13,327] DEBUG - larevistacr: [998/1162] https://www.larevista.cr/como-nace-una-estrella/
+[2026-05-16 12:37:17,560] DEBUG - larevistacr: [999/1162] https://www.larevista.cr/aranceles-supermercados-y-nominas-cuando-la-guerra-comercial-llega-a-nuestros-bolsillos/
+[2026-05-16 12:37:21,949] DEBUG - larevistacr: [1000/1162] https://www.larevista.cr/el-manejo-responsable-de-la-informacion-debe-ser-un-aprendizaje-basico-de-la-universidad/
+[2026-05-16 12:37:26,404] DEBUG - larevistacr: [1001/1162] https://www.larevista.cr/miguel-gutierrez-saxe-necesitamos-un-plan-de-amplio-horizonte-de-adaptacion-nacional/
+[2026-05-16 12:37:31,119] DEBUG - larevistacr: [1002/1162] https://www.larevista.cr/carlos-carranza-la-solucion-no-es-parchar-por-aqui-y-por-alla/
+[2026-05-16 12:37:34,308] DEBUG - larevistacr: [1003/1162] https://www.larevista.cr/elliot-coen-la-maxima-de-la-politica-moderna-gobernar-es-comunicar/
+[2026-05-16 12:37:39,186] DEBUG - larevistacr: [1004/1162] https://www.larevista.cr/sergio-araya-la-volatilidad-del-electorado-es-la-nueva-norma/
+[2026-05-16 12:37:44,020] DEBUG - larevistacr: [1005/1162] https://www.larevista.cr/yadira-calvo-costa-rica-no-puede-haber-perdido-en-tan-poco-tiempo-su-raiz-democratica-y-pacifista/
+[2026-05-16 12:37:48,641] DEBUG - larevistacr: [1006/1162] https://www.larevista.cr/patricia-mora-el-abstencionismo-tambien-es-una-huelga-electoral-pasiva/
+[2026-05-16 12:45:52,770] INFO - larevistacr: === Iniciando scraper: larevistacr ===
+[2026-05-16 12:45:52,772] INFO - larevistacr: URL base: https://www.larevista.cr/
+[2026-05-16 12:46:07,184] INFO - larevistacr: Recolectando sección: Actualidad Nacional (https://www.larevista.cr/actualidad-nacional/)
+[2026-05-16 12:46:14,942] DEBUG - larevistacr: Página 1 → 10 artículos
+[2026-05-16 12:46:16,971] INFO - larevistacr:   → 10 artículos en 'Actualidad Nacional' | Total acumulado: 10
+[2026-05-16 12:46:18,986] INFO - larevistacr: Recolectando sección: Actualidad Mundial (https://www.larevista.cr/actualidad-mundial/)
+[2026-05-16 12:46:23,055] DEBUG - larevistacr: Página 1 → 10 artículos
+[2026-05-16 12:46:25,075] INFO - larevistacr:   → 10 artículos en 'Actualidad Mundial' | Total acumulado: 20
+[2026-05-16 12:46:27,085] INFO - larevistacr: Recolectando sección: Entrevistas (https://www.larevista.cr/entrevista/)
+[2026-05-16 12:46:31,202] DEBUG - larevistacr: Página 1 → 10 artículos
+[2026-05-16 12:46:33,227] INFO - larevistacr:   → 10 artículos en 'Entrevistas' | Total acumulado: 30
+[2026-05-16 12:46:35,239] INFO - larevistacr: Total URLs únicas: 30
+[2026-05-16 12:46:35,312] INFO - larevistacr: [1/30] Procesando artículo
+[2026-05-16 12:46:41,455] INFO - larevistacr: [2/30] Procesando artículo
+[2026-05-16 12:46:47,541] INFO - larevistacr: [3/30] Procesando artículo
+[2026-05-16 12:46:53,782] INFO - larevistacr: [4/30] Procesando artículo
+[2026-05-16 12:47:00,137] INFO - larevistacr: [5/30] Procesando artículo
+[2026-05-16 12:47:06,223] INFO - larevistacr: [6/30] Procesando artículo
+[2026-05-16 12:47:12,332] INFO - larevistacr: [7/30] Procesando artículo
+[2026-05-16 12:47:18,758] INFO - larevistacr: [8/30] Procesando artículo
+[2026-05-16 12:47:25,043] INFO - larevistacr: [9/30] Procesando artículo
+[2026-05-16 12:47:31,749] INFO - larevistacr: [10/30] Procesando artículo
+[2026-05-16 12:47:38,709] INFO - larevistacr: [11/30] Procesando artículo
+[2026-05-16 12:47:45,296] INFO - larevistacr: [12/30] Procesando artículo
+[2026-05-16 12:47:51,725] INFO - larevistacr: [13/30] Procesando artículo
+[2026-05-16 12:47:58,028] INFO - larevistacr: [14/30] Procesando artículo
+[2026-05-16 12:48:04,251] INFO - larevistacr: [15/30] Procesando artículo
+[2026-05-16 12:48:10,573] INFO - larevistacr: [16/30] Procesando artículo
+[2026-05-16 12:48:16,738] INFO - larevistacr: [17/30] Procesando artículo
+[2026-05-16 12:48:23,062] INFO - larevistacr: [18/30] Procesando artículo
+[2026-05-16 12:48:29,217] INFO - larevistacr: [19/30] Procesando artículo
+[2026-05-16 12:48:35,513] INFO - larevistacr: [20/30] Procesando artículo
+[2026-05-16 12:48:41,736] INFO - larevistacr: [21/30] Procesando artículo
+[2026-05-16 12:48:46,591] INFO - larevistacr: [22/30] Procesando artículo
+[2026-05-16 12:48:51,452] INFO - larevistacr: [23/30] Procesando artículo
+[2026-05-16 12:48:56,217] INFO - larevistacr: [24/30] Procesando artículo
+[2026-05-16 12:49:01,009] INFO - larevistacr: [25/30] Procesando artículo
+[2026-05-16 12:49:05,758] INFO - larevistacr: [26/30] Procesando artículo
+[2026-05-16 12:49:10,472] INFO - larevistacr: [27/30] Procesando artículo
+[2026-05-16 12:49:16,737] INFO - larevistacr: [28/30] Procesando artículo
+[2026-05-16 12:49:22,986] INFO - larevistacr: [29/30] Procesando artículo
+[2026-05-16 12:49:29,411] INFO - larevistacr: [30/30] Procesando artículo
+[2026-05-16 12:49:35,976] INFO - larevistacr: Artículos crudos recolectados: 30
+[2026-05-16 12:49:38,053] INFO - larevistacr: Exportados 30 registros válidos → output\larevistacr_20260516.csv
+[2026-05-16 12:49:38,054] INFO - larevistacr: === Scraper finalizado: larevistacr | Resumen: {'source': 'larevistacr', 'status': 'OK', 'total_raw': 30, 'total_valid': 30, 'total_discarded': 0, 'output_file': 'output\\larevistacr_20260516.csv'} ===
