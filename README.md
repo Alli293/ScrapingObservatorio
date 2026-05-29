@@ -1,146 +1,311 @@
 # Observatorio Democrático — Pipeline de Datos
 
-Sistema de scraping modular para recolección de noticias costarricenses.
+Sistema de scraping modular para la recolección de noticias costarricenses.
+
 Cumple con el **Estándar de Estructura y Validación de Datos v1.0**.
 
 ---
 
-## Estructura del proyecto
+# Estructura del Proyecto
 
-```
-observatorio_democratico/
+```text
+ScrapingObservatorio/
 │
-├── main.py                     # Orquestador principal
+├── main.py
 ├── requirements.txt
+├── Dockerfile
 ├── README.md
 │
 ├── scrapers/
 │   ├── __init__.py
-│   ├── base_scraper.py         # Clase base abstracta (NO modificar)
-│   ├── elperiodicocr.py        # El Periódico CR
-│   ├── nacion.py               # (próximo)
-│   └── ...                     # Agregar un archivo por periódico
+│   ├── base_scraper.py
+│   ├── elperiodicocr.py
+│   ├── teletica.py
+│   ├── repretel.py
+│   ├── acontecercr.py
+│   ├── observatorio.py
+│   ├── observatorio_adapter.py
+│   └── ...
 │
-├── output/                     # CSVs exportados (source_YYYYMMDD.csv)
-│   └── elperiodicocr_20260426.csv
+├── output/
+│   └── *.csv
 │
-└── logs/                       # Logs de ejecución y descartados
-    ├── elperiodicocr.log
-    ├── elperiodicocr_20260426_discarded.csv
-    └── execution_report_20260426_120000.json
+└── logs/
+    ├── *.log
+    ├── *_discarded.csv
+    └── execution_report_*.json
 ```
 
 ---
 
-## Instalación
+# Requisitos
+
+## Ejecución Local
+
+* Python 3.12+
+* Git
+
+Instalar dependencias:
 
 ```bash
-# 1. Instalar dependencias Python
 pip install -r requirements.txt
-
-# 2. Instalar navegadores de Playwright
-playwright install chromium
 ```
-python -m playwright install chromium
----
 
-## Uso
+Instalar Chromium para Playwright:
 
 ```bash
-# Ejecutar TODOS los scrapers
+python -m playwright install chromium
+```
+
+---
+
+# Ejecución con Docker Principal
+
+## Instalar Docker Desktop
+
+Verificar instalación:
+
+```bash
+docker --version
+docker compose version
+```
+
+### Construir la imagen
+
+```bash
+docker build -t observatorio .
+```
+
+### Listar scrapers disponibles
+
+```bash
+docker run --rm observatorio --list
+```
+
+### Ejecutar todos los scrapers
+
+```bash
+docker run --rm observatorio
+```
+
+### Ejecutar un scraper específico
+
+```bash
+docker run --rm observatorio --only elperiodicocr
+```
+
+### Ejecutar varios scrapers
+
+```bash
+docker run --rm observatorio --only elperiodicocr acontecercr
+```
+
+### Ejecutar en modo prueba Solo para los scrapers de Ali
+
+```bash
+docker run --rm observatorio --only noticiasenlineacr --test
+```
+
+# Uso Local
+
+## Ejecutar todos los scrapers
+
+```bash
 python main.py
+```
 
-# Ejecutar solo un scraper específico
+## Ejecutar un scraper específico
+
+```bash
 python main.py --only elperiodicocr
+```
 
-# Ejecutar varios scrapers
-python main.py --only elperiodicocr nacion crhoy
+## Ejecutar varios scrapers
 
-# Ver scrapers disponibles
+```bash
+python main.py --only elperiodicocr teletica repretel
+```
+
+## Listar scrapers disponibles
+
+```bash
 python main.py --list
+```
 
-# Especificar directorios personalizados
-python main.py --output /data/corpus --logs /data/logs
+## Modo prueba
+
+```bash
+python main.py --only noticiasenlineacr --test
 ```
 
 ---
 
-## Schema obligatorio (v1.0)
+# Schema Obligatorio (v1.0)
 
-| Columna            | Tipo     | Descripción                                      |
-|--------------------|----------|--------------------------------------------------|
-| `source`           | string   | Nombre normalizado del medio (snake_case)        |
-| `url`              | string   | URL única del artículo                           |
-| `title`            | string   | Titular limpio, sin HTML                         |
-| `publication_date` | datetime | `YYYY-MM-DD HH:MM:SS` (UTC-6)                   |
-| `scraping_date`    | datetime | `YYYY-MM-DD HH:MM:SS` (UTC-6, automático)        |
-| `section`          | string   | Sección del medio                                |
-| `full_text`        | string   | Cuerpo periodístico limpio (mín. 300 chars)      |
-| `language`         | string   | Código ISO 2 letras (detectado automáticamente)  |
+| Columna          | Tipo     | Descripción                  |
+| ---------------- | -------- | ---------------------------- |
+| source           | string   | Nombre normalizado del medio |
+| url              | string   | URL única del artículo       |
+| title            | string   | Título limpio                |
+| publication_date | datetime | Fecha de publicación         |
+| scraping_date    | datetime | Fecha de scraping            |
+| section          | string   | Sección del artículo         |
+| full_text        | string   | Texto completo               |
+| language         | string   | Idioma detectado             |
 
-**Formato CSV:** separador `|`, codificación UTF-8, valores nulos como `NULL`.
+### Formato CSV
+
+* Separador: `|`
+* Codificación: UTF-8
+* Valores nulos: `NULL`
 
 ---
 
-## Agregar un nuevo scraper
+# Agregar un Nuevo Scraper
 
-1. Crear `scrapers/nuevo_medio.py`
-2. Importar y extender `BaseScraper`
-3. Definir `SOURCE_NAME`, `BASE_URL` e implementar `scrape()`
-4. Registrar en `SCRAPERS_REGISTRY` dentro de `main.py`
+## Opción — Scraper 
 
-```python
-# scrapers/nuevo_medio.py
-from scrapers.base_scraper import BaseScraper
+Crear:
 
-class NuevoMedioScraper(BaseScraper):
-    SOURCE_NAME = "nuevo_medio"
-    BASE_URL = "https://www.nuevomedio.cr/"
-
-    def scrape(self) -> list[dict]:
-        records = []
-        # ... lógica de scraping con Playwright ...
-        # Cada dict debe tener: url, title, publication_date, section, full_text
-        return records
+```text
+scrapers/nuevomedio.py (iportante nombre junto y sin espacios extencion.py)
 ```
 
+Registrar en `SCRAPERS_REGISTRY`:
+
 ```python
-# main.py — SCRAPERS_REGISTRY
 SCRAPERS_REGISTRY = {
     ...
-    "nuevo_medio": ("scrapers.nuevo_medio", "NuevoMedioScraper"),
+    "nuevo_medio": (
+        "scrapers.nuevo_medio",
+        "NuevoMedioScraper"
+    )
 }
 ```
 
 ---
 
-## Validaciones automáticas (BaseScraper)
 
-- `source` → inyectado automáticamente desde `SOURCE_NAME`
-- `scraping_date` → fecha/hora de ejecución (UTC-6), automático
-- `language` → detectado con `langdetect` sobre el `full_text`, automático
-- Registros con `full_text < 300` caracteres → descartados al log
-- URLs duplicadas → eliminadas, primera ocurrencia se conserva
-- `publication_date` nulo → descartado al log
-- Todos los descartados se guardan en `logs/source_YYYYMMDD_discarded.csv`
-- python -m playwright install chromium
+# Validaciones Automáticas
 
+Realizadas por `BaseScraper`.
 
-## Side Note — Límite de páginas por sección
+* source automático.
+* scraping_date automático.
+* language automático.
+* eliminación de URLs duplicadas.
+* descarte de artículos sin fecha.
+* descarte de artículos vacíos.
+* generación automática de logs de descartados.
 
-El scraper de la revista incluye una limitación intencional de páginas por sección para evitar ejecuciones extremadamente largas durante pruebas o corridas normales.
+Los registros descartados se almacenan en:
+
+```text
+logs/source_YYYYMMDD_discarded.csv
+```
+
+---
+
+# Archivos Generados
+
+## Output
+
+```text
+output/
+├── teletica_20260527.csv
+├── repretel_20260527.csv
+└── ...
+```
+
+## Logs
+
+```text
+logs/
+├── teletica.log
+├── teletica_20260527_discarded.csv
+├── execution_report_20260527_140000.json
+└── ...
+```
+
+---
+
+# Notas Especiales por Scraper
+
+## La Revista
+
+Por defecto limita la cantidad de páginas por sección para evitar ejecuciones excesivamente largas.
+
+Para obtener el corpus histórico completo:
 
 ```python
-MAX_PAGES_PER_SECTION = 1 cambiar a 319 para scraping corpus completo
+MAX_PAGES_PER_SECTION = 319
+```
 
- ## Side Note —  Secciones 
- El scraper de munidiario es una unica seccion y no se acutalzuiza desde el 2024 por lo que se el escraper concisiste en una recolecion historica 
+---
 
- ## Side Note —  Scrapers test mode 
- algunos scrapers tienen un test mode porque son demasiado grandes para ejecutar el test mode usar  
- python scrapers/noticiasenlineacr.py --test 
- o bien 
- python main.py --only ncrnoticias --test
+## Mundiario
+
+Mundiario se maneja como una única sección.
+
+El sitio prácticamente no publica contenido nuevo desde 2024, por lo que el scraper se utiliza principalmente para recolección histórica.
+
+---
+
+## NCR Noticias y Noticias En Línea
+
+Poseen modo prueba debido al gran volumen de artículos.
+
+Ejemplos:
+
+```bash
+python main.py --only ncrnoticias --test
+```
+
+```bash
 python main.py --only noticiasenlineacr --test
-## Side Note —  Scrapers test mode  
-Repretel tiene demasiados articulos algunos muy antiguos asi que se delmito ha extraer del 2023 hacia la actualidad 
+```
+
+---
+
+## Repretel
+
+Debido al gran volumen histórico de contenido, el scraper fue limitado para extraer artículos desde 2023 hasta la actualidad.
+
+---
+
+## GRE / Observatorio
+
+Los periódicos regionales se encuentran agrupados dentro de un único archivo.
+
+Para integrarlos al pipeline sin modificar la lógica original se implementó el patrón Adapter, permitiendo que el sistema los trate como scrapers independientes.
+
+---
+
+# Flujo de Trabajo Git
+
+## Actualizar repositorio
+
+```bash
+git pull
+```
+
+## Crear rama de trabajo
+
+```bash
+git checkout -b feature/nuevo-scraper
+```
+
+## Guardar cambios
+
+```bash
+git add .
+git commit -m "Agregar nuevo scraper"
+git push origin feature/nuevo-scraper
+```
+
+## Clonar el repo 
+```bash
+git clone <URL_DEL_REPOSITORIO>
+cd ScrapingObservatorio
+```
+

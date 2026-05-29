@@ -7,8 +7,9 @@ consolida los resultados y genera un reporte de ejecución.
 
 Uso:
     python main.py
-    python main.py --only elperiodicocr
+    python main.py --only elperiodicocr 
     python main.py --list
+    python main.py --only elperiodicocr --test
 """
 
 import argparse
@@ -27,6 +28,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 # REGISTRO DE SCRAPERS
 # -----------------------------------------------------------------------
 SCRAPERS_REGISTRY = {
+    ##Alli
     "elperiodicocr": ("scrapers.elperiodicocr", "ElPeriodicoCRScraper"),
     "lareaccioncr":  ("scrapers.lareaccioncr",  "LaReaccionCRScraper"),
     "larevistacr":   ("scrapers.larevistacr",   "LaRevistaCRScraper"),
@@ -48,8 +50,105 @@ SCRAPERS_REGISTRY = {
     "theglobalcr":       ("scrapers.theglobalcr",       "TheGlobalCRScraper"),
     "ticotimes":         ("scrapers.ticotimes",         "TicoTimesScraper"),
     "trivisioncr":       ("scrapers.trivisioncr",       "TrivisionCRScraper"),
+    #Gre
+    "anexioncr": (
+        "scrapers.wordpress_sites",
+        "AnexionCRScraper"
+    ),
 
+    "guanacastealaaltura": (
+        "scrapers.wordpress_sites",
+        "GuanacasteALaAlturaScraper"
+    ),   
+    
+    "periodicomensaje": (
+        "scrapers.wordpress_sites",
+        "PeriodicoMensajeScraper"
+    ),
+    
+    "radiolapampa": (
+        "scrapers.wordpress_sites",
+        "RadioLaPampaScraper"
+    ),
+
+    "tamarindonews": (
+        "scrapers.wordpress_sites",
+        "TamarindoNewsScraper"
+    ),
+
+    "yambaradio": (
+        "scrapers.wordpress_sites",
+        "YambaRadioScraper"
+    ),
+
+    "miprensacr": (
+        "scrapers.wordpress_sites",
+        "MiPrensaCRScraper"
+    ),
+
+    "radiopuertotv": (
+        "scrapers.wordpress_sites",
+        "RadioPuertoTVScraper"
+    ),
+
+    "tvsur": (
+        "scrapers.wordpress_sites",
+        "TVSurScraper"
+    ),
+
+    "ustedseinforma": (
+        "scrapers.wordpress_sites",
+        "UstedSeInformaScraper"
+    ),
+
+    "adiariocr": (
+        "scrapers.wordpress_sites",
+        "ADiarioCRScraper"
+    ),
+
+    "actualidaddeloeste": (
+        "scrapers.wordpress_sites",
+        "ActualidadDelOesteScraper"
+    ),
+
+    "alajuelitahoy": (
+        "scrapers.wordpress_sites",
+        "AlajuelitaHoyScraper"
+    ),
+
+    "alajuelitasoy": (
+        "scrapers.wordpress_sites",
+        "AlajuelitaSoyScraper"
+    ),
+
+    "buzonderodrigo": (
+        "scrapers.wordpress_sites",
+        "BuzonDeRodrigoScraper"
+    ),
+
+    "elcolectivo506": (
+        "scrapers.wordpress_sites",
+        "ElColectivo506Scraper"
+    ),
+
+    "elmonitorcr": (
+        "scrapers.wordpress_sites",
+        "ElMonitorCRScraper"
+    ),
+
+    "elmundo": (
+        "scrapers.wordpress_sites",
+        "ElMundoScraper"
+    ),
+
+    "enlamira": (
+        "scrapers.wordpress_sites",
+        "EnLaMiraScraper"
+    ),  
+    
+    
     # Legacy / Colab
+    #Cami
     "acontecercr": ("scrapers.acontecercr", "AcontecerCRScraper"),
 }
 
