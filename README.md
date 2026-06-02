@@ -204,6 +204,27 @@ Los registros descartados se almacenan en:
 logs/source_YYYYMMDD_discarded.csv
 ```
 
+# Validación del Output Final
+
+Para validar los CSV de salida generados por el pipeline, usa `output_cleaner.py`.
+
+Comprueba:
+* columnas obligatorias
+* valores nulos o vacíos
+* URLs duplicadas
+* formato correcto de `publication_date` y `scraping_date`
+* ausencia de HTML en `title`, `section` y `full_text`
+* longitud mínima de `full_text`
+
+Ejemplos:
+
+```bash
+python output_cleaner.py output/
+python output_cleaner.py output/lareaccioncr_20260516.csv
+```
+
+El reporte se guarda automáticamente en el directorio `logs/`.
+
 ---
 
 # Archivos Generados

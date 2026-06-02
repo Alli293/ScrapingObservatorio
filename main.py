@@ -151,6 +151,37 @@ SCRAPERS_REGISTRY = {
     #Cami
     "acontecercr": ("scrapers.acontecercr", "AcontecerCRScraper"),
     "eljornalcr":  ("scrapers.eljornal",    "ElJornalCRScraper"),
+
+    # Scrapers adicionales detectados en scrapers/
+    "caribeactual": ("scrapers.caribeactual_scraper", "CarribeActualScraper"),
+    "presidencia": ("scrapers.presidencia_scraper", "PresidenciaScraper"),
+    "puntarenasseoye": ("scrapers.puntarenasseoye", "PuntarenasSeOyeScraper"),
+    "ticosland": ("scrapers.ticosland", "TicosLandScraper"),
+    "vozdeguanacaste": ("scrapers.vozdeguanacaste", "VozDeGuanacaste"),
+    "observatorio_democratico": ("scrapers.Observatorio_Democratico", "ObservatorioDemocraticoScraper"),
+    "acontecer_cr": ("scrapers.acontecer_cr", "AcontecerCrScraper"),
+    "alajuela_digital": ("scrapers.alajuela_digital", "AlajuelaDigitalScraper"),
+    "amprensa": ("scrapers.amprensa", "AmprensaScraper"),
+    "crc_89_1": ("scrapers.crc_89_1", "CRC891Scraper"),
+    "crhoy": ("scrapers.crhoy", "CrhoyScraper"),
+    "diarioextra": ("scrapers.diarioextra", "DiarioExtraScraper"),
+    "digital506": ("scrapers.digital506", "Digital506Scraper"),
+    "el_financiero": ("scrapers.el_financiero", "ElFinancieroScraper"),
+    "el_jilguero": ("scrapers.el_jilguero", "ElJilgueroScraper"),
+    "el_jornal": ("scrapers.el_jornal", "ElJornalScraper"),
+    "el_mundo": ("scrapers.el_mundo", "ElMundoScraper"),
+    "el_observador": ("scrapers.el_observador", "ElObservadorScraper"),
+    "el_seminario": ("scrapers.el_seminario", "ElSeminarioScraper"),
+    "el_sol_de_occidente": ("scrapers.el_sol_de_occidente", "ElSolDeOccidenteScraper"),
+    "eldelfino": ("scrapers.eldelfino", "ElDelfinoScraper"),
+    "elnortehoy": ("scrapers.elnortehoy", "ElNorteHoyScraper"),
+    "lanacion": ("scrapers.lanacion", "LaNacionScraper"),
+    "larepublica": ("scrapers.larepublica", "LaRepublicaScraper"),
+    "noticias_la_garita_costa_rica": ("scrapers.noticias_la_garita_costa_rica", "NoticiasLaGaritaCostaRicaScraper"),
+    "periodico_el_mundo": ("scrapers.periodico_el_mundo", "PeriodicoElMundoScraper"),
+    "periodico_mi_tierra": ("scrapers.periódico_mi_tierra", "PeriodicoMiTierraScraper"),
+    "sancarlosdigital": ("scrapers.sancarlosdigital", "SancarlosDigitalScraper"),
+    "seminario": ("scrapers.seminario", "SeminarioScraper"),
 }
 
 CR_TZ = timezone(timedelta(hours=-6))
@@ -176,14 +207,14 @@ def run_scraper(
 
     module_path, class_name = SCRAPERS_REGISTRY[name]
 
+    original_cwd = os.getcwd()
+
     try:
 
         # -------------------------------------------------
         # PREPARAR OUTPUT
         # -------------------------------------------------
         Path(output_dir).mkdir(parents=True, exist_ok=True)
-
-        original_cwd = os.getcwd()
 
         # Cambiar temporalmente al output/
         os.chdir(output_dir)
@@ -226,10 +257,6 @@ def run_scraper(
                 )
 
             result = scraper.run()
-
-            # Restaurar cwd
-            os.chdir(original_cwd)
-
             return result
 
         # -------------------------------------------------
@@ -251,9 +278,6 @@ def run_scraper(
                 except:
                     pass
 
-            # Restaurar cwd
-            os.chdir(original_cwd)
-
             return {
                 "source": name,
                 "status": "OK",
@@ -263,11 +287,6 @@ def run_scraper(
 
     except ImportError as e:
 
-        try:
-            os.chdir(original_cwd)
-        except:
-            pass
-
         return {
             "source": name,
             "status": "ERROR",
@@ -276,16 +295,17 @@ def run_scraper(
 
     except Exception as e:
 
-        try:
-            os.chdir(original_cwd)
-        except:
-            pass
-
         return {
             "source": name,
             "status": "ERROR",
             "error": str(e)
         }
+
+    finally:
+        try:
+            os.chdir(original_cwd)
+        except Exception:
+            pass
 
 
 # -----------------------------------------------------------------------
@@ -500,12 +520,19 @@ def main():
 
         print(f"  [{i+1}/{len(to_run)}] Iniciando: {name}")
 
-        result = run_scraper(
-            name,
-            output_dir=args.output,
-            log_dir=args.logs,
-            test_mode=args.test
-        )
+        try:
+            result = run_scraper(
+                name,
+                output_dir=args.output,
+                log_dir=args.logs,
+                test_mode=args.test
+            )
+        except Exception as e:
+            result = {
+                "source": name,
+                "status": "ERROR",
+                "error": str(e)
+            }
 
         results.append(result)
 
