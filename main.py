@@ -150,6 +150,7 @@ SCRAPERS_REGISTRY = {
     # Legacy / Colab
     #Cami
     "acontecercr": ("scrapers.acontecercr", "AcontecerCRScraper"),
+    "eljornalcr":  ("scrapers.eljornal",    "ElJornalCRScraper"),
 }
 
 CR_TZ = timezone(timedelta(hours=-6))
