@@ -1,0 +1,34 @@
+# =========================
+# LOGS Y ARCHIVOS TEMPORALES
+# =========================
+logs/
+log_*.txt
+log_*.json
+execution_report_*.json
+
+# =========================
+# OUTPUTS DEL SCRAPER
+# =========================
+output/
+*.csv
+*_backup.csv
+
+# =========================
+# PYTHON CACHE
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+# ENTORNOS VIRTUALES
+# =========================
+venv/
+env/
+
+# =========================
+# SISTEMA OPERATIVO
+# =========================
+.DS_Store
+Thumbs.db
