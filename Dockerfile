@@ -10,4 +10,4 @@ COPY . .
 
 RUN mkdir -p output logs
 
-ENTRYPOINT ["python", "main.py"]
+CMD ["python", "run_dev.py"]

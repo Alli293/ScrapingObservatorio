@@ -309,3 +309,16 @@ git clone <URL_DEL_REPOSITORIO>
 cd ScrapingObservatorio
 ```
 
+## Construcción inicial (IMPORTANTE)
+
+Primera vez que se ejecuta el proyecto o cuando hay cambios en requirements 
+
+docker compose up -d --build
+
+## Ejecución normal (modo servicio)
+
+Después de la primera construcción:
+
+docker compose up -d
+
+Esto ejecuta el sistema en segundo plano.

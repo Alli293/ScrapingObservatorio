@@ -1,14 +1,17 @@
 services:
-
   observatorio:
-
     build: .
 
     container_name: observatorio
 
     volumes:
+      - .:/app
       - ./output:/app/output
       - ./logs:/app/logs
 
-    stdin_open: true
-    tty: true
+    command: python run_dev.py
+
+    restart: unless-stopped
+
+    stdin_open: false
+    tty: false
