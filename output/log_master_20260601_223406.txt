@@ -1,0 +1,17 @@
+[22:34:06] 
+==============================================
+[22:34:06] Iniciando Extracción API para: RADIOPUERTOTV
+[22:34:06] Target URL: https://radiopuertotv.net
+[22:34:06] ==============================================
+[22:34:07] -> Mapeadas 26 categorías.
+[22:34:08] -> [radiopuertotv] Página 1 extraida (+100 ítems)
+[22:34:10] -> [radiopuertotv] Página 2 extraida (+100 ítems)
+[22:34:12] -> [radiopuertotv] Página 3 extraida (+100 ítems)
+[22:34:14] -> [radiopuertotv] Página 4 extraida (+100 ítems)
+[22:34:16] -> [radiopuertotv] Página 5 extraida (+100 ítems)
+[22:34:18] -> [radiopuertotv] Página 6 extraida (+100 ítems)
+[22:34:21] -> [radiopuertotv] Página 7 extraida (+100 ítems)
+[22:34:23] -> [radiopuertotv] Página 8 extraida (+100 ítems)
+[22:34:25] -> [radiopuertotv] Página 9 extraida (+100 ítems)
+[22:34:27] -> [radiopuertotv] Página 10 extraida (+100 ítems)
+[22:34:28] -> [radiopuertotv] Página 11 extraida (+100 ítems)
