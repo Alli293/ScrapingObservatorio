@@ -1,0 +1,8 @@
+[23:07:53] 
+==============================================
+[23:07:53] Iniciando Extracción API para: ANEXIONCR
+[23:07:53] Target URL: https://anexioncr.com
+[23:07:53] ==============================================
+[23:07:54] -> Advertencia: No se pudieron mapear categorías (HTTPSConnectionPool(host='anexioncr.com', port=443): Max retries exceeded with url: /wp-json/wp/v2/categories?per_page=100 (Caused by NameResolutionError("HTTPSConnection(host='anexioncr.com', port=443): Failed to resolve 'anexioncr.com' ([Errno 11002] getaddrinfo failed)"))). Todo irá como 'Noticias'.
+[23:07:54] -> Falla de conexión crítica en página 1: HTTPSConnectionPool(host='anexioncr.com', port=443): Max retries exceeded with url: /wp-json/wp/v2/posts?per_page=100&page=1 (Caused by NameResolutionError("HTTPSConnection(host='anexioncr.com', port=443): Failed to resolve 'anexioncr.com' ([Errno 11001] getaddrinfo failed)")). Abortando anexioncr.
+[23:07:54] WARNING: API vacía o inalcanzable para anexioncr.
