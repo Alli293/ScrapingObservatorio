@@ -1,4 +1,4 @@
-playwright>=1.44.0
+playwright>=1.60.0
 pandas>=2.0.0
 langdetect>=1.0.9
 python-dateutil>=2.8.2
