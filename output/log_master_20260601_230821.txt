@@ -1,8 +1,0 @@
-[23:08:21] 
-==============================================
-[23:08:21] Iniciando Extracción API para: ENLAMIRA
-[23:08:21] Target URL: https://enlamiracr.com
-[23:08:21] ==============================================
-[23:08:28] -> Mapeadas 11 categorías.
-[23:08:38] -> [enlamira] Página 1 extraida (+100 ítems)
-[23:08:52] -> [enlamira] Página 2 extraida (+100 ítems)

@@ -1,8 +1,0 @@
-[23:12:47] 
-==============================================
-[23:12:47] Iniciando Extracción API para: RADIOLAPAMPA
-[23:12:47] Target URL: https://radiolapampa.net
-[23:12:47] ==============================================
-[23:12:47] -> Mapeadas 0 categorías.
-[23:12:47] -> El sitio rechazó la solicitud (código 403). Abortando sitio.
-[23:12:47] WARNING: API vacía o inalcanzable para radiolapampa.

@@ -1,8 +1,0 @@
-[23:12:38] 
-==============================================
-[23:12:38] Iniciando Extracción API para: PERIODICOMENSAJE
-[23:12:38] Target URL: https://periodicomensaje.com
-[23:12:38] ==============================================
-[23:12:38] -> Mapeadas 0 categorías.
-[23:12:38] -> El sitio rechazó la solicitud (código 404). Abortando sitio.
-[23:12:38] WARNING: API vacía o inalcanzable para periodicomensaje.
