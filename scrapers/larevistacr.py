@@ -52,6 +52,12 @@ DELAY_BETWEEN_PAGES = 1.5
 # La sección actualidad-nacional tiene 319 páginas — ajustar según necesidad del corpus
 MAX_PAGES_PER_SECTION = 50
 
+# En test mode, limitar paginación a pocas páginas
+TEST_MAX_PAGES = 2
+
+# Modo prueba: limita número de artículos procesados
+TEST_MAX_ARTICLES = 5
+
 MESES_ES = {
     "enero": 1, "febrero": 2, "marzo": 3, "abril": 4,
     "mayo": 5, "junio": 6, "julio": 7, "agosto": 8,
@@ -110,8 +116,11 @@ class LaRevistaCRScraper(BaseScraper):
     BASE_URL = BASE_URL
 
 
-    def __init__(self, output_dir="output", log_dir="logs"):
+    def __init__(self, output_dir="output", log_dir="logs", test_mode: bool = False):
         super().__init__(output_dir=output_dir, log_dir=log_dir)
+        self.test_mode = test_mode
+        if self.test_mode:
+            self.logger.info(f"*** MODO PRUEBA ACTIVO: limitando a {TEST_MAX_ARTICLES} artículos ***")
 
     def scrape(self) -> list[dict]:
         return asyncio.run(self._scrape_async())
@@ -153,6 +162,8 @@ class LaRevistaCRScraper(BaseScraper):
             # -------------------------------------------------------
             records = []
             links_list = list(article_links.values())
+            if self.test_mode:
+                links_list = links_list[:TEST_MAX_ARTICLES]
 
             for i, link_data in enumerate(links_list):
                 self.logger.debug(f"[{i+1}/{len(links_list)}] {link_data['url']}")
@@ -174,11 +185,15 @@ class LaRevistaCRScraper(BaseScraper):
         """
         Navega todas las páginas de una sección.
         Extrae URL, título, fecha y sección de cada artículo.
+        En test mode, limita paginación a TEST_MAX_PAGES.
         """
         collected = {}
         page_num = 1
+        
+        # En test mode, limitar número de páginas a scrapear
+        max_pages = TEST_MAX_PAGES if self.test_mode else MAX_PAGES_PER_SECTION
 
-        while page_num <= MAX_PAGES_PER_SECTION:
+        while page_num <= max_pages:
             if page_num == 1:
                 url = section_url
             else:

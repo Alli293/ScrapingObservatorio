@@ -179,6 +179,13 @@ class NCRNoticiasScraper(BaseScraper):
                 # Pausa entre secciones para no saturar
                 await asyncio.sleep(DELAY_BETWEEN_SECTIONS)
 
+                if self.test_mode and len(article_links) >= TEST_MAX_ARTICLES * TEST_MAX_SECTIONS:
+                    self.logger.debug(
+                        f"  Modo prueba: {len(article_links)} links recolectados, "
+                        f"deteniendo recolección"
+                    )
+                    break
+
             self.logger.info(f"Total URLs únicas: {len(article_links)}")
 
             # -------------------------------------------------------
@@ -243,6 +250,13 @@ class NCRNoticiasScraper(BaseScraper):
                     f"  [{section_name}] Ronda {click_count}: "
                     f"{new_on_round} nuevos | total: {len(collected)}"
                 )
+
+                # En modo prueba, parar cuando hay suficientes artículos
+                if self.test_mode and len(collected) >= TEST_MAX_ARTICLES:
+                    self.logger.debug(
+                        f"  Modo prueba: {len(collected)} artículos en {section_name}, terminando"
+                    )
+                    break
 
                 # Buscar botón "Cargar más"
                 clicked = await self._click_load_more(page)
@@ -431,19 +445,25 @@ class NCRNoticiasScraper(BaseScraper):
             section = link_data.get("section", "")
 
             # -----------------------------------------------------------
-            # Texto: div[class*='tdb-block-inner'] sin importar jerarquía
+            # Texto: contenedor del cuerpo del artículo (Newspaper/Tagdiv theme)
             # -----------------------------------------------------------
             content_div = await page.query_selector(
-                "div.tdb-block-inner, div[class*='tdb-block-inner']"
+                "div.td-post-content, div[class*='td-post-content']"
             )
 
-            # Fallback: div.td-fix-index
+            # Fallback: div.td-fix-index (wrapper del post en Tagdiv)
             if not content_div:
                 content_div = await page.query_selector(
                     "div.td-fix-index, div[class*='td-fix-index']"
                 )
 
-            # Fallback: article o div.entry-content
+            # Fallback: tdb-block-inner (bloque genérico del builder)
+            if not content_div:
+                content_div = await page.query_selector(
+                    "div.tdb-block-inner, div[class*='tdb-block-inner']"
+                )
+
+            # Fallback final: entry-content o article
             if not content_div:
                 content_div = await page.query_selector(
                     "div.entry-content, article"

@@ -55,9 +55,15 @@ SECTIONS = [
 # Número de scrolls por sección (cada scroll carga ~10-20 artículos)
 MAX_SCROLLS = 20
 
+# En test mode, limitar scrolls a pocas iteraciones
+TEST_MAX_SCROLLS = 2
+
 ARTICLE_TIMEOUT = 25_000
 DELAY_BETWEEN_ARTICLES = 1.2
 DELAY_SCROLL = 2500  # ms entre scrolls
+
+# Modo prueba: limita número de artículos procesados
+TEST_MAX_ARTICLES = 5
 
 
 def parse_iso_date(raw: str) -> str:
@@ -101,8 +107,11 @@ class LaTejaCRScraper(BaseScraper):
     BASE_URL = BASE_URL
 
 
-    def __init__(self, output_dir="output", log_dir="logs"):
+    def __init__(self, output_dir="output", log_dir="logs", test_mode: bool = False):
         super().__init__(output_dir=output_dir, log_dir=log_dir)
+        self.test_mode = test_mode
+        if self.test_mode:
+            self.logger.info(f"*** MODO PRUEBA ACTIVO: limitando a {TEST_MAX_ARTICLES} artículos ***")
 
     def scrape(self) -> list[dict]:
         return asyncio.run(self._scrape_async())
@@ -143,6 +152,13 @@ class LaTejaCRScraper(BaseScraper):
                     f"Total acumulado: {len(article_links)}"
                 )
 
+                if self.test_mode and len(article_links) >= TEST_MAX_ARTICLES:
+                    self.logger.debug(
+                        f"  Modo prueba: {len(article_links)} links recolectados, "
+                        f"deteniendo recolección"
+                    )
+                    break
+
             self.logger.info(f"Total URLs únicas: {len(article_links)}")
 
             # -------------------------------------------------------
@@ -150,6 +166,8 @@ class LaTejaCRScraper(BaseScraper):
             # -------------------------------------------------------
             records = []
             links_list = list(article_links.values())
+            if self.test_mode:
+                links_list = links_list[:TEST_MAX_ARTICLES]
 
             for i, link_data in enumerate(links_list):
                 self.logger.debug(f"[{i+1}/{len(links_list)}] {link_data['url']}")
@@ -171,15 +189,19 @@ class LaTejaCRScraper(BaseScraper):
         """
         Recolecta desde div.most-read-container > div.list > div.row-border
         Con scroll para cargar más items.
+        En test mode, limita el número de scrolls a TEST_MAX_SCROLLS.
         """
         page = await context.new_page()
         collected = {}
+        
+        # Usar TEST_MAX_SCROLLS en test mode
+        max_scrolls = TEST_MAX_SCROLLS if self.test_mode else MAX_SCROLLS
 
         try:
             await page.goto(section_url, wait_until="domcontentloaded", timeout=30_000)
             await page.wait_for_timeout(2000)
 
-            for scroll_num in range(MAX_SCROLLS):
+            for scroll_num in range(max_scrolls):
                 # Extraer items del contenedor most-read
                 rows = await page.query_selector_all(
                     "div.most-read-container div.list div.row-border, "
@@ -227,6 +249,12 @@ class LaTejaCRScraper(BaseScraper):
                         self.logger.debug(f"Error en row-border: {e}")
                         continue
 
+                if self.test_mode and len(collected) >= TEST_MAX_ARTICLES:
+                    self.logger.debug(
+                        f"  Modo prueba: {len(collected)} artículos en mostread, terminando"
+                    )
+                    break
+
                 prev_count = len(collected)
                 await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                 await page.wait_for_timeout(DELAY_SCROLL)
@@ -260,20 +288,19 @@ class LaTejaCRScraper(BaseScraper):
     ) -> list[dict]:
         """
         Recolecta desde secciones con scroll infinito + botón "Ver más".
-        Estrategia por ciclo:
-          1. Extrae todos los a[href*='/story/'] visibles
-          2. Scroll al final de la página
-          3. Si aparece botón "Ver más" → hacer clic y esperar carga
-          4. Si no hay botón y no cargaron artículos nuevos → terminar
+        En test mode, limita el número de scrolls a TEST_MAX_SCROLLS.
         """
         page = await context.new_page()
         collected = {}
+        
+        # Usar TEST_MAX_SCROLLS en test mode para ir más rápido
+        max_scrolls = TEST_MAX_SCROLLS if self.test_mode else MAX_SCROLLS
 
         try:
             await page.goto(section_url, wait_until="domcontentloaded", timeout=30_000)
             await page.wait_for_timeout(2500)
 
-            for scroll_num in range(MAX_SCROLLS):
+            for scroll_num in range(max_scrolls):
                 # --- Extraer artículos actualmente visibles ---
                 links_data = await self._extract_story_links(page)
                 for item in links_data:
@@ -285,6 +312,12 @@ class LaTejaCRScraper(BaseScraper):
                             "section": section_name,
                             "publication_date": "",
                         }
+
+                if self.test_mode and len(collected) >= TEST_MAX_ARTICLES:
+                    self.logger.debug(
+                        f"  Modo prueba: {len(collected)} artículos en {section_name}, terminando"
+                    )
+                    break
 
                 prev_count = len(collected)
 

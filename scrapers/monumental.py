@@ -43,6 +43,10 @@ DELAY_BETWEEN_ARTICLES = 1.0
 DELAY_BETWEEN_PAGES = 1.5
 DELAY_SCROLL = 2000  # ms entre scrolls
 
+# Modo prueba: limita número de artículos procesados y páginas de sección
+TEST_MAX_ARTICLES = 5
+TEST_MAX_PAGES = 2
+
 MESES_ES = {
     "enero": 1, "febrero": 2, "marzo": 3, "abril": 4,
     "mayo": 5, "junio": 6, "julio": 7, "agosto": 8,
@@ -114,8 +118,11 @@ class MonumentalScraper(BaseScraper):
     BASE_URL = BASE_URL
 
 
-    def __init__(self, output_dir="output", log_dir="logs"):
+    def __init__(self, output_dir="output", log_dir="logs", test_mode: bool = False):
         super().__init__(output_dir=output_dir, log_dir=log_dir)
+        self.test_mode = test_mode
+        if self.test_mode:
+            self.logger.info(f"*** MODO PRUEBA ACTIVO: limitando a {TEST_MAX_ARTICLES} artículos ***")
 
     def scrape(self) -> list[dict]:
         return asyncio.run(self._scrape_async())
@@ -156,8 +163,12 @@ class MonumentalScraper(BaseScraper):
             # PASO 2: Visitar cada artículo
             # -------------------------------------------------------
             records = []
-            for i, link_data in enumerate(article_links.values()):
-                self.logger.debug(f"[{i+1}/{len(article_links)}] {link_data['url']}")
+            links_list = list(article_links.values())
+            if self.test_mode:
+                links_list = links_list[:TEST_MAX_ARTICLES]
+
+            for i, link_data in enumerate(links_list):
+                self.logger.debug(f"[{i+1}/{len(links_list)}] {link_data['url']}")
                 record = await self._scrape_article(context, link_data)
                 if record:
                     records.append(record)
@@ -179,8 +190,9 @@ class MonumentalScraper(BaseScraper):
         """
         collected = {}
         page_num = 1
+        max_pages = TEST_MAX_PAGES if self.test_mode else 9999
 
-        while True:
+        while page_num <= max_pages:
             if page_num == 1:
                 url = base_url
             else:
@@ -208,6 +220,13 @@ class MonumentalScraper(BaseScraper):
                     f"  [{section_name}] Pág {page_num}: "
                     f"{found_on_page} nuevos | total: {len(collected)}"
                 )
+
+                # En modo prueba, detenerse cuando ya hay suficientes links
+                if self.test_mode and len(collected) >= TEST_MAX_ARTICLES:
+                    self.logger.debug(
+                        f"  Modo prueba: recolectados {len(collected)} links, terminando"
+                    )
+                    break
 
                 # Sin artículos → fin de la sección
                 if found_on_page == 0:

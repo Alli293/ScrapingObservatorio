@@ -288,7 +288,7 @@ class CostaRicaStarScraper(BaseScraper):
 
                 if found_on_page == 0:
                     all_titles = await page.query_selector_all(
-                        "div.titulcate, a.post-title"
+                        "div.category-post-item, a.post-title"
                     )
                     if len(all_titles) == 0:
                         self.logger.debug(f"  [{section_name}] Sin tarjetas, terminando")
@@ -333,7 +333,7 @@ class CostaRicaStarScraper(BaseScraper):
                 const results = [];
                 const seen = new Set();
 
-                document.querySelectorAll('div.titulcate a.post-title[href]').forEach(a => {
+                document.querySelectorAll('div.category-post-item a.post-title[href]').forEach(a => {
                     const href  = a.getAttribute('href') || '';
                     const title = (
                         a.getAttribute('title') ||

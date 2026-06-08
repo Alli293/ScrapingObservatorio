@@ -82,14 +82,19 @@ class CarribeActualScraper(BaseScraper):
                             new_found += 1
 
                     await page.close()
+                    if self.test_mode and len(seen) >= TEST_MAX_ARTICLES:
+                        break
                     if new_found == 0:
                         break
                     page_num += 1
 
                 except Exception as e:
-                    self.log(f"Error collecting {url}: {e}")
+                    self.logger.info(f"Error collecting {url}: {e}")
                     await page.close()
                     break
+
+            if self.test_mode and len(seen) >= TEST_MAX_ARTICLES:
+                break
 
         return seen
 
@@ -130,7 +135,7 @@ class CarribeActualScraper(BaseScraper):
             await page.close()
 
             if len(full_text) < 300:
-                self.log(f"Skipping (short content): {url}")
+                self.logger.info(f"Skipping (short content): {url}")
                 return None
 
             return {
@@ -142,7 +147,7 @@ class CarribeActualScraper(BaseScraper):
             }
 
         except Exception as e:
-            self.log(f"Error scraping article {url}: {e}")
+            self.logger.info(f"Error scraping article {url}: {e}")
             await page.close()
             return None
 
@@ -157,22 +162,22 @@ class CarribeActualScraper(BaseScraper):
                 "--no-sandbox",
             ])
 
-            self.log("Phase 1: collecting article links…")
+            self.logger.info("Phase 1: collecting article links…")
             links = await self._collect_links(browser)
-            self.log(f"Found {len(links)} unique articles.")
+            self.logger.info(f"Found {len(links)} unique articles.")
 
             link_list = list(links.values())
             if self.test_mode:
                 link_list = link_list[:TEST_MAX_ARTICLES]
 
-            self.log("Phase 2: scraping articles…")
+            self.logger.info("Phase 2: scraping articles…")
             for i, link_data in enumerate(link_list, 1):
-                self.log(f"  [{i}/{len(link_list)}] {link_data['url']}")
+                self.logger.info(f"  [{i}/{len(link_list)}] {link_data['url']}")
                 article = await self._scrape_article(browser, link_data)
                 if article:
                     results.append(article)
 
             await browser.close()
 
-        self.log(f"Done. {len(results)} articles collected.")
+        self.logger.info(f"Done. {len(results)} articles collected.")
         return results

@@ -57,6 +57,10 @@ DELAY_BETWEEN_PAGES = 1.5
 DELAY_BETWEEN_SECTIONS = 2.0
 DELAY_SCROLL = 1800
 
+# Modo prueba: limita número de artículos procesados y páginas de sección
+TEST_MAX_ARTICLES = 5
+TEST_MAX_PAGES = 2
+
 MESES_ES = {
     "enero": 1, "febrero": 2, "marzo": 3, "abril": 4,
     "mayo": 5, "junio": 6, "julio": 7, "agosto": 8,
@@ -133,8 +137,11 @@ class PulsoCRScraper(BaseScraper):
     BASE_URL = BASE_URL + "/"
 
 
-    def __init__(self, output_dir="output", log_dir="logs"):
+    def __init__(self, output_dir="output", log_dir="logs", test_mode: bool = False):
         super().__init__(output_dir=output_dir, log_dir=log_dir)
+        self.test_mode = test_mode
+        if self.test_mode:
+            self.logger.info(f"*** MODO PRUEBA ACTIVO: limitando a {TEST_MAX_ARTICLES} artículos ***")
 
     def scrape(self) -> list[dict]:
         return asyncio.run(self._scrape_async())
@@ -172,14 +179,25 @@ class PulsoCRScraper(BaseScraper):
                 )
                 await asyncio.sleep(DELAY_BETWEEN_SECTIONS)
 
+                if self.test_mode and len(article_links) >= TEST_MAX_ARTICLES:
+                    self.logger.debug(
+                        f"  Modo prueba: {len(article_links)} links recolectados, "
+                        f"deteniendo recolección"
+                    )
+                    break
+
             self.logger.info(f"Total URLs únicas: {len(article_links)}")
 
             # -------------------------------------------------------
             # PASO 2: Visitar cada artículo
             # -------------------------------------------------------
             records = []
-            for i, link_data in enumerate(article_links.values()):
-                self.logger.debug(f"[{i+1}/{len(article_links)}] {link_data['url']}")
+            links_list = list(article_links.values())
+            if getattr(self, 'test_mode', False):
+                links_list = links_list[:TEST_MAX_ARTICLES]
+
+            for i, link_data in enumerate(links_list):
+                self.logger.debug(f"[{i+1}/{len(links_list)}] {link_data['url']}")
                 record = await self._scrape_article(context, link_data)
                 if record:
                     records.append(record)
@@ -201,8 +219,9 @@ class PulsoCRScraper(BaseScraper):
         """
         collected = {}
         page_num = 1
+        max_pages = TEST_MAX_PAGES if self.test_mode else 9999
 
-        while True:
+        while page_num <= max_pages:
             url = base_url if page_num == 1 else base_url.rstrip("/") + f"/page/{page_num}/"
             page = await context.new_page()
             found_on_page = 0
@@ -223,6 +242,13 @@ class PulsoCRScraper(BaseScraper):
                     f"  [{section_name}] Pág {page_num}: "
                     f"{found_on_page} nuevos | total: {len(collected)}"
                 )
+
+                # En modo prueba, detenerse cuando ya hay suficientes links
+                if self.test_mode and len(collected) >= TEST_MAX_ARTICLES:
+                    self.logger.debug(
+                        f"  Modo prueba: {len(collected)} links recolectados, terminando"
+                    )
+                    break
 
                 # Sin tarjetas → fin de sección
                 if found_on_page == 0:
@@ -365,14 +391,14 @@ class PulsoCRScraper(BaseScraper):
             # Texto: div[class*='entry-content'] sin jerarquía
             # Extraer todos los <p> excluyendo autor, tags, navegación
             # -----------------------------------------------------------
+            # Selector específico: evitar entry-content-wrap que rompe el JS
             content_div = await page.query_selector(
-                "div.entry-content, div[class*='entry-content']"
+                "div.entry-content.read-details"
             )
 
-            # Fallback: div.read-details
             if not content_div:
                 content_div = await page.query_selector(
-                    "div.read-details, div[class*='read-details']"
+                    "div.read-details, div.entry-content"
                 )
 
             if not content_div:
@@ -397,7 +423,8 @@ class PulsoCRScraper(BaseScraper):
                         'nav', '.navigation', '[class*="post-navigation"]',
                         '[class*="nav-links"]',
                         // Redes sociales
-                        '[class*="share"]', '[class*="social"]',
+                        '[class*="share"]', '[class*="social-share"]',
+                        '[class*="social-buttons"]', '[class*="social-icons"]',
                         // Publicidad
                         '[class*="ad-"]', '[id*="ad"]',
                         // Artículos relacionados

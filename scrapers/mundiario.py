@@ -37,6 +37,10 @@ DELAY_BETWEEN_ARTICLES = 1.0
 DELAY_BETWEEN_PAGES = 1.5
 DELAY_SCROLL = 2000
 
+# Modo prueba: limita número de artículos procesados y páginas de sección
+TEST_MAX_ARTICLES = 5
+TEST_MAX_PAGES = 2
+
 
 def parse_short_date(text: str) -> str:
     """
@@ -98,8 +102,11 @@ class MundiarioCRScraper(BaseScraper):
     BASE_URL = BASE_URL + "/"
 
 
-    def __init__(self, output_dir="output", log_dir="logs"):
+    def __init__(self, output_dir="output", log_dir="logs", test_mode: bool = False):
         super().__init__(output_dir=output_dir, log_dir=log_dir)
+        self.test_mode = test_mode
+        if self.test_mode:
+            self.logger.info(f"*** MODO PRUEBA ACTIVO: limitando a {TEST_MAX_ARTICLES} artículos ***")
 
     def scrape(self) -> list[dict]:
         return asyncio.run(self._scrape_async())
@@ -127,8 +134,12 @@ class MundiarioCRScraper(BaseScraper):
             # PASO 2: Visitar cada artículo
             # -------------------------------------------------------
             records = []
-            for i, link_data in enumerate(article_links.values()):
-                self.logger.debug(f"[{i+1}/{len(article_links)}] {link_data['url']}")
+            links_list = list(article_links.values())
+            if self.test_mode:
+                links_list = links_list[:TEST_MAX_ARTICLES]
+
+            for i, link_data in enumerate(links_list):
+                self.logger.debug(f"[{i+1}/{len(links_list)}] {link_data['url']}")
                 record = await self._scrape_article(context, link_data)
                 if record:
                     records.append(record)
@@ -149,8 +160,9 @@ class MundiarioCRScraper(BaseScraper):
         """
         collected = {}
         page_num = 1
+        max_pages = TEST_MAX_PAGES if self.test_mode else 9999
 
-        while True:
+        while page_num <= max_pages:
             if page_num == 1:
                 url = SECTION_URL
             else:
@@ -178,6 +190,13 @@ class MundiarioCRScraper(BaseScraper):
                     f"  Pág {page_num}: {found_on_page} nuevos | "
                     f"total acumulado: {len(collected)}"
                 )
+
+                # En modo prueba, detenerse cuando ya hay suficientes links
+                if self.test_mode and len(collected) >= TEST_MAX_ARTICLES:
+                    self.logger.debug(
+                        f"  Modo prueba: {len(collected)} links recolectados, terminando"
+                    )
+                    break
 
                 # Sin artículos nuevos ni tarjetas en la página → fin
                 if found_on_page == 0:

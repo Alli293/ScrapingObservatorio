@@ -442,14 +442,25 @@ class SinartDigitalScraper(BaseScraper):
                         });
 
                         // Extraer párrafos y listas
-                        clone.querySelectorAll('p, li').forEach(el => {
-                            const text = (el.innerText || el.textContent || '')
+                        const pEls = clone.querySelectorAll('p, li');
+                        if (pEls.length > 0) {
+                            pEls.forEach(el => {
+                                const text = (el.innerText || el.textContent || '')
+                                    .replace(/\\s+/g, ' ').trim();
+                                if (text.length < 15) return;
+                                if (seen.has(text)) return;
+                                seen.add(text);
+                                parts.push(text);
+                            });
+                        } else {
+                            // Fallback: texto directo del bloque (ej. divs planos sin <p>)
+                            const text = (clone.innerText || clone.textContent || '')
                                 .replace(/\\s+/g, ' ').trim();
-                            if (text.length < 15) return;
-                            if (seen.has(text)) return;
-                            seen.add(text);
-                            parts.push(text);
-                        });
+                            if (text.length >= 15 && !seen.has(text)) {
+                                seen.add(text);
+                                parts.push(text);
+                            }
+                        }
                     });
 
                     return parts.join('\\n\\n');

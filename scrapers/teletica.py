@@ -378,17 +378,14 @@ class TeleticaScraper(BaseScraper):
 
                     if (!container) return;
 
-                    // Título: buscar h2 dentro de div.text del mismo contenedor
+                    // Título: buscar h2 en el contenedor (con o sin div.text intermedio)
                     let title = '';
-                    const textDiv = container.querySelector('div.text');
-                    if (textDiv) {
-                        const h2 = textDiv.querySelector('h2');
-                        if (h2) title = (h2.innerText || '').replace(/\\s+/g, ' ').trim();
-                    }
+                    const h2El = container.querySelector('h2');
+                    if (h2El) title = (h2El.innerText || '').replace(/\\s+/g, ' ').trim();
 
-                    // Fallback: title de la nota-link si existe
+                    // Fallback: innerText de la nota-link (contiene el título)
                     if (!title) {
-                        title = (notaLink.getAttribute('title') || '').trim();
+                        title = (notaLink.innerText || notaLink.getAttribute('title') || '').replace(/\\s+/g, ' ').trim();
                     }
 
                     if (!title || title.length < 5) return;

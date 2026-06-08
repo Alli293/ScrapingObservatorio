@@ -43,11 +43,21 @@ ARTICLE_TIMEOUT = 20000
 
 MAX_SCROLLS = 6
 
+# En test mode, limitar scrolls para rapidez
+TEST_MAX_SCROLLS = 2
+
+MAX_PAGES_PER_SECTION = 10
+
+# En test mode, limitar paginación a 1 página
+TEST_MAX_PAGES = 1
+
 MAX_CONCURRENT_ARTICLES = 5
 
 DELAY_SCROLL = 1200
 DELAY_BETWEEN_PAGES = 1.5
 
+# Modo prueba: limita número de artículos procesados
+TEST_MAX_ARTICLES = 5
 
 def clean_text(text: str) -> str:
 
@@ -142,6 +152,12 @@ class LaVozDeGoicoecheaScraper(BaseScraper):
     SOURCE_NAME = "lavozdegoicoechea"
 
     BASE_URL = BASE_URL
+
+    def __init__(self, output_dir="output", log_dir="logs", test_mode: bool = False):
+        super().__init__(output_dir=output_dir, log_dir=log_dir)
+        self.test_mode = test_mode
+        if self.test_mode:
+            self.logger.info(f"*** MODO PRUEBA ACTIVO: limitando a {TEST_MAX_ARTICLES} artículos ***")
 
     def scrape(self):
 
@@ -246,9 +262,13 @@ class LaVozDeGoicoecheaScraper(BaseScraper):
                         link
                     )
 
+            links_list = list(article_links.values())
+            if self.test_mode:
+                links_list = links_list[:TEST_MAX_ARTICLES]
+
             tasks = [
                 bounded_scrape(link)
-                for link in article_links.values()
+                for link in links_list
             ]
 
             results = await asyncio.gather(*tasks)
@@ -277,8 +297,11 @@ class LaVozDeGoicoecheaScraper(BaseScraper):
         page_num = 1
 
         no_growth_rounds = 0
+        
+        # En test mode, limitar páginas a procesar
+        max_pages = TEST_MAX_PAGES if self.test_mode else MAX_PAGES_PER_SECTION
 
-        while True:
+        while page_num <= max_pages:
 
             if page_num == 1:
 
@@ -310,9 +333,12 @@ class LaVozDeGoicoecheaScraper(BaseScraper):
                 # SCROLL
                 # =================================================
 
+                # En test mode, usar pocos scrolls para rapidez
+                max_scrolls = TEST_MAX_SCROLLS if self.test_mode else MAX_SCROLLS
+
                 previous_height = 0
 
-                for _ in range(MAX_SCROLLS):
+                for _ in range(max_scrolls):
 
                     current_height = await page.evaluate(
                         "document.body.scrollHeight"

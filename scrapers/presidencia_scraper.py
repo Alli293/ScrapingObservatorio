@@ -101,7 +101,7 @@ class PresidenciaScraper(BaseScraper):
                     })
 
         except Exception as e:
-            self.log(f"Error collecting links: {e}")
+            self.logger.info(f"Error collecting links: {e}")
         finally:
             await page.close()
 
@@ -146,7 +146,7 @@ class PresidenciaScraper(BaseScraper):
             await page.close()
 
             if len(full_text) < 300:
-                self.log(f"Skipping (short content): {url}")
+                self.logger.info(f"Skipping (short content): {url}")
                 return None
 
             return {
@@ -158,7 +158,7 @@ class PresidenciaScraper(BaseScraper):
             }
 
         except Exception as e:
-            self.log(f"Error scraping article {url}: {e}")
+            self.logger.info(f"Error scraping article {url}: {e}")
             await page.close()
             return None
 
@@ -173,27 +173,27 @@ class PresidenciaScraper(BaseScraper):
                 "--no-sandbox",
             ])
 
-            self.log("Phase 1: collecting article links…")
+            self.logger.info("Phase 1: collecting article links…")
             if self.date_from or self.date_to:
-                self.log(
+                self.logger.info(
                     f"  Date filter: from={self.date_from or 'any'} "
                     f"to={self.date_to or 'any'}"
                 )
             links = await self._collect_links(browser)
-            self.log(f"Found {len(links)} articles matching filters.")
+            self.logger.info(f"Found {len(links)} articles matching filters.")
 
             if self.test_mode:
                 links = links[:TEST_MAX_ARTICLES]
-                self.log(f"Test mode: capped at {len(links)} articles.")
+                self.logger.info(f"Test mode: capped at {len(links)} articles.")
 
-            self.log("Phase 2: scraping articles…")
+            self.logger.info("Phase 2: scraping articles…")
             for i, link_data in enumerate(links, 1):
-                self.log(f"  [{i}/{len(links)}] {link_data['url']}")
+                self.logger.info(f"  [{i}/{len(links)}] {link_data['url']}")
                 article = await self._scrape_article(browser, link_data)
                 if article:
                     results.append(article)
 
             await browser.close()
 
-        self.log(f"Done. {len(results)} articles collected.")
+        self.logger.info(f"Done. {len(results)} articles collected.")
         return results

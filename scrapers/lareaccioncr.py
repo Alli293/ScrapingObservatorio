@@ -55,6 +55,9 @@ ARTICLE_TIMEOUT = 20_000
 DELAY_BETWEEN_ARTICLES = 1.0
 DELAY_BETWEEN_PAGES = 1.5
 
+# Modo prueba: limita número de artículos procesados
+TEST_MAX_ARTICLES = 5
+
 # Meses en español para parsear fechas textuales
 MESES_ES = {
     "enero": 1, "febrero": 2, "marzo": 3, "abril": 4,
@@ -118,8 +121,11 @@ class LaReaccionCRScraper(BaseScraper):
     BASE_URL = BASE_URL
 
 
-    def __init__(self, output_dir="output", log_dir="logs"):
+    def __init__(self, output_dir="output", log_dir="logs", test_mode: bool = False):
         super().__init__(output_dir=output_dir, log_dir=log_dir)
+        self.test_mode = test_mode
+        if self.test_mode:
+            self.logger.info(f"*** MODO PRUEBA ACTIVO: limitando a {TEST_MAX_ARTICLES} artículos ***")
 
     def scrape(self) -> list[dict]:
         return asyncio.run(self._scrape_async())
@@ -173,6 +179,8 @@ class LaReaccionCRScraper(BaseScraper):
             # -------------------------------------------------------
             records = []
             links_list = list(article_links.values())
+            if self.test_mode:
+                links_list = links_list[:TEST_MAX_ARTICLES]
 
             for i, link_data in enumerate(links_list):
                 self.logger.debug(f"[{i+1}/{len(links_list)}] {link_data['url']}")
@@ -221,6 +229,20 @@ class LaReaccionCRScraper(BaseScraper):
         """
         Navega una URL de listado (categoría o archivo mensual) y todas sus páginas.
         Extrae: URL, título, fecha (texto), sección del listado.
+        
+        Estructura actual (tema ColorMag):
+        - article (cada artículo en el listado)
+          - link (primera URL del artículo)
+          - generic (metadata)
+            - generic (categorías)
+              - link (categoría)
+            - generic (fecha y autor)
+              - link (fecha con time element)
+              - time: fecha textual
+          - heading h2 (título)
+            - link (URL)
+          - generic (resumen)
+            - paragraph (texto)
         """
         collected = []
         page_num = 1
@@ -246,30 +268,40 @@ class LaReaccionCRScraper(BaseScraper):
                 await page.wait_for_timeout(1500)
 
                 # -----------------------------------------------------------
-                # Extraer desde tarjetas mkd-pt-two (últimas noticias / featured)
+                # Extraer desde artículos (tema ColorMag)
+                # Selector: article (elementos principales)
                 # -----------------------------------------------------------
-                cards = await page.query_selector_all("div.mkd-pt-two-content-top-holder-cell")
-                for card in cards:
+                articles = await page.query_selector_all("article")
+                for art in articles:
                     try:
-                        # Título y URL
-                        title_anchor = await card.query_selector("h3.mkd-pt-two-title a.mkd-pt-link")
-                        if not title_anchor:
+                        # Extraer URL: primer link dentro del artículo
+                        # O desde el heading h2 > link
+                        url_anchor = await art.query_selector("h2 a, h1 a")
+                        if not url_anchor:
+                            # Fallback: primer link con href
+                            url_anchor = await art.query_selector("a[href*='/']")
+                        
+                        if not url_anchor:
                             continue
-                        href = await title_anchor.get_attribute("href")
-                        title = await title_anchor.inner_text()
+                            
+                        href = await url_anchor.get_attribute("href")
+                        title = await url_anchor.inner_text()
 
                         if not href or not is_article_url(href):
                             continue
 
-                        # Fecha textual desde el listado
-                        date_el = await card.query_selector("div.mkd-post-info-date")
+                        # Fecha: buscar time element
                         pub_date = ""
-                        if date_el:
-                            date_text = await date_el.inner_text()
+                        time_el = await art.query_selector("time")
+                        if time_el:
+                            date_text = await time_el.inner_text()
                             pub_date = parse_date_es(date_text)
 
-                        # Sección: usar hint de categoría si disponible
+                        # Sección: desde los links de categoría (primer link)
                         section = section_hint
+                        cat_link = await art.query_selector("a.category, a[href*='/category/']")
+                        if cat_link:
+                            section = clean_text(await cat_link.inner_text())
 
                         collected.append({
                             "url": href.strip(),
@@ -280,56 +312,7 @@ class LaReaccionCRScraper(BaseScraper):
                         found_on_page += 1
 
                     except Exception as e:
-                        self.logger.debug(f"Error en tarjeta mkd-pt-two: {e}")
-                        continue
-
-                # -----------------------------------------------------------
-                # Extraer desde artículos mkd-blog-holder (listado estándar)
-                # -----------------------------------------------------------
-                articles = await page.query_selector_all(
-                    "div.mkd-blog-holder article.mkd-post-content-inner, "
-                    "div.mkd-blog-holder article div.mkd-post-content-inner"
-                )
-                # Selector más amplio: cualquier article dentro de mkd-blog-holder
-                articles_broad = await page.query_selector_all(
-                    "div.mkd-blog-holder article"
-                )
-                for art in articles_broad:
-                    try:
-                        title_anchor = await art.query_selector(
-                            "h3.mkd-post-title a, h2.mkd-post-title a"
-                        )
-                        if not title_anchor:
-                            continue
-                        href = await title_anchor.get_attribute("href")
-                        title = await title_anchor.inner_text()
-
-                        if not href or not is_article_url(href):
-                            continue
-
-                        # Fecha
-                        date_el = await art.query_selector("div.mkd-post-info-date")
-                        pub_date = ""
-                        if date_el:
-                            date_text = await date_el.inner_text()
-                            pub_date = parse_date_es(date_text)
-
-                        # Sección desde categoría del artículo
-                        section = section_hint
-                        cat_el = await art.query_selector("div.mkd-post-info-category a")
-                        if cat_el:
-                            section = clean_text(await cat_el.inner_text())
-
-                        collected.append({
-                            "url": href.strip(),
-                            "title": clean_text(title),
-                            "section": section,
-                            "publication_date": pub_date,
-                        })
-                        found_on_page += 1
-
-                    except Exception as e:
-                        self.logger.debug(f"Error en article mkd-blog: {e}")
+                        self.logger.debug(f"Error en article: {e}")
                         continue
 
                 self.logger.debug(
@@ -361,11 +344,11 @@ class LaReaccionCRScraper(BaseScraper):
 
     async def _scrape_article(self, context, link_data: dict) -> dict | None:
         """
-        Visita un artículo individual.
+        Visita un artículo individual (estructura ColorMag).
         Extrae:
-        - full_text desde div.mkd-post-text (p, ul/li, blockquote, strong)
-        - publication_date desde div[itemprop="dateCreated"].mkd-post-info-date
-        - section desde div.mkd-post-info-category (primera categoría)
+        - full_text desde párrafos dentro del artículo
+        - publication_date desde time element
+        - section desde categoría del artículo
         """
         page = await context.new_page()
 
@@ -374,33 +357,28 @@ class LaReaccionCRScraper(BaseScraper):
             await page.wait_for_timeout(1500)
 
             # -----------------------------------------------------------
-            # Buscar div.mkd-post-text sin importar jerarquía
+            # Extraer contenido: buscar todos los párrafos dentro del artículo
+            # En ColorMag, el contenido está en múltiples `p` dentro de article
             # -----------------------------------------------------------
-            post_text_block = await page.query_selector("div.mkd-post-text")
-            if not post_text_block:
-                # Fallback: buscar mkd-post-content
-                post_text_block = await page.query_selector("div.mkd-post-content")
+            article = await page.query_selector("article")
+            if not article:
+                self.logger.warning(f"Sin article tag: {link_data['url']}")
+                return None
 
-            full_text = ""
+            full_text = await self._extract_text_from_block(article)
 
-            if post_text_block:
-                full_text = await self._extract_text_from_block(post_text_block)
-
-            if not full_text:
-                self.logger.warning(f"Sin texto: {link_data['url']}")
+            if not full_text or len(full_text) < 50:
+                self.logger.warning(f"Sin texto válido: {link_data['url']}")
                 return None
 
             # -----------------------------------------------------------
-            # Fecha de publicación (desde el artículo, más confiable)
+            # Fecha de publicación (desde el artículo)
             # -----------------------------------------------------------
             publication_date = link_data.get("publication_date", "")
 
-            date_el = await page.query_selector(
-                'div[itemprop="dateCreated"].mkd-post-info-date, '
-                'div.mkd-post-info-date[itemprop="dateCreated"]'
-            )
-            if date_el:
-                date_text = await date_el.inner_text()
+            time_el = await article.query_selector("time")
+            if time_el:
+                date_text = await time_el.inner_text()
                 parsed = parse_date_es(date_text)
                 if parsed and len(parsed) == 10:  # YYYY-MM-DD
                     publication_date = parsed
@@ -409,9 +387,9 @@ class LaReaccionCRScraper(BaseScraper):
             # Sección: primera categoría del artículo
             # -----------------------------------------------------------
             section = link_data.get("section", "")
-            cat_el = await page.query_selector("div.mkd-post-info-category a")
-            if cat_el:
-                section = clean_text(await cat_el.inner_text())
+            cat_link = await article.query_selector("a.category, a[href*='/category/']")
+            if cat_link:
+                section = clean_text(await cat_link.inner_text())
 
             return {
                 "url": link_data["url"],
@@ -432,51 +410,51 @@ class LaReaccionCRScraper(BaseScraper):
 
     async def _extract_text_from_block(self, block) -> str:
         """
-        Extrae texto limpio de un bloque HTML.
-        Incluye: p, li (de ul/ol), blockquote > p, texto de strong/em inline.
-        Excluye: divs de anuncios, navegación, comentarios, related posts.
+        Extrae texto limpio de un bloque HTML (artículo).
+        Incluye: p, li (de ul/ol), blockquote, texto de strong/em inline.
+        Excluye: scripts, estilos, comentarios, navegación, anuncios.
         """
-        paragraphs = []
-
-        # Seleccionar todos los elementos de contenido textual dentro del bloque
-        # Usamos JavaScript para extraer el texto de forma estructurada
         text_content = await block.evaluate("""
             (el) => {
                 // Clonar para no modificar el DOM original
                 const clone = el.cloneNode(true);
 
-                // Eliminar elementos no deseados
+                // Eliminar elementos no deseados (ColorMag specific y generales)
                 const remove_selectors = [
-                    '.mkd-blog-single-navigation',
-                    '.mkd-author-description',
-                    '.mkd-comment-holder',
-                    '.mkd-comment-form',
-                    '.mkd-related-posts-holder',
-                    '.mkd-single-tags-holder',
-                    '.mkd-post-info',
-                    '.mkd-post-image',
-                    'script',
-                    'style',
-                    'iframe',
-                    'figure',
-                    'nav',
                     '.wp-block-embed',
                     '.sharedaddy',
                     '#jp-post-flair',
+                    '.comment',
+                    '.comments-area',
+                    '.post-navigation',
+                    '.related',
+                    '.sidebar',
+                    'nav',
+                    'script',
+                    'style',
+                    'iframe',
+                    'figure:has(iframe)',
                 ];
+                
                 remove_selectors.forEach(sel => {
-                    clone.querySelectorAll(sel).forEach(el => el.remove());
+                    try {
+                        clone.querySelectorAll(sel).forEach(el => el.remove());
+                    } catch (e) {}
                 });
 
                 // Extraer texto de elementos relevantes
                 const results = [];
                 const elements = clone.querySelectorAll(
-                    'p, li, blockquote p, h1, h2, h3, h4'
+                    'p:not(:empty), li:not(:empty), blockquote:not(:empty)'
                 );
 
                 elements.forEach(el => {
                     const text = el.innerText || el.textContent || '';
-                    const cleaned = text.replace(/\\s+/g, ' ').trim();
+                    const cleaned = text
+                        .replace(/\\s+/g, ' ')
+                        .replace(/\\n+/g, '\\n')
+                        .trim();
+                    
                     if (cleaned.length > 10) {
                         results.push(cleaned);
                     }

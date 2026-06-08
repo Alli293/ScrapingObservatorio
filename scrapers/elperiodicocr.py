@@ -31,13 +31,16 @@ CR_TZ = timezone(timedelta(hours=-6))
 LISTING_URL = "https://www.elperiodicocr.com/ultimas-noticias/"
 
 # Número máximo de scrolls en la página de listado
-MAX_SCROLLS = 15
+MAX_SCROLLS = 8
 
 # Timeout por página de artículo (ms)
-ARTICLE_TIMEOUT = 20_000
+ARTICLE_TIMEOUT = 10_000
 
 # Pausa entre artículos para no sobrecargar el servidor (segundos)
-DELAY_BETWEEN_ARTICLES = 1.0
+DELAY_BETWEEN_ARTICLES = 0.1
+
+# Modo prueba: limita número de artículos procesados
+TEST_MAX_ARTICLES = 5
 
 
 def clean_text(text: str) -> str:
@@ -71,8 +74,11 @@ class ElPeriodicoCRScraper(BaseScraper):
     BASE_URL = "https://www.elperiodicocr.com/"
 
 
-    def __init__(self, output_dir="output", log_dir="logs"):
+    def __init__(self, output_dir="output", log_dir="logs", test_mode: bool = False):
         super().__init__(output_dir=output_dir, log_dir=log_dir)
+        self.test_mode = test_mode
+        if self.test_mode:
+            self.logger.info(f"*** MODO PRUEBA ACTIVO: limitando a {TEST_MAX_ARTICLES} artículos ***")
 
     def scrape(self) -> list[dict]:
         """Punto de entrada sincrónico que lanza el scraper async."""
@@ -94,17 +100,23 @@ class ElPeriodicoCRScraper(BaseScraper):
             # PASO 1: Recolectar URLs desde la página de listado
             # -------------------------------------------------------
             article_links = await self._collect_article_links(context)
-            self.logger.info(f"Total URLs recolectadas: {len(article_links)}")
-
+            # Limitar listado total por seguridad
+            article_links = article_links[:150]
+            if self.test_mode:
+                article_links = article_links[:TEST_MAX_ARTICLES]
+            self.logger.info(
+                f"Total URLs recolectadas: {len(article_links)}"
+            )
             # -------------------------------------------------------
             # PASO 2: Visitar cada artículo y extraer datos
             # -------------------------------------------------------
             records = []
             for i, link_data in enumerate(article_links):
-                self.logger.debug(f"[{i+1}/{len(article_links)}] Procesando: {link_data['url']}")
+                self.logger.info(f"[{i+1}/{len(article_links)}] Procesando: {link_data['url']}")
                 record = await self._scrape_article(context, link_data)
                 if record:
                     records.append(record)
+                    self.logger.info(f"   ✓ Artículo extraído exitosamente")
                 await asyncio.sleep(DELAY_BETWEEN_ARTICLES)
 
             await browser.close()
@@ -115,61 +127,87 @@ class ElPeriodicoCRScraper(BaseScraper):
         Navega la página de listado con scroll infinito.
         Recolecta URL, título y sección de cada tarjeta de noticia.
         """
+
         page = await context.new_page()
-        collected = {}  # url -> {url, title, section}
+        collected = {}
 
         try:
-            await page.goto(LISTING_URL, wait_until="domcontentloaded", timeout=30_000)
-            await page.wait_for_timeout(2000)
+            await page.goto(
+                LISTING_URL,
+                wait_until="domcontentloaded",
+                timeout=30_000
+            )
+
+            await page.wait_for_timeout(3000)
 
             for scroll_num in range(MAX_SCROLLS):
-                # Extraer artículos visibles actualmente
-                cards = await page.query_selector_all("div.td-module-container")
 
-                for card in cards:
-                    try:
-                        # URL y título desde h2.entry-title a
-                        title_anchor = await card.query_selector("h2.entry-title a")
-                        if not title_anchor:
-                            continue
+                articles = await page.evaluate("""
+            () => {
+                return Array.from(
+                    document.querySelectorAll('div.td-module-container')
+                ).map(card => {
+                    const titleA =
+                        card.querySelector('h2.entry-title a');
 
-                        url = await title_anchor.get_attribute("href")
-                        title = await title_anchor.inner_text()
+                    const sectionA =
+                        card.querySelector('a.td-post-category');
 
-                        if not url or url in collected:
-                            continue
+                    return {
+                        url: titleA?.href || '',
+                        title: titleA?.innerText || '',
+                        section: sectionA?.innerText || ''
+                    };
+                });
+            }
+            """)
 
-                        # Sección desde a.td-post-category
-                        section_el = await card.query_selector("a.td-post-category")
-                        section = (await section_el.inner_text()) if section_el else ""
+                previous_count = len(collected)
 
-                        collected[url] = {
-                            "url": url.strip(),
-                            "title": clean_text(title),
-                            "section": clean_text(section),
-                        }
-                    except Exception as e:
-                        self.logger.debug(f"Error extrayendo tarjeta: {e}")
+                for article in articles:
+
+                    url = article.get("url", "").strip()
+
+                    if not url:
                         continue
+
+                    if url in collected:
+                        continue
+
+                    collected[url] = {
+                        "url": url,
+                        "title": clean_text(
+                            article.get("title", "")
+                        ),
+                        "section": clean_text(
+                            article.get("section", "")
+                        )
+                    }
 
                 self.logger.info(
                     f"Scroll {scroll_num + 1}/{MAX_SCROLLS} | "
                     f"Artículos acumulados: {len(collected)}"
                 )
 
-                # Scroll hacia abajo para cargar más contenido
-                prev_count = len(collected)
-                await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-                await page.wait_for_timeout(2500)
+                await page.evaluate(
+                    "window.scrollTo(0, document.body.scrollHeight)"
+                )
 
-                # Verificar si se cargaron nuevos artículos
-                cards_after = await page.query_selector_all("div.td-module-container")
-                if len(cards_after) == len(cards) and scroll_num > 2:
-                    self.logger.info("No se cargaron nuevos artículos. Finalizando scroll.")
+                await page.wait_for_timeout(3000)
+
+                if len(collected) == previous_count and scroll_num >= 3:
+                    self.logger.info(
+                        "No se detectaron nuevos artículos. "
+                        "Finalizando scroll."
+                    )
                     break
 
         except Exception as e:
-            self.logger.error(f"Error en recolección de listado: {e}", exc_info=True)
+            self.logger.error(
+                f"Error en recolección de listado: {e}",
+                exc_info=True
+            )
+
         finally:
             await page.close()
 
@@ -208,42 +246,55 @@ class ElPeriodicoCRScraper(BaseScraper):
 
             # -----------------------------------------------------------
             # Extraer texto completo
-            # Busca div.tdb-block-inner sin importar jerarquía,
-            # luego toma todos los <p> dentro (excluyendo los de ads)
+            # Busca en div.td-post-content (contenedor principal) o
+            # div.tdb-block-inner como fallback
             # -----------------------------------------------------------
             full_text = ""
-
-            # Buscar TODOS los divs con clase tdb-block-inner en el documento
-            # (sin restricción de jerarquía)
-            content_blocks = await page.query_selector_all("div.tdb-block-inner")
-
             paragraphs_collected = []
 
-            for block in content_blocks:
-                # Verificar que este bloque tenga párrafos de contenido real
-                # (no bloques de publicidad)
-                block_html = await block.inner_html()
-
-                # Saltar bloques que solo tienen publicidad
-                if "adsbygoogle" in block_html and "<p>" not in block_html:
-                    continue
-
-                # Extraer todos los <p> directos e indirectos del bloque
-                p_elements = await block.query_selector_all("p")
-
+            # Intentar primero con td-post-content (contenedor principal)
+            main_content = await page.query_selector("div.td-post-content")
+            
+            if main_content:
+                p_elements = await main_content.query_selector_all("p")
+                
                 for p in p_elements:
-                    # Verificar que el <p> no esté dentro de un elemento de ad
-                    # evaluando su texto
                     p_text = await p.inner_text()
                     p_text = clean_text(p_text)
 
-                    # Filtrar párrafos vacíos o de publicidad
+                    # Filtrar párrafos vacíos, muy cortos o de publicidad
                     if not p_text or len(p_text) < 10:
                         continue
                     if "adsbygoogle" in p_text.lower():
                         continue
+                    if "leer más" in p_text.lower():
+                        continue
 
                     paragraphs_collected.append(p_text)
+
+            # Si no encontramos párrafos en td-post-content, intentar con tdb-block-inner
+            if not paragraphs_collected:
+                content_blocks = await page.query_selector_all("div.tdb-block-inner")
+
+                for block in content_blocks:
+                    block_html = await block.inner_html()
+
+                    # Saltar bloques que solo tienen publicidad
+                    if "adsbygoogle" in block_html and "<p>" not in block_html:
+                        continue
+
+                    p_elements = await block.query_selector_all("p")
+
+                    for p in p_elements:
+                        p_text = await p.inner_text()
+                        p_text = clean_text(p_text)
+
+                        if not p_text or len(p_text) < 10:
+                            continue
+                        if "adsbygoogle" in p_text.lower():
+                            continue
+
+                        paragraphs_collected.append(p_text)
 
             # Deduplicar párrafos manteniendo orden
             seen = set()
