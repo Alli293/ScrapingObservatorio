@@ -1,0 +1,315 @@
+name: Observatorio Democrático — Pipeline de Scraping
+
+on:
+  # Ejecución automática diaria a las 6 AM hora Costa Rica (12:00 UTC)
+  schedule:
+    - cron: '0 12 * * *'
+
+  # Ejecución manual desde GitHub → Actions → Run workflow
+  workflow_dispatch:
+    inputs:
+      grupo:
+        description: 'Grupo a ejecutar (1-5 o "todos")'
+        required: false
+        default: 'todos'
+      test_mode:
+        description: 'Modo prueba (true/false)'
+        required: false
+        default: 'false'
+
+env:
+  PYTHON_VERSION: '3.12'
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────
+  # GRUPO 1 — Scrapers rápidos
+  # ─────────────────────────────────────────────────────────────────
+  grupo_1_rapidos:
+    name: 'Grupo 1 — Rápidos'
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'schedule' ||
+      github.event.inputs.grupo == 'todos' ||
+      github.event.inputs.grupo == '1'
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium
+          python -m playwright install-deps chromium
+
+      - name: Ejecutar scrapers
+        run: |
+          python pipeline_runner.py \
+            --only presidencia elperiodicocr sinartdigital monumental \
+                   telediario pulsocr theglobalcr costaricastar ticosland \
+                   caribeactual puntarenasseoye \
+            --workers 4 \
+            --skip-health \
+            ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
+
+      - name: Subir outputs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: output-grupo-1
+          path: |
+            output/*.csv
+            logs/*.json
+            logs/*.log
+          retention-days: 7
+
+  # ─────────────────────────────────────────────────────────────────
+  # GRUPO 2 — Scrapers medianos
+  # ─────────────────────────────────────────────────────────────────
+  grupo_2_medianos:
+    name: 'Grupo 2 — Medianos'
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'schedule' ||
+      github.event.inputs.grupo == 'todos' ||
+      github.event.inputs.grupo == '2'
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium
+          python -m playwright install-deps chromium
+
+      - name: Ejecutar scrapers
+        run: |
+          python pipeline_runner.py \
+            --only ncrnoticias ticotimes trivisioncr latejacr \
+                   mundiario rumboeconomico vozdeguanacaste \
+                   elmundo elcolectivo506 eljornalcr \
+            --workers 4 \
+            --skip-health \
+            ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
+
+      - name: Subir outputs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: output-grupo-2
+          path: |
+            output/*.csv
+            logs/*.json
+            logs/*.log
+          retention-days: 7
+
+  # ─────────────────────────────────────────────────────────────────
+  # GRUPO 3 — Scrapers lentos
+  # ─────────────────────────────────────────────────────────────────
+  grupo_3_lentos:
+    name: 'Grupo 3 — Lentos'
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'schedule' ||
+      github.event.inputs.grupo == 'todos' ||
+      github.event.inputs.grupo == '3'
+    timeout-minutes: 150
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium
+          python -m playwright install-deps chromium
+
+      - name: Ejecutar scrapers
+        run: |
+          python pipeline_runner.py \
+            --only lareaccioncr noticiasenlineacr puroperiodismo \
+                   larevistacr lavozdegoicoechea \
+                   elmonitorcr enlamira \
+            --workers 3 \
+            --skip-health \
+            ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
+
+      - name: Subir outputs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: output-grupo-3
+          path: |
+            output/*.csv
+            logs/*.json
+            logs/*.log
+          retention-days: 7
+
+  # ─────────────────────────────────────────────────────────────────
+  # GRUPO 4 — Scrapers muy lentos
+  # ─────────────────────────────────────────────────────────────────
+  grupo_4_muy_lentos:
+    name: 'Grupo 4 — Muy lentos'
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'schedule' ||
+      github.event.inputs.grupo == 'todos' ||
+      github.event.inputs.grupo == '4'
+    timeout-minutes: 180
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium
+          python -m playwright install-deps chromium
+
+      - name: Ejecutar scrapers
+        run: |
+          python pipeline_runner.py \
+            --only teletica repretel genteopa \
+            --workers 2 \
+            --skip-health \
+            ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
+
+      - name: Subir outputs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: output-grupo-4
+          path: |
+            output/*.csv
+            logs/*.json
+            logs/*.log
+          retention-days: 7
+
+  # ─────────────────────────────────────────────────────────────────
+  # GRUPO 5 — WordPress sites
+  # ─────────────────────────────────────────────────────────────────
+  grupo_5_wordpress:
+    name: 'Grupo 5 — WordPress'
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'schedule' ||
+      github.event.inputs.grupo == 'todos' ||
+      github.event.inputs.grupo == '5'
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium
+          python -m playwright install-deps chromium
+
+      - name: Ejecutar scrapers
+        run: |
+          python pipeline_runner.py \
+            --only adiariocr alajuelitasoy buzonderodrigo \
+                   guanacastealaaltura miprensacr periodicomensaje \
+                   radiolapampa ustedseinforma \
+            --workers 4 \
+            --skip-health \
+            ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
+
+      - name: Subir outputs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: output-grupo-5
+          path: |
+            output/*.csv
+            logs/*.json
+            logs/*.log
+          retention-days: 7
+
+  # ─────────────────────────────────────────────────────────────────
+  # CONSOLIDAR — Une todos los CSVs en corpus maestro
+  # Corre después de que todos los grupos terminen
+  # ─────────────────────────────────────────────────────────────────
+  consolidar_corpus:
+    name: 'Consolidar corpus maestro'
+    runs-on: ubuntu-latest
+    needs:
+      - grupo_1_rapidos
+      - grupo_2_medianos
+      - grupo_3_lentos
+      - grupo_4_muy_lentos
+      - grupo_5_wordpress
+    if: always()
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: pip install pandas
+
+      - name: Descargar outputs de todos los grupos
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Mover CSVs a output/
+        run: |
+          mkdir -p output/
+          find artifacts/ -name "*.csv" -exec cp {} output/ \;
+          echo "CSVs disponibles:"
+          ls output/*.csv 2>/dev/null | wc -l
+
+      - name: Construir corpus maestro
+        run: python corpus_builder.py --output output/ --corpus corpus/
+
+      - name: Subir corpus maestro
+        uses: actions/upload-artifact@v4
+        with:
+          name: corpus-maestro
+          path: corpus/
+          retention-days: 30

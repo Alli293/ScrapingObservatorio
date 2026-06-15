@@ -1,25 +1,22 @@
 """
 pipeline_runner.py
 ──────────────────
-Orquestador paralelo del Observatorio Democrático.
+Orquestador paralelo del Observatorio Democrático v2.1
 
-Implementa la Opción A de la arquitectura propuesta:
   1. Health check liviano antes de cada scraper
   2. Ejecución paralela controlada (semáforo asyncio)
   3. Reintentos automáticos con backoff exponencial
   4. Estado persistente en SQLite (execution_state.db)
   5. Detección de anomalías comparando contra historial
   6. Modo incremental — omite scrapers que ya corrieron exitosamente hoy
-
-Los scrapers NO se modifican. Todo corre en un ThreadPoolExecutor
-(los scrapers son síncronos) orquestado desde asyncio.
+  7. Tabla de resultados detallada con tipos de error entendibles
+  8. Fix: output_dir se resuelve como ruta absoluta para evitar output/output/
 
 Uso:
     python pipeline_runner.py                           # todos los scrapers
-    python pipeline_runner.py --only teletica           # uno específico
-    python pipeline_runner.py --only teletica repretel  # varios
+    python pipeline_runner.py --only teletica repretel  # específicos
     python pipeline_runner.py --test                    # modo prueba
-    python pipeline_runner.py --workers 5               # controlar concurrencia
+    python pipeline_runner.py --workers 5               # concurrencia
     python pipeline_runner.py --skip-health             # omitir health check
     python pipeline_runner.py --incremental             # solo los que faltan
     python pipeline_runner.py --status                  # ver estado actual
@@ -48,9 +45,48 @@ from health_check import check_one as health_check_one
 from main import SCRAPERS_REGISTRY
 
 CR_TZ           = timezone(timedelta(hours=-6))
-DEFAULT_WORKERS = 6
+DEFAULT_WORKERS = 5
 MAX_RETRIES     = 2
 RETRY_DELAY_S   = 15
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CLASIFICACIÓN DE ERRORES
+# ─────────────────────────────────────────────────────────────────────────────
+def _classify_error(error_msg: str, tb: str = "") -> tuple[str, str]:
+    if not error_msg:
+        return "DESCONOCIDO", "Error sin mensaje"
+
+    msg = (error_msg + " " + (tb or "")).lower()
+
+    if "timeout" in msg or "timed out" in msg:
+        return "TIMEOUT", "El sitio tardó demasiado en responder"
+    if "connectionerror" in msg or "connection refused" in msg:
+        return "CONEXIÓN", "No se pudo conectar al sitio"
+    if "dns" in msg or "name or service not known" in msg:
+        return "DNS", "El dominio no resuelve — sitio fuera de línea"
+    if "ssl" in msg or "certificate" in msg:
+        return "SSL", "Error de certificado de seguridad"
+    if "importerror" in msg or "modulenotfounderror" in msg:
+        return "IMPORTACIÓN", "Error cargando el módulo del scraper"
+    if "attributeerror" in msg:
+        return "SELECTOR", "HTML del sitio cambió — selector no encontrado"
+    if "playwright" in msg and ("browser" in msg or "chromium" in msg):
+        return "PLAYWRIGHT", "Error iniciando el navegador"
+    if "permissionerror" in msg or "access is denied" in msg:
+        return "PERMISOS", "Sin permisos para escribir en el directorio"
+    if "memoryerror" in msg:
+        return "MEMORIA", "Sin RAM suficiente — reducir --workers"
+    if "429" in msg or "rate limit" in msg:
+        return "RATE LIMIT", "Sitio bloqueó temporalmente las peticiones"
+    if "403" in msg or "forbidden" in msg:
+        return "BLOQUEADO", "Sitio rechazó el acceso — posible bot detection"
+    if "404" in msg:
+        return "URL INVÁLIDA", "La URL del scraper ya no existe"
+    if "zerodivision" in msg or "indexerror" in msg or "keyerror" in msg:
+        return "CÓDIGO", "Error interno — estructura del sitio cambió"
+
+    return "ERROR GENERAL", error_msg[:120]
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -58,15 +94,15 @@ RETRY_DELAY_S   = 15
 # ─────────────────────────────────────────────────────────────────────────────
 def _run_scraper_sync(
     name:       str,
-    output_dir: str,
-    log_dir:    str,
+    output_dir: str,   # ya viene como ruta absoluta
+    log_dir:    str,   # ya viene como ruta absoluta
     test_mode:  bool,
 ) -> dict:
     if name not in SCRAPERS_REGISTRY:
         return {
             "source": name, "status": "ERROR",
-            "error": f"'{name}' no registrado", "duration_s": 0,
-            "total_valid": 0, "total_discarded": 0,
+            "error": f"'{name}' no registrado en SCRAPERS_REGISTRY",
+            "duration_s": 0, "total_valid": 0, "total_discarded": 0,
         }
 
     module_path, class_name = SCRAPERS_REGISTRY[name]
@@ -74,8 +110,9 @@ def _run_scraper_sync(
     t0 = time.time()
 
     try:
+        # Usar rutas absolutas — evita el bug output/output/
         Path(output_dir).mkdir(parents=True, exist_ok=True)
-        os.chdir(output_dir)
+        Path(log_dir).mkdir(parents=True, exist_ok=True)
 
         module       = importlib.import_module(module_path)
         ScraperClass = getattr(module, class_name)
@@ -83,18 +120,22 @@ def _run_scraper_sync(
 
         if "test_mode" in init_params:
             scraper = ScraperClass(
-                output_dir=output_dir, log_dir=log_dir, test_mode=test_mode
+                output_dir=output_dir,
+                log_dir=log_dir,
+                test_mode=test_mode,
             )
         else:
             scraper = ScraperClass(output_dir=output_dir, log_dir=log_dir)
 
         result               = scraper.run()
         result["duration_s"] = round(time.time() - t0, 2)
-        os.chdir(original_cwd)
         return result
 
     except Exception as exc:
-        os.chdir(original_cwd)
+        try:
+            os.chdir(original_cwd)
+        except Exception:
+            pass
         return {
             "source":          name,
             "status":          "ERROR",
@@ -110,37 +151,25 @@ def _run_scraper_sync(
 # WORKER ASYNC
 # ─────────────────────────────────────────────────────────────────────────────
 async def _worker(
-    name:         str,
-    semaphore:    asyncio.Semaphore,
-    executor:     ThreadPoolExecutor,
-    output_dir:   str,
-    log_dir:      str,
-    test_mode:    bool,
-    skip_health:  bool,
-    incremental:  bool,
-    loop:         asyncio.AbstractEventLoop,
+    name, semaphore, executor, output_dir,
+    log_dir, test_mode, skip_health, incremental, loop,
 ) -> dict:
 
     async with semaphore:
         ts_start = time.time()
         today    = datetime.now(CR_TZ).strftime("%Y-%m-%d")
 
-        # ── 0. Modo incremental ──────────────────────────────────────────────
+        # ── 0. Incremental ───────────────────────────────────────────────────
         if incremental:
             last = get_last_run(name)
             if last and last["status"] == "OK" and last["run_date"] == today:
-                _log(
-                    f"⊘  [{name}] ya corrió hoy "
-                    f"({last['total_valid']} artículos) — saltando"
-                )
+                _log(f"⊘  [{name}] ya corrió hoy ({last['total_valid']} artículos) — saltando")
                 return {
-                    "source":          name,
-                    "status":          "SKIPPED_INCREMENTAL",
-                    "total_valid":     last["total_valid"],
+                    "source": name, "status": "SKIPPED_INCREMENTAL",
+                    "total_valid": last["total_valid"],
                     "total_discarded": last["total_discarded"],
-                    "duration_s":      0,
-                    "health_ok":       True,
-                    "reason":          "ya corrió exitosamente hoy",
+                    "duration_s": 0, "health_ok": True,
+                    "reason": "ya corrió exitosamente hoy",
                 }
 
         _log(f"▶  [{name}] iniciando")
@@ -151,25 +180,21 @@ async def _worker(
             hc        = await loop.run_in_executor(executor, health_check_one, name)
             health_ok = hc["ok"]
             if not health_ok:
-                _log(f"✗  [{name}] health check FALLÓ — {hc['reason']} (omitiendo)")
+                _log(f"✗  [{name}] health check FALLÓ — {hc['reason']}")
                 record_execution(
                     source=name, status="SKIPPED",
                     health_ok=False, error_msg=hc["reason"],
                 )
                 return {
-                    "source":          name,
-                    "status":          "SKIPPED",
-                    "error":           hc["reason"],
-                    "total_valid":     0,
-                    "total_discarded": 0,
-                    "duration_s":      round(time.time() - ts_start, 2),
-                    "health_ok":       False,
+                    "source": name, "status": "SKIPPED",
+                    "error": hc["reason"], "error_type": "SITIO CAÍDO",
+                    "error_desc": hc["reason"],
+                    "total_valid": 0, "total_discarded": 0,
+                    "duration_s": round(time.time() - ts_start, 2),
+                    "health_ok": False,
                 }
             if hc.get("slow"):
-                _log(
-                    f"⚠  [{name}] sitio lento ({hc['duration_s']:.1f}s) "
-                    f"— continuando igual"
-                )
+                _log(f"⚠  [{name}] sitio lento ({hc['duration_s']:.1f}s) — continuando")
 
         # ── 2. Ejecución con reintentos ──────────────────────────────────────
         result  = None
@@ -181,18 +206,24 @@ async def _worker(
                 await asyncio.sleep(delay)
 
             result = await loop.run_in_executor(
-                executor,
-                _run_scraper_sync,
+                executor, _run_scraper_sync,
                 name, output_dir, log_dir, test_mode,
             )
-
             if result.get("status") == "OK":
                 break
             attempt += 1
 
         result["health_ok"] = health_ok
 
-        # ── 3. Registrar en SQLite ───────────────────────────────────────────
+        # ── 3. Clasificar error ──────────────────────────────────────────────
+        if result.get("status") != "OK":
+            err_type, err_desc = _classify_error(
+                result.get("error", ""), result.get("traceback", "")
+            )
+            result["error_type"] = err_type
+            result["error_desc"] = err_desc
+
+        # ── 4. Registrar en SQLite ───────────────────────────────────────────
         valid     = result.get("total_valid", 0)
         discarded = result.get("total_discarded", 0)
         duration  = result.get("duration_s", round(time.time() - ts_start, 2))
@@ -206,62 +237,43 @@ async def _worker(
             error_msg=err_msg,
         )
 
-        # ── 4. Detección de anomalías ────────────────────────────────────────
+        # ── 5. Anomalías ─────────────────────────────────────────────────────
         if status == "OK":
             anomaly = check_anomaly(name, valid)
             if anomaly["anomaly"]:
-                level = anomaly["level"].upper()
-                _log(f"⚠  [{name}] ANOMALÍA [{level}]: {anomaly['reason']}")
+                _log(f"⚠  [{name}] ANOMALÍA [{anomaly['level'].upper()}]: {anomaly['reason']}")
                 result["anomaly"] = anomaly
             else:
                 result["anomaly"] = None
-            _log(f"✓  [{name}] {valid} artículos válidos en {duration:.1f}s")
+            _log(f"✓  [{name}] {valid} artículos en {duration:.1f}s")
         else:
-            err_short = (err_msg or "")[:80]
-            _log(f"✗  [{name}] ERROR tras {attempt} intento(s): {err_short}")
+            _log(f"✗  [{name}] {result.get('error_type','ERROR')}: {result.get('error_desc','')[:60]}")
 
         return result
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# ORQUESTADOR PRINCIPAL
+# ORQUESTADOR
 # ─────────────────────────────────────────────────────────────────────────────
 async def run_pipeline(
-    to_run:      list[str],
-    output_dir:  str  = "output",
-    log_dir:     str  = "logs",
-    test_mode:   bool = False,
-    workers:     int  = DEFAULT_WORKERS,
-    skip_health: bool = False,
-    incremental: bool = False,
+    to_run, output_dir, log_dir,
+    test_mode=False, workers=DEFAULT_WORKERS,
+    skip_health=False, incremental=False,
 ) -> list[dict]:
 
     init_db()
     semaphore = asyncio.Semaphore(workers)
     loop      = asyncio.get_event_loop()
 
-    _log(
-        f"Pipeline paralelo — {len(to_run)} scrapers — "
-        f"{workers} workers — "
-        f"{'incremental' if incremental else 'completo'}"
-    )
-    if skip_health:
-        _log("Health check desactivado (--skip-health)")
-    if incremental:
-        _log("Modo incremental: se saltarán scrapers que ya corrieron hoy con éxito")
+    _log(f"Pipeline — {len(to_run)} scrapers — {workers} workers — {'incremental' if incremental else 'completo'}")
 
     with ThreadPoolExecutor(max_workers=workers) as executor:
         tasks = [
             _worker(
-                name=name,
-                semaphore=semaphore,
-                executor=executor,
-                output_dir=output_dir,
-                log_dir=log_dir,
-                test_mode=test_mode,
-                skip_health=skip_health,
-                incremental=incremental,
-                loop=loop,
+                name=name, semaphore=semaphore, executor=executor,
+                output_dir=output_dir, log_dir=log_dir,
+                test_mode=test_mode, skip_health=skip_health,
+                incremental=incremental, loop=loop,
             )
             for name in to_run
         ]
@@ -271,7 +283,7 @@ async def run_pipeline(
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# RESUMEN FINAL
+# TABLA DE RESULTADOS
 # ─────────────────────────────────────────────────────────────────────────────
 def _print_pipeline_summary(results: list[dict], elapsed: float):
     ok          = [r for r in results if r.get("status") == "OK"]
@@ -284,40 +296,56 @@ def _print_pipeline_summary(results: list[dict], elapsed: float):
     total_discarded = sum(r.get("total_discarded", 0) for r in ok)
     total_valid_inc = sum(r.get("total_valid", 0) for r in skipped_inc)
 
-    print(f"\n{'═'*65}")
-    print("  RESUMEN PIPELINE PARALELO")
-    print(f"{'═'*65}")
-    print(f"  Scrapers totales       : {len(results)}")
-    print(f"  Exitosos esta corrida  : {len(ok)}")
-    print(f"  Ya tenían datos (hoy)  : {len(skipped_inc)}")
-    print(f"  Omitidos (health fail) : {len(skipped_hc)}")
-    print(f"  Con error              : {len(errors)}")
-    print(f"  Con anomalía           : {len(anomaly)}")
-    print(f"  ─────────────────────────────────────────────────")
-    print(f"  Artículos esta corrida : {total_valid}")
+    print(f"\n{'═'*70}")
+    print("  RESUMEN PIPELINE")
+    print(f"{'═'*70}")
+    print(f"  Total scrapers         : {len(results)}")
+    print(f"  ✓ Exitosos             : {len(ok)}")
+    print(f"  ⊘ Ya tenían datos hoy  : {len(skipped_inc)}")
+    print(f"  ✗ Con error            : {len(errors)}")
+    print(f"  ⊘ Omitidos (salud)     : {len(skipped_hc)}")
+    print(f"  ⚠ Con anomalía         : {len(anomaly)}")
+    print(f"  {'─'*55}")
+    print(f"  Artículos esta corrida : {total_valid:,}")
     if skipped_inc:
-        print(f"  Artículos prev. hoy    : {total_valid_inc}")
-        print(f"  Total del día          : {total_valid + total_valid_inc}")
-    print(f"  Descartados            : {total_discarded}")
-    print(f"  Tiempo esta corrida    : {elapsed:.1f}s ({elapsed/60:.1f} min)")
-    print(f"{'═'*65}")
+        print(f"  Artículos prev. hoy    : {total_valid_inc:,}")
+        print(f"  Total del día          : {(total_valid + total_valid_inc):,}")
+    print(f"  Descartados            : {total_discarded:,}")
+    print(f"  Tiempo total           : {elapsed:.0f}s ({elapsed/60:.1f} min)")
+    print(f"{'═'*70}")
 
-    if errors:
-        print("\n  Scrapers con error:")
+    # Tabla exitosos
+    if ok:
+        print(f"\n  {'SCRAPER':<25} {'ARTÍCULOS':>10} {'DESCART.':>9} {'TIEMPO':>8}")
+        print(f"  {'─'*55}")
+        for r in sorted(ok, key=lambda x: x.get("total_valid", 0), reverse=True):
+            dur  = f"{r.get('duration_s', 0):.0f}s"
+            anom = " ⚠" if r.get("anomaly") else ""
+            print(
+                f"  ✓ {r['source']:<23} "
+                f"{r.get('total_valid', 0):>10,} "
+                f"{r.get('total_discarded', 0):>9,} "
+                f"{dur:>8}{anom}"
+            )
+
+    # Tabla errores con descripción
+    if errors or skipped_hc:
+        print(f"\n  {'SCRAPER':<25} {'TIPO':<16} {'DESCRIPCIÓN'}")
+        print(f"  {'─'*70}")
         for r in errors:
-            err = (r.get("error") or "")[:70]
-            print(f"    ✗ {r['source']:<25} {err}")
-
-    if skipped_hc:
-        print("\n  Omitidos por health check:")
+            etype = r.get("error_type", "ERROR")[:14]
+            edesc = r.get("error_desc", r.get("error", ""))[:45]
+            print(f"  ✗ {r['source']:<23} {etype:<16} {edesc}")
         for r in skipped_hc:
-            print(f"    ⊘ {r['source']:<25} {r.get('error','')}")
+            edesc = r.get("error", "")[:45]
+            print(f"  ⊘ {r['source']:<23} {'SITIO CAÍDO':<16} {edesc}")
 
+    # Anomalías
     if anomaly:
-        print("\n  Anomalías detectadas:")
+        print(f"\n  ANOMALÍAS:")
         for r in anomaly:
             a = r["anomaly"]
-            print(f"    ⚠ {r['source']:<25} [{a['level'].upper()}] {a['reason']}")
+            print(f"  ⚠ {r['source']:<23} [{a['level'].upper()}] {a['reason']}")
 
     print()
 
@@ -335,8 +363,7 @@ def _save_report(results: list[dict], log_dir: str):
 
 
 def _log(msg: str):
-    ts = datetime.now(CR_TZ).strftime("%H:%M:%S")
-    print(f"  [{ts}] {msg}")
+    print(f"  [{datetime.now(CR_TZ).strftime('%H:%M:%S')}] {msg}")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -345,31 +372,29 @@ def _log(msg: str):
 def main():
     print("""
 ╔══════════════════════════════════════════════════════════════╗
-║      OBSERVATORIO DEMOCRÁTICO — Pipeline Paralelo v2.0       ║
+║      OBSERVATORIO DEMOCRÁTICO — Pipeline Paralelo v2.1       ║
 ╚══════════════════════════════════════════════════════════════╝
 """)
 
-    parser = argparse.ArgumentParser(
-        description="Pipeline paralelo — Observatorio Democrático"
-    )
-    parser.add_argument(
-        "--only", nargs="+", metavar="SCRAPER",
-        help="Ejecutar solo scrapers específicos"
-    )
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--only",        nargs="+", metavar="SCRAPER")
     parser.add_argument("--output",      default="output")
     parser.add_argument("--logs",        default="logs")
-    parser.add_argument("--test",        action="store_true",
-                        help="Modo prueba (limita artículos)")
-    parser.add_argument("--workers",     type=int, default=DEFAULT_WORKERS,
-                        help=f"Scrapers en paralelo (default: {DEFAULT_WORKERS})")
-    parser.add_argument("--skip-health", action="store_true",
-                        help="Omitir health check")
+    parser.add_argument("--test",        action="store_true")
+    parser.add_argument("--workers",     type=int, default=DEFAULT_WORKERS)
+    parser.add_argument("--skip-health", action="store_true")
     parser.add_argument("--incremental", action="store_true",
                         help="Saltar scrapers que ya corrieron exitosamente hoy")
     parser.add_argument("--status",      action="store_true",
-                        help="Mostrar estado actual y salir")
+                        help="Ver estado actual de todos los scrapers")
 
     args = parser.parse_args()
+
+    # Resolver rutas absolutas desde el directorio del script
+    # Esto evita el bug output/output/ sin importar desde dónde se ejecute
+    base_dir   = os.path.dirname(os.path.abspath(__file__))
+    output_dir = os.path.join(base_dir, args.output)
+    log_dir    = os.path.join(base_dir, args.logs)
 
     if args.status:
         print_state_summary()
@@ -390,16 +415,15 @@ def main():
     print(f"  Workers paralelos   : {args.workers}")
     print(f"  Modo prueba         : {'SÍ' if args.test else 'No'}")
     print(f"  Health check        : {'No' if args.skip_health else 'SÍ'}")
-    print(f"  Incremental         : {'SÍ — salta los que ya corrieron hoy' if args.incremental else 'No'}")
-    print(f"  Output              : {args.output}/")
-    print(f"  Logs                : {args.logs}/\n")
+    print(f"  Incremental         : {'SÍ' if args.incremental else 'No'}")
+    print(f"  Output              : {output_dir}")
+    print(f"  Logs                : {log_dir}\n")
 
-    t0 = time.time()
-
+    t0      = time.time()
     results = asyncio.run(run_pipeline(
         to_run      = to_run,
-        output_dir  = args.output,
-        log_dir     = args.logs,
+        output_dir  = output_dir,
+        log_dir     = log_dir,
         test_mode   = args.test,
         workers     = args.workers,
         skip_health = args.skip_health,
@@ -408,7 +432,7 @@ def main():
 
     elapsed = time.time() - t0
     _print_pipeline_summary(results, elapsed)
-    _save_report(results, args.logs)
+    _save_report(results, log_dir)
 
 
 if __name__ == "__main__":
