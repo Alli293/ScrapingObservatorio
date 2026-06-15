@@ -1,11 +1,8 @@
 name: Observatorio Democrático — Pipeline de Scraping
 
 on:
-  # Ejecución automática diaria a las 6 AM hora Costa Rica (12:00 UTC)
   schedule:
     - cron: '0 12 * * *'
-
-  # Ejecución manual desde GitHub → Actions → Run workflow
   workflow_dispatch:
     inputs:
       grupo:
@@ -19,8 +16,11 @@ on:
 
 env:
   PYTHON_VERSION: '3.12'
-  # Display virtual para que Playwright funcione como navegador real
   DISPLAY: ':99'
+
+# ── Paso de instalación reutilizable como anchor YAML ──────────────
+# Nota: GitHub Actions no soporta anchors nativos, pero compartimos
+# la lógica en cada job de forma explícita.
 
 jobs:
   # ─────────────────────────────────────────────────────────────────
@@ -36,27 +36,18 @@ jobs:
     timeout-minutes: 90
 
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Configurar Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Instalar dependencias del sistema
+      - name: Instalar Xvfb
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y xvfb x11-utils
-          sudo apt-get install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0
-          sudo apt-get install -y libcups2 libdrm2 libxkbcommon0 libxcomposite1
-          sudo apt-get install -y libxdamage1 libxfixes3 libxrandr2 libgbm1
-          sudo apt-get install -y libasound2t64 libpango-1.0-0 libpangocairo-1.0-0
-
-      - name: Iniciar pantalla virtual (simula navegador real)
-        run: |
-          Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &
+          sudo apt-get install -y xvfb
+          Xvfb :99 -screen 0 1920x1080x24 -ac &
           sleep 2
           echo "DISPLAY=:99" >> $GITHUB_ENV
 
@@ -76,15 +67,13 @@ jobs:
             --skip-health \
             ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
 
-      - name: Subir outputs
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: output-grupo-1
           path: |
             output/*.csv
             logs/*.json
-            logs/*.log
           retention-days: 7
 
   # ─────────────────────────────────────────────────────────────────
@@ -100,27 +89,18 @@ jobs:
     timeout-minutes: 120
 
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Configurar Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Instalar dependencias del sistema
+      - name: Instalar Xvfb
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y xvfb x11-utils
-          sudo apt-get install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0
-          sudo apt-get install -y libcups2 libdrm2 libxkbcommon0 libxcomposite1
-          sudo apt-get install -y libxdamage1 libxfixes3 libxrandr2 libgbm1
-          sudo apt-get install -y libasound2t64 libpango-1.0-0 libpangocairo-1.0-0
-
-      - name: Iniciar pantalla virtual
-        run: |
-          Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &
+          sudo apt-get install -y xvfb
+          Xvfb :99 -screen 0 1920x1080x24 -ac &
           sleep 2
           echo "DISPLAY=:99" >> $GITHUB_ENV
 
@@ -140,15 +120,13 @@ jobs:
             --skip-health \
             ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
 
-      - name: Subir outputs
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: output-grupo-2
           path: |
             output/*.csv
             logs/*.json
-            logs/*.log
           retention-days: 7
 
   # ─────────────────────────────────────────────────────────────────
@@ -164,27 +142,18 @@ jobs:
     timeout-minutes: 150
 
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Configurar Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Instalar dependencias del sistema
+      - name: Instalar Xvfb
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y xvfb x11-utils
-          sudo apt-get install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0
-          sudo apt-get install -y libcups2 libdrm2 libxkbcommon0 libxcomposite1
-          sudo apt-get install -y libxdamage1 libxfixes3 libxrandr2 libgbm1
-          sudo apt-get install -y libasound2t64 libpango-1.0-0 libpangocairo-1.0-0
-
-      - name: Iniciar pantalla virtual
-        run: |
-          Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &
+          sudo apt-get install -y xvfb
+          Xvfb :99 -screen 0 1920x1080x24 -ac &
           sleep 2
           echo "DISPLAY=:99" >> $GITHUB_ENV
 
@@ -204,15 +173,13 @@ jobs:
             --skip-health \
             ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
 
-      - name: Subir outputs
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: output-grupo-3
           path: |
             output/*.csv
             logs/*.json
-            logs/*.log
           retention-days: 7
 
   # ─────────────────────────────────────────────────────────────────
@@ -228,27 +195,18 @@ jobs:
     timeout-minutes: 180
 
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Configurar Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Instalar dependencias del sistema
+      - name: Instalar Xvfb
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y xvfb x11-utils
-          sudo apt-get install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0
-          sudo apt-get install -y libcups2 libdrm2 libxkbcommon0 libxcomposite1
-          sudo apt-get install -y libxdamage1 libxfixes3 libxrandr2 libgbm1
-          sudo apt-get install -y libasound2t64 libpango-1.0-0 libpangocairo-1.0-0
-
-      - name: Iniciar pantalla virtual
-        run: |
-          Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &
+          sudo apt-get install -y xvfb
+          Xvfb :99 -screen 0 1920x1080x24 -ac &
           sleep 2
           echo "DISPLAY=:99" >> $GITHUB_ENV
 
@@ -266,15 +224,13 @@ jobs:
             --skip-health \
             ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
 
-      - name: Subir outputs
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: output-grupo-4
           path: |
             output/*.csv
             logs/*.json
-            logs/*.log
           retention-days: 7
 
   # ─────────────────────────────────────────────────────────────────
@@ -290,27 +246,18 @@ jobs:
     timeout-minutes: 120
 
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Configurar Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Instalar dependencias del sistema
+      - name: Instalar Xvfb
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y xvfb x11-utils
-          sudo apt-get install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0
-          sudo apt-get install -y libcups2 libdrm2 libxkbcommon0 libxcomposite1
-          sudo apt-get install -y libxdamage1 libxfixes3 libxrandr2 libgbm1
-          sudo apt-get install -y libasound2t64 libpango-1.0-0 libpangocairo-1.0-0
-
-      - name: Iniciar pantalla virtual
-        run: |
-          Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &
+          sudo apt-get install -y xvfb
+          Xvfb :99 -screen 0 1920x1080x24 -ac &
           sleep 2
           echo "DISPLAY=:99" >> $GITHUB_ENV
 
@@ -330,20 +277,17 @@ jobs:
             --skip-health \
             ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
 
-      - name: Subir outputs
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: output-grupo-5
           path: |
             output/*.csv
             logs/*.json
-            logs/*.log
           retention-days: 7
 
   # ─────────────────────────────────────────────────────────────────
   # CONSOLIDAR — Une todos los CSVs en corpus maestro
-  # Corre después de que todos los grupos terminen
   # ─────────────────────────────────────────────────────────────────
   consolidar_corpus:
     name: 'Consolidar corpus maestro'
@@ -357,11 +301,9 @@ jobs:
     if: always()
 
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Configurar Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
@@ -378,11 +320,8 @@ jobs:
         run: |
           mkdir -p output/
           find artifacts/ -name "*.csv" ! -name "*discarded*" -exec cp {} output/ \;
-          echo "──────────────────────────────────────"
-          echo "CSVs disponibles para consolidar:"
-          ls output/*.csv 2>/dev/null || echo "  Sin CSVs"
-          echo "Total: $(ls output/*.csv 2>/dev/null | wc -l) archivos"
-          echo "──────────────────────────────────────"
+          echo "CSVs disponibles: $(ls output/*.csv 2>/dev/null | wc -l)"
+          ls output/*.csv 2>/dev/null || echo "Sin CSVs"
 
       - name: Construir corpus maestro
         run: |
@@ -390,22 +329,13 @@ jobs:
             --output output/ \
             --corpus corpus/
 
-      - name: Mostrar resumen del corpus
-        run: |
-          echo "──────────────────────────────────────"
-          echo "Corpus generado:"
-          ls -lh corpus/*.csv 2>/dev/null || echo "  Sin corpus"
-          echo "──────────────────────────────────────"
-
-      - name: Subir corpus maestro
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: corpus-maestro
           path: corpus/
           retention-days: 30
 
-      - name: Subir reporte de ejecución
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: reporte-ejecucion
