@@ -19,6 +19,8 @@ on:
 
 env:
   PYTHON_VERSION: '3.12'
+  # Display virtual para que Playwright funcione como navegador real
+  DISPLAY: ':99'
 
 jobs:
   # ─────────────────────────────────────────────────────────────────
@@ -43,7 +45,22 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Instalar dependencias
+      - name: Instalar dependencias del sistema
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb x11-utils
+          sudo apt-get install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0
+          sudo apt-get install -y libcups2 libdrm2 libxkbcommon0 libxcomposite1
+          sudo apt-get install -y libxdamage1 libxfixes3 libxrandr2 libgbm1
+          sudo apt-get install -y libasound2t64 libpango-1.0-0 libpangocairo-1.0-0
+
+      - name: Iniciar pantalla virtual (simula navegador real)
+        run: |
+          Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &
+          sleep 2
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+
+      - name: Instalar dependencias Python
         run: |
           pip install -r requirements.txt
           python -m playwright install chromium
@@ -92,7 +109,22 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Instalar dependencias
+      - name: Instalar dependencias del sistema
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb x11-utils
+          sudo apt-get install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0
+          sudo apt-get install -y libcups2 libdrm2 libxkbcommon0 libxcomposite1
+          sudo apt-get install -y libxdamage1 libxfixes3 libxrandr2 libgbm1
+          sudo apt-get install -y libasound2t64 libpango-1.0-0 libpangocairo-1.0-0
+
+      - name: Iniciar pantalla virtual
+        run: |
+          Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &
+          sleep 2
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+
+      - name: Instalar dependencias Python
         run: |
           pip install -r requirements.txt
           python -m playwright install chromium
@@ -141,7 +173,22 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Instalar dependencias
+      - name: Instalar dependencias del sistema
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb x11-utils
+          sudo apt-get install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0
+          sudo apt-get install -y libcups2 libdrm2 libxkbcommon0 libxcomposite1
+          sudo apt-get install -y libxdamage1 libxfixes3 libxrandr2 libgbm1
+          sudo apt-get install -y libasound2t64 libpango-1.0-0 libpangocairo-1.0-0
+
+      - name: Iniciar pantalla virtual
+        run: |
+          Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &
+          sleep 2
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+
+      - name: Instalar dependencias Python
         run: |
           pip install -r requirements.txt
           python -m playwright install chromium
@@ -190,7 +237,22 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Instalar dependencias
+      - name: Instalar dependencias del sistema
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb x11-utils
+          sudo apt-get install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0
+          sudo apt-get install -y libcups2 libdrm2 libxkbcommon0 libxcomposite1
+          sudo apt-get install -y libxdamage1 libxfixes3 libxrandr2 libgbm1
+          sudo apt-get install -y libasound2t64 libpango-1.0-0 libpangocairo-1.0-0
+
+      - name: Iniciar pantalla virtual
+        run: |
+          Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &
+          sleep 2
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+
+      - name: Instalar dependencias Python
         run: |
           pip install -r requirements.txt
           python -m playwright install chromium
@@ -237,7 +299,22 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Instalar dependencias
+      - name: Instalar dependencias del sistema
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb x11-utils
+          sudo apt-get install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0
+          sudo apt-get install -y libcups2 libdrm2 libxkbcommon0 libxcomposite1
+          sudo apt-get install -y libxdamage1 libxfixes3 libxrandr2 libgbm1
+          sudo apt-get install -y libasound2t64 libpango-1.0-0 libpangocairo-1.0-0
+
+      - name: Iniciar pantalla virtual
+        run: |
+          Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &
+          sleep 2
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+
+      - name: Instalar dependencias Python
         run: |
           pip install -r requirements.txt
           python -m playwright install chromium
@@ -290,7 +367,7 @@ jobs:
           cache: 'pip'
 
       - name: Instalar dependencias
-        run: pip install pandas
+        run: pip install pandas requests
 
       - name: Descargar outputs de todos los grupos
         uses: actions/download-artifact@v4
@@ -300,12 +377,25 @@ jobs:
       - name: Mover CSVs a output/
         run: |
           mkdir -p output/
-          find artifacts/ -name "*.csv" -exec cp {} output/ \;
-          echo "CSVs disponibles:"
-          ls output/*.csv 2>/dev/null | wc -l
+          find artifacts/ -name "*.csv" ! -name "*discarded*" -exec cp {} output/ \;
+          echo "──────────────────────────────────────"
+          echo "CSVs disponibles para consolidar:"
+          ls output/*.csv 2>/dev/null || echo "  Sin CSVs"
+          echo "Total: $(ls output/*.csv 2>/dev/null | wc -l) archivos"
+          echo "──────────────────────────────────────"
 
       - name: Construir corpus maestro
-        run: python corpus_builder.py --output output/ --corpus corpus/
+        run: |
+          python corpus_builder.py \
+            --output output/ \
+            --corpus corpus/
+
+      - name: Mostrar resumen del corpus
+        run: |
+          echo "──────────────────────────────────────"
+          echo "Corpus generado:"
+          ls -lh corpus/*.csv 2>/dev/null || echo "  Sin corpus"
+          echo "──────────────────────────────────────"
 
       - name: Subir corpus maestro
         uses: actions/upload-artifact@v4
@@ -313,3 +403,11 @@ jobs:
           name: corpus-maestro
           path: corpus/
           retention-days: 30
+
+      - name: Subir reporte de ejecución
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reporte-ejecucion
+          path: logs/
+          retention-days: 7
