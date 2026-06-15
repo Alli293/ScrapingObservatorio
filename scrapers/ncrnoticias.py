@@ -60,7 +60,7 @@ MAX_LOAD_MORE_CLICKS = 50       # Máximo de clics en "Cargar más" por sección
 ARTICLE_TIMEOUT = 25_000
 DELAY_BETWEEN_ARTICLES = 1.5   # segundos (más conservador para no ser bloqueado)
 DELAY_BETWEEN_SECTIONS = 3.0
-DELAY_LOAD_MORE = 3000          # ms tras clic en "Cargar más"
+DELAY_LOAD_MORE = 5000          # ms tras clic en "Cargar más"
 DELAY_SCROLL = 2000             # ms entre scrolls
 
 # Configuración modo prueba
@@ -235,7 +235,7 @@ class NCRNoticiasScraper(BaseScraper):
 
         try:
             await page.goto(section_url, wait_until="domcontentloaded", timeout=30_000)
-            await page.wait_for_timeout(2500)
+            await page.wait_for_timeout(5000)
 
             click_count = 0
 
@@ -424,7 +424,13 @@ class NCRNoticiasScraper(BaseScraper):
             await page.goto(
                 link_data["url"], wait_until="domcontentloaded", timeout=ARTICLE_TIMEOUT
             )
-            await page.wait_for_timeout(2000)
+            try:
+                await page.wait_for_selector(
+                    "div.td-post-content, div.td-fix-index, div.tdb-block-inner, div.entry-content",
+                    timeout=10_000
+                )
+            except Exception:
+                pass
 
             # -----------------------------------------------------------
             # Fecha: mejorar con meta tag si la del listado no tiene hora

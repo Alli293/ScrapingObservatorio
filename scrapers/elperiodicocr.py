@@ -86,7 +86,10 @@ class ElPeriodicoCRScraper(BaseScraper):
 
     async def _scrape_async(self) -> list[dict]:
         async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=True)
+            browser = await p.chromium.launch(
+                headless=True,
+                args=["--disable-blink-features=AutomationControlled"],
+            )
             context = await browser.new_context(
                 user_agent=(
                     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -94,7 +97,24 @@ class ElPeriodicoCRScraper(BaseScraper):
                     "Chrome/124.0.0.0 Safari/537.36"
                 ),
                 locale="es-CR",
+                timezone_id="America/Costa_Rica",
+                viewport={"width": 1920, "height": 1080},
+                extra_http_headers={
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                    "Accept-Language": "es-CR,es;q=0.9,en-US;q=0.8,en;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "sec-ch-ua": '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+                    "sec-ch-ua-mobile": "?0",
+                    "sec-ch-ua-platform": '"Windows"',
+                }
             )
+
+            await context.add_init_script("""
+                Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+                Object.defineProperty(navigator, 'plugins', {get: () => [1, 2, 3]});
+                Object.defineProperty(navigator, 'languages', {get: () => ['es-CR', 'es', 'en']});
+                window.chrome = { runtime: {} };
+            """)
 
             # -------------------------------------------------------
             # PASO 1: Recolectar URLs desde la página de listado

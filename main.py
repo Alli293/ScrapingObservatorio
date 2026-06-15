@@ -158,7 +158,7 @@ SCRAPERS_REGISTRY = {
     "puntarenasseoye": ("scrapers.puntarenasseoye", "PuntarenasSeOyeScraper"),
     "ticosland": ("scrapers.ticosland", "TicosLandScraper"),
     "vozdeguanacaste": ("scrapers.vozdeguanacaste", "VozDeGuanacaste"),
-    "observatorio_democratico": ("scrapers.Observatorio_Democratico", "ObservatorioDemocraticoScraper"),
+    "observatorio_democratico": ("scrapers.observatorio_democratico", "ObservatorioDemocraticoScraper"),
     "acontecer_cr": ("scrapers.acontecer_cr", "AcontecerCrScraper"),
     "alajuela_digital": ("scrapers.alajuela_digital", "AlajuelaDigitalScraper"),
     "amprensa": ("scrapers.amprensa", "AmprensaScraper"),

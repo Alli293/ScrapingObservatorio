@@ -83,7 +83,7 @@ class PuntarenasSeOyeScraper(BaseScraper):
     # ------------------------------------------------------------------
     # Phase 1 – collect article links across all sections / pages
     # ------------------------------------------------------------------
-    async def _collect_links(self, browser) -> dict:
+    async def _collect_links(self, context) -> dict:
         seen: dict[str, dict] = {}  # url → {url, section}
         sections = SECTIONS[:TEST_MAX_SECTIONS] if self.test_mode else SECTIONS
 
@@ -93,7 +93,7 @@ class PuntarenasSeOyeScraper(BaseScraper):
                 if self.test_mode and page_num > TEST_MAX_PAGES:
                     break
                 url = section_url if page_num == 1 else f"{section_url}page/{page_num}/"
-                page = await browser.new_page()
+                page = await context.new_page()
                 try:
                     await page.goto(url, timeout=30000, wait_until="domcontentloaded")
                     await _dismiss_popups(page)
@@ -129,10 +129,10 @@ class PuntarenasSeOyeScraper(BaseScraper):
     # ------------------------------------------------------------------
     # Phase 2 – visit each article and extract content
     # ------------------------------------------------------------------
-    async def _scrape_article(self, browser, link_data: dict) -> dict | None:
+    async def _scrape_article(self, context, link_data: dict) -> dict | None:
         url     = link_data["url"]
         section = link_data["section"]
-        page    = await browser.new_page()
+        page    = await context.new_page()
         try:
             await page.goto(url, timeout=30000, wait_until="domcontentloaded")
             await _dismiss_popups(page)
@@ -189,9 +189,30 @@ class PuntarenasSeOyeScraper(BaseScraper):
                 "--no-sandbox",
             ])
 
+            context = await browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                locale="es-CR",
+                timezone_id="America/Costa_Rica",
+                viewport={"width": 1920, "height": 1080},
+                extra_http_headers={
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                    "Accept-Language": "es-CR,es;q=0.9,en-US;q=0.8,en;q=0.7",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "sec-ch-ua": '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+                    "sec-ch-ua-mobile": "?0",
+                    "sec-ch-ua-platform": '"Windows"',
+                }
+            )
+            await context.add_init_script("""
+                Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+                Object.defineProperty(navigator, 'plugins', {get: () => [1, 2, 3]});
+                Object.defineProperty(navigator, 'languages', {get: () => ['es-CR', 'es', 'en']});
+                window.chrome = { runtime: {} };
+            """)
+
             # Phase 1
             self.logger.info("Phase 1: collecting article links…")
-            links = await self._collect_links(browser)
+            links = await self._collect_links(context)
             self.logger.info(f"Found {len(links)} unique articles.")
 
             # Limit in test mode
@@ -203,7 +224,7 @@ class PuntarenasSeOyeScraper(BaseScraper):
             self.logger.info("Phase 2: scraping articles…")
             for i, link_data in enumerate(link_list, 1):
                 self.logger.info(f"  [{i}/{len(link_list)}] {link_data['url']}")
-                article = await self._scrape_article(browser, link_data)
+                article = await self._scrape_article(context, link_data)
                 if article:
                     results.append(article)
 

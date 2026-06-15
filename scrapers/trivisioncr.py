@@ -61,7 +61,7 @@ ARTICLE_TIMEOUT = 22_000
 DELAY_BETWEEN_ARTICLES = 1.0
 DELAY_BETWEEN_PAGES = 1.5
 DELAY_BETWEEN_SECTIONS = 2.5
-DELAY_SCROLL = 1800
+DELAY_SCROLL = 4000
 
 # Modo prueba
 TEST_MAX_SECTIONS = 2
@@ -246,8 +246,16 @@ class TrivisionCRScraper(BaseScraper):
                     self.logger.debug(f"  [{section_name}] Pág {page_num} → 404, fin")
                     break
 
-                await page.wait_for_timeout(1500)
+                await page.wait_for_timeout(4000)
                 await self._scroll_to_bottom(page)
+
+                try:
+                    await page.wait_for_selector(
+                        "div[id^='dv25-pc-'], div.dv25-pc-wrap",
+                        timeout=10_000
+                    )
+                except Exception:
+                    pass
 
                 found_on_page = await self._extract_cards(page, collected, section_name)
 
@@ -378,7 +386,13 @@ class TrivisionCRScraper(BaseScraper):
             await page.goto(
                 link_data["url"], wait_until="domcontentloaded", timeout=ARTICLE_TIMEOUT
             )
-            await page.wait_for_timeout(1500)
+            try:
+                await page.wait_for_selector(
+                    "div.elementor-widget-container",
+                    timeout=10_000
+                )
+            except Exception:
+                pass
 
             # -----------------------------------------------------------
             # Fecha: refinar con meta tag si es posible (trae hora exacta)
