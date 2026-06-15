@@ -249,8 +249,16 @@ def main():
 
     # IMPORTANTE: max_pages se usa sólo para testear (ej. max_pages=2).
     # Usar max_pages=None para descargar el historial completo.
+    import sys
+
+    # Filtro opcional: si se pasa un nombre de sitio como argumento,
+    # procesar solo ese sitio. Si no se pasa argumento, procesar todos.
+    _site_filter = sys.argv[1] if len(sys.argv) > 1 else None
+
     for site in SITES:
-        procesar_sitio(site, max_pages=None)
+        if _site_filter and site.get("name", "").lower() != _site_filter.lower():
+            continue
+        procesar_sitio(site)
 
 
 if __name__ == "__main__":

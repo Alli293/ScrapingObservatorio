@@ -7,7 +7,7 @@ consolida los resultados y genera un reporte de ejecución.
 
 Uso:
     python main.py
-    python main.py --only elperiodicocr 
+    python main.py --only elperiodicocr
     python main.py --list
     python main.py --only elperiodicocr --test
 """
@@ -23,6 +23,8 @@ import inspect
 
 # Agregar el directorio raíz al path para importaciones
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from scrapers.legacy_adapter import LegacyScraperAdapter, get_legacy_registry
 
 # -----------------------------------------------------------------------
 # REGISTRO DE SCRAPERS
@@ -50,139 +52,57 @@ SCRAPERS_REGISTRY = {
     "theglobalcr":       ("scrapers.theglobalcr",       "TheGlobalCRScraper"),
     "ticotimes":         ("scrapers.ticotimes",         "TicoTimesScraper"),
     "trivisioncr":       ("scrapers.trivisioncr",       "TrivisionCRScraper"),
-    #Gre
-    "anexioncr": (
-        "scrapers.wordpress_sites",
-        "AnexionCRScraper"
-    ),
-
-    "guanacastealaaltura": (
-        "scrapers.wordpress_sites",
-        "GuanacasteALaAlturaScraper"
-    ),   
-    
-    "periodicomensaje": (
-        "scrapers.wordpress_sites",
-        "PeriodicoMensajeScraper"
-    ),
-    
-    "radiolapampa": (
-        "scrapers.wordpress_sites",
-        "RadioLaPampaScraper"
-    ),
-
-    "tamarindonews": (
-        "scrapers.wordpress_sites",
-        "TamarindoNewsScraper"
-    ),
-
-    "yambaradio": (
-        "scrapers.wordpress_sites",
-        "YambaRadioScraper"
-    ),
-
-    "miprensacr": (
-        "scrapers.wordpress_sites",
-        "MiPrensaCRScraper"
-    ),
-
-    "radiopuertotv": (
-        "scrapers.wordpress_sites",
-        "RadioPuertoTVScraper"
-    ),
-
-    "tvsur": (
-        "scrapers.wordpress_sites",
-        "TVSurScraper"
-    ),
-
-    "ustedseinforma": (
-        "scrapers.wordpress_sites",
-        "UstedSeInformaScraper"
-    ),
-
-    "adiariocr": (
-        "scrapers.wordpress_sites",
-        "ADiarioCRScraper"
-    ),
-
-    "actualidaddeloeste": (
-        "scrapers.wordpress_sites",
-        "ActualidadDelOesteScraper"
-    ),
-
-    "alajuelitahoy": (
-        "scrapers.wordpress_sites",
-        "AlajuelitaHoyScraper"
-    ),
-
-    "alajuelitasoy": (
-        "scrapers.wordpress_sites",
-        "AlajuelitaSoyScraper"
-    ),
-
-    "buzonderodrigo": (
-        "scrapers.wordpress_sites",
-        "BuzonDeRodrigoScraper"
-    ),
-
-    "elcolectivo506": (
-        "scrapers.wordpress_sites",
-        "ElColectivo506Scraper"
-    ),
-
-    "elmonitorcr": (
-        "scrapers.wordpress_sites",
-        "ElMonitorCRScraper"
-    ),
-
-    "elmundo": (
-        "scrapers.wordpress_sites",
-        "ElMundoScraper"
-    ),
-
-    "enlamira": (
-        "scrapers.wordpress_sites",
-        "EnLaMiraScraper"
-    ),  
-    
-    
-    # Legacy / Colab
-    #Cami
-    "acontecercr": ("scrapers.acontecercr", "AcontecerCRScraper"),
-    "eljornalcr":  ("scrapers.eljornal",    "ElJornalCRScraper"),
 
     # Scrapers adicionales detectados en scrapers/
-    "caribeactual": ("scrapers.caribeactual_scraper", "CarribeActualScraper"),
-    "presidencia": ("scrapers.presidencia_scraper", "PresidenciaScraper"),
-    "puntarenasseoye": ("scrapers.puntarenasseoye", "PuntarenasSeOyeScraper"),
-    "ticosland": ("scrapers.ticosland", "TicosLandScraper"),
-    "vozdeguanacaste": ("scrapers.vozdeguanacaste", "VozDeGuanacaste"),
-    "observatorio_democratico": ("scrapers.observatorio_democratico", "ObservatorioDemocraticoScraper"),
-    "acontecer_cr": ("scrapers.acontecer_cr", "AcontecerCrScraper"),
-    "alajuela_digital": ("scrapers.alajuela_digital", "AlajuelaDigitalScraper"),
-    "amprensa": ("scrapers.amprensa", "AmprensaScraper"),
-    "crc_89_1": ("scrapers.crc_89_1", "CRC891Scraper"),
-    "crhoy": ("scrapers.crhoy", "CrhoyScraper"),
-    "diarioextra": ("scrapers.diarioextra", "DiarioExtraScraper"),
-    "digital506": ("scrapers.digital506", "Digital506Scraper"),
-    "el_financiero": ("scrapers.el_financiero", "ElFinancieroScraper"),
-    "el_jilguero": ("scrapers.el_jilguero", "ElJilgueroScraper"),
-    "el_jornal": ("scrapers.el_jornal", "ElJornalScraper"),
-    "el_mundo": ("scrapers.el_mundo", "ElMundoScraper"),
-    "el_observador": ("scrapers.el_observador", "ElObservadorScraper"),
-    "el_seminario": ("scrapers.el_seminario", "ElSeminarioScraper"),
-    "el_sol_de_occidente": ("scrapers.el_sol_de_occidente", "ElSolDeOccidenteScraper"),
-    "eldelfino": ("scrapers.eldelfino", "ElDelfinoScraper"),
-    "elnortehoy": ("scrapers.elnortehoy", "ElNorteHoyScraper"),
-    "lanacion": ("scrapers.lanacion", "LaNacionScraper"),
-    "larepublica": ("scrapers.larepublica", "LaRepublicaScraper"),
-    "noticias_la_garita_costa_rica": ("scrapers.noticias_la_garita_costa_rica", "NoticiasLaGaritaCostaRicaScraper"),
-    "periodico_el_mundo": ("scrapers.periodico_el_mundo", "PeriodicoElMundoScraper"),
-    "periodico_mi_tierra": ("scrapers.periódico_mi_tierra", "PeriodicoMiTierraScraper"),
-    "sancarlosdigital": ("scrapers.sancarlosdigital", "SancarlosDigitalScraper"),
-    "seminario": ("scrapers.seminario", "SeminarioScraper"),
+    "caribeactual":    ("scrapers.caribeactual_scraper", "CarribeActualScraper"),
+    "presidencia":     ("scrapers.presidencia_scraper",  "PresidenciaScraper"),
+    "puntarenasseoye": ("scrapers.puntarenasseoye",      "PuntarenasSeOyeScraper"),
+    "ticosland":       ("scrapers.ticosland",            "TicosLandScraper"),
+    "vozdeguanacaste": ("scrapers.vozdeguanacaste",      "VozDeGuanacaste"),
+
+    # ------------------------------------------------------------------
+    # Los 45 scrapers legacy (19 sitios "Gre" / wordpress_sites, los 24
+    # scripts procedurales/Colab, eljornalcr y observatorio_democratico)
+    # se removieron de este registro. Ahora se ejecutan a través de
+    # LegacyScraperAdapter + get_legacy_registry() — ver LEGACY_SCRAPERS
+    # y get_scraper_instance() más abajo, y scrapers/legacy_adapter.py.
+    # ------------------------------------------------------------------
 }
+
+# Scrapers legacy: se manejan vía LegacyScraperAdapter, no vía SCRAPERS_REGISTRY
+LEGACY_SCRAPERS = set(get_legacy_registry().keys())
+
+
+def get_scraper_instance(name: str, output_dir: str, log_dir: str,
+                          test_mode: bool = False):
+    """
+    Retorna una instancia del scraper correcto para el nombre dado.
+    Si es legacy, usa LegacyScraperAdapter.
+    Si es moderno, usa la clase registrada en SCRAPERS_REGISTRY.
+    """
+    legacy_registry = get_legacy_registry()
+
+    if name in legacy_registry:
+        return LegacyScraperAdapter(
+            source_name=name,
+            script_path=legacy_registry[name],
+            output_dir=output_dir,
+            log_dir=log_dir,
+            test_mode=test_mode
+        )
+
+    if name not in SCRAPERS_REGISTRY:
+        raise ValueError(f"Scraper '{name}' no encontrado en ningún registro")
+
+    module_path, class_name = SCRAPERS_REGISTRY[name]
+    module = importlib.import_module(module_path)
+    ScraperClass = getattr(module, class_name)
+
+    if "test_mode" in inspect.signature(ScraperClass.__init__).parameters:
+        return ScraperClass(output_dir=output_dir, log_dir=log_dir,
+                           test_mode=test_mode)
+    return ScraperClass(output_dir=output_dir, log_dir=log_dir)
+
 
 CR_TZ = timezone(timedelta(hours=-6))
 
@@ -196,16 +116,14 @@ def run_scraper(
     log_dir: str = "logs",
     test_mode: bool = False,
 ) -> dict:
-    """Carga y ejecuta un scraper por nombre."""
+    """Carga y ejecuta un scraper por nombre (moderno o legacy)."""
 
-    if name not in SCRAPERS_REGISTRY:
+    if name not in SCRAPERS_REGISTRY and name not in LEGACY_SCRAPERS:
         return {
             "source": name,
             "status": "ERROR",
             "error": f"Scraper '{name}' no registrado"
         }
-
-    module_path, class_name = SCRAPERS_REGISTRY[name]
 
     original_cwd = os.getcwd()
 
@@ -220,70 +138,18 @@ def run_scraper(
         os.chdir(output_dir)
 
         # -------------------------------------------------
-        # IMPORTAR MÓDULO
+        # INSTANCIAR Y EJECUTAR
+        # (get_scraper_instance resuelve moderno vs legacy)
         # -------------------------------------------------
-        module = importlib.import_module(module_path)
+        scraper = get_scraper_instance(
+            name,
+            output_dir=output_dir,
+            log_dir=log_dir,
+            test_mode=test_mode,
+        )
 
-        # -------------------------------------------------
-        # CASO 1:
-        # SCRAPER MODERNO BASADO EN CLASE
-        # -------------------------------------------------
-        if hasattr(module, class_name):
-
-            ScraperClass = getattr(module, class_name)
-
-            init_params = inspect.signature(
-                ScraperClass.__init__
-            ).parameters
-
-            if "test_mode" in init_params:
-
-                scraper = ScraperClass(
-                    output_dir=output_dir,
-                    log_dir=log_dir,
-                    test_mode=test_mode
-                )
-
-            else:
-
-                if test_mode:
-                    print(
-                        f"        ⚠ {name} no tiene modo prueba, ejecutando normal"
-                    )
-
-                scraper = ScraperClass(
-                    output_dir=output_dir,
-                    log_dir=log_dir
-                )
-
-            result = scraper.run()
-            return result
-
-        # -------------------------------------------------
-        # CASO 2:
-        # SCRIPT LEGACY / COLAB
-        # -------------------------------------------------
-        else:
-
-            print(
-                f"        ⚠ {name} ejecutado como script legacy"
-            )
-
-            # Detectar DataFrame automáticamente
-            total_valid = 0
-
-            if hasattr(module, "df"):
-                try:
-                    total_valid = len(module.df)
-                except:
-                    pass
-
-            return {
-                "source": name,
-                "status": "OK",
-                "total_valid": total_valid,
-                "total_discarded": 0,
-            }
+        result = scraper.run()
+        return result
 
     except ImportError as e:
 
@@ -474,6 +340,16 @@ def main():
                 f"  - {name:<25} ({module}.{cls})"
             )
 
+        print("\nScrapers legacy (vía LegacyScraperAdapter):")
+
+        legacy_registry = get_legacy_registry()
+
+        for name in sorted(LEGACY_SCRAPERS):
+
+            print(
+                f"  - {name:<25} ({legacy_registry[name]})"
+            )
+
         sys.exit(0)
 
     # -------------------------------------------------
@@ -485,7 +361,7 @@ def main():
 
         for name in args.only:
 
-            if name not in SCRAPERS_REGISTRY:
+            if name not in SCRAPERS_REGISTRY and name not in LEGACY_SCRAPERS:
 
                 print(
                     f"  ADVERTENCIA: Scraper '{name}' no encontrado."
@@ -502,7 +378,7 @@ def main():
 
     else:
 
-        to_run = list(SCRAPERS_REGISTRY.keys())
+        to_run = list(SCRAPERS_REGISTRY.keys()) + list(LEGACY_SCRAPERS)
 
     print(f"  Scrapers a ejecutar: {', '.join(to_run)}")
     print(f"  Modo prueba        : {'SÍ' if args.test else 'No'}")

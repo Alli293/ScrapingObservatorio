@@ -28,8 +28,6 @@ import sys
 import os
 import json
 import time
-import importlib
-import inspect
 import traceback
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone, timedelta
@@ -42,7 +40,7 @@ from execution_state import (
     get_last_run, print_summary as print_state_summary,
 )
 from health_check import check_one as health_check_one
-from main import SCRAPERS_REGISTRY
+from main import SCRAPERS_REGISTRY, LEGACY_SCRAPERS, get_scraper_instance
 
 CR_TZ           = timezone(timedelta(hours=-6))
 DEFAULT_WORKERS = 5
@@ -98,44 +96,31 @@ def _run_scraper_sync(
     log_dir:    str,   # ya viene como ruta absoluta
     test_mode:  bool,
 ) -> dict:
-    if name not in SCRAPERS_REGISTRY:
+    if name not in SCRAPERS_REGISTRY and name not in LEGACY_SCRAPERS:
         return {
             "source": name, "status": "ERROR",
-            "error": f"'{name}' no registrado en SCRAPERS_REGISTRY",
+            "error": f"'{name}' no encontrado en SCRAPERS_REGISTRY ni LEGACY_SCRAPERS",
             "duration_s": 0, "total_valid": 0, "total_discarded": 0,
         }
 
-    module_path, class_name = SCRAPERS_REGISTRY[name]
-    original_cwd = os.getcwd()
     t0 = time.time()
-
     try:
         # Usar rutas absolutas — evita el bug output/output/
         Path(output_dir).mkdir(parents=True, exist_ok=True)
         Path(log_dir).mkdir(parents=True, exist_ok=True)
 
-        module       = importlib.import_module(module_path)
-        ScraperClass = getattr(module, class_name)
-        init_params  = inspect.signature(ScraperClass.__init__).parameters
-
-        if "test_mode" in init_params:
-            scraper = ScraperClass(
-                output_dir=output_dir,
-                log_dir=log_dir,
-                test_mode=test_mode,
-            )
-        else:
-            scraper = ScraperClass(output_dir=output_dir, log_dir=log_dir)
+        scraper = get_scraper_instance(
+            name=name,
+            output_dir=output_dir,
+            log_dir=log_dir,
+            test_mode=test_mode
+        )
 
         result               = scraper.run()
         result["duration_s"] = round(time.time() - t0, 2)
         return result
 
     except Exception as exc:
-        try:
-            os.chdir(original_cwd)
-        except Exception:
-            pass
         return {
             "source":          name,
             "status":          "ERROR",
@@ -401,15 +386,17 @@ def main():
         sys.exit(0)
 
     if args.only:
-        to_run  = [n for n in args.only if n in SCRAPERS_REGISTRY]
-        missing = [n for n in args.only if n not in SCRAPERS_REGISTRY]
+        all_known = set(SCRAPERS_REGISTRY.keys()) | LEGACY_SCRAPERS
+        to_run  = [n for n in args.only if n in all_known]
+        missing = [n for n in args.only if n not in all_known]
         if missing:
             print(f"  ADVERTENCIA: no encontrados → {', '.join(missing)}")
         if not to_run:
             print("  Sin scrapers válidos.")
             sys.exit(1)
     else:
-        to_run = list(SCRAPERS_REGISTRY.keys())
+        # Todos los scrapers: modernos + legacy
+        to_run = list(SCRAPERS_REGISTRY.keys()) + list(LEGACY_SCRAPERS)
 
     print(f"  Scrapers a ejecutar : {len(to_run)}")
     print(f"  Workers paralelos   : {args.workers}")

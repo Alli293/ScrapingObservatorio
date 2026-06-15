@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import re
 import time
+import os
 from datetime import datetime
 
 # -------------------------------------------------------------
@@ -147,3 +148,11 @@ df = pd.DataFrame(data)
 print(f"\nDataFrame: {len(df)} filas x {len(df.columns)} columnas")
 print(f"Descartados: {len(log_descartados)}")
 df.head(8)
+
+# Guardar CSV para el legacy adapter
+from datetime import datetime, timezone, timedelta
+_fecha = datetime.now(timezone(timedelta(hours=-6))).strftime("%Y%m%d")
+_out = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                    "..", "output", f"eljornalcr_{_fecha}.csv")
+os.makedirs(os.path.dirname(_out), exist_ok=True)
+df.to_csv(_out, sep="|", index=False, encoding="utf-8")
