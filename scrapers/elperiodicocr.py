@@ -34,7 +34,7 @@ LISTING_URL = "https://www.elperiodicocr.com/ultimas-noticias/"
 MAX_SCROLLS = 8
 
 # Timeout por página de artículo (ms)
-ARTICLE_TIMEOUT = 10_000
+ARTICLE_TIMEOUT = 15_000
 
 # Pausa entre artículos para no sobrecargar el servidor (segundos)
 DELAY_BETWEEN_ARTICLES = 0.1
@@ -193,7 +193,7 @@ class ElPeriodicoCRScraper(BaseScraper):
                     "window.scrollTo(0, document.body.scrollHeight)"
                 )
 
-                await page.wait_for_timeout(3000)
+                await page.wait_for_timeout(5000)
 
                 if len(collected) == previous_count and scroll_num >= 3:
                     self.logger.info(
@@ -224,7 +224,13 @@ class ElPeriodicoCRScraper(BaseScraper):
 
         try:
             await page.goto(link_data["url"], wait_until="domcontentloaded", timeout=ARTICLE_TIMEOUT)
-            await page.wait_for_timeout(1500)
+            try:
+                await page.wait_for_selector(
+                    "div.td-post-content, div.tdb-block-inner",
+                    timeout=8_000
+                )
+            except Exception:
+                pass  # si no aparece, el scraper lo maneja con el fallback existente
 
             # -----------------------------------------------------------
             # Extraer fecha de publicación
