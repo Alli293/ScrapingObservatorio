@@ -47,14 +47,14 @@ def _find_new_csvs(output_dir: str) -> list[Path]:
     p    = Path(output_dir)
     hoy  = datetime.now(CR_TZ).strftime("%Y%m%d")
     csvs = sorted(p.glob(f"*_{hoy}.csv"))
-    csvs = [f for f in csvs if "_discarded" not in f.name]
+    csvs = [f for f in csvs if "_discarded" not in f.name and "_backup" not in f.name]
     return csvs
 
 
 def _read_safe(path: Path, label: str = "") -> pd.DataFrame | None:
     try:
         df = pd.read_csv(path, sep=SEPARATOR, dtype=str,
-                         on_bad_lines="skip", encoding="utf-8")
+                         on_bad_lines="skip", encoding="utf-8-sig")
         return df
     except Exception as e:
         _log(f"  ✗ Error leyendo {label or path.name}: {e}")
