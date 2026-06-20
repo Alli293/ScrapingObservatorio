@@ -204,7 +204,10 @@ with requests.Session() as session:
 # -------------------------------------------------------------
 # RESULTADO FINAL — Schema v1.0
 # -------------------------------------------------------------
-from google.colab import files
+try:
+    from google.colab import files
+except ImportError:
+    files = None
 
 df = pd.DataFrame(data, columns=[
     'source', 'url', 'title', 'publication_date',

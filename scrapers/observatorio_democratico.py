@@ -20,6 +20,8 @@
 #     desde donde se ejecute el script.
 # ============================================================
 
+import os
+import sys
 import requests
 import re
 import datetime
@@ -62,8 +64,10 @@ SITES = [
 
 # Timezone de Costa Rica
 TZ_CR = datetime.timezone(datetime.timedelta(hours=-6))
-TIMESTAMP = datetime.datetime.now(TZ_CR).strftime('%Y%m%d_%H%M%S')
-LOG_TXT = f"log_master_{TIMESTAMP}.txt"
+
+# Log file path — set in main() so each subprocess invocation gets a unique
+# name that includes the site filter and timestamp.
+LOG_TXT: str | None = None
 
 # Límite absoluto seguro para celdas de Excel (limita a 30,000 caracteres)
 MAX_TEXT_LENGTH = 30000
@@ -72,8 +76,9 @@ MAX_TEXT_LENGTH = 30000
 STRICT_PATTERN = re.compile(r'[^\w\s\.,;:!?\-\(\)áéíóúÁÉÍÓÚñÑüÜ"\'/¿¡]', flags=re.UNICODE)
 
 def log_msg(msg):
-    with open(LOG_TXT, "a", encoding="utf-8") as f:
-        f.write(f"[{datetime.datetime.now(TZ_CR).strftime('%H:%M:%S')}] {msg}\n")
+    if LOG_TXT:
+        with open(LOG_TXT, "a", encoding="utf-8") as f:
+            f.write(f"[{datetime.datetime.now(TZ_CR).strftime('%H:%M:%S')}] {msg}\n")
     print(msg)
 
 def clean_extreme(text):
@@ -205,7 +210,7 @@ def procesar_sitio(site_dict, max_pages=None):
             # Respaldo de seguridad intermedio local
             if page % 10 == 0:
                 df_temp = pd.DataFrame(dataset)
-                df_temp.to_csv(f"{name}_backup.csv", index=False, encoding='utf-8-sig', sep='|')
+                df_temp.to_csv(os.path.join("output", f"{name}_backup.csv"), index=False, encoding='utf-8-sig', sep='|')
 
             if max_pages and page >= max_pages:
                 log_msg(f"-> Límite artificial de test ({max_pages} pags) alcanzado.")
@@ -227,7 +232,7 @@ def procesar_sitio(site_dict, max_pages=None):
         df = df.drop_duplicates(subset=['url'])
         df = df[['source', 'url', 'title', 'publication_date', 'scraping_date', 'section', 'full_text', 'language']]
 
-        final_filename = f"{name}_{datetime.datetime.now(TZ_CR).strftime('%Y%m%d')}.csv"
+        final_filename = os.path.join("output", f"{name}_{datetime.datetime.now(TZ_CR).strftime('%Y%m%d')}.csv")
         df.to_csv(final_filename, index=False, encoding='utf-8-sig', sep='|')
         log_msg(f"SUCCESS: {len(df)} registros totales consolidados en {final_filename}")
 
@@ -244,16 +249,24 @@ def procesar_sitio(site_dict, max_pages=None):
 
 
 def main():
-    with open(LOG_TXT, "w", encoding="utf-8") as f:
-        f.write(f"=== MASTER SCRAPER INICIADO ({TIMESTAMP}) ===\n")
-
-    # IMPORTANTE: max_pages se usa sólo para testear (ej. max_pages=2).
-    # Usar max_pages=None para descargar el historial completo.
-    import sys
+    global LOG_TXT
 
     # Filtro opcional: si se pasa un nombre de sitio como argumento,
     # procesar solo ese sitio. Si no se pasa argumento, procesar todos.
+    # IMPORTANTE: max_pages se usa sólo para testear (ej. max_pages=2).
+    # Usar max_pages=None para descargar el historial completo.
     _site_filter = sys.argv[1] if len(sys.argv) > 1 else None
+
+    # Compute log path per invocation: includes site name (if filtered) so
+    # parallel subprocess calls never share the same log file.
+    os.makedirs("logs", exist_ok=True)
+    os.makedirs("output", exist_ok=True)
+    timestamp = datetime.datetime.now(TZ_CR).strftime('%Y%m%d_%H%M%S')
+    suffix = f"_{_site_filter}" if _site_filter else "_all"
+    LOG_TXT = os.path.join("logs", f"log_master_{timestamp}{suffix}.txt")
+
+    with open(LOG_TXT, "w", encoding="utf-8") as f:
+        f.write(f"=== MASTER SCRAPER INICIADO ({timestamp}{suffix}) ===\n")
 
     for site in SITES:
         if _site_filter and site.get("name", "").lower() != _site_filter.lower():

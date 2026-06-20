@@ -184,6 +184,9 @@ print(f"📋 Log de descartes:  {LOG_FILE}")
 print(f"📊 DataFrame final:   {len(df_garita)} filas x {len(df_garita.columns)} columnas")
 df_garita.head(8)
 
-from google.colab import files
+try:
+    from google.colab import files
+except ImportError:
+    files = None
 df_garita.to_csv(OUT_FILE, index=False, encoding='utf-8', sep=',', na_rep='NULL')
 files.download(OUT_FILE)

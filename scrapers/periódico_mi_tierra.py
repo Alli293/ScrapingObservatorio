@@ -126,6 +126,9 @@ df_mitierra = pd.DataFrame(data).drop_duplicates(subset='url')
 print(f"\nDataFrame: {len(df_mitierra)} filas x {len(df_mitierra.columns)} columnas")
 df_mitierra.head(8)
 
-from google.colab import files
+try:
+    from google.colab import files
+except ImportError:
+    files = None
 df_mitierra.to_csv('mitierra_20260404.csv', index=False, encoding='utf-8', sep=',', na_rep='NULL')
 files.download('mitierra_20260404.csv')

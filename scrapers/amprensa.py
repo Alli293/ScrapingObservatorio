@@ -266,7 +266,10 @@ if len(df) > 0:
 df.to_csv('amprensa.csv', index=False, encoding='utf-8-sig')
 print(f"\n💾 Archivo guardado: amprensa.csv")
 
-from google.colab import files
+try:
+    from google.colab import files
+except ImportError:
+    files = None
 files.download('amprensa.csv')
 
 df.to_csv('amprensa.csv', index=False, encoding='utf-8-sig')

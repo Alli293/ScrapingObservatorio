@@ -13,7 +13,10 @@ import pandas as pd
 import re
 import time
 from datetime import datetime
-from google.colab import files
+try:
+    from google.colab import files
+except ImportError:
+    files = None
 
 # -------------------------------------------------------------
 # CONFIGURACIÓN

@@ -56,7 +56,7 @@ def _read_csv_safe(path: Path) -> pd.DataFrame | None:
             sep=SEPARATOR,
             dtype=str,
             on_bad_lines="skip",
-            encoding="utf-8",
+            encoding="utf-8-sig",
         )
         # Verificar columnas mínimas
         missing = [c for c in ["source", "url", "full_text"] if c not in df.columns]

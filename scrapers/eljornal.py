@@ -87,72 +87,76 @@ def extract_article_data(soup):
 # -------------------------------------------------------------
 # SCRAPING PRINCIPAL
 # -------------------------------------------------------------
-data = []
-log_descartados = []
-urls_vistas = set()
+def main():
+    data = []
+    log_descartados = []
+    urls_vistas = set()
 
-with requests.Session() as session:
-    session.headers.update(HEADERS)
+    with requests.Session() as session:
+        session.headers.update(HEADERS)
 
-    for section, url in SECCIONES.items():
-        print(f"\nSeccion: {section.upper()} -> {url}")
-        main_soup = get_soup(url, session)
-        if main_soup is None:
-            print(f"  No se pudo acceder.")
-            continue
-
-        links = []
-        for h3 in main_soup.find_all('h3'):
-            a = h3.find('a', href=True)
-            if a and 'eljornalcr.com' in a['href'] and a['href'] not in urls_vistas:
-                links.append(a['href'])
-                urls_vistas.add(a['href'])
-
-        print(f"  {len(links)} articulos nuevos encontrados.")
-
-        for i, link in enumerate(links, 1):
-            print(f"    [{i}/{len(links)}] {link.split('/')[-2][:55]}...")
-            time.sleep(DELAY)
-
-            article_soup = get_soup(link, session)
-            if article_soup:
-                title, publication_date, section_real, full_text = extract_article_data(article_soup)
-            else:
-                title, publication_date, section_real, full_text = None, None, section, None
-
-            scraping_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-            # Validaciones obligatorias
-            if publication_date is None:
-                log_descartados.append({'url': link, 'motivo': 'publication_date nulo'})
-                continue
-            if full_text is None or len(full_text) < 300:
-                log_descartados.append({'url': link, 'motivo': f'full_text < 300 chars ({len(full_text) if full_text else 0})'})
+        for section, url in SECCIONES.items():
+            print(f"\nSeccion: {section.upper()} -> {url}")
+            main_soup = get_soup(url, session)
+            if main_soup is None:
+                print(f"  No se pudo acceder.")
                 continue
 
-            data.append({
-                'source':           'eljornalcr',
-                'url':              link,
-                'title':            title,
-                'publication_date': publication_date,
-                'scraping_date':    scraping_date,
-                'section':          section_real,
-                'full_text':        full_text,
-                'language':         'es'
-            })
+            links = []
+            for h3 in main_soup.find_all('h3'):
+                a = h3.find('a', href=True)
+                if a and 'eljornalcr.com' in a['href'] and a['href'] not in urls_vistas:
+                    links.append(a['href'])
+                    urls_vistas.add(a['href'])
 
-# -------------------------------------------------------------
-# RESULTADO FINAL
-# -------------------------------------------------------------
-df = pd.DataFrame(data)
-print(f"\nDataFrame: {len(df)} filas x {len(df.columns)} columnas")
-print(f"Descartados: {len(log_descartados)}")
-df.head(8)
+            print(f"  {len(links)} articulos nuevos encontrados.")
 
-# Guardar CSV para el legacy adapter
-from datetime import datetime, timezone, timedelta
-_fecha = datetime.now(timezone(timedelta(hours=-6))).strftime("%Y%m%d")
-_out = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                    "..", "output", f"eljornalcr_{_fecha}.csv")
-os.makedirs(os.path.dirname(_out), exist_ok=True)
-df.to_csv(_out, sep="|", index=False, encoding="utf-8")
+            for i, link in enumerate(links, 1):
+                slug = link.rstrip('/').split('/')[-1]
+                print(f"    [{i}/{len(links)}] {slug[:55]}...")
+                time.sleep(DELAY)
+
+                article_soup = get_soup(link, session)
+                if article_soup:
+                    title, publication_date, section_real, full_text = extract_article_data(article_soup)
+                else:
+                    title, publication_date, section_real, full_text = None, None, section, None
+
+                scraping_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+                # Validaciones obligatorias
+                if publication_date is None:
+                    log_descartados.append({'url': link, 'motivo': 'publication_date nulo'})
+                    continue
+                if full_text is None or len(full_text) < 300:
+                    log_descartados.append({'url': link, 'motivo': f'full_text < 300 chars ({len(full_text) if full_text else 0})'})
+                    continue
+
+                data.append({
+                    'source':           'eljornalcr',
+                    'url':              link,
+                    'title':            title,
+                    'publication_date': publication_date,
+                    'scraping_date':    scraping_date,
+                    'section':          section_real,
+                    'full_text':        full_text,
+                    'language':         'es'
+                })
+
+    # ---------------------------------------------------------
+    # RESULTADO FINAL
+    # ---------------------------------------------------------
+    df = pd.DataFrame(data)
+    print(f"\nDataFrame: {len(df)} filas x {len(df.columns)} columnas")
+    print(f"Descartados: {len(log_descartados)}")
+
+    from datetime import timezone, timedelta
+    _fecha = datetime.now(timezone(timedelta(hours=-6))).strftime("%Y%m%d")
+    _out = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "output", f"eljornalcr_{_fecha}.csv")
+    os.makedirs(os.path.dirname(_out), exist_ok=True)
+    df.to_csv(_out, sep="|", index=False, encoding="utf-8")
+
+
+if __name__ == '__main__':
+    main()

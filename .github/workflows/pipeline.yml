@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       grupo:
-        description: 'Grupo a ejecutar (1-5 o "todos")'
+        description: 'Grupo a ejecutar (1-7 o "todos")'
         required: false
         default: 'todos'
       test_mode:
@@ -18,13 +18,9 @@ env:
   PYTHON_VERSION: '3.12'
   DISPLAY: ':99'
 
-# ── Paso de instalación reutilizable como anchor YAML ──────────────
-# Nota: GitHub Actions no soporta anchors nativos, pero compartimos
-# la lógica en cada job de forma explícita.
-
 jobs:
   # ─────────────────────────────────────────────────────────────────
-  # GRUPO 1 — Scrapers rápidos
+  # GRUPO 1 — Scrapers rápidos  (Playwright)
   # ─────────────────────────────────────────────────────────────────
   grupo_1_rapidos:
     name: 'Grupo 1 — Rápidos'
@@ -50,6 +46,13 @@ jobs:
           Xvfb :99 -screen 0 1920x1080x24 -ac &
           sleep 2
           echo "DISPLAY=:99" >> $GITHUB_ENV
+
+      - name: Cache Playwright Chromium
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+          restore-keys: playwright-chromium-${{ runner.os }}-
 
       - name: Instalar dependencias Python
         run: |
@@ -77,7 +80,7 @@ jobs:
           retention-days: 7
 
   # ─────────────────────────────────────────────────────────────────
-  # GRUPO 2 — Scrapers medianos
+  # GRUPO 2 — Scrapers medianos  (Playwright)
   # ─────────────────────────────────────────────────────────────────
   grupo_2_medianos:
     name: 'Grupo 2 — Medianos'
@@ -104,6 +107,13 @@ jobs:
           sleep 2
           echo "DISPLAY=:99" >> $GITHUB_ENV
 
+      - name: Cache Playwright Chromium
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+          restore-keys: playwright-chromium-${{ runner.os }}-
+
       - name: Instalar dependencias Python
         run: |
           pip install -r requirements.txt
@@ -115,8 +125,7 @@ jobs:
           python pipeline_runner.py \
             --only ncrnoticias ticotimes trivisioncr latejacr \
                    mundiario rumboeconomico vozdeguanacaste \
-                   elmundo elcolectivo506 eljornalcr \
-            --workers 4 \
+            --workers 6 \
             --skip-health \
             ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
 
@@ -130,7 +139,7 @@ jobs:
           retention-days: 7
 
   # ─────────────────────────────────────────────────────────────────
-  # GRUPO 3 — Scrapers lentos
+  # GRUPO 3 — Scrapers lentos  (Playwright)
   # ─────────────────────────────────────────────────────────────────
   grupo_3_lentos:
     name: 'Grupo 3 — Lentos'
@@ -157,6 +166,13 @@ jobs:
           sleep 2
           echo "DISPLAY=:99" >> $GITHUB_ENV
 
+      - name: Cache Playwright Chromium
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+          restore-keys: playwright-chromium-${{ runner.os }}-
+
       - name: Instalar dependencias Python
         run: |
           pip install -r requirements.txt
@@ -168,8 +184,7 @@ jobs:
           python pipeline_runner.py \
             --only lareaccioncr noticiasenlineacr puroperiodismo \
                    larevistacr lavozdegoicoechea \
-                   elmonitorcr enlamira \
-            --workers 3 \
+            --workers 4 \
             --skip-health \
             ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
 
@@ -183,7 +198,7 @@ jobs:
           retention-days: 7
 
   # ─────────────────────────────────────────────────────────────────
-  # GRUPO 4 — Scrapers muy lentos
+  # GRUPO 4 — Scrapers muy lentos  (Playwright)
   # ─────────────────────────────────────────────────────────────────
   grupo_4_muy_lentos:
     name: 'Grupo 4 — Muy lentos'
@@ -210,6 +225,13 @@ jobs:
           sleep 2
           echo "DISPLAY=:99" >> $GITHUB_ENV
 
+      - name: Cache Playwright Chromium
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+          restore-keys: playwright-chromium-${{ runner.os }}-
+
       - name: Instalar dependencias Python
         run: |
           pip install -r requirements.txt
@@ -220,7 +242,7 @@ jobs:
         run: |
           python pipeline_runner.py \
             --only teletica repretel genteopa \
-            --workers 2 \
+            --workers 3 \
             --skip-health \
             ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
 
@@ -234,16 +256,16 @@ jobs:
           retention-days: 7
 
   # ─────────────────────────────────────────────────────────────────
-  # GRUPO 5 — WordPress sites
+  # GRUPO 5 — WordPress + Legacy sin Playwright
   # ─────────────────────────────────────────────────────────────────
   grupo_5_wordpress:
-    name: 'Grupo 5 — WordPress'
+    name: 'Grupo 5 — WordPress + Legacy'
     runs-on: ubuntu-latest
     if: >
       github.event_name == 'schedule' ||
       github.event.inputs.grupo == 'todos' ||
       github.event.inputs.grupo == '5'
-    timeout-minutes: 120
+    timeout-minutes: 40
 
     steps:
       - uses: actions/checkout@v4
@@ -253,27 +275,19 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
-      - name: Instalar Xvfb
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y xvfb
-          Xvfb :99 -screen 0 1920x1080x24 -ac &
-          sleep 2
-          echo "DISPLAY=:99" >> $GITHUB_ENV
-
       - name: Instalar dependencias Python
-        run: |
-          pip install -r requirements.txt
-          python -m playwright install chromium
-          python -m playwright install-deps chromium
+        run: pip install -r requirements-legacy.txt
 
       - name: Ejecutar scrapers
         run: |
           python pipeline_runner.py \
-            --only adiariocr alajuelitasoy buzonderodrigo \
-                   guanacastealaaltura miprensacr periodicomensaje \
-                   radiolapampa ustedseinforma \
-            --workers 4 \
+            --only adiariocr actualidaddeloeste alajuelitahoy alajuelitasoy \
+                   anexioncr buzonderodrigo guanacastealaaltura miprensacr \
+                   periodicomensaje radiolapampa radiopuertotv tamarindonews \
+                   tvsur ustedseinforma yambaradio \
+                   elmundo elcolectivo506 eljornalcr \
+                   elmonitorcr enlamira \
+            --workers 8 \
             --skip-health \
             ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
 
@@ -281,6 +295,90 @@ jobs:
         if: always()
         with:
           name: output-grupo-5
+          path: |
+            output/*.csv
+            logs/*.json
+          retention-days: 7
+
+  # ─────────────────────────────────────────────────────────────────
+  # GRUPO 6 — Legacy Colab parte 1  (sin Playwright)
+  # ─────────────────────────────────────────────────────────────────
+  grupo_6_legacy_colab_1:
+    name: 'Grupo 6 — Legacy Colab (1/2)'
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'schedule' ||
+      github.event.inputs.grupo == 'todos' ||
+      github.event.inputs.grupo == '6'
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Instalar dependencias Python
+        run: pip install -r requirements-legacy.txt
+
+      - name: Ejecutar scrapers
+        run: |
+          python pipeline_runner.py \
+            --only acontecer_cr acontecercr alajuela_digital amprensa \
+                   crc_89_1 crhoy diarioextra digital506 \
+                   el_jilguero el_jornal el_observador el_sol_de_occidente \
+            --workers 8 \
+            --skip-health \
+            ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: output-grupo-6
+          path: |
+            output/*.csv
+            logs/*.json
+          retention-days: 7
+
+  # ─────────────────────────────────────────────────────────────────
+  # GRUPO 7 — Legacy Colab parte 2  (sin Playwright)
+  # ─────────────────────────────────────────────────────────────────
+  grupo_7_legacy_colab_2:
+    name: 'Grupo 7 — Legacy Colab (2/2)'
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'schedule' ||
+      github.event.inputs.grupo == 'todos' ||
+      github.event.inputs.grupo == '7'
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Instalar dependencias Python
+        run: pip install -r requirements-legacy.txt
+
+      - name: Ejecutar scrapers
+        run: |
+          python pipeline_runner.py \
+            --only el_financiero el_mundo el_seminario eldelfino \
+                   elnortehoy lanacion larepublica noticias_la_garita_costa_rica \
+                   periodico_el_mundo periodico_mi_tierra sancarlosdigital seminario \
+            --workers 8 \
+            --skip-health \
+            ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: output-grupo-7
           path: |
             output/*.csv
             logs/*.json
@@ -298,6 +396,8 @@ jobs:
       - grupo_3_lentos
       - grupo_4_muy_lentos
       - grupo_5_wordpress
+      - grupo_6_legacy_colab_1
+      - grupo_7_legacy_colab_2
     if: always()
 
     steps:

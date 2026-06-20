@@ -146,6 +146,9 @@ df5 = pd.DataFrame(data).drop_duplicates(subset='url')
 print(f"\nDataFrame: {len(df5)} filas x {len(df5.columns)} columnas")
 df5.head(8)
 
-from google.colab import files
+try:
+    from google.colab import files
+except ImportError:
+    files = None
 df5.to_csv('jilgueromedia.csv', index=False, encoding='utf-8', sep=',', na_rep='NULL')
 files.download('jilgueromedia.csv')

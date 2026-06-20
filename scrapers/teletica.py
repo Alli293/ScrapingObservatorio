@@ -43,6 +43,9 @@ from scrapers.base_scraper import BaseScraper
 
 CR_TZ = timezone(timedelta(hours=-6))
 
+# Descartar artículos anteriores a esta fecha
+DATE_CUTOFF = datetime(2024, 1, 1, tzinfo=CR_TZ)
+
 BASE_URL = "https://www.teletica.com"
 
 SECTIONS = [
@@ -559,6 +562,20 @@ class TeleticaScraper(BaseScraper):
             if not full_text:
                 self.logger.warning(f"Sin texto: {link_data['url']}")
                 return None
+
+            # Filtro temporal: descartar artículos anteriores a 2024-01-01
+            if publication_date:
+                try:
+                    pub_dt = datetime.fromisoformat(publication_date.replace(" ", "T"))
+                    if pub_dt.tzinfo is None:
+                        pub_dt = pub_dt.replace(tzinfo=CR_TZ)
+                    if pub_dt < DATE_CUTOFF:
+                        self.logger.debug(
+                            f"Artículo anterior a 2024, descartando: {link_data['url']} ({publication_date})"
+                        )
+                        return None
+                except Exception:
+                    pass
 
             return {
                 "url": link_data["url"],

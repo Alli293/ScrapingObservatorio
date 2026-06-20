@@ -166,5 +166,8 @@ with requests.Session() as session:
             slug = link.rstrip('/').split('/')[-1][:50]
 
 df.to_csv('diarioextra.csv', index=False, encoding='utf-8-sig')
-from google.colab import files
+try:
+    from google.colab import files
+except ImportError:
+    files = None
 files.download('diarioextra.csv')

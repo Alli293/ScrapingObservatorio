@@ -180,6 +180,9 @@ df6 = pd.DataFrame(data)
 print(f"\nDataFrame: {len(df6)} filas x {len(df6.columns)} columnas")
 df6.head(8)
 
-from google.colab import files
+try:
+    from google.colab import files
+except ImportError:
+    files = None
 df6.to_csv('elnortehoycr.csv', index=False, encoding='utf-8', sep=',', na_rep='NULL')
 files.download('elnortehoycr.csv')

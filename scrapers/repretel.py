@@ -6,7 +6,7 @@ Sección: Actualidad
 URL base: https://www.repretel.com/category/actualidad/
 Paginación: /page/N/  (209k+ artículos, ~10k páginas)
 
-Límite temporal: se detiene cuando encuentra artículos anteriores a 2023-01-01.
+Límite temporal: se detiene cuando encuentra artículos anteriores a 2024-01-01.
 Estrategia: artículos están ordenados de más reciente a más antiguo por página,
 por lo que al encontrar la primera fecha < 2023 en una página se para.
 
@@ -42,7 +42,7 @@ BASE_URL = "https://www.repretel.com"
 SECTION_URL = "https://www.repretel.com/category/actualidad/"
 
 # Detener al encontrar artículos anteriores a esta fecha
-DATE_CUTOFF = datetime(2023, 1, 1, tzinfo=CR_TZ)
+DATE_CUTOFF = datetime(2024, 1, 1, tzinfo=CR_TZ)
 
 ARTICLE_TIMEOUT = 22_000
 DELAY_BETWEEN_ARTICLES = 1.0
@@ -130,10 +130,10 @@ def is_article_url(url: str) -> bool:
 class RepretelScraper(BaseScraper):
     """
     Scraper para Repretel — sección Actualidad.
-    - Paginación /page/N/ hasta agotar o superar límite de fecha 2023
+    - Paginación /page/N/ hasta agotar o superar límite de fecha 2024
     - En cada página: scroll → extrae links → pasa a siguiente
     - Cada artículo se visita para extraer fecha exacta y texto
-    - Se detiene cuando publication_date < 2023-01-01
+    - Se detiene cuando publication_date < 2024-01-01
     - Modo prueba: --test limita páginas y artículos
     """
 

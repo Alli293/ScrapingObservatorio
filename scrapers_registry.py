@@ -1,15 +1,15 @@
 """
-main.py
+scrapers_registry.py
 Orquestador principal del Observatorio Democrático.
 
 Ejecuta todos los scrapers registrados de forma secuencial,
 consolida los resultados y genera un reporte de ejecución.
 
 Uso:
-    python main.py
-    python main.py --only elperiodicocr
-    python main.py --list
-    python main.py --only elperiodicocr --test
+    python scrapers_registry.py
+    python scrapers_registry.py --only elperiodicocr
+    python scrapers_registry.py --list
+    python scrapers_registry.py --only elperiodicocr --test
 """
 
 import argparse
@@ -101,6 +101,8 @@ def get_scraper_instance(name: str, output_dir: str, log_dir: str,
     if "test_mode" in inspect.signature(ScraperClass.__init__).parameters:
         return ScraperClass(output_dir=output_dir, log_dir=log_dir,
                            test_mode=test_mode)
+    if test_mode:
+        print(f"        ⚠ {name} no soporta test_mode — ejecutando completo")
     return ScraperClass(output_dir=output_dir, log_dir=log_dir)
 
 
@@ -125,22 +127,9 @@ def run_scraper(
             "error": f"Scraper '{name}' no registrado"
         }
 
-    original_cwd = os.getcwd()
-
     try:
-
-        # -------------------------------------------------
-        # PREPARAR OUTPUT
-        # -------------------------------------------------
         Path(output_dir).mkdir(parents=True, exist_ok=True)
 
-        # Cambiar temporalmente al output/
-        os.chdir(output_dir)
-
-        # -------------------------------------------------
-        # INSTANCIAR Y EJECUTAR
-        # (get_scraper_instance resuelve moderno vs legacy)
-        # -------------------------------------------------
         scraper = get_scraper_instance(
             name,
             output_dir=output_dir,
@@ -148,11 +137,9 @@ def run_scraper(
             test_mode=test_mode,
         )
 
-        result = scraper.run()
-        return result
+        return scraper.run()
 
     except ImportError as e:
-
         return {
             "source": name,
             "status": "ERROR",
@@ -160,18 +147,11 @@ def run_scraper(
         }
 
     except Exception as e:
-
         return {
             "source": name,
             "status": "ERROR",
             "error": str(e)
         }
-
-    finally:
-        try:
-            os.chdir(original_cwd)
-        except Exception:
-            pass
 
 
 # -----------------------------------------------------------------------

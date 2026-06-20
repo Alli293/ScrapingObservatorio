@@ -158,7 +158,10 @@ df = pd.DataFrame(data)
 print(f"\nDataFrame: {len(df)} filas x {len(df.columns)} columnas")
 df.head(8)
 
-from google.colab import files
+try:
+    from google.colab import files
+except ImportError:
+    files = None
 
 today_str = datetime.now().strftime('%Y%m%d')
 output_file = f'observadorcr_{today_str}.csv'

@@ -40,7 +40,7 @@ from execution_state import (
     get_last_run, print_summary as print_state_summary,
 )
 from health_check import check_one as health_check_one
-from main import SCRAPERS_REGISTRY, LEGACY_SCRAPERS, get_scraper_instance
+from scrapers_registry import SCRAPERS_REGISTRY, LEGACY_SCRAPERS, get_scraper_instance
 
 CR_TZ           = timezone(timedelta(hours=-6))
 DEFAULT_WORKERS = 5

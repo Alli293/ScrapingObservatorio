@@ -226,5 +226,8 @@ print("\n📋 Primeros artículos:")
 df[['title', 'author', 'publication_date', 'section']].head(10)
 
 df.to_csv('crc891.csv', index=False, encoding='utf-8-sig')
-from google.colab import files
+try:
+    from google.colab import files
+except ImportError:
+    files = None
 files.download('crc891.csv')

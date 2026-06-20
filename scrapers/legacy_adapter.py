@@ -9,6 +9,7 @@ y lo retorna al pipeline sin modificar ningún scraper existente.
 import os
 import sys
 import glob
+import time
 import subprocess
 import pandas as pd
 
@@ -24,17 +25,23 @@ OBSERVATORIO_SCRIPT = os.path.join(PROJECT_ROOT, "scrapers", "observatorio_democ
 SUBPROCESS_TIMEOUT = 600
 TEST_MODE_LIMIT = 20
 
+# A CSV modified up to this many seconds before subprocess start is still
+# accepted (handles filesystem timestamp rounding / clock skew).
+_FRESHNESS_TOLERANCE_S = 10
+
 
 class LegacyScraperAdapter(BaseScraper):
     """
     Adapter para scrapers legacy procedurales (Tipo 1) y WordPress (Tipo 2).
 
-    Ambos tipos comparten el mismo problema: ejecutan toda su lógica al
-    correr el archivo y escriben su propio CSV en disco en vez de retornar
-    datos al pipeline. Este adapter corre el script como subprocess
-    independiente, localiza el CSV resultante y lo convierte al formato
-    estándar (lista de dicts con el schema v1.0) para que BaseScraper.run()
-    haga el resto (validación, deduplicación, export).
+    Tipo 1: scripts procedurales (con o sin Colab) que ejecutan toda su lógica
+            al correr el archivo y escriben su propio CSV en disco.
+    Tipo 2: sitios WordPress procesados por observatorio_democratico.py, que
+            acepta el nombre del sitio como sys.argv[1] para filtrar a uno solo.
+
+    El adapter corre el script como subprocess independiente, localiza el CSV
+    resultante y lo convierte al formato estándar (lista de dicts con schema
+    v1.0) para que BaseScraper.run() haga el resto.
 
     Uso:
         adapter = LegacyScraperAdapter(
@@ -51,32 +58,41 @@ class LegacyScraperAdapter(BaseScraper):
         self.SOURCE_NAME = source_name
         self.script_path = script_path
         self.test_mode = test_mode
-        # Los scrapers WordPress (Tipo 2) no tienen archivo propio: su lógica
-        # vive en observatorio_democratico.py::procesar_sitio(). Se detecta
-        # automáticamente para no requerir un flag extra en el registro.
-        self.is_wordpress = os.path.basename(script_path) == "observatorio_democratico.py"
+        # Tipo 2 detection: script is observatorio_democratico.py AND this is
+        # an individual WordPress site (not the "run-all" meta-key).
+        self.is_wordpress = (
+            os.path.basename(script_path) == "observatorio_democratico.py"
+            and source_name != "observatorio_democratico"
+        )
         super().__init__(output_dir=output_dir, log_dir=log_dir)
 
     def scrape(self) -> list[dict]:
-        # 1. Ejecutar el script legacy como subprocess
+        # 1. Record start time for CSV freshness check
+        subprocess_start = time.time()
+
+        # 2. Ejecutar el script legacy como subprocess
         self._run_legacy_script()
 
-        # 2. Buscar el CSV que escribió en disco
-        csv_path = self._find_csv()
+        # 3. Buscar el CSV fresco que escribió en disco
+        csv_path = self._find_csv(min_mtime=subprocess_start)
         if not csv_path:
-            self.logger.warning(f"No se encontró CSV de salida para '{self.SOURCE_NAME}'.")
-            return []
+            raise RuntimeError(
+                f"No se encontró CSV de salida para '{self.SOURCE_NAME}' "
+                f"tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)"
+            )
 
-        # 3. Leerlo con pandas
+        # 4. Leerlo con pandas
         df = self._read_csv(csv_path)
         if df.empty:
-            self.logger.warning(f"CSV vacío para '{self.SOURCE_NAME}': {csv_path}")
-            return []
+            raise RuntimeError(
+                f"CSV vacío para '{self.SOURCE_NAME}': {csv_path} — "
+                "el script corrió pero no produjo registros"
+            )
 
-        # 4. Validar que tiene el schema correcto
+        # 5. Validar que tiene el schema correcto
         df = self._ensure_schema(df)
 
-        # 5. Limitar en modo prueba
+        # 6. Limitar en modo prueba
         if self.test_mode:
             df = df.head(TEST_MODE_LIMIT)
 
@@ -89,9 +105,8 @@ class LegacyScraperAdapter(BaseScraper):
 
     def _run_legacy_script(self) -> None:
         if self.is_wordpress:
-            # observatorio_democratico.py procesa TODOS los sitios de SITES
-            # dentro de su main(); se pasa el nombre del sitio como argumento
-            # por trazabilidad, aunque el script (sin modificar) no lo lea.
+            # observatorio_democratico.py acepta el nombre del sitio como
+            # sys.argv[1] para procesar solo ese sitio.
             cmd = [sys.executable, OBSERVATORIO_SCRIPT, self.SOURCE_NAME]
         else:
             cmd = [sys.executable, self.script_path]
@@ -129,7 +144,7 @@ class LegacyScraperAdapter(BaseScraper):
     # Paso 2 — localizar el CSV escrito por el script legacy
     # ------------------------------------------------------------------
 
-    def _find_csv(self) -> str | None:
+    def _find_csv(self, min_mtime: float | None = None) -> str | None:
         output_dir = self.output_dir
         if not os.path.isabs(output_dir):
             output_dir = os.path.join(PROJECT_ROOT, output_dir)
@@ -140,6 +155,16 @@ class LegacyScraperAdapter(BaseScraper):
         for directory in search_dirs:
             for pattern in (f"{self.SOURCE_NAME}_*.csv", f"{self.SOURCE_NAME}.csv"):
                 candidates.update(glob.glob(os.path.join(directory, pattern)))
+
+        # Exclude backup files — they are intermediate artifacts, not final output
+        candidates = {p for p in candidates if "_backup" not in os.path.basename(p)}
+
+        # Only accept files written during (or just before) this subprocess run
+        if min_mtime is not None:
+            candidates = {
+                p for p in candidates
+                if os.path.getmtime(p) >= min_mtime - _FRESHNESS_TOLERANCE_S
+            }
 
         if not candidates:
             return None
@@ -170,22 +195,32 @@ class LegacyScraperAdapter(BaseScraper):
         return df.fillna("NULL")
 
 
+# Module-level cache — get_legacy_registry() builds 45+ os.path.join entries;
+# the dict never changes at runtime so we build it once.
+_registry_cache: dict | None = None
+
+
 def get_legacy_registry() -> dict:
     """
     Retorna el registro de todos los scrapers legacy con su script_path.
-    Usar para registrar en SCRAPERS_REGISTRY del main.py.
 
     - Tipo 1 (procedurales, con o sin Colab): apuntan a su propio archivo
       dentro de scrapers/.
-    - Tipo 2 (WordPress, ex wordpress_sites.py): todos apuntan a
-      observatorio_democratico.py; LegacyScraperAdapter detecta esto
-      automáticamente vía os.path.basename(script_path).
+    - Tipo 2 (WordPress individuales): apuntan a observatorio_democratico.py;
+      LegacyScraperAdapter detecta esto automáticamente y pasa el nombre del
+      sitio como sys.argv[1] al subprocess.
+    - "observatorio_democratico": meta-clave Tipo 1 que corre el script sin
+      filtro de sitio, procesando los 19 sitios WordPress en una sola pasada.
     """
+    global _registry_cache
+    if _registry_cache is not None:
+        return _registry_cache
+
     base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     scrapers_dir = os.path.join(base, "scrapers")
     wordpress_script = os.path.join(scrapers_dir, "observatorio_democratico.py")
 
-    return {
+    _registry_cache = {
         # ---- Tipo 1: scripts procedurales Colab (24) ----
         "acontecercr":                   os.path.join(scrapers_dir, "acontecercr.py"),
         "acontecer_cr":                  os.path.join(scrapers_dir, "acontecer_cr.py"),
@@ -215,7 +250,10 @@ def get_legacy_registry() -> dict:
         # ---- Tipo 1: procedural sin Colab ----
         "eljornalcr":                    os.path.join(scrapers_dir, "eljornal.py"),
 
-        # ---- Tipo 2: sitios WordPress, procesados vía observatorio_democratico.py (19) ----
+        # ---- Tipo 1: meta-clave que corre todos los sitios WordPress de una vez ----
+        "observatorio_democratico":      wordpress_script,
+
+        # ---- Tipo 2: sitios WordPress individuales (19) ----
         "anexioncr":           wordpress_script,
         "guanacastealaaltura": wordpress_script,
         "periodicomensaje":    wordpress_script,
@@ -236,3 +274,4 @@ def get_legacy_registry() -> dict:
         "elmundo":             wordpress_script,
         "enlamira":            wordpress_script,
     }
+    return _registry_cache

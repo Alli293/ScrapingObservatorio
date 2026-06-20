@@ -138,5 +138,8 @@ df4.to_csv('alajueladigital.csv',
            sep=',',              # Separador por coma
            na_rep='NULL')        # Nulos como NULL real
 
-from google.colab import files
+try:
+    from google.colab import files
+except ImportError:
+    files = None
 files.download('alajueladigital.csv')
