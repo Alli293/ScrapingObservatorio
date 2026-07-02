@@ -9,50 +9,6 @@ Original file is located at
 SOLO PAGINA PRINCIPAL
 """
 
-# Instalar librería necesaria (solo si no está instalada)
-!pip install ftfy
-
-import requests
-from bs4 import BeautifulSoup
-import ftfy
-import pandas as pd
-
-# URL de El Financiero Costa Rica
-url = "https://www.elfinancierocr.com/"
-
-# Obtener el HTML
-response = requests.get(url)
-response.encoding = "utf-8"
-html = response.text
-
-# Parsear con BeautifulSoup
-soup = BeautifulSoup(html, "html.parser")
-
-# Extraer SOLO encabezados (evita duplicados por <a>)
-headline_tags = soup.find_all(["h1", "h2", "h3"])
-
-# Usar set para evitar duplicados desde el inicio
-cleaned_titles = set()
-
-for tag in headline_tags:
-    text = tag.get_text(strip=True)
-
-    # Filtros de longitud para evitar menús y textos basura
-    if 40 < len(text) < 200:
-        cleaned = ftfy.fix_text(text)
-        cleaned_titles.add(cleaned)
-
-# Convertir a DataFrame
-df = pd.DataFrame(sorted(cleaned_titles), columns=["Titulares"])
-
-# Guardar en CSV
-df.to_csv("titulares_elfinanciero.csv", index=False, encoding="utf-8-sig")
-
-print("Archivo generado correctamente: titulares_elfinanciero.csv")
-print(f"Total de titulares únicos: {len(df)}")
-
-"""TODAS LAS SECCIONES"""
-
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd

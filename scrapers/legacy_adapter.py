@@ -29,6 +29,33 @@ TEST_MODE_LIMIT = 20
 # accepted (handles filesystem timestamp rounding / clock skew).
 _FRESHNESS_TOLERANCE_S = 10
 
+# Colab scripts that write CSVs with names different from the source name.
+# Maps source_name -> list of glob patterns to also search in _find_csv.
+_CSV_OUTPUT_MAP: dict[str, list[str]] = {
+    # ── G6 — Colab scripts con nombre de archivo distinto al source name ──
+    "acontecer_cr":              ["acontecercr_*.csv", "acontecerCR_*.csv"],
+    "alajuela_digital":          ["alajueladigital.csv"],
+    "crc_89_1":                  ["crc891.csv"],
+    "digital506":                ["DIGITAL506.csv", "digital506.csv"],
+    "el_jilguero":               ["jilgueromedia.csv"],
+    "el_jornal":                 ["eljornalcr.csv"],
+    "el_observador":             ["observadorcr_*.csv"],
+    "el_sol_de_occidente":       ["elsoldeoccidente.csv"],
+
+    # ── G7 — Scripts con nombre de archivo distinto al source name ────────
+    "el_financiero":             ["elfinancierocr.csv"],
+    "el_mundo":                  ["noticias_elmundo_*.csv"],
+    "el_seminario":              ["noticias_semanario_*.csv"],
+    "eldelfino":                 ["noticias_delfino_*.csv"],
+    "elnortehoy":                ["elnortehoycr.csv"],
+    "lanacion":                  ["noticias_nacion_*.csv"],
+    "larepublica":               ["noticias_larepublica_*.csv"],
+    "noticias_la_garita_costa_rica": ["noticiaslagarita_*.csv"],
+    "periodico_el_mundo":        ["elmundocr.csv"],
+    "periodico_mi_tierra":       ["mitierra_*.csv"],
+    "seminario":                 ["semanariouniversidad.csv"],
+}
+
 
 class LegacyScraperAdapter(BaseScraper):
     """
@@ -111,6 +138,9 @@ class LegacyScraperAdapter(BaseScraper):
         else:
             cmd = [sys.executable, self.script_path]
 
+        _env = os.environ.copy()
+        _env["PYTHONIOENCODING"] = "utf-8"
+
         try:
             result = subprocess.run(
                 cmd,
@@ -118,6 +148,7 @@ class LegacyScraperAdapter(BaseScraper):
                 capture_output=True,
                 text=True,
                 timeout=SUBPROCESS_TIMEOUT,
+                env=_env,
             )
 
             if result.returncode != 0:
@@ -155,6 +186,11 @@ class LegacyScraperAdapter(BaseScraper):
         for directory in search_dirs:
             for pattern in (f"{self.SOURCE_NAME}_*.csv", f"{self.SOURCE_NAME}.csv"):
                 candidates.update(glob.glob(os.path.join(directory, pattern)))
+
+        # For Colab scripts whose output filename differs from source name
+        for alias_pattern in _CSV_OUTPUT_MAP.get(self.SOURCE_NAME, []):
+            for directory in search_dirs:
+                candidates.update(glob.glob(os.path.join(directory, alias_pattern)))
 
         # Exclude backup files — they are intermediate artifacts, not final output
         candidates = {p for p in candidates if "_backup" not in os.path.basename(p)}

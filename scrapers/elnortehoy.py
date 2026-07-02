@@ -7,22 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/13tNX_lxe4UVYRYl1wG6-iPZY6uuAjbSX
 """
 
-# Ver filas sin título
-sin_titulo = df6[df6['title'] == 'Sin titulo']
-print(f"Sin título: {len(sin_titulo)}")
-
-# Ver filas sin contenido
-sin_contenido = df6[df6['full_text'].str.strip() == '']
-print(f"Sin contenido: {len(sin_contenido)}")
-
-# Ver filas sin fecha
-sin_fecha = df6[df6['publication_date'] == 'Sin fecha']
-print(f"Sin fecha: {len(sin_fecha)}")
-
-# Resumen general
-print(f"\nTotal filas: {len(df6)}")
-print(df6[['title', 'publication_date', 'section', 'full_text']].head(10))
-
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -180,9 +164,12 @@ df6 = pd.DataFrame(data)
 print(f"\nDataFrame: {len(df6)} filas x {len(df6.columns)} columnas")
 df6.head(8)
 
+df6.to_csv('elnortehoycr.csv', index=False, encoding='utf-8', sep=',', na_rep='NULL')
+print(f"Archivo guardado: elnortehoycr.csv ({len(df6)} filas)")
+
 try:
     from google.colab import files
 except ImportError:
     files = None
-df6.to_csv('elnortehoycr.csv', index=False, encoding='utf-8', sep=',', na_rep='NULL')
-files.download('elnortehoycr.csv')
+if files:
+    files.download('elnortehoycr.csv')

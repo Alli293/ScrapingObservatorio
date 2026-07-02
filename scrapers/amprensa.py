@@ -15,17 +15,23 @@ import re
 from datetime import datetime
 
 # --- Configuración ---
+# El sitio renderiza el listado de artículos vía htmx (carga AJAX), por lo
+# que la página de categoría normal ("/categorias/<slug>") no trae los
+# enlaces en el HTML inicial — hay que pedir directamente el fragmento que
+# htmx carga: /webcomponents/news-category-table?category_slug=<slug>.
 BASE_URL = 'https://www.amprensa.com'
 SECTIONS = {
-    'nacionales': 'https://www.amprensa.com/categorias/nacionales',
-    'internacionales': 'https://www.amprensa.com/categorias/internacionales',
-    'deportes': 'https://www.amprensa.com/categorias/am-deportes',
-    'sucesos': 'https://www.amprensa.com/categorias/sucesos',
-    'espectaculos': 'https://www.amprensa.com/categorias/espectaculos',
-    'cartago': 'https://www.amprensa.com/categorias/am-prensa-cartago',
-    'tecnologia': 'https://www.amprensa.com/categorias/tecnologia',
-    'viral': 'https://www.amprensa.com/categorias/viral'
+    'nacionales': 'nacionales',
+    'internacionales': 'internacionales',
+    'deportes': 'am-deportes',
+    'sucesos': 'sucesos',
+    'entretenimiento': 'entretenimiento',
+    'cartago': 'cartago-informa',
+    'la-entrevista': 'la-entrevista',
+    'politica': 'politica',
 }
+ARTICLES_PER_CATEGORY_PAGE = 10
+MAX_PAGES_PER_SECTION = 8
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
                   '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
@@ -153,7 +159,7 @@ def extract_article_data(soup, url):
     return title, author, date, content, category
 
 def get_article_links(soup):
-    """Extrae todos los enlaces de artículos de una página."""
+    """Extrae todos los enlaces de artículos de un fragmento HTML."""
     links = []
 
     # Buscar enlaces con patrón /2026/ o /2025/ (años)
@@ -169,11 +175,35 @@ def get_article_links(soup):
 
     return links
 
+def get_section_links(category_slug, session):
+    """
+    Pagina el endpoint htmx de una categoría hasta que una página no
+    devuelva enlaces nuevos (fin del listado) o se alcance MAX_PAGES_PER_SECTION.
+    """
+    section_links = []
+    for page in range(1, MAX_PAGES_PER_SECTION + 1):
+        url = (f"{BASE_URL}/webcomponents/news-category-table"
+               f"?category_slug={category_slug}&page={page}&limit={ARTICLES_PER_CATEGORY_PAGE}")
+        soup = get_soup(url, session)
+        if not soup:
+            break
+
+        page_links = get_article_links(soup)
+        if not page_links:
+            break
+
+        section_links.extend(page_links)
+        time.sleep(DELAY)
+
+    return section_links
+
 # -------------------------------------------------------
-# PASO 1: Leer página principal y secciones → extraer enlaces
+# PASO 1: Leer cada sección vía el endpoint htmx → extraer enlaces
 # -------------------------------------------------------
 data = []
-all_links = []
+# Mapea cada link a la sección donde se encontró — más confiable que el
+# selector de categoría en la página del artículo (frágil/inconsistente).
+link_section = {}
 
 with requests.Session() as session:
     session.headers.update(HEADERS)
@@ -182,33 +212,14 @@ with requests.Session() as session:
     print("📰 WEB SCRAPING - AM PRENSA")
     print("=" * 70)
 
-    # Primero la página principal
-    print(f"\n📂 Leyendo: PÁGINA PRINCIPAL")
-    main_soup = get_soup(BASE_URL, session)
-
-    if main_soup:
-        links = get_article_links(main_soup)
-        print(f"   ✅ {len(links)} enlaces encontrados")
-        all_links.extend(links)
-
-    time.sleep(DELAY)
-
-    # Luego las secciones
-    for section_name, section_url in SECTIONS.items():
+    for section_name, category_slug in SECTIONS.items():
         print(f"\n📂 Leyendo sección: {section_name.upper()}")
-        section_soup = get_soup(section_url, session)
+        links = get_section_links(category_slug, session)
+        print(f"   ✅ {len(links)} enlaces encontrados")
+        for link in links:
+            link_section.setdefault(link, section_name)
 
-        if section_soup:
-            links = get_article_links(section_soup)
-            print(f"   ✅ {len(links)} enlaces encontrados")
-            all_links.extend(links)
-        else:
-            print(f"   ⚠️ Sección no accesible, continuando...")
-
-        time.sleep(DELAY)
-
-    # Eliminar duplicados
-    all_links = list(set(all_links))
+    all_links = list(link_section.keys())
     print(f"\n🔗 Total de enlaces únicos: {len(all_links)}")
 
     # -------------------------------------------------------
@@ -227,9 +238,9 @@ with requests.Session() as session:
 
             article_soup = get_soup(link, session)
             if article_soup:
-                title, author, date, content, section = extract_article_data(article_soup, link)
+                title, author, date, content, _ = extract_article_data(article_soup, link)
             else:
-                title, author, date, content, section = "Error", "Error", "Error", "Error al recuperar", "error"
+                title, author, date, content = "Error", "Error", "Error", "Error al recuperar"
 
             data.append({
                 'source':           'amprensa',
@@ -238,7 +249,7 @@ with requests.Session() as session:
                 'author':           author,
                 'publication_date': date,
                 'scraping_date':    datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                'section':          section,
+                'section':          link_section.get(link, 'general'),
                 'full_text':        content,
                 'language':         'es'
             })
@@ -259,9 +270,6 @@ if len(df) > 0:
     print("\n📈 Artículos por sección:")
     print(df['section'].value_counts())
 
-    print("\n📋 Primeros artículos:")
-    display(df[['title', 'author', 'publication_date', 'section']].head(10))
-
 # --- Exportar a CSV ---
 df.to_csv('amprensa.csv', index=False, encoding='utf-8-sig')
 print(f"\n💾 Archivo guardado: amprensa.csv")
@@ -270,8 +278,5 @@ try:
     from google.colab import files
 except ImportError:
     files = None
-files.download('amprensa.csv')
-
-df.to_csv('amprensa.csv', index=False, encoding='utf-8-sig')
-from google.colab import files
-files.download('amprensa.csv')
+if files:
+    files.download('amprensa.csv')

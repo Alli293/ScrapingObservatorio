@@ -281,12 +281,9 @@ jobs:
       - name: Ejecutar scrapers
         run: |
           python pipeline_runner.py \
-            --only adiariocr actualidaddeloeste alajuelitahoy alajuelitasoy \
-                   anexioncr buzonderodrigo guanacastealaaltura miprensacr \
-                   periodicomensaje radiolapampa radiopuertotv tamarindonews \
-                   tvsur ustedseinforma yambaradio \
-                   elmundo elcolectivo506 eljornalcr \
-                   elmonitorcr enlamira \
+            --only adiariocr alajuelitasoy buzonderodrigo guanacastealaaltura \
+                   miprensacr radiolapampa radiopuertotv tvsur ustedseinforma \
+                   elcolectivo506 eljornalcr \
             --workers 8 \
             --skip-health \
             ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
@@ -370,7 +367,7 @@ jobs:
           python pipeline_runner.py \
             --only el_financiero el_mundo el_seminario eldelfino \
                    elnortehoy lanacion larepublica noticias_la_garita_costa_rica \
-                   periodico_el_mundo periodico_mi_tierra sancarlosdigital seminario \
+                   periodico_mi_tierra sancarlosdigital seminario \
             --workers 8 \
             --skip-health \
             ${{ github.event.inputs.test_mode == 'true' && '--test' || '' }}
@@ -434,7 +431,7 @@ jobs:
       - name: Construir o actualizar corpus
         run: |
           mkdir -p corpus/
-          if ls corpus/corpus_observatorio_v*.csv 2>/dev/null | head -1 > /dev/null 2>&1; then
+          if compgen -G "corpus/corpus_observatorio_v*.csv" > /dev/null; then
             echo "Corpus previo encontrado — ejecutando actualizador incremental"
             python corpus_updater.py \
               --output output/ \

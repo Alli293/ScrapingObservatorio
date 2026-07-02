@@ -58,10 +58,43 @@ CLASES_RUIDO = {
     "paywall", "suscri", "subscribe", "newsletter",
     "related", "promo", "banner", "publicidad",
     "compartir", "share", "sidebar", "widget",
-    "tag", "etiqueta", "author-bio", "bio",
+    "tag", "etiqueta", "bio",
     "comment", "footer", "header", "nav",
     "redes", "social", "popup",
 }
+
+MESES_ES = {
+    "enero": "01", "febrero": "02", "marzo": "03", "abril": "04",
+    "mayo": "05", "junio": "06", "julio": "07", "agosto": "08",
+    "septiembre": "09", "octubre": "10", "noviembre": "11", "diciembre": "12",
+}
+
+
+def _cls_tokens(el) -> set:
+    """Devuelve tokens individuales de todas las clases CSS (split por - y _)."""
+    tokens = set()
+    for cls in (el.get("class") or []):
+        for part in re.split(r"[-_]", cls):
+            if part:
+                tokens.add(part.lower())
+    return tokens
+
+
+def _parse_fecha_articulo(soup) -> str:
+    """Extrae la fecha de la página del artículo en larepublica.net."""
+    date_div = soup.select_one("div.date")
+    if not date_div:
+        return "Sin fecha"
+    raw = date_div.get_text(strip=True)
+    # "Jueves, 2 de julio de 2026" o "Jueves, 2 julio 2026"
+    raw = re.sub(r"^\w+,?\s*", "", raw.lower()).strip()
+    m = re.search(r"(\d{1,2})\s+(?:de\s+)?(\w+)\s+(?:de\s+)?(\d{4})", raw)
+    if m:
+        day, mes_nombre, year = m.group(1), m.group(2), m.group(3)
+        mes = MESES_ES.get(mes_nombre)
+        if mes:
+            return f"{year}-{mes}-{int(day):02d}"
+    return "Sin fecha"
 
 
 # ─────────────────────────────────────────────
@@ -84,17 +117,18 @@ def abs_url(href: str) -> str:
 
 
 def limpiar_texto(contenedor: BeautifulSoup) -> str:
-    """Extrae párrafos descartando bloques de ruido."""
+    """Extrae párrafos descartando bloques de ruido.
+
+    Usa token-matching (split en - y _) en lugar de substring para evitar
+    falsos positivos como 'ad' dentro de 'initial-load'.
+    """
     partes = []
     for tag in contenedor.find_all(["p", "h2", "h3", "h4", "blockquote"]):
-        clases = " ".join(tag.get("class", [])).lower()
-        if any(r in clases for r in CLASES_RUIDO):
+        if _cls_tokens(tag) & CLASES_RUIDO:
             continue
-        # Descartar si algún padre tiene clase de ruido
         padre_ruido = False
         for padre in tag.parents:
-            p_clases = " ".join(padre.get("class", [])).lower() if padre.get("class") else ""
-            if any(r in p_clases for r in CLASES_RUIDO):
+            if _cls_tokens(padre) & CLASES_RUIDO:
                 padre_ruido = True
                 break
         if padre_ruido:
@@ -187,15 +221,17 @@ def scrape_lista_noticias(url: str) -> list[dict]:
 # ─────────────────────────────────────────────
 #  TEXTO DE CADA ARTÍCULO
 # ─────────────────────────────────────────────
-def scrape_texto_articulo(url: str) -> str:
+def scrape_texto_articulo(url: str) -> tuple[str, str]:
     """
-    Ingresa al artículo y extrae solo el cuerpo editorial,
-    sin ads, newsletter, share buttons ni contenido relacionado.
+    Ingresa al artículo y extrae cuerpo editorial + fecha de publicación.
+    Retorna (full_text, publication_date).
     """
     if not url:
-        return ""
+        return "", "Sin fecha"
 
     soup = get_soup(url)
+
+    fecha = _parse_fecha_articulo(soup)
 
     SELECTORES = [
         "div.entry-content",
@@ -211,12 +247,13 @@ def scrape_texto_articulo(url: str) -> str:
         if contenedor:
             ps = [p for p in contenedor.find_all("p") if len(p.get_text(strip=True)) > 40]
             if ps:
-                return limpiar_texto(contenedor)
+                return limpiar_texto(contenedor), fecha
 
     # Fallback: todos los párrafos largos del documento
     partes = [p.get_text(strip=True) for p in soup.find_all("p")
               if len(p.get_text(strip=True)) > 60]
-    return "\n\n".join(partes) if partes else "No se pudo extraer el contenido."
+    texto = "\n\n".join(partes) if partes else "No se pudo extraer el contenido."
+    return texto, fecha
 
 
 # ─────────────────────────────────────────────
@@ -230,7 +267,10 @@ def scraper_completo(url: str) -> list[dict]:
     for i, n in enumerate(noticias, 1):
         print(f"  [{i}/{len(noticias)}] {n['title'][:70]}...")
         try:
-            n["full_text"] = scrape_texto_articulo(n["url"])
+            full_text, art_date = scrape_texto_articulo(n["url"])
+            n["full_text"] = full_text
+            if n["publication_date"] == "Sin fecha":
+                n["publication_date"] = art_date
         except Exception as e:
             n["full_text"] = f"Error al extraer: {e}"
         time.sleep(DELAY)

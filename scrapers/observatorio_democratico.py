@@ -139,9 +139,13 @@ def procesar_sitio(site_dict, max_pages=None):
     log_msg(f"==============================================")
 
     session = requests.Session()
-    # Headers para mimetizar navegador
+    # User-Agent corto a propósito: algunos WAFs (Wordfence y similares)
+    # bloquean con 403 el string de navegador "completo pero incompleto"
+    # (sin el sufijo "(KHTML, like Gecko) Chrome/... Safari/...") porque
+    # coincide con firmas conocidas de scraper. El UA mínimo "Mozilla/5.0"
+    # no activa esa regla y funciona en todos los sitios probados.
     session.headers.update({
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "User-Agent": "Mozilla/5.0",
         "Accept": "application/json"
     })
 

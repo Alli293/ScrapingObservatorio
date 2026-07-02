@@ -203,16 +203,8 @@ today_str = datetime.now().strftime('%Y%m%d')
 output_file = f'acontecercr_{today_str}.csv'
 
 df.to_csv(output_file, index=False, encoding='utf-8', sep=',', na_rep='NULL')
-files.download(output_file)
+if files:
+    files.download(output_file)
 
 print(f"\nDataFrame: {len(df)} filas x {len(df.columns)} columnas")
 print(f"Archivo guardado: {output_file}")
-df.head(8)
-
-from google.colab import files
-
-today_str = datetime.now().strftime('%Y%m%d')
-output_file = f'acontecerCR_{today_str}.csv'
-
-df.to_csv(output_file, index=False, encoding='utf-8', sep=',', na_rep='NULL')
-files.download(output_file)

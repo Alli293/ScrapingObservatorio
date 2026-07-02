@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import time
 import re
+import json
 from datetime import datetime
 
 # --- Configuración ---
@@ -60,17 +61,35 @@ def extract_article_data(soup, url):
     excerpt_tag = soup.find('h2', class_='single-layout__excerpt')
     excerpt = clean_text(excerpt_tag.get_text()) if excerpt_tag else ""
 
-    # --- Categoría ---
-    category_tag = soup.find('div', class_='single-layout__meta-taxonomy')
-    category = clean_text(category_tag.get_text()) if category_tag else "Sin categoría"
+    # --- Categoría y fecha (el sitio las publica vía JSON-LD, no en el HTML) ---
+    category = "Sin categoría"
+    date = "Sin fecha"
+    for script_tag in soup.find_all('script', type='application/ld+json'):
+        try:
+            ld_data = json.loads(script_tag.string)
+        except (TypeError, ValueError):
+            continue
+        graph = ld_data.get('@graph', [ld_data]) if isinstance(ld_data, dict) else ld_data
+        for item in graph:
+            if isinstance(item, dict) and item.get('@type') in ('NewsArticle', 'Article'):
+                if item.get('datePublished'):
+                    date = item['datePublished']
+                sections = item.get('articleSection')
+                if sections:
+                    category = sections[0] if isinstance(sections, list) else sections
+                break
+
+    # Fallback a los selectores HTML antiguos por si el sitio los reintroduce
+    if category == "Sin categoría":
+        category_tag = soup.find('div', class_='single-layout__meta-taxonomy')
+        category = clean_text(category_tag.get_text()) if category_tag else category
+    if date == "Sin fecha":
+        date_tag = soup.find('div', class_='single-layout__meta-date')
+        date = clean_text(date_tag.get_text()) if date_tag else date
 
     # --- Autor ---
     author_tag = soup.find('a', class_='single-layout__author')
     author = clean_text(author_tag.get_text()) if author_tag else "Sin autor"
-
-    # --- Fecha ---
-    date_tag = soup.find('div', class_='single-layout__meta-date')
-    date = clean_text(date_tag.get_text()) if date_tag else "Sin fecha"
 
     # --- Contenido ---
     content = "Contenido no encontrado"
@@ -164,10 +183,45 @@ with requests.Session() as session:
 
         for i, link in enumerate(all_links, 1):
             slug = link.rstrip('/').split('/')[-1][:50]
+            print(f"  [{i}/{len(all_links)}] Procesando: {slug}...")
+
+            time.sleep(DELAY)
+
+            article_soup = get_soup(link, session)
+            if article_soup:
+                title, author, date, content, category = extract_article_data(article_soup, link)
+            else:
+                title, author, date, content, category = "Error", "Error", "Error", "Error al recuperar", "error"
+
+            data.append({
+                'source':           'diarioextra',
+                'url':              link,
+                'title':            title,
+                'author':           author,
+                'publication_date': date,
+                'scraping_date':    datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                'section':          category,
+                'full_text':        content,
+                'language':         'es'
+            })
+    else:
+        print("\n⚠️ No se encontraron enlaces.")
+
+# -------------------------------------------------------
+# PASO 3: DataFrame final
+# -------------------------------------------------------
+df = pd.DataFrame(data)
+
+print("\n" + "=" * 70)
+print(f"📊 DataFrame: {len(df)} filas × {len(df.columns)} columnas")
+print("=" * 70)
 
 df.to_csv('diarioextra.csv', index=False, encoding='utf-8-sig')
+print(f"\n💾 Archivo guardado: diarioextra.csv")
+
 try:
     from google.colab import files
 except ImportError:
     files = None
-files.download('diarioextra.csv')
+if files:
+    files.download('diarioextra.csv')

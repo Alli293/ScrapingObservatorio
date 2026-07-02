@@ -33,7 +33,7 @@ from scrapers.base_scraper import BaseScraper
 
 CR_TZ = timezone(timedelta(hours=-6))
 
-BASE_URL = "https://lareaccioncr.com/2026/"
+BASE_URL = f"https://lareaccioncr.com/{datetime.now().year}/"
 
 # Categorías conocidas del sitio
 CATEGORIES = [
@@ -91,7 +91,7 @@ def clean_text(text: str) -> str:
 
 def is_article_url(url: str) -> bool:
     """Filtra URLs que NO son artículos (categorías, autores, páginas, etc.)."""
-    if not url or not url.startswith("https://lareaccioncr.com/2026/"):
+    if not url or not url.startswith(BASE_URL):
         return False
     # Excluir páginas de categoría, autor, archivo, tag
     exclude_patterns = [
@@ -102,8 +102,7 @@ def is_article_url(url: str) -> bool:
         if pat in url:
             return False
     # URL de artículo tiene al menos año/mes/día/slug
-    # Ejemplo: /2026/2026/04/07/slug/
-    path = url.replace("https://lareaccioncr.com/2026/", "")
+    path = url.replace(BASE_URL, "")
     parts = [p for p in path.split("/") if p]
     return len(parts) >= 4  # año/mes/día/slug
 

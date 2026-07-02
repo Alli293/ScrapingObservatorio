@@ -230,4 +230,5 @@ try:
     from google.colab import files
 except ImportError:
     files = None
-files.download('crc891.csv')
+if files:
+    files.download('crc891.csv')

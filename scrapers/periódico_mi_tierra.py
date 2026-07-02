@@ -126,9 +126,14 @@ df_mitierra = pd.DataFrame(data).drop_duplicates(subset='url')
 print(f"\nDataFrame: {len(df_mitierra)} filas x {len(df_mitierra.columns)} columnas")
 df_mitierra.head(8)
 
+_today = datetime.now().strftime('%Y%m%d')
+_out_file = f'mitierra_{_today}.csv'
+df_mitierra.to_csv(_out_file, index=False, encoding='utf-8', sep=',', na_rep='NULL')
+print(f"Archivo guardado: {_out_file}")
+
 try:
     from google.colab import files
 except ImportError:
     files = None
-df_mitierra.to_csv('mitierra_20260404.csv', index=False, encoding='utf-8', sep=',', na_rep='NULL')
-files.download('mitierra_20260404.csv')
+if files:
+    files.download(_out_file)
