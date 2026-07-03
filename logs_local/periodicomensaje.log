@@ -1,0 +1,54 @@
+[2026-06-30 13:34:42,211] INFO - periodicomensaje: === Iniciando scraper: periodicomensaje ===
+[2026-06-30 13:34:42,211] INFO - periodicomensaje: URL base: 
+[2026-06-30 13:34:44,815] INFO - periodicomensaje: 'periodicomensaje' subprocess finalizado correctamente.
+[2026-06-30 13:34:44,815] DEBUG - periodicomensaje: 'periodicomensaje' stdout: ==============================================
+Iniciando ExtracciÃ³n API para: PERIODICOMENSAJE
+Target URL: https://periodicomensaje.com
+==============================================
+-> Mapeadas 0 categorÃ­as.
+-> El sitio rechazÃ³ la solicitud (cÃ³digo 404). Abortando sitio.
+WARNING: API vacÃ­a o inalcanzable para periodicomensaje.
+[2026-06-30 13:34:44,818] ERROR - periodicomensaje: Error crítico durante scraping: No se encontró CSV de salida para 'periodicomensaje' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'periodicomensaje' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+[2026-06-30 13:34:59,828] INFO - periodicomensaje: === Iniciando scraper: periodicomensaje ===
+[2026-06-30 13:34:59,829] INFO - periodicomensaje: URL base: 
+[2026-06-30 13:35:02,103] INFO - periodicomensaje: 'periodicomensaje' subprocess finalizado correctamente.
+[2026-06-30 13:35:02,103] DEBUG - periodicomensaje: 'periodicomensaje' stdout: ==============================================
+Iniciando ExtracciÃ³n API para: PERIODICOMENSAJE
+Target URL: https://periodicomensaje.com
+==============================================
+-> Mapeadas 0 categorÃ­as.
+-> El sitio rechazÃ³ la solicitud (cÃ³digo 404). Abortando sitio.
+WARNING: API vacÃ­a o inalcanzable para periodicomensaje.
+[2026-06-30 13:35:02,104] ERROR - periodicomensaje: Error crítico durante scraping: No se encontró CSV de salida para 'periodicomensaje' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'periodicomensaje' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+[2026-06-30 13:35:32,122] INFO - periodicomensaje: === Iniciando scraper: periodicomensaje ===
+[2026-06-30 13:35:32,122] INFO - periodicomensaje: URL base: 
+[2026-06-30 13:35:34,391] INFO - periodicomensaje: 'periodicomensaje' subprocess finalizado correctamente.
+[2026-06-30 13:35:34,391] DEBUG - periodicomensaje: 'periodicomensaje' stdout: ==============================================
+Iniciando ExtracciÃ³n API para: PERIODICOMENSAJE
+Target URL: https://periodicomensaje.com
+==============================================
+-> Mapeadas 0 categorÃ­as.
+-> El sitio rechazÃ³ la solicitud (cÃ³digo 404). Abortando sitio.
+WARNING: API vacÃ­a o inalcanzable para periodicomensaje.
+[2026-06-30 13:35:34,392] ERROR - periodicomensaje: Error crítico durante scraping: No se encontró CSV de salida para 'periodicomensaje' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'periodicomensaje' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)

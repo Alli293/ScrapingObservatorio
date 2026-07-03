@@ -1,0 +1,54 @@
+[2026-06-30 13:35:37,005] INFO - elmonitorcr: === Iniciando scraper: elmonitorcr ===
+[2026-06-30 13:35:37,006] INFO - elmonitorcr: URL base: 
+[2026-06-30 13:35:39,662] INFO - elmonitorcr: 'elmonitorcr' subprocess finalizado correctamente.
+[2026-06-30 13:35:39,662] DEBUG - elmonitorcr: 'elmonitorcr' stdout: ==============================================
+Iniciando ExtracciÃ³n API para: ELMONITORCR
+Target URL: https://elmonitorcr.com
+==============================================
+-> Mapeadas 0 categorÃ­as.
+-> El sitio rechazÃ³ la solicitud (cÃ³digo 404). Abortando sitio.
+WARNING: API vacÃ­a o inalcanzable para elmonitorcr.
+[2026-06-30 13:35:39,665] ERROR - elmonitorcr: Error crítico durante scraping: No se encontró CSV de salida para 'elmonitorcr' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'elmonitorcr' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+[2026-06-30 13:35:54,677] INFO - elmonitorcr: === Iniciando scraper: elmonitorcr ===
+[2026-06-30 13:35:54,678] INFO - elmonitorcr: URL base: 
+[2026-06-30 13:35:57,914] INFO - elmonitorcr: 'elmonitorcr' subprocess finalizado correctamente.
+[2026-06-30 13:35:57,915] DEBUG - elmonitorcr: 'elmonitorcr' stdout: ==============================================
+Iniciando ExtracciÃ³n API para: ELMONITORCR
+Target URL: https://elmonitorcr.com
+==============================================
+-> Mapeadas 0 categorÃ­as.
+-> El sitio rechazÃ³ la solicitud (cÃ³digo 404). Abortando sitio.
+WARNING: API vacÃ­a o inalcanzable para elmonitorcr.
+[2026-06-30 13:35:57,915] ERROR - elmonitorcr: Error crítico durante scraping: No se encontró CSV de salida para 'elmonitorcr' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'elmonitorcr' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+[2026-06-30 13:36:27,930] INFO - elmonitorcr: === Iniciando scraper: elmonitorcr ===
+[2026-06-30 13:36:27,930] INFO - elmonitorcr: URL base: 
+[2026-06-30 13:36:31,304] INFO - elmonitorcr: 'elmonitorcr' subprocess finalizado correctamente.
+[2026-06-30 13:36:31,304] DEBUG - elmonitorcr: 'elmonitorcr' stdout: ==============================================
+Iniciando ExtracciÃ³n API para: ELMONITORCR
+Target URL: https://elmonitorcr.com
+==============================================
+-> Mapeadas 0 categorÃ­as.
+-> El sitio rechazÃ³ la solicitud (cÃ³digo 404). Abortando sitio.
+WARNING: API vacÃ­a o inalcanzable para elmonitorcr.
+[2026-06-30 13:36:31,305] ERROR - elmonitorcr: Error crítico durante scraping: No se encontró CSV de salida para 'elmonitorcr' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'elmonitorcr' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)

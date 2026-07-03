@@ -1,0 +1,54 @@
+[2026-06-30 13:33:51,489] INFO - actualidaddeloeste: === Iniciando scraper: actualidaddeloeste ===
+[2026-06-30 13:33:51,490] INFO - actualidaddeloeste: URL base: 
+[2026-06-30 13:33:53,779] INFO - actualidaddeloeste: 'actualidaddeloeste' subprocess finalizado correctamente.
+[2026-06-30 13:33:53,779] DEBUG - actualidaddeloeste: 'actualidaddeloeste' stdout: =================
+Iniciando ExtracciÃ³n API para: ACTUALIDADDELOESTE
+Target URL: https://actualidaddeloeste.com
+==============================================
+-> Advertencia: No se pudieron mapear categorÃ­as (HTTPSConnectionPool(host='actualidaddeloeste.com', port=443): Max retries exceeded with url: /wp-json/wp/v2/categories?per_page=100 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001B6C08D4F50>: Failed to resolve 'actualidaddeloeste.com' ([Errno 11001] getaddrinfo failed)"))). Todo irÃ¡ como 'Noticias'.
+-> Falla de conexiÃ³n crÃ­tica en pÃ¡gina 1: HTTPSConnectionPool(host='actualidaddeloeste.com', port=443): Max retries exceeded with url: /wp-json/wp/v2/posts?per_page=100&page=1 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001B6C2870AD0>: Failed to resolve 'actualidaddeloeste.com' ([Errno 11001] getaddrinfo failed)")). Abortando actualidaddeloeste.
+WARNING: API vacÃ­a o inalcanzable para actualidaddeloeste.
+[2026-06-30 13:33:53,780] ERROR - actualidaddeloeste: Error crítico durante scraping: No se encontró CSV de salida para 'actualidaddeloeste' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'actualidaddeloeste' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+[2026-06-30 13:34:08,794] INFO - actualidaddeloeste: === Iniciando scraper: actualidaddeloeste ===
+[2026-06-30 13:34:08,794] INFO - actualidaddeloeste: URL base: 
+[2026-06-30 13:34:10,474] INFO - actualidaddeloeste: 'actualidaddeloeste' subprocess finalizado correctamente.
+[2026-06-30 13:34:10,474] DEBUG - actualidaddeloeste: 'actualidaddeloeste' stdout: =================
+Iniciando ExtracciÃ³n API para: ACTUALIDADDELOESTE
+Target URL: https://actualidaddeloeste.com
+==============================================
+-> Advertencia: No se pudieron mapear categorÃ­as (HTTPSConnectionPool(host='actualidaddeloeste.com', port=443): Max retries exceeded with url: /wp-json/wp/v2/categories?per_page=100 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000025C298854C0>: Failed to resolve 'actualidaddeloeste.com' ([Errno 11001] getaddrinfo failed)"))). Todo irÃ¡ como 'Noticias'.
+-> Falla de conexiÃ³n crÃ­tica en pÃ¡gina 1: HTTPSConnectionPool(host='actualidaddeloeste.com', port=443): Max retries exceeded with url: /wp-json/wp/v2/posts?per_page=100&page=1 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000025C2B4A0650>: Failed to resolve 'actualidaddeloeste.com' ([Errno 11001] getaddrinfo failed)")). Abortando actualidaddeloeste.
+WARNING: API vacÃ­a o inalcanzable para actualidaddeloeste.
+[2026-06-30 13:34:10,475] ERROR - actualidaddeloeste: Error crítico durante scraping: No se encontró CSV de salida para 'actualidaddeloeste' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'actualidaddeloeste' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+[2026-06-30 13:34:40,483] INFO - actualidaddeloeste: === Iniciando scraper: actualidaddeloeste ===
+[2026-06-30 13:34:40,483] INFO - actualidaddeloeste: URL base: 
+[2026-06-30 13:34:42,092] INFO - actualidaddeloeste: 'actualidaddeloeste' subprocess finalizado correctamente.
+[2026-06-30 13:34:42,092] DEBUG - actualidaddeloeste: 'actualidaddeloeste' stdout: =================
+Iniciando ExtracciÃ³n API para: ACTUALIDADDELOESTE
+Target URL: https://actualidaddeloeste.com
+==============================================
+-> Advertencia: No se pudieron mapear categorÃ­as (HTTPSConnectionPool(host='actualidaddeloeste.com', port=443): Max retries exceeded with url: /wp-json/wp/v2/categories?per_page=100 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000012AEA6E4F50>: Failed to resolve 'actualidaddeloeste.com' ([Errno 11001] getaddrinfo failed)"))). Todo irÃ¡ como 'Noticias'.
+-> Falla de conexiÃ³n crÃ­tica en pÃ¡gina 1: HTTPSConnectionPool(host='actualidaddeloeste.com', port=443): Max retries exceeded with url: /wp-json/wp/v2/posts?per_page=100&page=1 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000012AEC500410>: Failed to resolve 'actualidaddeloeste.com' ([Errno 11001] getaddrinfo failed)")). Abortando actualidaddeloeste.
+WARNING: API vacÃ­a o inalcanzable para actualidaddeloeste.
+[2026-06-30 13:34:42,093] ERROR - actualidaddeloeste: Error crítico durante scraping: No se encontró CSV de salida para 'actualidaddeloeste' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'actualidaddeloeste' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)

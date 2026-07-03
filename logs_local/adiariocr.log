@@ -1,0 +1,28 @@
+[2026-06-30 13:33:51,488] INFO - adiariocr: === Iniciando scraper: adiariocr ===
+[2026-06-30 13:33:51,489] INFO - adiariocr: URL base: 
+[2026-06-30 13:39:55,779] INFO - adiariocr: 'adiariocr' subprocess finalizado correctamente.
+[2026-06-30 13:39:55,779] DEBUG - adiariocr: 'adiariocr' stdout: ariocr] PÃ¡gina 74 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 75 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 76 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 77 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 78 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 79 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 80 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 81 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 82 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 83 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 84 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 85 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 86 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 87 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 88 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 89 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 90 extraida (+100 Ã­tems)
+-> [adiariocr] PÃ¡gina 91 extraida (+29 Ã­tems)
+-> Fin del historial alcanzado en la pÃ¡gina 91.
+SUCCESS: 9029 registros totales consolidados en output\adiariocr_20260630.csv
+[2026-06-30 13:39:56,433] INFO - adiariocr: 'adiariocr': 9029 registros leídos desde C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\output\adiariocr_20260630.csv
+[2026-06-30 13:39:56,527] INFO - adiariocr: Artículos crudos recolectados: 9029
+[2026-06-30 13:39:57,657] INFO - adiariocr: Exportados 8988 registros válidos → C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\output_local\adiariocr_20260630.csv
+[2026-06-30 13:39:57,658] WARNING - adiariocr: 41 registros descartados → C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\logs_local\adiariocr_20260630_discarded.csv
+[2026-06-30 13:39:57,660] INFO - adiariocr: === Scraper finalizado: adiariocr | Resumen: {'source': 'adiariocr', 'status': 'OK', 'total_raw': 9029, 'total_valid': 8988, 'total_discarded': 41, 'output_file': 'C:\\Users\\Allis\\Documents\\ScrapingPeridiodicos2\\ScrapingObservatorio\\output_local\\adiariocr_20260630.csv'} ===

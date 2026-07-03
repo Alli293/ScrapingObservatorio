@@ -1,0 +1,54 @@
+[2026-06-30 13:34:45,034] INFO - tamarindonews: === Iniciando scraper: tamarindonews ===
+[2026-06-30 13:34:45,034] INFO - tamarindonews: URL base: 
+[2026-06-30 13:34:47,975] INFO - tamarindonews: 'tamarindonews' subprocess finalizado correctamente.
+[2026-06-30 13:34:47,976] DEBUG - tamarindonews: 'tamarindonews' stdout: ==============================================
+Iniciando ExtracciÃ³n API para: TAMARINDONEWS
+Target URL: https://tamarindonews.com
+==============================================
+-> Mapeadas 0 categorÃ­as.
+-> El sitio rechazÃ³ la solicitud (cÃ³digo 404). Abortando sitio.
+WARNING: API vacÃ­a o inalcanzable para tamarindonews.
+[2026-06-30 13:34:47,978] ERROR - tamarindonews: Error crítico durante scraping: No se encontró CSV de salida para 'tamarindonews' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'tamarindonews' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+[2026-06-30 13:35:02,987] INFO - tamarindonews: === Iniciando scraper: tamarindonews ===
+[2026-06-30 13:35:02,987] INFO - tamarindonews: URL base: 
+[2026-06-30 13:35:05,641] INFO - tamarindonews: 'tamarindonews' subprocess finalizado correctamente.
+[2026-06-30 13:35:05,641] DEBUG - tamarindonews: 'tamarindonews' stdout: ==============================================
+Iniciando ExtracciÃ³n API para: TAMARINDONEWS
+Target URL: https://tamarindonews.com
+==============================================
+-> Mapeadas 0 categorÃ­as.
+-> El sitio rechazÃ³ la solicitud (cÃ³digo 404). Abortando sitio.
+WARNING: API vacÃ­a o inalcanzable para tamarindonews.
+[2026-06-30 13:35:05,642] ERROR - tamarindonews: Error crítico durante scraping: No se encontró CSV de salida para 'tamarindonews' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'tamarindonews' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+[2026-06-30 13:35:35,651] INFO - tamarindonews: === Iniciando scraper: tamarindonews ===
+[2026-06-30 13:35:35,651] INFO - tamarindonews: URL base: 
+[2026-06-30 13:35:38,158] INFO - tamarindonews: 'tamarindonews' subprocess finalizado correctamente.
+[2026-06-30 13:35:38,158] DEBUG - tamarindonews: 'tamarindonews' stdout: ==============================================
+Iniciando ExtracciÃ³n API para: TAMARINDONEWS
+Target URL: https://tamarindonews.com
+==============================================
+-> Mapeadas 0 categorÃ­as.
+-> El sitio rechazÃ³ la solicitud (cÃ³digo 404). Abortando sitio.
+WARNING: API vacÃ­a o inalcanzable para tamarindonews.
+[2026-06-30 13:35:38,159] ERROR - tamarindonews: Error crítico durante scraping: No se encontró CSV de salida para 'tamarindonews' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)
+Traceback (most recent call last):
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\base_scraper.py", line 228, in run
+    raw = self.scrape()
+          ^^^^^^^^^^^^^
+  File "C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\scrapers\legacy_adapter.py", line 92, in scrape
+    raise RuntimeError(
+RuntimeError: No se encontró CSV de salida para 'tamarindonews' tras ejecutar el script (buscado en PROJECT_ROOT, output/ y output_dir)

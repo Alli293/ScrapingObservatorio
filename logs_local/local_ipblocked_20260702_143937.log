@@ -1,0 +1,67 @@
+[2026-07-02 14:39:38,482] INFO - adiariocr: === Iniciando scraper: adiariocr ===
+[2026-07-02 14:39:38,484] INFO - tvsur: === Iniciando scraper: tvsur ===
+[2026-07-02 14:39:38,484] INFO - adiariocr: URL base: 
+[2026-07-02 14:39:38,484] INFO - buzonderodrigo: === Iniciando scraper: buzonderodrigo ===
+[2026-07-02 14:39:38,484] INFO - tvsur: URL base: 
+[2026-07-02 14:39:38,485] INFO - buzonderodrigo: URL base: 
+[2026-07-02 14:40:35,748] INFO - buzonderodrigo: 'buzonderodrigo' subprocess finalizado correctamente.
+[2026-07-02 14:40:35,988] INFO - buzonderodrigo: 'buzonderodrigo': 498 registros leídos desde C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\output\buzonderodrigo_20260702.csv
+[2026-07-02 14:40:35,996] INFO - buzonderodrigo: Artículos crudos recolectados: 498
+[2026-07-02 14:40:36,353] INFO - buzonderodrigo: Exportados 497 registros válidos → C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\output\buzonderodrigo_20260702.csv
+[2026-07-02 14:40:36,353] WARNING - buzonderodrigo: 1 registros descartados → C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\logs\buzonderodrigo_20260702_discarded.csv
+[2026-07-02 14:40:36,353] INFO - buzonderodrigo: === Scraper finalizado: buzonderodrigo | Resumen: {'source': 'buzonderodrigo', 'status': 'OK', 'total_raw': 498, 'total_valid': 497, 'total_discarded': 1, 'output_file': 'C:\\Users\\Allis\\Documents\\ScrapingPeridiodicos2\\ScrapingObservatorio\\output\\buzonderodrigo_20260702.csv'} ===
+[2026-07-02 14:45:45,550] INFO - adiariocr: 'adiariocr' subprocess finalizado correctamente.
+[2026-07-02 14:45:46,115] INFO - adiariocr: 'adiariocr': 9038 registros leídos desde C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\output\adiariocr_20260702.csv
+[2026-07-02 14:45:46,181] INFO - adiariocr: Artículos crudos recolectados: 9038
+[2026-07-02 14:45:46,876] INFO - adiariocr: Exportados 8997 registros válidos → C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\output\adiariocr_20260702.csv
+[2026-07-02 14:45:46,877] WARNING - adiariocr: 41 registros descartados → C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\logs\adiariocr_20260702_discarded.csv
+[2026-07-02 14:45:46,878] INFO - adiariocr: === Scraper finalizado: adiariocr | Resumen: {'source': 'adiariocr', 'status': 'OK', 'total_raw': 9038, 'total_valid': 8997, 'total_discarded': 41, 'output_file': 'C:\\Users\\Allis\\Documents\\ScrapingPeridiodicos2\\ScrapingObservatorio\\output\\adiariocr_20260702.csv'} ===
+[2026-07-02 14:49:20,402] INFO - tvsur: 'tvsur' subprocess finalizado correctamente.
+[2026-07-02 14:49:20,835] INFO - tvsur: 'tvsur': 13000 registros leídos desde C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\output\tvsur_20260702.csv
+[2026-07-02 14:49:20,938] INFO - tvsur: Artículos crudos recolectados: 13000
+[2026-07-02 14:49:21,365] INFO - tvsur: Exportados 8922 registros válidos → C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\output\tvsur_20260702.csv
+[2026-07-02 14:49:21,419] WARNING - tvsur: 4078 registros descartados → C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\logs\tvsur_20260702_discarded.csv
+[2026-07-02 14:49:21,419] INFO - tvsur: === Scraper finalizado: tvsur | Resumen: {'source': 'tvsur', 'status': 'OK', 'total_raw': 13000, 'total_valid': 8922, 'total_discarded': 4078, 'output_file': 'C:\\Users\\Allis\\Documents\\ScrapingPeridiodicos2\\ScrapingObservatorio\\output\\tvsur_20260702.csv'} ===
+
+╔══════════════════════════════════════════════════════════════╗
+║      OBSERVATORIO DEMOCRÁTICO — Pipeline Paralelo v2.1       ║
+╚══════════════════════════════════════════════════════════════╝
+
+  Scrapers a ejecutar : 3
+  Workers paralelos   : 3
+  Modo prueba         : No
+  Health check        : No
+  Incremental         : No
+  Output              : C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\output
+  Logs                : C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\logs
+
+  [14:39:38] Pipeline — 3 scrapers — 3 workers — completo
+  [14:39:38] ▶  [adiariocr] iniciando
+  [14:39:38] ▶  [tvsur] iniciando
+  [14:39:38] ▶  [buzonderodrigo] iniciando
+  [14:40:36] ✓  [buzonderodrigo] 497 artículos en 57.9s
+  [14:45:46] ✓  [adiariocr] 8997 artículos en 368.4s
+  [14:49:21] ✓  [tvsur] 8922 artículos en 583.0s
+
+══════════════════════════════════════════════════════════════════════
+  RESUMEN PIPELINE
+══════════════════════════════════════════════════════════════════════
+  Total scrapers         : 3
+  ✓ Exitosos             : 3
+  ⊘ Ya tenían datos hoy  : 0
+  ✗ Con error            : 0
+  ⊘ Omitidos (salud)     : 0
+  ⚠ Con anomalía         : 0
+  ───────────────────────────────────────────────────────
+  Artículos esta corrida : 18,416
+  Descartados            : 4,120
+  Tiempo total           : 583s (9.7 min)
+══════════════════════════════════════════════════════════════════════
+
+  SCRAPER                    ARTÍCULOS  DESCART.   TIEMPO
+  ───────────────────────────────────────────────────────
+  ✓ adiariocr                    8,997        41     368s
+  ✓ tvsur                        8,922     4,078     583s
+  ✓ buzonderodrigo                 497         1      58s
+
+  [14:49:21] Reporte guardado: C:\Users\Allis\Documents\ScrapingPeridiodicos2\ScrapingObservatorio\logs\pipeline_report_20260702_144921.json
