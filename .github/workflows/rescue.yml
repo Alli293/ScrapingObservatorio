@@ -1,0 +1,82 @@
+name: Rescate — Scrapers individuales
+
+on:
+  workflow_dispatch:
+    inputs:
+      scrapers:
+        description: 'Lista de scrapers separados por espacio'
+        required: true
+      playwright:
+        description: 'Requiere Playwright (true/false)'
+        required: false
+        default: 'true'
+      timeout_minutes:
+        description: 'Timeout en minutos'
+        required: false
+        default: '240'
+      label:
+        description: 'Etiqueta para el artifact (ej: rescue-rapidos)'
+        required: false
+        default: 'rescue'
+
+env:
+  PYTHON_VERSION: '3.12'
+  DISPLAY: ':99'
+
+jobs:
+  rescue:
+    name: 'Rescate — ${{ github.event.inputs.label }}'
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ fromJSON(github.event.inputs.timeout_minutes) }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Instalar Xvfb
+        if: github.event.inputs.playwright == 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb
+          Xvfb :99 -screen 0 1920x1080x24 -ac &
+          sleep 2
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+
+      - name: Cache Playwright Chromium
+        if: github.event.inputs.playwright == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+          restore-keys: playwright-chromium-${{ runner.os }}-
+
+      - name: Instalar dependencias (Playwright)
+        if: github.event.inputs.playwright == 'true'
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium
+          python -m playwright install-deps chromium
+
+      - name: Instalar dependencias (Legacy)
+        if: github.event.inputs.playwright == 'false'
+        run: pip install -r requirements-legacy.txt
+
+      - name: Ejecutar scrapers
+        run: |
+          python pipeline_runner.py \
+            --only ${{ github.event.inputs.scrapers }} \
+            --workers 6 \
+            --skip-health
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rescue-${{ github.event.inputs.label }}
+          path: |
+            output/*.csv
+            logs/*.json
+          retention-days: 7
