@@ -39,20 +39,20 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Lista de todos los portales noticiosos requeridos
 SITES = [
-    {"url": "https://anexioncr.com", "name": "anexioncr"},
+    # DEAD (DNS fail 2026-07): {"url": "https://anexioncr.com", "name": "anexioncr"},
     {"url": "https://guanacastealaaltura.com", "name": "guanacastealaaltura"},
-    {"url": "https://periodicomensaje.com", "name": "periodicomensaje"},
+    # NON-WP (Joomla, 2026-07): {"url": "https://periodicomensaje.com", "name": "periodicomensaje"},
     {"url": "https://radiolapampa.net", "name": "radiolapampa"},
-    {"url": "https://tamarindonews.com", "name": "tamarindonews"},
-    {"url": "https://yambaradio.com", "name": "yambaradio"},
+    # NON-WP (API disabled, 2026-07): {"url": "https://tamarindonews.com", "name": "tamarindonews"},
+    # DEAD (DNS fail 2026-07): {"url": "https://yambaradio.com", "name": "yambaradio"},
     {"url": "https://miprensacr.com", "name": "miprensacr"},
-    # {"url": "https://radiobahiapuerto.com", "name": "radiobahiapuerto"}, # Usualmente requiere Playwright, pero intentaremos WP
+    # {"url": "https://radiobahiapuerto.com", "name": "radiobahiapuerto"}, # Requiere Playwright
     {"url": "https://radiopuertotv.net", "name": "radiopuertotv"},
     {"url": "https://tvsur.co.cr", "name": "tvsur"},
     {"url": "https://ustedseinforma.com", "name": "ustedseinforma"},
     {"url": "https://adiariocr.com", "name": "adiariocr"},
-    {"url": "https://actualidaddeloeste.com", "name": "actualidaddeloeste"},
-    {"url": "https://alajuelitahoy.com", "name": "alajuelitahoy"},
+    # DEAD (DNS fail 2026-07): {"url": "https://actualidaddeloeste.com", "name": "actualidaddeloeste"},
+    # DEAD (DNS fail 2026-07): {"url": "https://alajuelitahoy.com", "name": "alajuelitahoy"},
     {"url": "https://alajuelitasoy.com", "name": "alajuelitasoy"},
     {"url": "https://buzonderodrigo.com", "name": "buzonderodrigo"},
     # {"url": "https://canalaltavision.com", "name": "canalaltavision"}, # En caso de que funcione
@@ -139,42 +139,108 @@ def procesar_sitio(site_dict, max_pages=None):
     log_msg(f"==============================================")
 
     session = requests.Session()
-    # User-Agent corto a propósito: algunos WAFs (Wordfence y similares)
-    # bloquean con 403 el string de navegador "completo pero incompleto"
-    # (sin el sufijo "(KHTML, like Gecko) Chrome/... Safari/...") porque
-    # coincide con firmas conocidas de scraper. El UA mínimo "Mozilla/5.0"
-    # no activa esa regla y funciona en todos los sitios probados.
     session.headers.update({
-        "User-Agent": "Mozilla/5.0",
-        "Accept": "application/json"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "es-CR,es;q=0.9,en;q=0.8",
+        # No Accept-Encoding: let requests advertise only gzip/deflate which it can decode
+        "DNT": "1",
+        "Connection": "keep-alive",
     })
+
+    # Auto-detect API route: modern /wp-json/ or legacy /?rest_route=
+    legacy_mode = False
+
+    def _probe_is_wp_json(url):
+        for attempt in range(3):
+            try:
+                r = session.get(url, timeout=15, verify=False)
+                if r.status_code != 200:
+                    return False
+                if not r.content:
+                    time.sleep(3)
+                    continue
+                data = r.json()
+                return isinstance(data, list)
+            except ValueError:
+                time.sleep(3)
+                continue
+            except Exception:
+                return False
+        return False
+
+    probe_modern = f"{base_url}/wp-json/wp/v2/posts?per_page=1"
+    probe_legacy = f"{base_url}/?rest_route=/wp/v2/posts&per_page=1"
+    if _probe_is_wp_json(probe_modern):
+        legacy_mode = False
+        log_msg(f"-> API mode: /wp-json/ (moderno)")
+    elif _probe_is_wp_json(probe_legacy):
+        legacy_mode = True
+        log_msg(f"-> API mode: /?rest_route= (legado)")
+    else:
+        log_msg(f"-> No se encontro API WordPress activa. Abortando.")
+        return
+
+    def _api_url(path, **params):
+        if legacy_mode:
+            qs = "&".join(f"{k}={v}" for k, v in params.items())
+            return f"{base_url}/?rest_route={path}&{qs}" if qs else f"{base_url}/?rest_route={path}"
+        else:
+            return f"{base_url}/wp-json{path}"
+
+    def _safe_get(url, params=None, timeout=45, retries=3):
+        for attempt in range(retries):
+            try:
+                r = session.get(url, params=(params if not legacy_mode else None), timeout=timeout, verify=False)
+                if r.status_code in (429, 503):
+                    wait = 15 * (2 ** attempt)
+                    log_msg(f"   [retry {attempt+1}/{retries}] HTTP {r.status_code}, esperando {wait}s...")
+                    time.sleep(wait)
+                    continue
+                return r
+            except requests.exceptions.Timeout:
+                if attempt < retries - 1:
+                    log_msg(f"   [retry {attempt+1}/{retries}] Timeout, reintentando...")
+                    time.sleep(5)
+                    continue
+                raise
+            except requests.exceptions.ConnectionError:
+                if attempt < retries - 1:
+                    time.sleep(5)
+                    continue
+                raise
+        return r
 
     # 1. Obtener Categorías
     cat_mapping = {}
     try:
-        c_url = f"{base_url}/wp-json/wp/v2/categories"
-        c_req = session.get(c_url, params={"per_page": 100}, timeout=10, verify=False)
+        c_url = _api_url("/wp/v2/categories", per_page=100)
+        c_req = _safe_get(c_url, params={"per_page": 100} if not legacy_mode else None, timeout=15)
         if c_req.status_code == 200:
             for cat in c_req.json():
                 cat_mapping[cat['id']] = cat['name']
-        log_msg(f"-> Mapeadas {len(cat_mapping)} categorías.")
+        log_msg(f"-> Mapeadas {len(cat_mapping)} categorias.")
     except Exception as e:
-        log_msg(f"-> Advertencia: No se pudieron mapear categorías ({e}). Todo irá como 'Noticias'.")
+        log_msg(f"-> Advertencia: No se pudieron mapear categorias ({e}). Todo ira como 'Noticias'.")
 
     # 2. Descarga Histórica Recursiva
     dataset = []
     page = 1
-    posts_url = f"{base_url}/wp-json/wp/v2/posts"
+    posts_url = _api_url("/wp/v2/posts")
 
     while True:
         try:
-            resp = session.get(posts_url, params={"per_page": 100, "page": page}, timeout=25, verify=False)
+            if legacy_mode:
+                page_url = f"{base_url}/?rest_route=/wp/v2/posts&per_page=100&page={page}"
+                resp = _safe_get(page_url, timeout=45)
+            else:
+                resp = _safe_get(posts_url, params={"per_page": 100, "page": page}, timeout=45)
 
             if resp.status_code != 200:
                 if "rest_post_invalid_page_number" in resp.text or resp.status_code == 400:
-                    log_msg(f"-> Fin del historial alcanzado en la página {page-1}.")
+                    log_msg(f"-> Fin del historial alcanzado en la pagina {page-1}.")
                 else:
-                    log_msg(f"-> El sitio rechazó la solicitud (código {resp.status_code}). Abortando sitio.")
+                    log_msg(f"-> El sitio rechazo la solicitud (codigo {resp.status_code}). Abortando sitio.")
                 break
 
             data = resp.json()
@@ -209,7 +275,7 @@ def procesar_sitio(site_dict, max_pages=None):
                     "language": "es"
                 })
 
-            log_msg(f"-> [{name}] Página {page} extraida (+{len(data)} ítems)")
+            log_msg(f"-> [{name}] Pagina {page} extraida (+{len(data)} items)")
 
             # Respaldo de seguridad intermedio local
             if page % 10 == 0:
@@ -217,17 +283,17 @@ def procesar_sitio(site_dict, max_pages=None):
                 df_temp.to_csv(os.path.join("output", f"{name}_backup.csv"), index=False, encoding='utf-8-sig', sep='|')
 
             if max_pages and page >= max_pages:
-                log_msg(f"-> Límite artificial de test ({max_pages} pags) alcanzado.")
+                log_msg(f"-> Limite artificial de test ({max_pages} pags) alcanzado.")
                 break
 
             page += 1
-            time.sleep(1)  # Precaución anti-ban
+            time.sleep(1)  # Precaucion anti-ban
 
         except requests.exceptions.RequestException as e:
-            log_msg(f"-> Falla de conexión crítica en página {page}: {e}. Abortando {name}.")
+            log_msg(f"-> Falla de conexion critica en pagina {page}: {e}. Abortando {name}.")
             break
         except Exception as e:
-            log_msg(f"-> Excepción en {name} pag {page}: {e}")
+            log_msg(f"-> Excepcion en {name} pag {page}: {e}")
             break
 
     # 3. Guardado final del CSV por sitio
