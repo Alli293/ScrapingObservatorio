@@ -41,9 +41,9 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 SITES = [
     # DEAD (DNS fail 2026-07): {"url": "https://anexioncr.com", "name": "anexioncr"},
     {"url": "https://guanacastealaaltura.com", "name": "guanacastealaaltura"},
-    # NON-WP (Joomla, 2026-07): {"url": "https://periodicomensaje.com", "name": "periodicomensaje"},
+    # Joomla — handled by procesar_periodicomensaje(): {"url": "https://periodicomensaje.com", "name": "periodicomensaje"},
     {"url": "https://radiolapampa.net", "name": "radiolapampa"},
-    # NON-WP (API disabled, 2026-07): {"url": "https://tamarindonews.com", "name": "tamarindonews"},
+    # DEAD cPanel placeholder (2026-07): {"url": "https://tamarindonews.com", "name": "tamarindonews"},
     # DEAD (DNS fail 2026-07): {"url": "https://yambaradio.com", "name": "yambaradio"},
     {"url": "https://miprensacr.com", "name": "miprensacr"},
     # {"url": "https://radiobahiapuerto.com", "name": "radiobahiapuerto"}, # Requiere Playwright
@@ -318,6 +318,137 @@ def procesar_sitio(site_dict, max_pages=None):
         log_msg(f"WARNING: API vacía o inalcanzable para {name}.")
 
 
+CATEGORIES_PERIODICOMENSAJE = [
+    "ambientales", "cantonales", "cultura", "deportes", "educacion",
+    "eventos", "guanacaste", "otras/finanzas", "otras/social",
+    "otras/tecnologia", "otras/valores", "salud", "turismo-negocios",
+]
+
+def procesar_periodicomensaje(max_pages_per_cat=None):
+    name = "periodicomensaje"
+    base_url = "https://periodicomensaje.com"
+
+    log_msg(f"\n==============================================")
+    log_msg(f"Iniciando Extraccion Joomla para: {name.upper()}")
+    log_msg(f"==============================================")
+
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "es-CR,es;q=0.9,en;q=0.8",
+        "DNT": "1",
+        "Connection": "keep-alive",
+    })
+
+    JOOMLA_PAGE_SIZE = 8
+
+    def _collect_article_links(html):
+        links = []
+        for href in re.findall(r'href=["\']([^"\']*?/\d{3,}-[^"\']+)', html):
+            if href.startswith("/"):
+                href = base_url + href
+            if "periodicomensaje.com" in href and re.search(r'/\d{3,}-', href):
+                links.append(href.split("?")[0].split("#")[0])
+        return list(set(links))
+
+    def _extract_article(url):
+        try:
+            r = session.get(url, timeout=20, verify=False)
+            if r.status_code != 200:
+                return None
+            soup = BeautifulSoup(r.content, "html.parser")
+
+            h1 = soup.find("h1", itemprop="headline") or soup.find("h1")
+            title = clean_extreme(h1.get_text(strip=True)) if h1 else ""
+
+            time_el = soup.find("time", attrs={"datetime": True})
+            pub_date = parse_date(time_el["datetime"]) if time_el else datetime.datetime.now(TZ_CR).strftime("%Y-%m-%d %H:%M:%S")
+
+            body_div = soup.find("div", class_="com-content-article__body")
+            content = clean_extreme(body_div.get_text(separator=" ", strip=True)) if body_div else ""
+
+            m = re.search(r'periodicomensaje\.com/([^/]+)(?:/[^/]+)?/', url)
+            section = m.group(1).replace("-", " ").title() if m else "Noticias"
+
+            if not title and not content:
+                return None
+
+            return {
+                "source": name,
+                "url": url,
+                "title": title,
+                "publication_date": pub_date,
+                "scraping_date": datetime.datetime.now(TZ_CR).strftime("%Y-%m-%d %H:%M:%S"),
+                "section": clean_extreme(section),
+                "full_text": content,
+                "language": "es",
+            }
+        except Exception as e:
+            log_msg(f"   -> Error al extraer {url}: {e}")
+            return None
+
+    def _get_max_start(html):
+        starts = re.findall(r'start=(\d+)', html)
+        return max((int(s) for s in starts), default=0)
+
+    # Phase 1: collect all article URLs via category pagination
+    all_urls = set()
+    for cat in CATEGORIES_PERIODICOMENSAJE:
+        log_msg(f"-> Categoria: /{cat}")
+        try:
+            r0 = session.get(f"{base_url}/{cat}", timeout=15, verify=False)
+            max_start = _get_max_start(r0.text)
+            initial_links = _collect_article_links(r0.text)
+            all_urls.update(initial_links)
+            log_msg(f"   start=0: {len(initial_links)} links, max_start={max_start}")
+
+            if max_pages_per_cat:
+                max_start = min(max_start, (max_pages_per_cat - 1) * JOOMLA_PAGE_SIZE)
+
+            start = JOOMLA_PAGE_SIZE
+            pages = 1
+            while start <= max_start:
+                try:
+                    r = session.get(f"{base_url}/{cat}?start={start}", timeout=15, verify=False)
+                    links = _collect_article_links(r.text)
+                    new_count = sum(1 for l in links if l not in all_urls)
+                    all_urls.update(links)
+                    if pages % 20 == 0 or start == max_start:
+                        log_msg(f"   start={start}/{max_start}: total_unique={len(all_urls)}")
+                    start += JOOMLA_PAGE_SIZE
+                    pages += 1
+                    time.sleep(0.3)
+                except Exception as e:
+                    log_msg(f"   Error en /{cat}?start={start}: {e}")
+                    break
+        except Exception as e:
+            log_msg(f"   Error en /{cat}: {e}")
+            continue
+
+    log_msg(f"-> URLs unicas colectadas: {len(all_urls)}")
+
+    # Phase 2: visit each article and extract content
+    dataset = []
+    for i, url in enumerate(sorted(all_urls)):
+        article = _extract_article(url)
+        if article:
+            dataset.append(article)
+        if (i + 1) % 50 == 0:
+            log_msg(f"   [{i+1}/{len(all_urls)}] extraidos: {len(dataset)}")
+        time.sleep(0.5)
+
+    if dataset:
+        df = pd.DataFrame(dataset)
+        df = df.drop_duplicates(subset=["url"])
+        df = df[["source","url","title","publication_date","scraping_date","section","full_text","language"]]
+        fname = os.path.join("output", f"{name}_{datetime.datetime.now(TZ_CR).strftime('%Y%m%d')}.csv")
+        df.to_csv(fname, index=False, encoding="utf-8-sig", sep="|")
+        log_msg(f"SUCCESS: {len(df)} registros en {fname}")
+    else:
+        log_msg(f"WARNING: Sin datos para {name}.")
+
+
 def main():
     global LOG_TXT
 
@@ -338,6 +469,11 @@ def main():
     with open(LOG_TXT, "w", encoding="utf-8") as f:
         f.write(f"=== MASTER SCRAPER INICIADO ({timestamp}{suffix}) ===\n")
 
+    # Joomla sites
+    if not _site_filter or _site_filter.lower() == "periodicomensaje":
+        procesar_periodicomensaje()
+
+    # WordPress sites
     for site in SITES:
         if _site_filter and site.get("name", "").lower() != _site_filter.lower():
             continue
